@@ -9,7 +9,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <com.jiankang.gouqi.widget.AppBackBar
+    <com.blandal.app.widget.AppBackBar
         android:id="@+id/app_back_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                 android:textColor="@color/black_60"
                 android:textSize="14sp" />
 
-            <com.jiankang.gouqi.widget.LineEditView
+            <com.blandal.app.widget.LineEditView
                 android:id="@+id/edt_new_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 LineEditView:inputType="numberPassword" />
 
 
-            <com.jiankang.gouqi.widget.LineEditView
+            <com.blandal.app.widget.LineEditView
                 android:id="@+id/edt_again_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

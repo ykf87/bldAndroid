@@ -63,7 +63,7 @@
                     android:textColor="@color/color_black_333333"
                     android:textSize="@dimen/sp_12" />
 
-                <com.jiankang.gouqi.widget.TimeTextView
+                <com.blandal.app.widget.TimeTextView
                     android:id="@+id/tv_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

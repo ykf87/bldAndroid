@@ -47,7 +47,7 @@
             android:src="@drawable/icon_delete_white" />
     </RelativeLayout>
 
-    <com.jiankang.gouqi.util.lifephotosbrowse.HackyViewPager
+    <com.blandal.app.util.lifephotosbrowse.HackyViewPager
         android:id="@+id/viewPageImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

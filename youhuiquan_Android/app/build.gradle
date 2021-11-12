@@ -5,7 +5,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.jiankang.gouqi"
+        applicationId "com.blandal.app"
         minSdkVersion 19
         targetSdkVersion 30
         versionCode 1

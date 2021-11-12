@@ -22,7 +22,7 @@
             android:layout_marginTop="26dp"
             tools:text = "132****1523给您发了一个红包"
             android:textColor="#FBFAD5"/>
-        <com.jiankang.gouqi.widget.RoundImageView2
+        <com.blandal.app.widget.RoundImageView2
             android:id="@+id/iv_code"
             android:layout_width="90dp"
             android:layout_height="90dp"

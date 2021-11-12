@@ -8,13 +8,13 @@
     android:fitsSystemWindows="true"
     android:windowSoftInputMode="adjustResize">
 
-    <com.jiankang.gouqi.widget.AppBackBar
+    <com.blandal.app.widget.AppBackBar
         android:id="@+id/app_back_bar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"/>
 
-    <com.jiankang.gouqi.widget.LineTop
+    <com.blandal.app.widget.LineTop
         android:id="@+id/lib_top"
         android:layout_width="match_parent"
         android:visibility="gone"
@@ -74,7 +74,7 @@
                         android:textColor="@color/text_title_info"
                         android:textSize="@dimen/sp_12" />
 
-                    <com.jiankang.gouqi.widget.LineEditView
+                    <com.blandal.app.widget.LineEditView
                         android:id="@+id/edt_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
                         android:text="账号"
                         android:textColor="@color/text_title_info"
                         android:textSize="@dimen/sp_12" />
-                    <com.jiankang.gouqi.widget.LineEditView
+                    <com.blandal.app.widget.LineEditView
                         android:id="@+id/edt_phone_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -137,7 +137,7 @@
                         android:textColor="@color/text_title_info"
                         android:textSize="@dimen/sp_12" />
 
-                    <com.jiankang.gouqi.widget.LineEditView
+                    <com.blandal.app.widget.LineEditView
                         android:id="@+id/edt_vercode_pwd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

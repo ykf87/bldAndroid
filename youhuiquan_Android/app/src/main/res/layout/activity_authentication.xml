@@ -9,7 +9,7 @@
     android:orientation="vertical">
 
 
-    <com.jiankang.gouqi.widget.AppBackBar
+    <com.blandal.app.widget.AppBackBar
         android:id="@+id/app_back_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                     android:textColor="@color/color_black_333333"
                     android:textSize="16sp" />
 
-                <com.jiankang.gouqi.widget.LineEditView
+                <com.blandal.app.widget.LineEditView
                     android:id="@+id/edit_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                     android:textColor="@color/color_black_333333"
                     android:textSize="14sp" />
 
-                <com.jiankang.gouqi.widget.LineEditView
+                <com.blandal.app.widget.LineEditView
                     android:id="@+id/edit_id_card_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

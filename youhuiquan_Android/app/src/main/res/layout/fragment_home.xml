@@ -232,7 +232,7 @@
 
     </com.scwang.smart.refresh.layout.SmartRefreshLayout>
 
-    <com.jiankang.gouqi.widget.NoNetWorkView
+    <com.blandal.app.widget.NoNetWorkView
         android:id="@+id/no_network"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -254,7 +254,7 @@
             android:layout_height="60dp"
             android:visibility="gone" />
 
-        <com.jiankang.gouqi.widget.InterceptFrameLayout
+        <com.blandal.app.widget.InterceptFrameLayout
             android:id="@+id/fl_ad_float_container"
             android:layout_width="@dimen/dp_60"
             android:layout_height="60dp"

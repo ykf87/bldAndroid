@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
-    <com.jiankang.gouqi.widget.AppBackBar
+    <com.blandal.app.widget.AppBackBar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -136,7 +136,7 @@
                         android:textSize="@dimen/sp_28"
                         android:textStyle="bold" />
 
-                    <com.jiankang.gouqi.widget.LineEditView
+                    <com.blandal.app.widget.LineEditView
                         android:id="@+id/edt_money_num"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

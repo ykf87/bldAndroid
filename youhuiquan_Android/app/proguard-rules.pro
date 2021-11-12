@@ -457,25 +457,25 @@
 
 # ----- 混淆包路径 -------
 # 将包里的类混淆成n个再重新打包到一个统一的package中 会覆盖flattenpackagehierarchy选项
--repackageclasses com.jiankang.gouqi
+-repackageclasses com.blandal.app
 -target 1.6
 
 ##不进行混淆类名的类，保持其原类名和包名
 -keep class com.leixiaohua1020.sffmpegandroidtranscoder.MainActivity
--keep class com.jiankang.gouqi.widget.SwipeBackLayout
--keep class com.jiankang.gouqi.widget.SwipeBackLayout
--keep class com.jiankang.gouqi.ui.main.** {*; }
--keep class com.jiankang.gouqi.ui.main.presenter.** {*; }
--keep class com.jiankang.gouqi.entity.** {*; }
--keep class com.jiankang.gouqi.ui.my.entity.** {*; }
--keep class com.jiankang.gouqi.ui.jobdetail.entity.** {*; }
--keep class com.jiankang.gouqi.ui.login.entity.** {*; }
--keep class com.jiankang.gouqi.ui.main.entity.** {*; }
--keep class com.jiankang.gouqi.service.** {*; }
+-keep class com.blandal.app.widget.SwipeBackLayout
+-keep class com.blandal.app.widget.SwipeBackLayout
+-keep class com.blandal.app.ui.main.** {*; }
+-keep class com.blandal.app.ui.main.presenter.** {*; }
+-keep class com.blandal.app.entity.** {*; }
+-keep class com.blandal.app.ui.my.entity.** {*; }
+-keep class com.blandal.app.ui.jobdetail.entity.** {*; }
+-keep class com.blandal.app.ui.login.entity.** {*; }
+-keep class com.blandal.app.ui.main.entity.** {*; }
+-keep class com.blandal.app.service.** {*; }
 
 
 ## h5调用webview里面的接口方法不混淆
--keep class com.jiankang.gouqi.common.activity.UWebActivity$JKAPPClass {
+-keep class com.blandal.app.common.activity.UWebActivity$JKAPPClass {
     public <fields>;
     public <methods>;
 }

@@ -25,7 +25,7 @@
                     android:layout_height="180dp"
                     android:background="@color/colorPrimary">
 
-                    <com.jiankang.gouqi.widget.RoundImageView2
+                    <com.blandal.app.widget.RoundImageView2
                         android:id="@+id/my_head"
                         android:layout_width="80dp"
                         android:layout_height="80dp"

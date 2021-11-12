@@ -5,13 +5,13 @@
     android:background="@color/white"
     android:layout_height="match_parent">
 
-    <com.jiankang.gouqi.widget.LineTop
+    <com.blandal.app.widget.LineTop
         android:id="@+id/lib_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
          >
-    </com.jiankang.gouqi.widget.LineTop>
+    </com.blandal.app.widget.LineTop>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp">
-        <com.jiankang.gouqi.widget.VerCodeInputView
+        <com.blandal.app.widget.VerCodeInputView
             android:id="@+id/view_code_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

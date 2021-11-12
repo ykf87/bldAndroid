@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.jiankang.gouqi">
+    package="com.blandal.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -15,10 +15,10 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!--必要权限，解决安全风险漏洞，发送和注册广播事件需要调用带有传递权限的接口-->
-    <permission      android:name="com.jiankang.gouqi.openadsdk.permission.TT_PANGOLIN"
+    <permission      android:name="com.blandal.app.openadsdk.permission.TT_PANGOLIN"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.jiankang.gouqi.openadsdk.permission.TT_PANGOLIN" />
+    <uses-permission android:name="com.blandal.app.openadsdk.permission.TT_PANGOLIN" />
 
 
     <!--可选权限-->
@@ -43,7 +43,7 @@
     <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
 
     <application
-        android:name=".app.MyApplication"
+        android:name="com.blandal.app.app.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="@string/app_name"
@@ -60,11 +60,11 @@
 <!--            </intent-filter>-->
 <!--        </activity>-->
         <activity
-            android:name=".util.lifephotosbrowse.LifePhotosBrowseActivity"
+            android:name="com.blandal.app.util.lifephotosbrowse.LifePhotosBrowseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoTitleBarStatusTheme.Main" />
         <activity
-            android:name=".ui.main.activity.SplashActivity"
+            android:name="com.blandal.app.ui.main.activity.SplashActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoTitleBarStatusTheme.Splash"
             android:windowSoftInputMode="stateHidden">
@@ -75,7 +75,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.activity.MainAppActivity"
+            android:name="com.blandal.app.ui.main.activity.MainAppActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false"
             android:launchMode="singleTask"
@@ -83,100 +83,100 @@
             android:theme="@style/NoTitleBarStatusTheme.Main"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".ui.my.activity.SettingActivity"
+            android:name="com.blandal.app.ui.my.activity.SettingActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.PrivacyPolicyActivity"
+            android:name="com.blandal.app.ui.my.activity.PrivacyPolicyActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".common.activity.AndroidOPermissionActivity"
+            android:name="com.blandal.app.common.activity.AndroidOPermissionActivity"
             android:theme="@style/NoTitleBarStatusTheme.Main" />
         <activity
-            android:name=".common.activity.UWebActivity"
+            android:name="com.blandal.app.common.activity.UWebActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:hardwareAccelerated="true"
             android:exported="false"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.MyWalletActivity"
+            android:name="com.blandal.app.ui.my.activity.MyWalletActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.MycollectionActivity"
+            android:name="com.blandal.app.ui.my.activity.MycollectionActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.MyFooterActivity"
+            android:name="com.blandal.app.ui.my.activity.MyFooterActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.MyCustomerActivity"
+            android:name="com.blandal.app.ui.my.activity.MyCustomerActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.UseTipsActivity"
+            android:name="com.blandal.app.ui.my.activity.UseTipsActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.SetWalletPwdActivity"
+            android:name="com.blandal.app.ui.my.activity.SetWalletPwdActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.MyWalletWithdrawActivity"
+            android:name="com.blandal.app.ui.my.activity.MyWalletWithdrawActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.BindZhiFuBaoActivity"
+            android:name="com.blandal.app.ui.my.activity.BindZhiFuBaoActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.AuthenticationActivity"
+            android:name="com.blandal.app.ui.my.activity.AuthenticationActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.TradeDetailActivity"
+            android:name="com.blandal.app.ui.my.activity.TradeDetailActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.UserInfoActivity"
+            android:name="com.blandal.app.ui.my.activity.UserInfoActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.SetUserNameActivity"
+            android:name="com.blandal.app.ui.my.activity.SetUserNameActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.AboutActivity"
+            android:name="com.blandal.app.ui.my.activity.AboutActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.MyTaskActivity"
+            android:name="com.blandal.app.ui.my.activity.MyTaskActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.my.activity.SuggestActivity"
+            android:name="com.blandal.app.ui.my.activity.SuggestActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.city.activity.CitySelectActivity"
+            android:name="com.blandal.app.ui.city.activity.CitySelectActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoTitleBarTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.login.activity.OneKeyLoginActivity"
+            android:name="com.blandal.app.ui.login.activity.OneKeyLoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/SYTransparent"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.login.activity.LoginActivity"
+            android:name="com.blandal.app.ui.login.activity.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/NoTitleBarTheme"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
-            android:name=".ui.login.activity.RegisterActivity"
+            android:name="com.blandal.app.ui.login.activity.RegisterActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/NoTitleBarTheme"
             android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
         <activity
-            android:name=".ui.login.activity.CodeLoginActivity"
+            android:name="com.blandal.app.ui.login.activity.CodeLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoTitleBarTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.main.activity.ArticleDetailActivity"
+            android:name="com.blandal.app.ui.main.activity.ArticleDetailActivity"
             android:theme="@style/NoTitleBarStatusTheme" />
         <activity
-            android:name=".ui.login.activity.ForgetPasswordActivity"
+            android:name="com.blandal.app.ui.login.activity.ForgetPasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/NoTitleBarTheme"
             android:windowSoftInputMode="stateHidden" />
@@ -197,7 +197,7 @@
 
         <provider
             android:name="com.bytedance.sdk.openadsdk.TTFileProvider"
-            android:authorities="com.jiankang.gouqi.TTFileProvider"
+            android:authorities="com.blandal.app.TTFileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -207,12 +207,12 @@
 
         <provider
             android:name="com.bytedance.sdk.openadsdk.multipro.TTMultiProvider"
-            android:authorities="com.jiankang.gouqi.TTMultiProvider"
+            android:authorities="com.blandal.app.TTMultiProvider"
             android:exported="false" />
 
         <provider
             android:name="com.qq.e.comm.GDTFileProvider"
-            android:authorities="com.jiankang.gouqi.gdt.fileprovider"
+            android:authorities="com.blandal.app.gdt.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

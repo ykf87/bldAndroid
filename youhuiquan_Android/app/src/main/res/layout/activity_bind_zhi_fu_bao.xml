@@ -10,7 +10,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <com.jiankang.gouqi.widget.AppBackBar
+    <com.blandal.app.widget.AppBackBar
         android:id="@+id/app_back_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             android:textColor="@color/text_title_info"
             android:textSize="@dimen/sp_16" />
 
-        <com.jiankang.gouqi.widget.LineEditView
+        <com.blandal.app.widget.LineEditView
             android:id="@+id/edt_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
             android:textColor="@color/text_title_info"
             android:textSize="@dimen/sp_16" />
 
-        <com.jiankang.gouqi.widget.LineEditView
+        <com.blandal.app.widget.LineEditView
             android:id="@+id/edt_bank"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
             android:textColor="@color/text_title_info"
             android:textSize="@dimen/sp_16" />
 
-        <com.jiankang.gouqi.widget.LineEditView
+        <com.blandal.app.widget.LineEditView
             android:id="@+id/edt_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
             android:textColor="@color/text_title_info"
             android:textSize="@dimen/sp_16" />
 
-        <com.jiankang.gouqi.widget.LineEditView
+        <com.blandal.app.widget.LineEditView
             android:id="@+id/edt_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

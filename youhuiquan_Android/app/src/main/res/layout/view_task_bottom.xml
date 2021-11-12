@@ -7,7 +7,7 @@
     android:layout_gravity="bottom"
     android:background="@color/colorPrimary">
 
-    <com.jiankang.gouqi.widget.TimeTextView
+    <com.blandal.app.widget.TimeTextView
         android:id="@+id/tv_time"
         android:layout_width="100dp"
         android:layout_height="@dimen/dp_50"

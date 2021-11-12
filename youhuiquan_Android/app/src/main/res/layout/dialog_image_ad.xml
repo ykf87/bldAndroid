@@ -23,13 +23,13 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true">
 
-        <com.jiankang.gouqi.widget.InterceptFrameLayout
+        <com.blandal.app.widget.InterceptFrameLayout
             android:id="@+id/fl_ad"
             android:layout_width="280dp"
             android:layout_height="344dp"
             android:visibility="gone" />
 
-        <com.jiankang.gouqi.widget.RoundImageView2
+        <com.blandal.app.widget.RoundImageView2
             android:id="@+id/img_ad"
             android:layout_width="280dp"
             android:layout_height="334dp"

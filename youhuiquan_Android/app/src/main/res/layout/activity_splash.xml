@@ -93,7 +93,7 @@
             android:layout_marginBottom="40dp"
             android:src="@drawable/slogan"/>
 
-        <com.jiankang.gouqi.widget.MyImageView
+        <com.blandal.app.widget.MyImageView
             android:id="@+id/iv_ad"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -103,7 +103,7 @@
             android:layout_centerHorizontal="true"
             android:src="@drawable/start_img"
             />
-        <com.jiankang.gouqi.widget.CountDownTextView
+        <com.blandal.app.widget.CountDownTextView
             android:id="@+id/tv_ad_count_down"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
             android:textColor="@color/white"
             android:textSize="@dimen/sp_10"
             android:visibility="gone"
-           ></com.jiankang.gouqi.widget.CountDownTextView>
+           ></com.blandal.app.widget.CountDownTextView>
 
         <TextView
             android:id="@+id/tv_skip"

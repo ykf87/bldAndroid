@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toTopOf="@id/fl_bottom"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.jiankang.gouqi.widget.AppBackBar
+        <com.blandal.app.widget.AppBackBar
             android:id="@+id/app_back_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -7,23 +7,23 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical" >
 
-    <com.jiankang.gouqi.widget.LineTop
+    <com.blandal.app.widget.LineTop
         android:id="@+id/lineTop"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
-    <com.jiankang.gouqi.widget.LineLoading
+    <com.blandal.app.widget.LineLoading
         android:id="@+id/lineLoading"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
-    </com.jiankang.gouqi.widget.LineLoading>
+    </com.blandal.app.widget.LineLoading>
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:id="@+id/pb_web"
         android:layout_width="match_parent"
         android:layout_height="5px"
         />
-    <com.jiankang.gouqi.widget.MyWebView
+    <com.blandal.app.widget.MyWebView
         android:id="@+id/webBrowser"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
