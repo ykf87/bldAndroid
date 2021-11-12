@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgLeftByLineTop"
+            android:layout_width="@dimen/app_title_height"
+            android:layout_height="@dimen/app_title_height"
+            android:layout_centerVertical="true"
+            android:background="@drawable/sel_white"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_back" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true">
+            <ImageView
+                android:id="@+id/iv_left_close"
+                android:layout_width="@dimen/app_title_height"
+                android:layout_height="@dimen/app_title_height"
+                android:layout_centerVertical="true"
+                android:background="@drawable/sel_white"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_close"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/txtTitleByLineTop"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="@dimen/app_title_height"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="#313B4E"
+                android:textSize="17sp"
+                tools:text="标题"/>
+            <ImageView
+                android:id="@+id/iv_right_close"
+                android:layout_width="@dimen/app_title_height"
+                android:layout_height="@dimen/app_title_height"
+                android:background="@color/transparent"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txtRightByLineTop"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/app_title_height"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/sel_white"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="筛选"
+            android:textColor="#313B4E"
+            tools:visibility="visible"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/txtRightByLineTop2"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/app_title_height"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/sel_rect_4_white_gray"
+            android:gravity="center"
+            android:paddingBottom="4dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="4dp"
+            android:text="添加接收人"
+            android:textColor="@color/green_home_p"
+            android:visibility="gone"
+            tools:visibility="gone"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/app_title_height"
+            android:layout_alignParentEnd="true"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/imgRightByLineTop2"
+                android:layout_width="@dimen/app_title_height"
+                android:layout_height="match_parent"
+                android:background="@drawable/sel_white"
+                android:padding="15dp"
+                android:scaleType="centerInside"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imgRightByLineTop"
+                android:layout_width="@dimen/app_title_height"
+                android:layout_height="match_parent"
+                android:background="@drawable/sel_white"
+                android:padding="15dp"
+                android:scaleType="centerInside"
+                android:visibility="gone" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

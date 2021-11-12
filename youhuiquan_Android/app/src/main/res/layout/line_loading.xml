@@ -1,0 +1,102 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/rlLoadingMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_loading_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="80dp"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/imgMain"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/txtLoadingErr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.2"
+                android:text="提示标题"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/txtLoadingErrMiaoShu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.2"
+                android:text="提示描述"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/tv_btn_txt"
+                android:layout_width="105dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:background="@drawable/sel_rect_30_primary_primaryp"
+                android:text="登录"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/tv_fresh"
+                android:layout_width="105dp"
+                android:layout_height="36dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/sel_rect_30_primary_primaryp"
+                android:gravity="center"
+                android:text="刷新试试"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_loadding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="35dp"
+            android:paddingRight="35dp"
+            android:visibility="visible">
+
+            <ProgressBar
+                android:id="@+id/pBar"
+                android:layout_width="12dip"
+                android:layout_height="12dip"
+                android:indeterminateDrawable="@drawable/progressbar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="加载中..."
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</merge>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <com.jiankang.gouqi.widget.AppBackBar
+            android:id="@+id/app_back_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:bar_last_src="@drawable/ic_collection"
+            app:bar_title="" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_24"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    tools:text="懂法守法师大附属防守打法水电费阿萨德阿萨德"
+                    android:layout_marginRight="@dimen/dp_40"
+                    android:textColor="@color/color_black_333333"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginRight="@dimen/dp_16"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tv_scan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_black_333333"
+                        tools:text="收藏：200"/>
+
+                    <TextView
+                        android:id="@+id/tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:textColor="@color/color_gray_999999"
+                        tools:text="2021-07-20 14:00"/>
+                </RelativeLayout>
+
+                <WebView
+                    android:id="@+id/webView"
+                    android:scrollbars="none"
+                    android:minHeight="@dimen/dp_60"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="@dimen/dp_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_scan_time"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="290dp"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_marginEnd="@dimen/dp_5"
+            android:layout_gravity="center|right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_half_star" />
+        <LinearLayout
+            android:id="@+id/ll_task_content"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/dp_24"
+            android:background="@drawable/rect_16_tl_bl_black"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/dp_5">
+
+            <TextView
+                android:id="@+id/tv_task_scan_time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_12"
+                tools:text="浏览10S"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

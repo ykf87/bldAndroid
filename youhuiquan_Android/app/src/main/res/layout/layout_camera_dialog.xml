@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rect_8_tl_tr_white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_camera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_22"
+            android:paddingBottom="@dimen/dp_18"
+            android:text="拍照"
+            android:textColor="@color/color_text_grey_313B4E"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="#DDDDDD" />
+
+        <TextView
+            android:id="@+id/tv_album"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="18dp"
+            android:text="从手机相册选择"
+            android:textColor="@color/color_text_grey_313B4E"
+            android:textSize="16sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#FFF5F5F5" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:paddingTop="@dimen/dp_22"
+            android:paddingBottom="@dimen/dp_18"
+            android:text="取消"
+            android:textColor="#909399"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

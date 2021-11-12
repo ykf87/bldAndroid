@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_bg_grey_F7F7F7"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.jiankang.gouqi.widget.AppBackBar
+        android:id="@+id/app_back_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:bar_title="个人信息" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="104dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="头像"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/color_black_333333"/>
+
+        <ImageView
+            android:id="@+id/iv_user_head"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:src="@drawable/iv_default_head"
+            android:layout_toLeftOf="@+id/iv_right"
+            android:layout_centerVertical="true" />
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/iv_right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_16"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/dp_16"
+        android:paddingRight="@dimen/dp_16">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="昵称"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/color_black_333333"/>
+
+        <LinearLayout
+            android:id="@+id/ll_set_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="点击设置昵称"
+                android:textColor="@color/color_text_pink_FF9580"
+                android:textSize="@dimen/sp_14" />
+
+            <ImageView
+                android:id="@+id/iv_name_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/iv_right"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_16"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:paddingLeft="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/white"
+        android:paddingRight="@dimen/dp_16">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/color_black_333333"/>
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            tools:text="17711111111"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginRight="@dimen/dp_36"
+            android:textColor="@color/color_gray_999999"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@drawable/loading1"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading2"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading3"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading4"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading5"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading6"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading7"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading8"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading9"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading10"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading11"
+        android:duration="150" />
+    <item
+        android:drawable="@drawable/loading12"
+        android:duration="150" />
+
+</animation-list><!--<rotate xmlns:android="http://schemas.android.com/apk/res/android"--><!--android:fromDegrees="0"--><!--android:pivotX="50%"--><!--android:pivotY="50%"--><!--android:toDegrees="720" >-->
+
+    <!--<bitmap android:src="@drawable/loading"></bitmap>--><!--&lt;!&ndash;<shape&ndash;&gt;--><!--&lt;!&ndash;android:innerRadiusRatio="3"&ndash;&gt;--><!--&lt;!&ndash;android:shape="ring"&ndash;&gt;--><!--&lt;!&ndash;android:thicknessRatio="8"&ndash;&gt;--><!--&lt;!&ndash;android:useLevel="false" >&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<gradient&ndash;&gt;--><!--&lt;!&ndash;android:centerColor="#FFFFFF"&ndash;&gt;--><!--&lt;!&ndash;android:centerY="0.50"&ndash;&gt;--><!--&lt;!&ndash;android:endColor="#FFFFFF"&ndash;&gt;--><!--&lt;!&ndash;android:startColor="#000000"&ndash;&gt;--><!--&lt;!&ndash;android:type="sweep"&ndash;&gt;--><!--&lt;!&ndash;android:useLevel="false" />&ndash;&gt;--><!--&lt;!&ndash;</shape>&ndash;&gt;-->
+
+    <!--</rotate>-->

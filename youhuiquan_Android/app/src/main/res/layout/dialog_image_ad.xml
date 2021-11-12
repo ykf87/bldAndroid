@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical">
+
+    <ImageView
+        android:id="@+id/img_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/fl"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/icon_close_with_white_circle" />
+
+
+    <FrameLayout
+        android:id="@+id/fl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+
+        <com.jiankang.gouqi.widget.InterceptFrameLayout
+            android:id="@+id/fl_ad"
+            android:layout_width="280dp"
+            android:layout_height="344dp"
+            android:visibility="gone" />
+
+        <com.jiankang.gouqi.widget.RoundImageView2
+            android:id="@+id/img_ad"
+            android:layout_width="280dp"
+            android:layout_height="334dp"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            app:cornerRadius="8dp"
+            app:style="round"
+            />
+
+    </FrameLayout>
+
+</RelativeLayout>

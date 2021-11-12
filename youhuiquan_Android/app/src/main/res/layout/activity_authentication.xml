@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+
+    <com.jiankang.gouqi.widget.AppBackBar
+        android:id="@+id/app_back_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:bar_title="实名认证" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="真实姓名"
+                    android:textColor="@color/color_black_333333"
+                    android:textSize="16sp" />
+
+                <com.jiankang.gouqi.widget.LineEditView
+                    android:id="@+id/edit_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="16dp"
+                    app:EditMaxL="25"
+                    app:Editcolor="@color/color_black_333333"
+                    app:Edithint="请输入真实姓名"
+                    app:showBottomLine="false" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#E5E5E5" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="16dp">
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="身份证号码"
+                    android:textColor="@color/color_black_333333"
+                    android:textSize="14sp" />
+
+                <com.jiankang.gouqi.widget.LineEditView
+                    android:id="@+id/edit_id_card_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="19dp"
+                    app:EditMaxL="18"
+                    app:Editcolor="@color/color_black_333333"
+                    app:Edithint="请输入正确身份证号码"
+                    app:showBottomLine="false" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:background="#E5E5E5" />
+
+
+            <TextView
+                android:id="@+id/tv_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_16"
+                android:layout_marginTop="72dp"
+                android:layout_marginEnd="@dimen/dp_16"
+                android:background="@drawable/sel_rect_22_primary_primaryp"
+                android:gravity="center"
+                android:paddingTop="12dp"
+                android:paddingBottom="9dp"
+                android:enabled="false"
+                android:text="认证"
+                android:textColor="@drawable/set_white_e5"
+                android:textSize="@dimen/sp_16" />
+
+
+        </LinearLayout>
+</LinearLayout>

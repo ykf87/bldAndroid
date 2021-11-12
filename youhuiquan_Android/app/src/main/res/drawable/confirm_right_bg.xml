@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <solid android:color="@color/white" />
+    <stroke
+        android:width="0dp"
+        android:color="@color/green_home_p" />
+    <corners android:bottomLeftRadius="5dip" />
+    <gradient
+        android:angle="90"
+        android:endColor="@color/gray_btn_press"
+        android:startColor="@color/gray_btn_press" />
+</shape>

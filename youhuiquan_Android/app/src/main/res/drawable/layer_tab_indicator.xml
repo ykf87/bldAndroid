@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:width="23dp"
+        android:height="@dimen/dp_7"
+        android:gravity="center">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/bg_tab_indicate"
+            />
+    </item>
+</layer-list>

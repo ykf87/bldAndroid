@@ -1,0 +1,226 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.jiankang.gouqi"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        flavorDimensions "default"
+
+
+        ndk {
+            abiFilters 'armeabi-v7a', 'x86', 'arm64-v8a', 'x86_64', 'armeabi'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'gouqi'
+            keyPassword 'gouqijiankang666'
+            storeFile file('gouqi.jks')
+            storePassword 'gouqijiankang666'
+        }
+    }
+
+    packagingOptions {
+        doNotStrip "*/armeabi-v7a/*.so"
+        doNotStrip "*/x86/*.so"
+        doNotStrip "*/arm64-v8a/*.so"
+        doNotStrip "*/x86_64/*.so"
+        doNotStrip "armeabi.so"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            signingConfig = signingConfigs.release
+            ext.enableCrashlytics = false
+            ext.alwaysUpdateBuildId = false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+
+
+ext {
+    versions = [
+            'compileSdk'                   : 28,
+            'buildTools'                   : '29.0.3',
+            'minSdk'                       : 19,
+            'targetSdk'                    : 28,
+            'androidSupportVersion'        : '28.+',
+            'retrofitVersion'              : '2.9.0',
+            'leakcanaryVersion'            : '2.2',
+            'rxandroidVersion'             : '3.0.0',
+            'rxjavaVersion'                : '3.0.0',
+            'rxbindingVersion'             : '4.0.0',
+            'glideVersion'                 : '4.11.0',
+            'butterknifeVersion'           : '10.2.1',
+            'loggerVersion'                : '2.1.1',
+            'rey5137MaterialVersion'       : '1.2.2',
+            'swipebacklayoutVersion'       : '1.1.0',
+            'photoviewVersion'             : '1.3.6',
+            'fabVersion'                   : '1.6.2',
+            'retrofitManagerVersion'       : '1.4.0',
+            'rxlifecycleVersion'           : '4.0.0',
+            'baseRecyclerViewAdapterHelper': '3.0.4',
+            'nimlib'                       : "7.8.4",
+            'arouterApi'                   : "1.5.0",
+            'arouterCompiler'              : "1.2.2",
+    ]
+}
+
+configurations.all {
+    resolutionStrategy {
+        force 'com.squareup.okhttp3:okhttp:3.12.12'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    //aar
+    implementation project(':bottom-navigation-bar')
+
+    //msa
+    implementation(name: 'msa_mdid_1.0.13', ext: 'aar')
+
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:${versions.baseRecyclerViewAdapterHelper}"
+
+    /*squareup library*/
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:2.9.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.12.12"
+    implementation("com.squareup.okhttp3:okhttp:3.12.x")
+    /*rx library*/
+    implementation "io.reactivex.rxjava3:rxjava:3.0.4"
+    implementation "io.reactivex.rxjava3:rxandroid:3.0.0"
+    implementation "com.jakewharton.rxbinding4:rxbinding:${versions.rxbindingVersion}"
+    implementation "com.jakewharton.rxbinding4:rxbinding-core:${versions.rxbindingVersion}"
+    implementation "com.jakewharton.rxbinding4:rxbinding-appcompat:${versions.rxbindingVersion}"
+    implementation "com.jakewharton.rxbinding4:rxbinding-drawerlayout:${versions.rxbindingVersion}"
+    implementation "com.jakewharton.rxbinding4:rxbinding-leanback:${versions.rxbindingVersion}"
+    implementation "com.jakewharton.rxbinding4:rxbinding-recyclerview:${versions.rxbindingVersion}"
+    implementation "com.jakewharton.rxbinding4:rxbinding-slidingpanelayout:${versions.rxbindingVersion}"
+    implementation "com.jakewharton.rxbinding4:rxbinding-swiperefreshlayout:${versions.rxbindingVersion}"
+    implementation "com.jakewharton.rxbinding4:rxbinding-viewpager:${versions.rxbindingVersion}"
+    implementation "com.jakewharton.rxbinding4:rxbinding-viewpager2:${versions.rxbindingVersion}"
+    implementation "com.jakewharton.rxbinding4:rxbinding-material:${versions.rxbindingVersion}"
+    implementation "io.reactivex.rxjava2:rxjava:2.1.8"
+    implementation "me.jessyan:retrofit-url-manager:1.4.0"
+
+    //AutoDispose解决RxJava内存泄漏
+    implementation 'com.uber.autodispose2:autodispose:2.0.0'
+    implementation 'com.uber.autodispose2:autodispose-android:2.0.0'
+    implementation 'com.uber.autodispose2:autodispose-lifecycle:2.0.0'
+    implementation 'com.uber.autodispose2:autodispose-androidx-lifecycle:2.0.0'
+    implementation 'org.jetbrains:annotations:15.0'
+
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //权限申请
+    implementation 'com.yanzhenjie:permission:2.0.3'
+    implementation "org.permissionsdispatcher:permissionsdispatcher:4.8.0"
+    annotationProcessor "org.permissionsdispatcher:permissionsdispatcher-processor:4.8.0"
+    //AutoDispose解决RxJava内存泄漏
+    implementation 'com.uber.autodispose2:autodispose:2.0.0'
+    implementation 'com.uber.autodispose2:autodispose-android:2.0.0'
+    implementation 'com.uber.autodispose2:autodispose-lifecycle:2.0.0'
+    implementation 'com.uber.autodispose2:autodispose-androidx-lifecycle:2.0.0'
+
+    //eventbus
+    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation "com.jakewharton:butterknife:${versions.butterknifeVersion}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${versions.butterknifeVersion}"
+
+    /*glide*/
+    annotationProcessor "com.github.bumptech.glide:compiler:${versions.glideVersion}"
+    implementation "com.github.bumptech.glide:glide:${versions.glideVersion}"
+    implementation 'jp.wasabeef:glide-transformations:4.1.0'//变换效果
+    implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
+
+
+    //侧滑删除
+    implementation 'cn.bingoogolapple:bga-swipebacklayout:2.0.1@aar'
+
+
+
+    //tabLayout
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+    //banner
+    implementation 'com.youth.banner:banner:1.4.9'
+
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:${versions.baseRecyclerViewAdapterHelper}"
+
+    //刷新
+    implementation 'com.scwang.smart:refresh-layout-kernel:2.0.1'
+    //经典刷新头
+    implementation 'com.scwang.smart:refresh-header-classics:2.0.1'
+    //文字轮播
+    implementation 'com.superluo:textbannerview:1.0.4'
+
+    //图片选择
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.6'
+
+    //密码输入框
+    implementation 'com.github.maning0303:MNPasswordEditText:V1.0.3'
+
+    //蒙板引导
+    implementation 'com.github.huburt-Hu:NewbieGuide:v2.1.0'
+    //二维码
+    implementation 'com.google.zxing:core:3.3.0'
+
+    implementation 'com.to.aboomy:pager2banner:1.0.1'
+
+    //fastjson
+    api 'com.alibaba:fastjson:1.1.55.android'
+
+    //穿山甲广告
+//    implementation(name: 'open_ad_sdk_4.0.0.3', ext: 'aar')
+//    implementation(name: 'ocr-library-1.2', ext: 'aar')
+    //联动选择控件
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
+
+    implementation 'com.pangle.cn:ads-sdk-pro:4.0.0.1'
+
+    ///优量汇
+    implementation 'com.qq.e.union:union:+' // 普通版本
+}

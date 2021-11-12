@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="292dp"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="292dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@drawable/bg_dialog" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_12">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginRight="@dimen/dp_16"
+                    android:gravity="center"
+                    android:text="有券提醒"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/sp_16" />
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_16"
+                    android:gravity="center"
+                    android:textColor="@color/color_black_333333"
+                    android:textSize="@dimen/sp_14"
+                    tools:text="有券提醒有券提醒有券提醒有券提醒有券提醒" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rect_8_bl_br_white"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingTop="@dimen/dp_10"
+                android:paddingRight="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_16">
+
+                <TextView
+                    android:id="@+id/tv_btn1"
+                    android:layout_width="110dp"
+                    android:layout_height="@dimen/dp_32"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:background="@drawable/sel_rect_16_white_primary"
+                    android:gravity="center"
+                    android:text="做小任务"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/sp_14" />
+
+                <TextView
+                    android:id="@+id/tv_btn2"
+                    android:layout_width="110dp"
+                    android:layout_height="@dimen/dp_32"
+                    android:layout_marginLeft="@dimen/dp_8"
+                    android:layout_marginRight="@dimen/dp_8"
+                    android:background="@drawable/sel_rect_16_primary"
+                    android:gravity="center"
+                    android:text="立即认证"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_14" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="@dimen/dp_10"
+            android:src="@drawable/ic_close_white" />
+    </RelativeLayout>
+
+</LinearLayout>

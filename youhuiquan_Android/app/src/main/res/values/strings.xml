@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">有券</string>
+    <string name="app_slogan">一个随时随地赚钱的APP</string>
+
+    <string name="login_auto_hint">首次登录即自动注册</string>
+
+
+    <string name="dialog_agreement_title">个人信息保护指引</string>
+    <string name="dialog_agreement_update">协议更新提醒</string>
+    <string name="dialog_agreement_agree">同意并继续使用</string>
+    <string name="dialog_agreement_noagree">不同意，退出App</string>
+    <string name="dialog_agreement_noupdate">不同意，退出登录</string>
+    <string name="dialog_agreement_desc">感谢您信任并使用有券，我们非常重视您的个人信息和隐私保护。\n1. 在浏览使用时，我们会收集、使用设备标识信息用于推荐。\n2. 我们可能会申请位置权限，用于为您推荐适合的任务。\n3. 我们可能会申请照片、存储权限、用于您的信息完善，下载图文等。\n4. 您可以查看完整版《用户协议》、《隐私政策》，以便了解我们收集、使用、共享、存储信息情况及信息的保护措施。\n如果您同意，请点击下方的【同意并继续使用】按钮。</string>
+    <string name="dialog_agreement_desc_2">尊敬的用户:\n我们对《服务协议》《隐私政策》进行了更新，点击同意即表示您已充分阅读并接受以上协议内容，我们将严格按照条款规定的内容使用和保护您的个人信息，为您提供更好的服务，感谢您的信任。</string>
+    <string name="info_tb_link">https://h5.m.taobao.com/bcec/dahanghai-jump.html?spm=2014.ugdhh.2200606446343.219693-438366-32768&amp;bc_fl_src=growth_dhh_2200606446343_219693-438366-32768</string>
+
+    <string name="setting_msg">要开启天气推送，请在手机系统【设置】-【通知】中打开天气的消息推送开关</string>
+    <string name="about_company">有券 版权所有</string>
+
+    <string name="location_current">当前定位</string>
+    <string name="location_locationing">定位中…</string>
+    <string name="location_no_service">您还未授权GPS权限，轻触开启GPS</string>
+    <string name="location_fail">定位失败，请重新获取</string>
+    <string name="location_redo">重新获取</string>
+    <string name="location_open_permission">去开启</string>
+    <string name="location_permission_hint">为了不影响您的正常使用，请您去设置中开启 允许程序使用定位 权限</string>
+    <string name="pwd_format">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789</string>
+    <string name="pwd_format_onlynum">0123456789</string>
+    <string name="pwd_format_idcard">0123456789Xx</string>
+    <string name="login_title">欢迎登录有券</string>
+    <string name="register_title">欢迎注册有券</string>
+    <string name="shared_title">我在有券上做任务赚到了现金，马上就提现到账了，是真的，你也来试一试看</string>
+
+</resources>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/white_style"
+        android:orientation="vertical"
+        android:paddingBottom="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_close"
+                android:layout_width="@dimen/app_title_height"
+                android:layout_height="@dimen/app_title_height"
+                android:layout_centerVertical="true"
+                android:background="@drawable/user_top_return_img_style"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_close" />
+
+            <TextView
+                android:id="@+id/txtTitleByLineTop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/app_title_height"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="请输入钱袋子密码"
+                android:textColor="@color/color_black_333333"
+                android:textSize="17sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="34sp"
+            tools:text="￥8.88" />
+
+        <com.maning.pswedittextlibrary.MNPasswordEditText
+            android:id="@+id/editPwd"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="15dp"
+            android:focusableInTouchMode="true"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textSize="14sp"
+            app:mnPsw_background_color="@color/white"
+            app:mnPsw_border_color="@color/gray_line_divider_e5"
+            app:mnPsw_border_radius="2dp"
+            app:mnPsw_border_width="1dp"
+            app:mnPsw_cover_circle_color="@color/black"
+            app:mnPsw_cover_circle_radius="5dp"
+            app:mnPsw_item_margin="0dp"
+            app:mnPsw_style="StyleOneself"
+            app:mnPsw_text_color="@color/black" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <TextView
+                android:id="@+id/tv_forget_pwd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="15dp"
+                android:text="忘记密码？"
+                android:textColor="@color/color_gray_999999"
+                android:textSize="14sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

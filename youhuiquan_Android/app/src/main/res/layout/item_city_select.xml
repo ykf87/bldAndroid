@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:foreground="?attr/selectableItemBackground">
+
+    <TextView
+        android:id="@+id/tv_city_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dp_11"
+        android:paddingBottom="@dimen/dp_11"
+        android:gravity="center"
+        android:textSize="@dimen/sp_14"
+        android:textColor="@color/text_title_info"
+        android:background="@drawable/sel_rect_2_stroke_gray_primary"
+        />
+</FrameLayout>

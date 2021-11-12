@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.jiankang.gouqi.widget.AppBackBar
+            android:id="@+id/app_back_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:bar_end_text="收支记录"
+            app:bar_title="我的收入" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_60"
+            android:src="@drawable/ic_wallet"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="枸币数量（个）"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginTop="24dp"
+            android:textColor="@color/color_black_333333"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:visibility="gone"
+                android:textSize="24sp"
+                android:textColor="@color/color_black_333333"/>
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="36sp"
+                android:textColor="@color/color_black_333333"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_withdraw"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_44"
+            android:layout_gravity="bottom"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/sel_rect_22_primary_primaryp"
+            android:enabled="true"
+            android:text="提现"
+            android:textColor="@drawable/set_white_e5"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/ll_my_soon_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_money"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_black_333333"
+                android:layout_margin="@dimen/dp_4"
+                android:textSize="@dimen/sp_14"
+                android:text="我的即将到账"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/iv_right"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:id="@+id/fl_ad"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_above="@+id/ll_use_tips"
+        android:layout_marginBottom="24dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_use_tips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_40"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用小贴士"
+            android:textSize="@dimen/sp_14"
+            android:visibility="gone"
+            android:textColor="@color/color_black_333333"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:src="@drawable/iv_right"/>
+    </LinearLayout>
+
+</RelativeLayout>
