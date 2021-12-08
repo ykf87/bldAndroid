@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="240px" height="240px" viewBox="0 0 240 240" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_avatar</title>
+    <defs>
+        <circle id="path-1" cx="109.090909" cy="109.090909" r="109.090909"></circle>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-6新用户完善资料" transform="translate(-255.000000, -410.000000)">
+            <g id="ic_avatar" transform="translate(255.000000, 410.000000)">
+                <circle id="椭圆形" fill="#181A23" cx="120" cy="120" r="120"></circle>
+                <g id="矩形" transform="translate(10.909091, 10.909091)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="蒙版" fill="#181A23" xlink:href="#path-1"></use>
+                    <g id="编组-6" mask="url(#mask-2)">
+                        <g transform="translate(128.454545, 152.363636) rotate(-30.000000) translate(-128.454545, -152.363636) translate(63.454545, 43.363636)">
+                            <rect id="矩形" fill="#494C5C" x="0" y="0" width="130" height="218" rx="65"></rect>
+                            <g id="眼睛" stroke-width="1" fill="none" transform="translate(36.000000, 60.000000)">
+                                <circle id="椭圆形" fill="#5B5F71" cx="8" cy="8" r="8"></circle>
+                                <circle id="椭圆形备份" fill="#5B5F71" cx="49.4545455" cy="8" r="8"></circle>
+                            </g>
+                            <path d="M78.1818182,92 C78.1818182,99.2299095 72.3208185,105.090909 65.0909091,105.090909 C57.8609996,105.090909 52,99.2299095 52,92 L52,92 Z" id="嘴巴" fill="#5B5F71"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,167 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.blandal.app"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- io.flutter.app.FlutterApplication is an android.app.Application that
+         calls FlutterMain.startInitialization(this); in its onCreate method.
+         In most cases you can leave this as-is, but you if you want to provide
+         additional functionality it is fine to subclass or reimplement
+         FlutterApplication and put your custom class here. -->
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <!---建议的权限：如果选用该权限，需要在预取号步骤前提前动态申请-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!---解决flutter第三方库最低支持版本问题-->
+<!--    <uses-sdk  tools:overrideLibrary="io.flutter.plugins.camera"/>-->
+    <uses-sdk  tools:overrideLibrary="carnegietechnologies.gallery_saver"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <queries>
+        <package android:name="com.tencent.mm" />
+        <package android:name="com.tencent.mobileqq" />
+        <package android:name="com.sina.weibo" />
+        <package android:name="com.tencent.wework" />
+        <package android:name="com.qzone" />                   /
+    </queries>
+
+    <!-- 允许绘制到华为刘海屏机型的刘海区域 -->
+    <meta-data
+        android:name="android.notch_support"
+        android:value="true" />
+    <!-- 允许绘制到小米刘海屏机型的刘海区域 -->
+    <meta-data
+        android:name="notch.config"
+        android:value="portrait" />
+    <!--允许绘制到oppo、vivo刘海屏机型的刘海区域 -->
+    <meta-data
+        android:name="android.max_aspect"
+        android:value="2.2" />
+
+    <application
+        android:name="io.flutter.app.FlutterApplication"
+        android:usesCleartextTraffic="true"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_logo">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+            <!-- Specifies an Android theme to apply to this Activity as soon as
+                 the Android process has started. This theme is visible to the user
+                 while the Flutter UI initializes. After that, this theme continues
+                 to determine the Window background behind the Flutter UI. -->
+            <meta-data android:name="Mob-AppKey" android:value="31ae72dd90e63"/>
+            <meta-data android:name="Mob-AppSecret" android:value="5e9f88585cbe9257793f1c74e7c59f62"/>
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <!-- Displays an Android View that continues showing the launch screen
+                 Drawable until Flutter paints its first frame, then this splash
+                 screen fades out. A splash screen is useful to avoid any visual
+                 gap between the end of Android's launch screen and the painting of
+                 Flutter's first frame. -->
+            <meta-data
+                android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
+                android:value="true" />
+            <meta-data
+              android:name="io.flutter.embedding.android.SplashScreenDrawable"
+              android:resource="@drawable/bg_splash" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- Don't delete the meta-data below.
+             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+        <!-- 裁剪图片 -->
+<!--        <activity-->
+<!--            android:name="com.yalantis.ucrop.UCropActivity"-->
+<!--            android:screenOrientation="portrait"-->
+<!--            android:theme="@style/AppBaseTheme"/>-->
+
+        <!-- 闪验start -->
+        <activity
+            android:name="com.chuanglan.shanyan_sdk.view.CmccLoginActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind"
+            android:theme="@style/dialogStyle"/>
+
+        <activity-alias
+            android:name="com.cmic.sso.sdk.activity.LoginAuthActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind"
+            android:targetActivity="com.chuanglan.shanyan_sdk.view.CmccLoginActivity"
+            android:theme="@style/dialogStyle"/>
+        <activity
+            android:name="com.chuanglan.shanyan_sdk.view.ShanYanOneKeyActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind"
+            android:theme="@style/dialogStyle"/>
+        <activity
+            android:name="com.chuanglan.shanyan_sdk.view.CTCCPrivacyProtocolActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind"
+            android:theme="@style/dialogStyle"/>
+        <!-- 闪验end -->
+        <!-- 图片裁剪start -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"/>
+        <!-- 图片裁剪end -->
+
+
+        <!--微信-->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths"/>
+        </provider>
+        <!--QQ-->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+        <activity
+            tools:replace="android:configChanges"
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+    </application>
+</manifest>

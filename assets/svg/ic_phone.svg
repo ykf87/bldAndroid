@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_phone</title>
+    <defs>
+        <polygon id="path-1" points="0 0 24 0 24 28.9997 0 28.9997"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-0授权协议" transform="translate(-64.000000, -824.000000)">
+            <g id="ic_phone" transform="translate(64.000000, 824.000000)">
+                <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="32" height="32"></rect>
+                <g id="编组" transform="translate(4.000000, 2.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M21,17 C21,18.104 20.104,19 19,19 L5,19 C3.896,19 3,18.104 3,17 L3,5 C3,3.896 3.896,3 5,3 L19,3 C20.104,3 21,3.896 21,5 L21,17 Z M12,25.604 C10.896,25.604 10,24.708 10,23.604 C10,22.499 10.896,21.604 12,21.604 C13.104,21.604 14,22.499 14,23.604 C14,24.708 13.104,25.604 12,25.604 L12,25.604 Z M20,0 L4,0 C1.791,0 0,1.791 0,4 L0,25 C0,27.209 1.791,29 4,29 L20,29 C22.209,29 24,27.209 24,25 L24,4 C24,1.791 22.209,0 20,0 L20,0 Z" id="Fill-1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

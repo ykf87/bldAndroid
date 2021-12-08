@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="48px" viewBox="0 0 128 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_label</title>
+    <defs>
+        <linearGradient x1="100%" y1="45.9381048%" x2="0%" y2="45.9381048%" id="linearGradient-1">
+            <stop stop-color="#FF521D" offset="0%"></stop>
+            <stop stop-color="#FF193C" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3-2私信界面" transform="translate(-152.000000, -1297.000000)" fill="url(#linearGradient-1)">
+            <g id="编组-5" transform="translate(152.000000, 1297.000000)">
+                <path d="M16,0 L128,0 L128,0 L128,32 C128,40.836556 120.836556,48 112,48 L0,48 L0,48 L0,16 C-1.082166e-15,7.163444 7.163444,1.623249e-15 16,0 Z" id="ic_label"></path>
+            </g>
+        </g>
+    </g>
+</svg>

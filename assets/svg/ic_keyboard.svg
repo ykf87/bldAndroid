@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_keyboard</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3-3私信界面-表情" transform="translate(-662.000000, -858.000000)">
+            <g id="ic_keyboard" transform="translate(662.000000, 858.000000)">
+                <circle id="椭圆形" stroke="#FFFFFF" stroke-width="4" fill-opacity="0" fill="#000000" cx="32" cy="32" r="30"></circle>
+                <g id="编组-2" transform="translate(14.000000, 19.000000)" fill="#FFFFFF">
+                    <circle id="椭圆形" cx="3" cy="3" r="3"></circle>
+                    <circle id="椭圆形备份-8" cx="3" cy="13" r="3"></circle>
+                    <circle id="椭圆形备份-2" cx="13" cy="3" r="3"></circle>
+                    <circle id="椭圆形备份-9" cx="13" cy="13" r="3"></circle>
+                    <rect id="矩形" x="10" y="22" width="16" height="4" rx="2"></rect>
+                    <circle id="椭圆形备份-3" cx="23" cy="3" r="3"></circle>
+                    <circle id="椭圆形备份-10" cx="23" cy="13" r="3"></circle>
+                    <circle id="椭圆形备份-5" cx="33" cy="3" r="3"></circle>
+                    <circle id="椭圆形备份-11" cx="33" cy="13" r="3"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

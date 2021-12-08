@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_finish</title>
+    <defs>
+        <polygon id="path-1" points="0 0 23.9999 0 23.9999 24 0 24"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4-3我的-已审核" transform="translate(-278.000000, -745.000000)">
+            <g id="编组-2" transform="translate(272.000000, 739.000000)">
+                <g id="ic_finish" transform="translate(6.000000, 6.000000)">
+                    <g id="编组">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M12,0 C5.373,0 0,5.373 0,12 C0,18.627 5.373,24 12,24 C18.627,24 24,18.627 24,12 C24,5.373 18.627,0 12,0 M12,3 C16.962,3 21,7.037 21,12 C21,16.963 16.962,21 12,21 C7.037,21 3,16.963 3,12 C3,7.037 7.037,3 12,3" id="Fill-1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                    </g>
+                    <path d="M9.8784,15.5352 L9.8784,15.5352 C10.4614,16.1192 11.4164,16.1192 12.0004,15.5352 L16.9494,10.5862 C17.5334,10.0022 17.5334,9.0482 16.9494,8.4652 C16.3664,7.8812 15.4114,7.8812 14.8284,8.4652 L9.8784,13.4142 C9.2954,13.9972 9.2954,14.9522 9.8784,15.5352" id="Fill-3" fill="#FFFFFF"></path>
+                    <path d="M12,15.5352 L12,15.5352 C12.583,14.9522 12.583,13.9972 12,13.4142 L9.171,10.5862 C8.588,10.0022 7.633,10.0022 7.05,10.5862 C6.467,11.1692 6.467,12.1242 7.05,12.7072 L9.878,15.5352 C10.462,16.1192 11.417,16.1192 12,15.5352" id="Fill-5" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

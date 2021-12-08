@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_delete</title>
+    <defs>
+        <polygon id="path-1" points="0 0 28 0 28 28.9998 0 28.9998"></polygon>
+        <polygon id="path-3" points="0 0 33.9999 0 33.9999 3 0 3"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4-9我收藏的名片" transform="translate(-653.000000, -1017.000000)">
+            <g id="ic_delete" transform="translate(653.000000, 1017.000000)">
+                <g id="编组" transform="translate(2.999900, 5.000100)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M25,23.999 C25,25.103 24.105,25.999 23,25.999 L5,25.999 C3.896,25.999 3,25.103 3,23.999 L3,2.999 L25,2.999 L25,23.999 Z M0,0 L0,25 C0,27.209 1.791,29 4,29 L24,29 C26.209,29 28,27.209 28,25 L28,0 L0,0 Z" id="Fill-1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                </g>
+                <g id="编组" transform="translate(0.000000, 5.000000)">
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <g id="Clip-4"></g>
+                    <path d="M32.9999,3 L0.9999,3 C0.4499,3 -0.0001,2.55 -0.0001,2 L-0.0001,1 C-0.0001,0.45 0.4499,0 0.9999,0 L32.9999,0 C33.5499,0 33.9999,0.45 33.9999,1 L33.9999,2 C33.9999,2.55 33.5499,3 32.9999,3" id="Fill-3" fill="#FFFFFF" mask="url(#mask-4)"></path>
+                </g>
+                <path d="M19.9999,3 L13.9999,3 C13.4479,3 12.9999,2.553 12.9999,2 L12.9999,1 C12.9999,0.448 13.4479,0 13.9999,0 L19.9999,0 C20.5519,0 20.9999,0.448 20.9999,1 L20.9999,2 C20.9999,2.553 20.5519,3 19.9999,3" id="Fill-5" fill="#FFFFFF"></path>
+                <path d="M11.9999,27 L11.9999,13 C11.9999,12.45 12.4499,12 12.9999,12 L13.9999,12 C14.5499,12 14.9999,12.45 14.9999,13 L14.9999,27 C14.9999,27.55 14.5499,28 13.9999,28 L12.9999,28 C12.4499,28 11.9999,27.55 11.9999,27" id="Fill-7" fill="#FFFFFF"></path>
+                <path d="M18.9999,27 L18.9999,13 C18.9999,12.45 19.4499,12 19.9999,12 L20.9999,12 C21.5499,12 21.9999,12.45 21.9999,13 L21.9999,27 C21.9999,27.55 21.5499,28 20.9999,28 L19.9999,28 C19.4499,28 18.9999,27.55 18.9999,27" id="Fill-9" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

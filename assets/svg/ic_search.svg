@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_search</title>
+    <defs>
+        <polygon id="path-1" points="0 0 36.9868 0 36.9868 36.9867 0 36.9867"></polygon>
+        <polygon id="path-3" points="0 -5.32907052e-15 9.6518 -5.32907052e-15 9.6518 9.652 0 9.652"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-1首页-探索" transform="translate(-590.000000, -111.000000)">
+            <g id="ic_search" transform="translate(590.000000, 111.000000)">
+                <rect id="底色块" fill="#D8D8D8" opacity="0" x="0" y="0" width="44" height="44"></rect>
+                <g id="搜索图标" transform="translate(3.000000, 3.000000)">
+                    <g id="编组">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M18.4938,-0.0003 C8.2798,-0.0003 -0.0002,8.2797 -0.0002,18.4937 C-0.0002,28.7077 8.2798,36.9867 18.4938,36.9867 C28.7068,36.9867 36.9868,28.7077 36.9868,18.4937 C36.9868,8.2797 28.7068,-0.0003 18.4938,-0.0003 M18.4938,3.9997 C26.4858,3.9997 32.9868,10.5007 32.9868,18.4937 C32.9868,26.4857 26.4858,32.9867 18.4938,32.9867 C10.5018,32.9867 3.9998,26.4857 3.9998,18.4937 C3.9998,10.5007 10.5018,3.9997 18.4938,3.9997" id="Fill-1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                    </g>
+                    <g id="编组" transform="translate(28.202200, 28.201450)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Clip-4"></g>
+                        <path d="M9.0685,9.06925 L9.0685,9.06925 C8.2915,9.84625 7.0185,9.84625 6.2405,9.06925 L0.5835,3.41225 C-0.1945,2.63425 -0.1945,1.36125 0.5835,0.58425 C1.3615,-0.19475 2.6335,-0.19475 3.4115,0.58425 L9.0685,6.24125 C9.8465,7.01825 9.8465,8.29125 9.0685,9.06925" id="Fill-3" fill="#FFFFFF" mask="url(#mask-4)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

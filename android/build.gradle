@@ -1,0 +1,44 @@
+buildscript {
+    ext.kotlin_version = '1.4.10'
+    repositories {
+        google { url 'https://maven.aliyun.com/repository/google' }
+        jcenter { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // 注册MobSDK
+//        classpath "com.mob.sdk:MobSDK:2018.0319.1724"
+        classpath 'com.tencent.mm:AndResGuard-gradle-plugin:1.2.21'
+    }
+}
+
+allprojects {
+    repositories {
+        google { url 'https://maven.aliyun.com/repository/google' }
+        jcenter { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = '../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

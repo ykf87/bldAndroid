@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_business_card</title>
+    <defs>
+        <linearGradient x1="100%" y1="45.9381048%" x2="0%" y2="45.9381048%" id="linearGradient-1">
+            <stop stop-color="#FF521D" offset="0%"></stop>
+            <stop stop-color="#FF193C" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-2" points="0 0 41.9995 0 41.9995 41.9999 0 41.9999"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="6-5消息-缺省页" transform="translate(-65.000000, -320.000000)">
+            <g id="ic_business_card" transform="translate(65.000000, 320.000000)">
+                <circle id="椭圆形" fill="url(#linearGradient-1)" cx="60" cy="60" r="60"></circle>
+                <g id="编组" transform="translate(39.000000, 39.000000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <g id="Clip-2"></g>
+                    <path d="M20.9065,28.0579 C9.3605,28.0579 -0.0005,32.6489 -0.0005,38.3129 C-0.0005,40.2499 1.7805,40.9969 7.0165,41.5629 C11.0655,41.9999 15.8985,41.9999 21.0005,41.9999 C26.2255,41.9999 31.4085,41.9999 35.0545,41.5629 C40.2135,40.9439 41.9995,40.2499 41.9995,38.3129 C41.9995,32.6489 32.4525,28.0579 20.9065,28.0579 M20.9995,24.4999 C26.1585,24.4999 30.9205,19.9929 31.4535,13.4019 C32.0125,6.5049 27.4315,-0.0001 20.9995,-0.0001 C14.5685,-0.0001 9.9875,6.5049 10.5465,13.4019 C11.0795,19.9929 15.8415,24.4999 20.9995,24.4999" id="Fill-1" fill="#FFFFFF" mask="url(#mask-3)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

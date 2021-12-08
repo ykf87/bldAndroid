@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_back</title>
+    <defs>
+        <polygon id="path-1" points="0 0 20.382 0 20.382 20.38175 0 20.38175"></polygon>
+        <polygon id="path-3" points="0 0 20.382 0 20.382 20.3825 0 20.3825"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3-5通告小助手" transform="translate(-24.000000, -110.000000)">
+            <g id="ic_back" transform="translate(24.000000, 110.000000)">
+                <rect id="底板" fill="#FFFFFF" opacity="0" x="0" y="0" width="44" height="44"></rect>
+                <g id="编组" transform="translate(12.000000, 4.000000)">
+                    <g transform="translate(0.000000, 15.556150)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M3.1203,0.29175 L20.0913,17.26275 C20.4793,17.65075 20.4793,18.28775 20.0913,18.67675 L18.6763,20.09075 C18.2873,20.47875 17.6513,20.47875 17.2623,20.09075 L0.2913,3.11975 C-0.0977,2.73075 -0.0977,2.09475 0.2913,1.70575 L1.7063,0.29175 C2.0953,-0.09725 2.7313,-0.09725 3.1203,0.29175" id="Fill-1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                    </g>
+                    <g>
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Clip-4"></g>
+                        <path d="M0.2912,17.262 L17.2622,0.291 C17.6512,-0.097 18.2872,-0.097 18.6762,0.291 L20.0912,1.705 C20.4792,2.095 20.4792,2.731 20.0912,3.119 L3.1202,20.09 C2.7312,20.48 2.0952,20.48 1.7062,20.09 L0.2912,18.676 C-0.0978,18.287 -0.0978,17.651 0.2912,17.262" id="Fill-3" fill="#FFFFFF" mask="url(#mask-4)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

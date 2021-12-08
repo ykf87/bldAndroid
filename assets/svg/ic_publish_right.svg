@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="320px" height="387px" viewBox="0 0 320 387" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_logo</title>
+    <defs>
+        <linearGradient x1="100%" y1="45.9381048%" x2="0%" y2="45.9381048%" id="linearGradient-1">
+            <stop stop-color="#FF521D" offset="0%"></stop>
+            <stop stop-color="#FF193C" offset="100%"></stop>
+        </linearGradient>
+        <path d="M27,7.74 C54.6550013,-7.95538689 88.8173463,1.2254785 104.142857,27.09 L262.285714,301.86 C277.931911,329.750987 268.778138,364.014443 243,379.26 C215.344999,394.955387 181.182654,385.774522 165.857143,359.91 L7.71428571,85.14 C-7.93191063,57.2490128 1.22186213,22.9855568 27,7.74 Z" id="path-2"></path>
+        <path d="M291,7.74 C318.655001,-7.95538689 352.817346,1.2254785 368.142857,27.09 L526.285714,301.86 C541.931911,329.750987 532.778138,364.014443 507,379.26 C479.344999,394.955387 445.182654,385.774522 429.857143,359.91 L271.714286,85.14 C256.068089,57.2490128 265.221862,22.9855568 291,7.74 Z" id="path-3"></path>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="5-9落地页" transform="translate(-430.000000, -351.000000)">
+            <g id="ic_logo" transform="translate(430.000000, 351.000000)">
+                <g id="矩形">
+                    <use fill="#FFFFFF" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                </g>
+                <g id="矩形备份-4">
+                    <use fill="#FFFFFF" xlink:href="#path-3"></use>
+                    <use fill="url(#linearGradient-1)" xlink:href="#path-3"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120px" height="120px" viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_notice</title>
+    <defs>
+        <linearGradient x1="100%" y1="45.9381048%" x2="0%" y2="45.9381048%" id="linearGradient-1">
+            <stop stop-color="#4A9CFF" offset="0%"></stop>
+            <stop stop-color="#4A5FFF" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-2" points="0 0 37.9998 0 37.9998 4 0 4"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="6-5消息-缺省页" transform="translate(-315.000000, -320.000000)">
+            <g id="ic_notice" transform="translate(315.000000, 320.000000)">
+                <circle id="椭圆形" fill="url(#linearGradient-1)" cx="60" cy="60" r="60"></circle>
+                <g id="编组" transform="translate(41.000000, 38.000000)">
+                    <path d="M22.4595,40 L15.5405,40 C15.2295,40 14.9975,40.28 15.0425,40.588 C15.3275,42.518 16.9905,44 19.0005,44 C21.0095,44 22.6725,42.518 22.9575,40.588 C23.0015,40.28 22.7705,40 22.4595,40" id="Fill-1" fill="#FFFFFF"></path>
+                    <path d="M36,37 L2,37 L2,17 C2,7.65 9.65,0 19,0 C28.35,0 36,7.65 36,17 L36,37 Z" id="Fill-3" fill="#FFFFFF"></path>
+                    <g transform="translate(0.000000, 33.000000)">
+                        <mask id="mask-3" fill="white">
+                            <use xlink:href="#path-2"></use>
+                        </mask>
+                        <g id="Clip-6"></g>
+                        <path d="M37,4 L1,4 C0.447,4 0,3.552 0,3 L0,1 C0,0.448 0.447,0 1,0 L37,0 C37.552,0 38,0.448 38,1 L38,3 C38,3.552 37.552,4 37,4" id="Fill-5" fill="#FFFFFF" mask="url(#mask-3)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

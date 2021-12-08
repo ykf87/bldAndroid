@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="280px" height="210px" viewBox="0 0 280 210" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_bg_card</title>
+    <defs>
+        <path d="M16,0 L280,0 L280,0 L280,210 L16,210 C7.163444,210 1.082166e-15,202.836556 0,194 L0,16 C-1.082166e-15,7.163444 7.163444,1.623249e-15 16,0 Z" id="path-1"></path>
+        <linearGradient x1="100%" y1="68.9780959%" x2="0%" y2="68.9780959%" id="linearGradient-3">
+            <stop stop-color="#414555" offset="0%"></stop>
+            <stop stop-color="#20222D" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-4" points="0 0 280 0 280 94 0 94"></polygon>
+        <linearGradient x1="100%" y1="68.9780959%" x2="0%" y2="68.9780959%" id="linearGradient-6">
+            <stop stop-color="#414555" offset="0%"></stop>
+            <stop stop-color="#20222D" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4-1我的-未登录" transform="translate(-24.000000, -664.000000)">
+            <g id="ic_bg_card" transform="translate(24.000000, 664.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="蒙版" fill="#181A23" opacity="0" xlink:href="#path-1"></use>
+                <g id="编组" opacity="0.201811291" mask="url(#mask-2)">
+                    <g transform="translate(0.000000, -26.000000)">
+                        <path d="M139.499311,164 C174.136058,164 206.107536,133.83181 209.691256,89.708 C213.437515,43.542 182.686069,0 139.499311,0 C96.3145115,0 65.5591481,43.542 69.3093245,89.708 C72.8910857,133.83181 104.862564,164 139.499311,164" id="Fill-1" fill="url(#linearGradient-3)"></path>
+                        <g id="编组" stroke-width="1" fill="none" transform="translate(0.000000, 186.000000)">
+                            <mask id="mask-5" fill="white">
+                                <use xlink:href="#path-4"></use>
+                            </mask>
+                            <g id="Clip-4"></g>
+                            <path d="M139.375833,0 C62.4011111,0 0,30.9560997 0,69.142893 C0,82.2021903 11.8708333,87.2343755 46.7794444,91.051285 C73.7663889,94.0009832 105.987778,94.0009832 140,94.0009832 C174.838611,94.0009832 209.393333,94.0009832 233.700833,91.051285 C268.086389,86.8784452 280,82.2021903 280,69.142893 C280,30.9560997 216.350556,0 139.375833,0" id="Fill-3" fill="url(#linearGradient-6)" mask="url(#mask-5)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

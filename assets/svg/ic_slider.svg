@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="18px" viewBox="0 0 64 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_slider</title>
+    <defs>
+        <polygon id="path-1" points="0 0 64 0 64 18 0 18"></polygon>
+        <linearGradient x1="100%" y1="45.9381048%" x2="0%" y2="45.9381048%" id="linearGradient-3">
+            <stop stop-color="#FF521D" offset="0%"></stop>
+            <stop stop-color="#FF1F35" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-12搜索结果-达人" transform="translate(-247.000000, -250.000000)">
+            <g id="ic_slider" transform="translate(247.000000, 250.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-2"></g>
+                <path d="M31.9992108,18 C22.3812898,18 12.7691962,15.9380284 3.79373251,11.8140851 C0.947107621,10.5062322 -0.723864106,7.15935241 0.306107133,4.08016184 C1.44096936,0.685862844 5.06699257,-0.904975802 8.12922672,0.525249327 C23.299086,7.6044813 40.6993356,7.60601096 55.8691949,0.523719675 C58.931429,-0.901916497 62.5545386,0.684333192 63.6923145,4.07710254 C64.7251994,7.15629311 63.0556844,10.5062322 60.2076027,11.8140851 C51.2321391,15.9364987 41.6156749,18 31.9992108,18" id="Fill-1" fill="url(#linearGradient-3)" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>

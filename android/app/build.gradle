@@ -1,0 +1,192 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty('flutter.sdk')
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+//apply plugin: 'com.mob.sdk'
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply from: 'and_res_guard.gradle'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    signingConfigs {
+        release {
+            keyAlias 'gouqi'
+            keyPassword 'gouqijiankang666'
+            storeFile file('../../../android_sign_key/gouqi.jks')
+            storePassword 'gouqijiankang666'
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    defaultConfig {
+//        applicationId "com.blandal.app"
+        applicationId "com.jiankang.gouqi"
+        minSdkVersion 21
+        targetSdkVersion 28
+        multiDexEnabled true
+        flavorDimensions "default"
+
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', "x86"
+        }
+
+        manifestPlaceholders = [
+//                    app_name      : app_name,
+//                    TD_CHANNEL_ID : app_channel_id,
+                Amap_Key      : "90081cd624ad9dd386480f096130314b",
+                JPUSH_PKGNAME : applicationId,
+                JPUSH_APPKEY  : "7c1780bbedf5d42906399e31", //JPush 上注册的包名对应的 Appkey.
+                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                XIAOMI_APPKEY : "MI-5991731366150",//小米平台注册的appkey
+                XIAOMI_APPID  : "MI-2882303761517313150",//小米平台注册的appid
+                MEIZU_APPKEY  : "MZ-1a321826c66f446484055399f43b1fc3",//魅族平台注册的appkey
+                MEIZU_APPID   : "MZ-127428",//魅族平台注册的appid
+                OPPO_APPKEY   : "OP-9ml6g7SwFzgokOcgsW48gSWcg", // OPPO平台注册的appkey
+                OPPO_APPID    : "OP-674641", // OPPO平台注册的appid
+                OPPO_APPSECRET: "OP-Db69E9e05EadAEaa5327116Fe9d5A54a",//OPPO平台注册的appsecret
+                VIVO_APPKEY   : "030f00e1122d255b38527df140f1d28f", // VIVO平台注册的appkey
+                VIVO_APPID    : "105043222", // VIVO平台注册的appid
+                qqappid       : "aaa123456",
+        ]
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+        checkReleaseBuilds false
+    }
+
+    buildTypes {
+        release {
+            // TODO: Add your own signing config for the release build.
+            // Signing with the debug keys for now, so `flutter run --release` works.
+            minifyEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            ext.enableCrashlytics = false
+            ext.alwaysUpdateBuildId = false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
+}
+
+def mobAppKey = "31ae72dd90e63"
+def mobAppSecret = "5e9f88585cbe9257793f1c74e7c59f62"
+def wxAppId = "wxf277cc2bbb58462c"
+def wxAppSecret = "fbbc5e17b2441ff0d0872ec8cafc470c"
+def qqAppId = "1109986888"
+def qqAppKey = "GEkiHSSxmay2zMHo"
+
+
+//MobSDK {
+//    appKey mobAppKey
+//    appSecret mobAppSecret
+//    apm false
+//    fp true //严格模式
+//    ShareSDK {
+//        loopShare true
+//        devInfo {
+//            Wechat {
+//                appId wxAppId
+//                appSecret wxAppSecret
+//            }
+//            WechatMoments {
+//                appId wxAppId
+//                appSecret wxAppSecret
+//            }
+//
+//            QQ {
+//                appId qqAppId
+//                appKey qqAppKey
+//
+//            }
+//            QZone {
+//                appId qqAppId
+//                appKey qqAppKey
+//            }
+//        }
+//    }
+//}
+
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation fileTree(include:['*.jar'], dir:'libs')
+    // XPopup
+    implementation 'com.github.li-xiaojun:XPopup:2.5.9'
+    implementation 'com.github.li-xiaojun:XPopupExt:0.0.7'
+    // AndroidUtilCode
+    implementation 'com.blankj:utilcodex:1.30.6'
+    // 友盟
+//    implementation  'com.umeng.umsdk:common:9.4.2'
+//    implementation  'com.umeng.umsdk:asms:1.4.1'
+//    implementation 'com.umeng.umsdk:apm:1.4.2' //看crash数据
+//    implementation(name:'umeng-asms-armeabi-v1.4.1', ext:'aar')
+    implementation 'com.umeng.sdk:utdid:1.1.5.3'
+    //implementation files('libs/flutter.jar')
+
+    implementation  'com.umeng.umsdk:share-core:7.1.6'//分享核心库，必选
+    implementation  'com.umeng.umsdk:share-board:7.1.6'//分享面板功能，可选
+
+    implementation 'com.umeng.umsdk:share-wx:7.1.6' //微信完整版
+//    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:6.9.7'//微信官方依赖库，必选
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+//    implementation 'com.umeng.umsdk:share-qq:7.1.6'//QQ完整版
+//    implementation 'com.tencent.tauth:qqopensdk:3.53.0'//QQ官方依赖库，必选
+//    implementation 'com.squareup.okhttp3:okhttp:3.12.12'//QQ SDK在3.53.0版本及以上时需要集成okhttp官方依赖库，必选
+
+    //极光推送
+    implementation 'cn.jiguang.sdk.plugin:vivo:4.0.9'
+}

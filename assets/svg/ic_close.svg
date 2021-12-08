@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_close</title>
+    <defs>
+        <polygon id="path-1" points="0 0 21.0276 0 21.0276 21.0271875 0 21.0271875"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-8达人主页-海报已生成-1个平台" transform="translate(-166.000000, -483.000000)">
+            <g id="ic_close" transform="translate(166.000000, 483.000000)">
+                <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="24" height="24"></rect>
+                <g id="编组" transform="translate(1.500000, 1.500000)">
+                    <g transform="translate(0.000000, 0.000075)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M0.437475,2.558625 L18.468975,20.590125 C19.051725,21.172875 20.006475,21.172875 20.589975,20.590125 C21.173475,20.006625 21.173475,19.051875 20.589975,18.468375 L2.559225,0.437625 C1.975725,-0.145875 1.020975,-0.145875 0.437475,0.437625 C-0.146025,1.020375 -0.146025,1.975125 0.437475,2.558625" id="Fill-1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                    </g>
+                    <path d="M18.4686,0.437625 L0.4371,18.468375 C-0.14565,19.051875 -0.14565,20.006625 0.4371,20.590125 C1.0206,21.172875 1.97535,21.172875 2.55885,20.590125 L20.59035,2.558625 C21.1731,1.975125 21.1731,1.020375 20.59035,0.437625 C20.00685,-0.145875 19.0521,-0.145875 18.4686,0.437625" id="Fill-3" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

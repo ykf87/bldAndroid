@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_feedback</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-1设置" transform="translate(-24.000000, -480.000000)">
+            <g id="ic_feedback" transform="translate(24.000000, 480.000000)">
+                <polygon id="Fill-1" fill="#000000" opacity="0" points="0 40 40 40 40 0 0 0"></polygon>
+                <g id="编组" transform="translate(3.999900, 2.999600)" fill="#FFFFFF">
+                    <path d="M29,29 C29,30.104 28.104,31 27,31 L5,31 C3.895,31 3,30.104 3,29 L3,5 C3,3.896 3.895,3 5,3 L27,3 C28.104,3 29,3.896 29,5 L29,29 Z M28,0 L4,0 C1.791,0 0,1.791 0,4 L0,30 C0,32.21 1.791,34 4,34 L28,34 C30.209,34 32,32.21 32,30 L32,4 C32,1.791 30.209,0 28,0 L28,0 Z" id="Fill-2"></path>
+                    <path d="M15.1836,23 L8.8166,23 C8.3676,23 7.9996,22.633 7.9996,22.184 L7.9996,20.816 C7.9996,20.368 8.3676,20 8.8166,20 L15.1836,20 C15.6326,20 15.9996,20.368 15.9996,20.816 L15.9996,22.184 C15.9996,22.633 15.6326,23 15.1836,23" id="Fill-4"></path>
+                    <path d="M23,14 L9,14 C8.45,14 8,13.551 8,13 L8,12 C8,11.45 8.45,11 9,11 L23,11 C23.55,11 24,11.45 24,12 L24,13 C24,13.551 23.55,14 23,14" id="Fill-6"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

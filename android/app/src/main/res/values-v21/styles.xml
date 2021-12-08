@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting -->
+    <style name="LaunchTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             Flutter draws its first frame -->
+        <item name="android:windowBackground">@drawable/bg_splash</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!--windowTranslucentNavigation这个属性设置成true，则navigationBarColor设置会失效-->
+        <!--<item name="android:windowTranslucentNavigation">false</item>-->
+        <item name="android:windowFullscreen">true</item>
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+        <!--不让windowBackground延申到navigation bar区域-->
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+    </style>
+</resources>

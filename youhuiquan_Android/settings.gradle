@@ -1,3 +1,0 @@
-include ':app'
-include ':bottom-navigation-bar'
-project(':bottom-navigation-bar').projectDir = new File('../android_common_library/bottom-navigation-bar')

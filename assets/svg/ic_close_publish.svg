@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_close</title>
+    <defs>
+        <polygon id="path-1" points="0 0 39.35 0 39.35 39.34995 0 39.34995"></polygon>
+        <polygon id="path-3" points="1.77635684e-15 0 39.3498 0 39.3498 39.35 1.77635684e-15 39.35"></polygon>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-9落地页" transform="translate(-686.000000, -112.000000)">
+            <g id="ic_close" transform="translate(686.000000, 112.000000)">
+                <rect id="矩形" fill="#D8D8D8" opacity="0" x="0" y="0" width="40" height="40"></rect>
+                <g id="编组">
+                    <g>
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M0.5833,3.4117 L35.9383,38.7657 C36.7163,39.5447 37.9893,39.5447 38.7673,38.7657 C39.5453,37.9887 39.5453,36.7167 38.7673,35.9377 L3.4123,0.5827 C2.6343,-0.1943 1.3613,-0.1943 0.5833,0.5827 C-0.1947,1.3607 -0.1947,2.6337 0.5833,3.4117" id="Fill-1" fill="#FFFFFF" mask="url(#mask-2)"></path>
+                    </g>
+                    <g transform="translate(0.000200, 0.000000)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Clip-4"></g>
+                        <path d="M35.9385,0.5826 L0.5835,35.9376 C-0.1945,36.7166 -0.1945,37.9886 0.5835,38.7666 C1.3605,39.5446 2.6335,39.5446 3.4115,38.7666 L38.7675,3.4116 C39.5445,2.6336 39.5445,1.3606 38.7675,0.5826 C37.9895,-0.1944 36.7165,-0.1944 35.9385,0.5826" id="Fill-3" fill="#FFFFFF" mask="url(#mask-4)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
