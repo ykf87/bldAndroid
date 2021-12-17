@@ -3,5 +3,6 @@
 /// @Description: 
 class ApiStatus {
   static const int SUCCESS = 2000;
+  static const int JTKSUCCESS = 1;//聚推客成功码
   static const int LOGIN_OUT = 4010;
 }

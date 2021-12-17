@@ -103,7 +103,8 @@ dependencies:
   keyboard_actions: ^3.4.4
   # 解析html文档
   flutter_html: ^2.1.1
-
+  # lottie动画 https://pub.flutter-io.cn/packages/flutter_lottie
+  lottie: ^1.1.0
   #============= 第三方
   # 微信分享 打开小程序
   fluwx: ^3.6.1+2
@@ -191,6 +192,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/lottie/
     - assets/svg/
     - assets/nav/
     - assets/svg/cate/

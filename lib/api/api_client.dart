@@ -92,52 +92,60 @@ class ApiClient {
       {T? data,
       Function(T data)? onSuccess,
       Function(String msg)? onError,
-      bool loading = false}) async {
+      bool loading = false,
+      bool isJTK = false}) async {
     request<T>(url,
         data: data,
         method: 'POST',
         onSuccess: onSuccess,
         onError: onError,
-        loading: loading);
+        loading: loading,
+        isJTK: isJTK);
   }
 
   get<T>(String url,
       {T? data,
       Function(T data)? onSuccess,
       Function(String msg)? onError,
-      bool loading = false}) async {
+      bool loading = false,
+      bool isJTK = false}) async {
     request<T>(url,
         data: data,
         method: 'GET',
         onSuccess: onSuccess,
         onError: onError,
-        loading: loading);
+        loading: loading,
+        isJTK: isJTK);
   }
 
   put<T>(String url,
       {T? data,
       Function(T data)? onSuccess,
       Function(String msg)? onError,
-      bool loading = false}) async {
+      bool loading = false,
+      bool isJTK = false}) async {
     request<T>(url,
         data: data,
         method: 'PUT',
         onSuccess: onSuccess,
         onError: onError,
-        loading: loading);
+        loading: loading,
+        isJTK: isJTK);
   }
 
   delete<T>(String url,
       {T? data,
       Function(T data)? onSuccess,
       Function(String msg)? onError,
-      bool loading = false}) async {
+      bool loading = false,
+      bool isJTK = false}) async {
     request<T>(url,
         data: data,
         method: 'DELETE',
         onSuccess: onSuccess,
         onError: onError,
-        loading: loading);
+        loading: loading,
+        isJTK: isJTK);
   }
 
   static request<T>(String url,
@@ -146,25 +154,26 @@ class ApiClient {
       T? data,
       Function(T data)? onSuccess,
       Function(String msg)? onError,
-      bool loading = false}) async {
+      bool loading = false,
+      bool isJTK = false}) async {
     if (loading) {
       LoadingUtil().show(loadingText: '加载中...');
     }
     try {
       _dio!.options.method = method;
       _dio!.options.headers = {
-        'os': (defaultTargetPlatform == TargetPlatform.android
-                ? 'Android'
-                : 'ios') +
-            '-${await DeviceUtil.platformVersion}',
-        'device': await Env.getDeivceName(),
-        'app_version': 'wefree-${await PackageUtil.version}',
-        'timestamp': DateTime.now().millisecondsSinceEpoch,
-        'app_store': Env.getChannelName(),
-        'mac': '',
-        'device_id': SPUtils.getDeviceId(),
-        'Authorization': SPUtils.getUserToken(),
-        'User-Agent': FkUserAgent.userAgent!
+        // 'os': (defaultTargetPlatform == TargetPlatform.android
+        //         ? 'Android'
+        //         : 'ios') +
+        //     '-${await DeviceUtil.platformVersion}',
+        // 'device': await Env.getDeivceName(),
+        // 'app_version': 'wefree-${await PackageUtil.version}',
+        // 'timestamp': DateTime.now().millisecondsSinceEpoch,
+        // 'app_store': Env.getChannelName(),
+        // 'mac': '',
+        // 'device_id': SPUtils.getDeviceId(),
+        // 'Authorization': SPUtils.getUserToken(),
+        // 'User-Agent': FkUserAgent.userAgent!
       };
 
       Response? response;
@@ -195,9 +204,11 @@ class ApiClient {
       if (loading) {
         LoadingUtil().dismiss();
       }
+      if (isJTK) {}
 
       if (response?.statusCode == HttpStatus.ok) {
-        if (response?.data['code'] == ApiStatus.SUCCESS) {
+        if (response?.data['code'] ==
+            (isJTK ? ApiStatus.JTKSUCCESS : ApiStatus.SUCCESS)) {
           onSuccess?.call(response?.data);
         } else if (response?.data['code'] == ApiStatus.LOGIN_OUT) {
           ToastUtils.toast(response?.data['msg'] ?? "");

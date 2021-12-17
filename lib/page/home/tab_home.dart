@@ -1,4 +1,6 @@
+import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/entity/search/card_entity.dart';
+import 'package:SDZ/page/home/goodsList/view.dart';
 import 'package:SDZ/page/home/repository/index_goods_repository.dart';
 import 'package:SDZ/page/home/widget/banner.dart';
 import 'package:SDZ/page/home/widget/gridmenu/view.dart';
@@ -13,6 +15,8 @@ import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_more_list/loading_more_list.dart';
+
+import 'goodsList/NewGoodsListPage.dart';
 
 
 
@@ -72,25 +76,9 @@ class _TabHomePageState extends State<TabHomePage>
 
   Widget renderViews() {
     return TabBarView(
-      children: [_buildGoodsList(), Container(),  _buildGoodsList()],
+      children: [NewGoodsListPage('taobao'),  NewGoodsListPage('pdd'),  NewGoodsListPage('jd')],
       controller: tabController,
     );
   }
-  Widget _buildGoodsList() {
-    return LoadingMoreList(ListConfig<CardItemEntity>(
-      extendedListDelegate:
-      const SliverWaterfallFlowDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, crossAxisSpacing: 12, mainAxisSpacing: 12),
-      itemBuilder: (context, item, index) {
-        return WaterfallGoodsCard(item);
-      },
-      sourceList: indexGoodsRepository,
-      padding: const EdgeInsets.only(left: 12, right: 12),
-//      lastChildLayoutType: LastChildLayoutType.foot,
-      indicatorBuilder: (context, state) {
-        return LoadingMoreListCostumIndicator(state, isSliver: false);
-      },
-    ));
-  }
-}
 
+}

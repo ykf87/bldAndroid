@@ -35,10 +35,8 @@ class ResponseInterceptor extends Interceptor {
       WFLogUtil.d('base_url====>${response.requestOptions.baseUrl}');
       WFLogUtil.d('data====>${json.encode(response.data)}');
     }
-
     ///把接口返回数据转换map
-    String dataStr = json.encode(response.data);
-    Map<String, dynamic> map = json.decode(dataStr);
+    Map<String, dynamic> map = json.decode(response.data);
     response.data = map;
     ///拦截器中直接弹错误toast
     // if(response.data['code'] != ApiStatus.SUCCESS) {

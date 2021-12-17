@@ -1,20 +1,25 @@
 // Flutter imports:
 // Package imports:
+import 'package:SDZ/constant/svg_path.dart';
+import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/entity/search/card_entity.dart';
 import 'package:SDZ/utils/navigator_util.dart';
+import 'package:SDZ/utils/utils.dart';
 import 'package:SDZ/widget/coupon_price.dart';
 import 'package:SDZ/widget/extended_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart';
 import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 
 // Project imports:
 
 // 瀑布流商品卡片
 class WaterfallGoodsCard extends StatelessWidget {
-  final CardItemEntity product;
+  final GoodsEntity product;
 
   const WaterfallGoodsCard(this.product, {Key? key}) : super(key: key);
 
@@ -22,7 +27,7 @@ class WaterfallGoodsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          NavigatorUtil.gotoGoodsDetailPage(context, product.cardId.toString(),
+          NavigatorUtil.gotoGoodsDetailPage(context, product.goodsId.toString(),
               newViewPage: true);
         },
         child: Container(
@@ -46,7 +51,7 @@ class WaterfallGoodsCard extends StatelessWidget {
                 const SizedBox(height: 5),
 
                 // 标题
-                _title(product.cardName!),
+                _title(product.goodsName??''),
 
                 const SizedBox(height: 5),
                 // // 购买理由
@@ -73,7 +78,7 @@ class WaterfallGoodsCard extends StatelessWidget {
                   child: FSuper(
                     lightOrientation: FLightOrientation.LeftBottom,
                     text:
-                        '领 ${NumUtil.getNumByValueDouble(product.likesNum?.toDouble(), 0)} 元券',
+                        '领 ${product.discount} 元券',
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
                     strokeColor: Colors.pink,
@@ -87,8 +92,8 @@ class WaterfallGoodsCard extends StatelessWidget {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: CouponPriceWidget(
-                      actualPrice: product.cardName.toString(),
-                      originalPrice: product.likesNum?.toDouble()),
+                      actualPrice: product.price.toString(),
+                      originalPrice: product.marketPrice?.toDouble()),
                 ),
                 // Hot(
                 //     text:
@@ -99,15 +104,12 @@ class WaterfallGoodsCard extends StatelessWidget {
 
   /// 销量
   Widget renderCals() {
-    return Text(
-      '月销${product.likesNum}',
-      style: const TextStyle(fontSize: 12, color: Color.fromRGBO(0, 0, 0, .32)),
-    );
+    return Container();
   }
 
   /// 店铺类型
   Widget renderShopType() {
-    final text = product.likesNum == 0 ? '淘宝' : '天猫';
+    final text =  '淘宝';
     return Container(
       padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
@@ -146,18 +148,24 @@ class WaterfallGoodsCard extends StatelessWidget {
 
   // 商品卡片主图
   Widget _image() {
-    var img = product.cardAvatar!;
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        return SizedBox(
-            width: constraints.maxWidth,
-            height: constraints.maxWidth,
-            child: SimpleImage(
-              url: img,
-              radius: const BorderRadius.only(
-                  topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-            ));
-      },
-    );
+    var img = product.goodsThumbUrl!;
+    return  ClipRRect(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(12.0),
+            topRight: Radius.circular(12.0)),
+        child: CachedNetworkImage(
+            fit: BoxFit.fill,
+            width: double.infinity,
+            placeholder: (context, url) => Container(
+              height: 100,
+              child: Center(
+                  child: Container(
+                    width: 52,
+                    height: 37,
+                    child: SvgPicture.asset(
+                        SvgPath.ic_logo_placeholder),
+                  )),
+            ),
+            imageUrl: img));
   }
 }
