@@ -37,12 +37,14 @@ abstract class BaseStatefulState<T extends BaseStatefulWidget> extends State<T> 
 
   ///导航栏标题样式
   TextStyle initNavigatorTextStyle() => TextStyle(
-      color: Colors.white,
+      color: Colours.text_121212,
       fontSize: 20
   );
 
   ///是否自定义导航栏
   bool isCustomNavigator() => false;
+
+  bool isShowNavigator() => true;
 
   ///自定义导航栏
   PreferredSizeWidget? initCustomNavigator() => AppBar(
@@ -75,7 +77,7 @@ abstract class BaseStatefulState<T extends BaseStatefulWidget> extends State<T> 
   ///build
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return isShowNavigator()? new Scaffold(
       primary: isPrimary(),
       // backgroundColor: getPageBackgroundColor(),
       ///固定在底部widget不会被键盘顶起
@@ -85,7 +87,7 @@ abstract class BaseStatefulState<T extends BaseStatefulWidget> extends State<T> 
         elevation: 0,
         // backgroundColor: Colours.color_10121A,
         leading: IconButton(
-          color: Colors.white,
+          color: Colors.black,
           tooltip: null,
           onPressed: () {
             onCloseKeyboard();
@@ -116,7 +118,7 @@ abstract class BaseStatefulState<T extends BaseStatefulWidget> extends State<T> 
         },
         child: initDefaultBuild(context),
       ),
-    );
+    ):initDefaultBuild(context);
   }
 
   /// 隐藏软键盘

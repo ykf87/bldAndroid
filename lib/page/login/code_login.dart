@@ -105,10 +105,7 @@ class CodeLoginPageState extends BaseStatefulState<CodeLoginPage> {
     ApiClient.instance.post(isContinueLogin ? ApiUrl.login_continue : ApiUrl.login, data: map, onSuccess: (data){
       BaseEntity<LoginEntity> entity = BaseEntity.fromJson(data!);
       if(entity.isSuccess){
-        if(entity.data!.isCancel) {
-          onShowOffAccountDialog();
-          return;
-        }
+
         ToastUtils.toast('登录成功');
         SPUtils.setUserId(entity.data?.accountId ?? '');
         SPUtils.setUserToken(entity.data?.token ?? '');
@@ -118,9 +115,7 @@ class CodeLoginPageState extends BaseStatefulState<CodeLoginPage> {
         EventBusUtils.getInstance().fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGIN));
         /// 友盟登录用户账号
         UmengUtil.onProfileSignIn(entity.data!.accountId ?? '');
-        if(entity.data!.isNewUser){
-          Get.offAll(()=>PerfectUserInfoPage(widget.phone ?? '', isMessageTab: widget.isMessageTab!,));
-        }else{
+
           if(Get.arguments['tomain'] == null || Get.arguments['tomain']){
             Get.offAll(() => MainHomePage());
           }else{
@@ -132,7 +127,6 @@ class CodeLoginPageState extends BaseStatefulState<CodeLoginPage> {
             }
             Get.back();
           }
-        }
       }
     });
   }

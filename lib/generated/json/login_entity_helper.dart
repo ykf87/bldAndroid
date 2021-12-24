@@ -16,15 +16,25 @@ loginEntityFromJson(LoginEntity data, Map<String, dynamic> json) {
 	if (json['avatar'] != null) {
 		data.avatar = json['avatar'].toString();
 	}
-	if (json['isNewUser'] != null) {
-		data.userType = json['isNewUser'] is String
-				? int.tryParse(json['isNewUser'])
-				: json['isNewUser'].toInt();
+	if (json['id'] != null) {
+		data.id = json['id'].toString();
 	}
-	if (json['isCancelUser'] != null) {
-		data.isCancelUser = json['isCancelUser'] is String
-				? int.tryParse(json['isCancelUser'])
-				: json['isCancelUser'].toInt();
+	if (json['phone'] != null) {
+		data.phone = json['phone'].toString();
+	}
+	if (json['level'] != null) {
+		data.level = json['level'].toString();
+	}
+	if (json['reg_time'] != null) {
+		data.reg_time = json['reg_time'].toString();
+	}
+	if (json['last_login_time'] != null) {
+		data.last_login_time = json['last_login_time'].toString();
+	}
+	if (json['jifen'] != null) {
+		data.jifen = json['jifen'] is String
+				? int.tryParse(json['jifen'])
+				: json['jifen'].toInt();
 	}
 	return data;
 }
@@ -36,7 +46,11 @@ Map<String, dynamic> loginEntityToJson(LoginEntity entity) {
 	data['telephone'] = entity.telephone;
 	data['nickname'] = entity.nickname;
 	data['avatar'] = entity.avatar;
-	data['isNewUser'] = entity.userType;
-	data['isCancelUser'] = entity.isCancelUser;
+	data['id'] = entity.id;
+	data['phone'] = entity.phone;
+	data['level'] = entity.level;
+	data['reg_time'] = entity.reg_time;
+	data['last_login_time'] = entity.last_login_time;
+	data['jifen'] = entity.jifen;
 	return data;
 }

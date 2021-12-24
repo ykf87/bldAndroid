@@ -6,8 +6,12 @@ class ApiUrl {
 
 
 
-  static String getBaseUrl() {
+  static String getJTKBaseUrl() {
     return 'http://api.act.jutuike.com/';
+  }
+
+  static String getBLDBaseUrl() {
+    return 'http://45.77.216.241/api/';
   }
 
   /// 用户协议
@@ -45,7 +49,6 @@ class ApiUrl {
   static const String sms_code = 'sms/code';
 
   /// 登录
-  static const String login = 'login';
 
   /// 继续登录
   static const String login_continue = 'login/continue';
@@ -114,4 +117,34 @@ class ApiUrl {
 
   ///电商聚合商品列表API接口
   static const String query_goods = 'union/query_goods';
+  ///商品推广转链
+  static const String recommend = 'union/convert';
+
+
+  /// bld 相关api
+  static const String task = 'task';
+  /// 全局配置信息
+   static final String getGlobalConfig = "config";
+  /// 首页分类
+   static final String getClassifyList = "cate";
+  /// 首页列表
+   static final String getHomeList = "list";
+  /// 登录
+   static final String login = "login";
+  /// 详情
+   static final String articleDetail = "info/";
+   static final String register = "sigin";
+   static final String center = "center";
+   static final String collect = "heart";
+   static final String reset = "reset";
+   static final String help = "help";
+   static final String bankList = "bank";
+   static final String videoSuccess = "plaied";
+   static final String agreement = "agreement";
+  /// 积分明细
+   static final String jifen = "jifen";
+  /// 绑定银行卡
+   static final String bindBank = "card";
+  /// 银行卡账号提现
+   static final String alipayWithdraw = "tixian";
 }

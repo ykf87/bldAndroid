@@ -46,7 +46,7 @@ class JtkApi{
     options.responseType = ResponseType.plain;
     Dio _dio = Dio(options);
     try {
-      Response response = await _dio.post(ApiUrl.getBaseUrl()+api, data: map);
+      Response response = await _dio.post(ApiUrl.getJTKBaseUrl()+api, data: map);
       if (response.statusCode == 200) {
 
       } else {

@@ -192,10 +192,7 @@ class IndexLogic extends GetxController {
       BaseEntity<LoginEntity> entity = BaseEntity.fromJson(data!);
       if (entity.isSuccess) {
         SPUtils.setUserAccount(entity.data?.telephone ?? '');
-        if (entity.data!.isCancel) {
-          onShowOffAccountDialog(token);
-          return;
-        }
+
         ToastUtils.toast('登录成功');
         SPUtils.setUserId(entity.data?.accountId ?? '');
         SPUtils.setUserToken(entity.data?.token ?? '');
@@ -207,12 +204,7 @@ class IndexLogic extends GetxController {
 
         /// 友盟登录用户账号
         UmengUtil.onProfileSignIn(entity.data!.accountId ?? '');
-        if (entity.data!.isNewUser) {
-          Get.offAll(() => PerfectUserInfoPage(
-                entity.data!.telephone ?? '',
-                isMessageTab: true,
-              ));
-        }
+
         state.curTabIndex = 1;
         tabChange(state.curTabIndex);
         update();

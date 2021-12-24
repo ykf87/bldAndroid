@@ -18,6 +18,7 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:SDZ/utils/sputils.dart';
 import 'mime/page/tab_my/view.dart';
+import 'mime/page/tab_task/task/view.dart';
 
 class MainHomePage extends StatefulWidget {
   MainHomePage({Key? key}) : super(key: key);
@@ -33,6 +34,7 @@ class _MainHomePageState extends State<MainHomePage>
 
   List<Widget> getTabWidget(BuildContext context) => [
         TabHomePage(),
+        AdTaskPage(),
         TabMyPage()
       ];
 
@@ -47,6 +49,7 @@ class _MainHomePageState extends State<MainHomePage>
     // const IndexHome(),
     // IndexHomeV2(),
      TabHomePage(),
+     AdTaskPage(),
     // JiujiuIndexHome(scrollController: jiujiuController),
     // const CategoryIndexPage(),
     // FavoriteIndexHome(),
@@ -59,7 +62,7 @@ class _MainHomePageState extends State<MainHomePage>
     super.initState();
     WidgetsBinding.instance?.addObserver(this);
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-        CSJUtils.showInterstitialAd();
+        // CSJUtils.showInterstitialAd();
     });
 
     this.initData();
@@ -211,8 +214,8 @@ class _MainHomePageState extends State<MainHomePage>
                       //       width: kNavIconSize,
                       //     )),
                       BottomNavigationBarItem(
-                          label: '分类',
-                          icon: _currentIndex == 2
+                          label: '福利',
+                          icon: _currentIndex == 1
                               ? Image.asset(
                             'assets/nav/fenlei.png',
                             width: kNavIconSize,
@@ -225,7 +228,7 @@ class _MainHomePageState extends State<MainHomePage>
                           )),
                       BottomNavigationBarItem(
                           label: '我的',
-                          icon: _currentIndex == 3
+                          icon: _currentIndex == 2
                               ? Image.asset(
                             'assets/nav/my.png',
                             width: kNavIconSize,

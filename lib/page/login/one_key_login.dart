@@ -184,10 +184,7 @@ class _OneKeyLoginState extends BaseStatefulState<OneKeyLoginPage> {
       BaseEntity<LoginEntity> entity = BaseEntity.fromJson(data!);
       if(entity.isSuccess){
         SPUtils.setUserAccount(entity.data?.telephone ?? '');
-        if(entity.data!.isCancel) {
-          onShowOffAccountDialog(token);
-          return;
-        }
+
         ToastUtils.toast('登录成功');
         SPUtils.setUserId(entity.data?.accountId ?? '');
         SPUtils.setUserToken(entity.data?.token ?? '');
@@ -196,9 +193,7 @@ class _OneKeyLoginState extends BaseStatefulState<OneKeyLoginPage> {
         EventBusUtils.getInstance().fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGIN));
         /// 友盟登录用户账号
         UmengUtil.onProfileSignIn(entity.data!.accountId ?? '');
-        if(entity.data!.isNewUser){
-          Get.offAll(()=>PerfectUserInfoPage(entity.data!.telephone ?? ''));
-        }else{
+
           if(toMain) {
             Get.offAll(() => MainHomePage());
           }else{
@@ -207,7 +202,6 @@ class _OneKeyLoginState extends BaseStatefulState<OneKeyLoginPage> {
             }
             Get.back();
           }
-        }
       }
     }, onError: (msg){
       ToastUtils.toast(msg);

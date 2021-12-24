@@ -3,6 +3,8 @@
 import 'package:SDZ/constant/svg_path.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/entity/search/card_entity.dart';
+import 'package:SDZ/page/home/goods_detail/view.dart';
+import 'package:SDZ/page/web/web_view_page.dart';
 import 'package:SDZ/utils/navigator_util.dart';
 import 'package:SDZ/utils/utils.dart';
 import 'package:SDZ/widget/coupon_price.dart';
@@ -14,21 +16,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
+import 'package:get/get.dart';
 
 // Project imports:
 
 // 瀑布流商品卡片
 class WaterfallGoodsCard extends StatelessWidget {
   final GoodsEntity product;
+  final String? source;
 
-  const WaterfallGoodsCard(this.product, {Key? key}) : super(key: key);
+  const WaterfallGoodsCard(this.product,{this.source = ""});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          NavigatorUtil.gotoGoodsDetailPage(context, product.goodsId.toString(),
-              newViewPage: true);
+          Get.to(() => GoodsDetailPage(
+              goodsId: product.goodsId,
+              source: source));
         },
         child: Container(
             //width: Sc.ScreenUtil().setWidth(640), // (1440-150) / 2

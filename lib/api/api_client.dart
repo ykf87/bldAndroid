@@ -33,7 +33,7 @@ class ApiClient {
   ApiClient._internal() {
     if (_isInstanceCreated == false) {
       var options = BaseOptions(
-        baseUrl: ApiUrl.getBaseUrl(),
+        baseUrl: ApiUrl.getJTKBaseUrl(),
         connectTimeout: 30000,
         receiveTimeout: 30000,
       );
@@ -166,13 +166,13 @@ class ApiClient {
         //         ? 'Android'
         //         : 'ios') +
         //     '-${await DeviceUtil.platformVersion}',
-        // 'device': await Env.getDeivceName(),
+        'device': await Env.getDeivceName(),
         // 'app_version': 'wefree-${await PackageUtil.version}',
-        // 'timestamp': DateTime.now().millisecondsSinceEpoch,
+        'timestamp': DateTime.now().millisecondsSinceEpoch,
         // 'app_store': Env.getChannelName(),
         // 'mac': '',
-        // 'device_id': SPUtils.getDeviceId(),
-        // 'Authorization': SPUtils.getUserToken(),
+        'device_id': SPUtils.getDeviceId(),
+        'Authorization': SPUtils.getUserToken(),
         // 'User-Agent': FkUserAgent.userAgent!
       };
 
@@ -246,9 +246,7 @@ class ApiClient {
       }
 
       if (e.response!.statusCode == 401) {
-        EventBusUtils.getInstance()
-            .fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
-        LoginUtil.tokenLoginOut();
+        LoginUtil.toLogin();
         return;
       }
 

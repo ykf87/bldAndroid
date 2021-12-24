@@ -131,5 +131,13 @@ class Colours {
   static const Color text_afb3c3 = Color(0xffafb3c3);
   static const Color text_FF1F35_start = Color(0xffFF1F35);
   static const Color text_FF521D_end = Color(0xffFF521D);
+
+
+  static const Color color_water_blue = Color(0xff268EF5);
+  static const Color color_water_red = Color(0xffE94E2F);
+  static const Color color_water_yellow = Color(0xffE68833);
+  static const Color color_water_green = Color(0xff13BFA8);
+  static const Color bg_f7f8f8 = Color(0xfff7f8f8);
+  static const Color color_gray_EFF0F2 = Color(0xffEFF0F2);
 }
 

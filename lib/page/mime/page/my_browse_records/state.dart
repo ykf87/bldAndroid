@@ -8,12 +8,12 @@ class Browse_recordsState {
   EasyRefreshController refreshController = EasyRefreshController();
   bool isShowEmpty = false;
 
-
+  final List<MyBrowseRecordEntity> list = [
+  ];
 
   Browse_recordsState() {
     ///Initialize variables
   }
 
-  final List<MyBrowseRecordEntity> list = [
- ];
+
 }

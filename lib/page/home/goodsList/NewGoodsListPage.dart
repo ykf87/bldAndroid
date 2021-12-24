@@ -84,7 +84,7 @@ class _NewGoodsListPageState extends State<NewGoodsListPage>
             itemCount: list.length,
             itemBuilder: (context, i) {
               return Container(
-                child: WaterfallGoodsCard(list[i]),
+                child: WaterfallGoodsCard(list[i],source: widget.source,),
               );
             },
             staggeredTileBuilder: (index) => new StaggeredTile.fit(2),

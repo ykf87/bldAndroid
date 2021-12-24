@@ -1,6 +1,7 @@
 import 'package:SDZ/res/constant.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_pangle_ads/flutter_pangle_ads.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 
 class CSJUtils{
   static const String CSJAPPID = '5198096';//穿山甲appid

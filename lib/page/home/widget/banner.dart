@@ -10,17 +10,15 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 
-final carouselRiverpod = FutureProvider<List<CardItemEntity>>((ref) async {
+final carouselRiverpod = FutureProvider<List<String>>((ref) async {
 
   final result = await getCarousel();
   return result;
 });
 /// 获取轮播图
-Future<List<CardItemEntity>> getCarousel() async {
-  CardItemEntity entity = new CardItemEntity();
-  entity.cardName = '123';
-  entity.cardAvatar = 'https://img2.baidu.com/it/u=1729250424,3321747351&fm=26&fmt=auto';
-  return  [entity,entity,entity,entity];
+Future<List<String>> getCarousel() async {
+  String image =  'https://img2.baidu.com/it/u=1729250424,3321747351&fm=26&fmt=auto';
+  return  [image,image,image,image];
 }
 class IndexCarousel extends HookWidget {
   const IndexCarousel({Key? key}) : super(key: key);

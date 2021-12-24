@@ -13,7 +13,7 @@ class LineTextWidget extends StatefulWidget {
   final String rightIcon;
   final Color bgColor;
   final bool isRadius;
-  final Function() onPressed;
+  final Function()? onPressed;
 
   const LineTextWidget(
       {Key? key,
@@ -23,7 +23,7 @@ class LineTextWidget extends StatefulWidget {
       this.rightIcon = '',
       this.isRadius = false,
       this.bgColor = Colours.dark_bg_color2,
-      required this.onPressed})
+      this.onPressed})
       : super(key: key);
 
   @override
@@ -35,7 +35,7 @@ class _LineTextWidgetState extends State<LineTextWidget> {
   Widget build(BuildContext context) {
     return new DoubleClick(
       onTap: () {
-        widget.onPressed.call();
+        widget.onPressed?.call();
       },
       child: Container(
         height: 60,
@@ -53,12 +53,14 @@ class _LineTextWidgetState extends State<LineTextWidget> {
                     margin: EdgeInsets.only(right: 14),
                     width: 20,
                     height: 20,
-                    child: SvgPicture.asset(
+                    child:widget.leftImg!.endsWith('.svg')?SvgPicture.asset(
                       "assets/svg/${widget.leftImg}",
-                    ),
+                    ):new Image.asset("assets/images/${widget.leftImg}",
+                      width: 20.0,
+                      height: 20.0,),
                   ),
             Text(widget.leftText,
-                style: TextStyle(color: Colours.bg_ffffff, fontSize: 15)),
+                style: TextStyle(color: Colours.text_121212, fontSize: 15)),
             Gaps.hGap20,
             Expanded(
               child: Row(
@@ -89,7 +91,7 @@ class _LineTextWidgetState extends State<LineTextWidget> {
               image: AssetImage("assets/images/ic_next.png"),
               width: 20,
               height: 20,
-              color: Colours.text_main,
+              color: Colours.color_black45,
             )
           ],
         ),

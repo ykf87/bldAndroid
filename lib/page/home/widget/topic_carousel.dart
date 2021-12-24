@@ -1,6 +1,8 @@
 // Dart imports:
 
 // Package imports:
+import 'dart:ffi';
+
 import 'package:SDZ/entity/search/card_entity.dart';
 import 'package:SDZ/page/menu/about.dart';
 import 'package:SDZ/widget/SwiperPagination.dart';
@@ -20,9 +22,10 @@ import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 /// 首頁輪播圖
 class IndexTopicComponentCarousel extends StatelessWidget {
-  final List<CardItemEntity> list;
+  final List<String> list;
+  final double aspectRatio;
 
-  const IndexTopicComponentCarousel({Key? key, required this.list})
+  const IndexTopicComponentCarousel({Key? key, required this.list,this.aspectRatio = 2.53})
       : super(key: key);
 
   @override
@@ -30,7 +33,7 @@ class IndexTopicComponentCarousel extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: AspectRatio(
-        aspectRatio: 2.53,
+        aspectRatio: aspectRatio,
         child: Swiper(
           itemBuilder: (BuildContext context, int index) {
             final item = list[index];
@@ -40,10 +43,7 @@ class IndexTopicComponentCarousel extends StatelessWidget {
           pagination:  MySwiperPagination(),
           onTap: (int index) async {
             final item = list[index];
-            if (item.likesNum == 1) {
-              await context.navigator.push(SwipeablePageRoute(
-                  builder: (_) => AboutPage()));
-            }
+
           },
         ),
       ),
@@ -51,12 +51,12 @@ class IndexTopicComponentCarousel extends StatelessWidget {
   }
 
 
-  Widget renderItem(CardItemEntity item) {
+  Widget renderItem(String item) {
     return Builder(
       builder: (BuildContext context) {
         return ExtendedImage.network(
-          item.cardAvatar!,
-          fit: BoxFit.cover,
+          item,
+          fit: BoxFit.fitWidth,
           borderRadius: const BorderRadius.all(Radius.circular(5)),
           shape: BoxShape.rectangle,
         );
@@ -65,7 +65,7 @@ class IndexTopicComponentCarousel extends StatelessWidget {
   }
 
   CarouselSlider buildCarouselSlider(
-      List<CardItemEntity> carousel, BuildContext context) {
+      List<String> carousel, BuildContext context) {
     return CarouselSlider(
       options:
           CarouselOptions(height: 200, autoPlay: true, enlargeCenterPage: true),
