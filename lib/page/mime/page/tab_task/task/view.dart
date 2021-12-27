@@ -1,3 +1,4 @@
+import 'package:SDZ/entity/adIntegral/ad_task_entity.dart';
 import 'package:SDZ/page/mime/page/tab_task/task/task_item.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
@@ -22,6 +23,7 @@ class AdTaskPage extends StatefulWidget {
 class _AdTaskPageState extends State<AdTaskPage> {
   final AdTaskLogic logic = Get.put(AdTaskLogic());
   final AdTaskState state = Get.find<AdTaskLogic>().state;
+  AdTaskEntity? curEntity;
 
   @override
   void initState() {
@@ -132,6 +134,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
                       itemBuilder: (context, i) {
                         return DoubleClick(
                           onTap: () {
+                            curEntity = state.list[i];
                             CSJUtils.showRewardVideoAd();
                           },
                           child: Container(
@@ -166,7 +169,10 @@ class _AdTaskPageState extends State<AdTaskPage> {
       ///获取奖励
       if (event.action == AdEventAction.onAdReward &&
           event.adId == CSJUtils.CSJVideoId) {
-        logic.doRefresh();
+        if (curEntity != null) {
+          logic.videoSuccess(curEntity!.id.toString());
+          print('视频成功');
+        }
       }
     });
   }

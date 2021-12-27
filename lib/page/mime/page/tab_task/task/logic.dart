@@ -2,6 +2,7 @@ import 'package:SDZ/api/api_client.dart';
 import 'package:SDZ/api/api_url.dart';
 import 'package:SDZ/entity/adIntegral/ad_task_entity.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
+import 'package:SDZ/entity/base/empty_entity.dart';
 import 'package:get/get.dart';
 
 import 'state.dart';
@@ -37,6 +38,22 @@ class AdTaskLogic extends GetxController {
       }
       update();
     });
+  }
+
+  void videoSuccess(String id) {
+    Map<String, dynamic> map = new Map();
+    map['tid'] = id;
+    ApiClient.instance.post(ApiUrl.getBLDBaseUrl() + ApiUrl.videoSuccess, data: map,
+        onSuccess: (data) {
+          BaseEntity<EmptyEntity> entity = BaseEntity.fromJson(data!);
+          if (entity.isSuccess) {
+            doRefresh();
+            print('视频成功请求');
+          }
+          update();
+        }, onError: (msg) {
+
+        });
   }
 
   void doRefresh() {
