@@ -40,7 +40,7 @@ class BaseDialog extends StatelessWidget {
       children: <Widget>[
         showOneBtn?SizedBox.shrink(): _DialogButton(
           text: '取消',
-          textColor: Colours.bg_ffffff,
+          textColor: Colours.text_121212,
           onPressed: () => Get.back(),
         ),
         showOneBtn?SizedBox.shrink():const SizedBox(

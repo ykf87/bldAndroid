@@ -42,13 +42,10 @@ class Tab_myLogic extends GetxController {
   ///个人中心数据
   void getData() {
     if(LoginUtil.isLogin()){
-      ApiClient.instance.get(ApiUrl.userCenter, onSuccess: (data) {
+      ApiClient.instance.get(ApiUrl.getBLDBaseUrl()+ApiUrl.center, onSuccess: (data) {
         BaseEntity<UserCenterEntity> entity = BaseEntity.fromJson(data!);
         if (entity.isSuccess && entity.data != null) {
           state.userCenterEntity = entity.data!;
-          if (entity.data!.cardInfoList!.length > 0) {
-            state.cardInfo = entity.data!.cardInfoList![0];
-          }
         }
         update();
       });

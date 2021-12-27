@@ -9,20 +9,16 @@ import 'package:SDZ/entity/base/empty_entity.dart';
 import 'package:SDZ/generated/json/empty_entity_helper.dart';
 import 'package:SDZ/entity/search/talent_entity.dart';
 import 'package:SDZ/generated/json/talent_entity_helper.dart';
-import 'package:SDZ/entity/global_entity.dart';
-import 'package:SDZ/generated/json/global_entity_helper.dart';
 import 'package:SDZ/entity/mime/base_info_entity.dart';
 import 'package:SDZ/generated/json/base_info_entity_helper.dart';
-import 'package:SDZ/entity/mime/user_center_entity.dart';
-import 'package:SDZ/generated/json/user_center_entity_helper.dart';
+import 'package:SDZ/entity/global_entity.dart';
+import 'package:SDZ/generated/json/global_entity_helper.dart';
 import 'package:SDZ/entity/talent/q_r_code_entity.dart';
 import 'package:SDZ/generated/json/q_r_code_entity_helper.dart';
-import 'package:SDZ/entity/mime/my_focus_talent_entity.dart';
-import 'package:SDZ/generated/json/my_focus_talent_entity_helper.dart';
-import 'package:SDZ/entity/new_message_entity.dart';
-import 'package:SDZ/generated/json/new_message_entity_helper.dart';
 import 'package:SDZ/entity/waimai/activity_link_result_entity.dart';
 import 'package:SDZ/generated/json/activity_link_result_entity_helper.dart';
+import 'package:SDZ/entity/mime/user_center_entity.dart';
+import 'package:SDZ/generated/json/user_center_entity_helper.dart';
 import 'package:SDZ/entity/search/card_entity.dart';
 import 'package:SDZ/generated/json/card_entity_helper.dart';
 import 'package:SDZ/entity/mime/my_collect_entity.dart';
@@ -31,24 +27,30 @@ import 'package:SDZ/entity/mime/my_browse_record_entity.dart';
 import 'package:SDZ/generated/json/my_browse_record_entity_helper.dart';
 import 'package:SDZ/entity/mime/ali_oss_entity.dart';
 import 'package:SDZ/generated/json/ali_oss_entity_helper.dart';
-import 'package:SDZ/entity/notice/notice_entity.dart';
-import 'package:SDZ/generated/json/notice_entity_helper.dart';
+import 'package:SDZ/entity/skill_entity.dart';
+import 'package:SDZ/generated/json/skill_entity_helper.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/generated/json/goods_entity_helper.dart';
+import 'package:SDZ/entity/mime/my_focus_talent_entity.dart';
+import 'package:SDZ/generated/json/my_focus_talent_entity_helper.dart';
 import 'package:SDZ/entity/notice/notice_newest_msg_entity.dart';
 import 'package:SDZ/generated/json/notice_newest_msg_entity_helper.dart';
-import 'package:SDZ/entity/login/login_entity.dart';
-import 'package:SDZ/generated/json/login_entity_helper.dart';
+import 'package:SDZ/entity/new_message_entity.dart';
+import 'package:SDZ/generated/json/new_message_entity_helper.dart';
 import 'package:SDZ/entity/mime/pr_list_skill_entity.dart';
 import 'package:SDZ/generated/json/pr_list_skill_entity_helper.dart';
 import 'package:SDZ/entity/notice_read_status_entity.dart';
 import 'package:SDZ/generated/json/notice_read_status_entity_helper.dart';
 import 'package:SDZ/entity/adIntegral/ad_task_entity.dart';
 import 'package:SDZ/generated/json/ad_task_entity_helper.dart';
+import 'package:SDZ/entity/login/login_entity.dart';
+import 'package:SDZ/generated/json/login_entity_helper.dart';
 import 'package:SDZ/entity/waimai/goods_link_entity.dart';
 import 'package:SDZ/generated/json/goods_link_entity_helper.dart';
-import 'package:SDZ/entity/skill_entity.dart';
-import 'package:SDZ/generated/json/skill_entity_helper.dart';
+import 'package:SDZ/entity/notice/notice_entity.dart';
+import 'package:SDZ/generated/json/notice_entity_helper.dart';
+import 'package:SDZ/entity/mime/bank_entity.dart';
+import 'package:SDZ/generated/json/bank_entity_helper.dart';
 import 'package:SDZ/entity/waimai/goods_detail_entity.dart';
 import 'package:SDZ/generated/json/goods_detail_entity_helper.dart';
 
@@ -75,26 +77,18 @@ class JsonConvert<T> {
 				return talentCardFromJson(data as TalentCard, json) as T;
 			case TalentSkill:
 				return talentSkillFromJson(data as TalentSkill, json) as T;
-			case GlobalEntity:
-				return globalEntityFromJson(data as GlobalEntity, json) as T;
 			case BaseInfoEntity:
 				return baseInfoEntityFromJson(data as BaseInfoEntity, json) as T;
+			case GlobalEntity:
+				return globalEntityFromJson(data as GlobalEntity, json) as T;
+			case QRCodeEntity:
+				return qRCodeEntityFromJson(data as QRCodeEntity, json) as T;
+			case ActivityLinkResultEntity:
+				return activityLinkResultEntityFromJson(data as ActivityLinkResultEntity, json) as T;
 			case UserCenterEntity:
 				return userCenterEntityFromJson(data as UserCenterEntity, json) as T;
 			case UserCenterCardInfoList:
 				return userCenterCardInfoListFromJson(data as UserCenterCardInfoList, json) as T;
-			case QRCodeEntity:
-				return qRCodeEntityFromJson(data as QRCodeEntity, json) as T;
-			case MyFocusTalentEntity:
-				return myFocusTalentEntityFromJson(data as MyFocusTalentEntity, json) as T;
-			case MyFocusTalentSkillTagList:
-				return myFocusTalentSkillTagListFromJson(data as MyFocusTalentSkillTagList, json) as T;
-			case MyFocusTalentCardList:
-				return myFocusTalentCardListFromJson(data as MyFocusTalentCardList, json) as T;
-			case NewMessageEntity:
-				return newMessageEntityFromJson(data as NewMessageEntity, json) as T;
-			case ActivityLinkResultEntity:
-				return activityLinkResultEntityFromJson(data as ActivityLinkResultEntity, json) as T;
 			case CardEntity:
 				return cardEntityFromJson(data as CardEntity, json) as T;
 			case CardItemEntity:
@@ -113,30 +107,40 @@ class JsonConvert<T> {
 				return myBrowseRecordSkillTagListFromJson(data as MyBrowseRecordSkillTagList, json) as T;
 			case AliOssEntity:
 				return aliOssEntityFromJson(data as AliOssEntity, json) as T;
-			case NoticeEntity:
-				return noticeEntityFromJson(data as NoticeEntity, json) as T;
-			case NoticeItemEntity:
-				return noticeItemEntityFromJson(data as NoticeItemEntity, json) as T;
+			case SkillEntity:
+				return skillEntityFromJson(data as SkillEntity, json) as T;
 			case GoodsEntity:
 				return goodsEntityFromJson(data as GoodsEntity, json) as T;
+			case MyFocusTalentEntity:
+				return myFocusTalentEntityFromJson(data as MyFocusTalentEntity, json) as T;
+			case MyFocusTalentSkillTagList:
+				return myFocusTalentSkillTagListFromJson(data as MyFocusTalentSkillTagList, json) as T;
+			case MyFocusTalentCardList:
+				return myFocusTalentCardListFromJson(data as MyFocusTalentCardList, json) as T;
 			case NoticeNewestMsgEntity:
 				return noticeNewestMsgEntityFromJson(data as NoticeNewestMsgEntity, json) as T;
-			case LoginEntity:
-				return loginEntityFromJson(data as LoginEntity, json) as T;
+			case NewMessageEntity:
+				return newMessageEntityFromJson(data as NewMessageEntity, json) as T;
 			case PrListSkillEntity:
 				return prListSkillEntityFromJson(data as PrListSkillEntity, json) as T;
 			case NoticeReadStatusEntity:
 				return noticeReadStatusEntityFromJson(data as NoticeReadStatusEntity, json) as T;
 			case AdTaskEntity:
 				return adTaskEntityFromJson(data as AdTaskEntity, json) as T;
+			case LoginEntity:
+				return loginEntityFromJson(data as LoginEntity, json) as T;
 			case GoodsLinkEntity:
 				return goodsLinkEntityFromJson(data as GoodsLinkEntity, json) as T;
 			case GoodsLinkCouponInfo:
 				return goodsLinkCouponInfoFromJson(data as GoodsLinkCouponInfo, json) as T;
 			case GoodsLinkWeAppInfo:
 				return goodsLinkWeAppInfoFromJson(data as GoodsLinkWeAppInfo, json) as T;
-			case SkillEntity:
-				return skillEntityFromJson(data as SkillEntity, json) as T;
+			case NoticeEntity:
+				return noticeEntityFromJson(data as NoticeEntity, json) as T;
+			case NoticeItemEntity:
+				return noticeItemEntityFromJson(data as NoticeItemEntity, json) as T;
+			case BankEntity:
+				return bankEntityFromJson(data as BankEntity, json) as T;
 			case GoodsDetailEntity:
 				return goodsDetailEntityFromJson(data as GoodsDetailEntity, json) as T;    }
 		return data as T;
@@ -156,26 +160,18 @@ class JsonConvert<T> {
 				return talentCardToJson(data as TalentCard);
 			case TalentSkill:
 				return talentSkillToJson(data as TalentSkill);
-			case GlobalEntity:
-				return globalEntityToJson(data as GlobalEntity);
 			case BaseInfoEntity:
 				return baseInfoEntityToJson(data as BaseInfoEntity);
+			case GlobalEntity:
+				return globalEntityToJson(data as GlobalEntity);
+			case QRCodeEntity:
+				return qRCodeEntityToJson(data as QRCodeEntity);
+			case ActivityLinkResultEntity:
+				return activityLinkResultEntityToJson(data as ActivityLinkResultEntity);
 			case UserCenterEntity:
 				return userCenterEntityToJson(data as UserCenterEntity);
 			case UserCenterCardInfoList:
 				return userCenterCardInfoListToJson(data as UserCenterCardInfoList);
-			case QRCodeEntity:
-				return qRCodeEntityToJson(data as QRCodeEntity);
-			case MyFocusTalentEntity:
-				return myFocusTalentEntityToJson(data as MyFocusTalentEntity);
-			case MyFocusTalentSkillTagList:
-				return myFocusTalentSkillTagListToJson(data as MyFocusTalentSkillTagList);
-			case MyFocusTalentCardList:
-				return myFocusTalentCardListToJson(data as MyFocusTalentCardList);
-			case NewMessageEntity:
-				return newMessageEntityToJson(data as NewMessageEntity);
-			case ActivityLinkResultEntity:
-				return activityLinkResultEntityToJson(data as ActivityLinkResultEntity);
 			case CardEntity:
 				return cardEntityToJson(data as CardEntity);
 			case CardItemEntity:
@@ -194,30 +190,40 @@ class JsonConvert<T> {
 				return myBrowseRecordSkillTagListToJson(data as MyBrowseRecordSkillTagList);
 			case AliOssEntity:
 				return aliOssEntityToJson(data as AliOssEntity);
-			case NoticeEntity:
-				return noticeEntityToJson(data as NoticeEntity);
-			case NoticeItemEntity:
-				return noticeItemEntityToJson(data as NoticeItemEntity);
+			case SkillEntity:
+				return skillEntityToJson(data as SkillEntity);
 			case GoodsEntity:
 				return goodsEntityToJson(data as GoodsEntity);
+			case MyFocusTalentEntity:
+				return myFocusTalentEntityToJson(data as MyFocusTalentEntity);
+			case MyFocusTalentSkillTagList:
+				return myFocusTalentSkillTagListToJson(data as MyFocusTalentSkillTagList);
+			case MyFocusTalentCardList:
+				return myFocusTalentCardListToJson(data as MyFocusTalentCardList);
 			case NoticeNewestMsgEntity:
 				return noticeNewestMsgEntityToJson(data as NoticeNewestMsgEntity);
-			case LoginEntity:
-				return loginEntityToJson(data as LoginEntity);
+			case NewMessageEntity:
+				return newMessageEntityToJson(data as NewMessageEntity);
 			case PrListSkillEntity:
 				return prListSkillEntityToJson(data as PrListSkillEntity);
 			case NoticeReadStatusEntity:
 				return noticeReadStatusEntityToJson(data as NoticeReadStatusEntity);
 			case AdTaskEntity:
 				return adTaskEntityToJson(data as AdTaskEntity);
+			case LoginEntity:
+				return loginEntityToJson(data as LoginEntity);
 			case GoodsLinkEntity:
 				return goodsLinkEntityToJson(data as GoodsLinkEntity);
 			case GoodsLinkCouponInfo:
 				return goodsLinkCouponInfoToJson(data as GoodsLinkCouponInfo);
 			case GoodsLinkWeAppInfo:
 				return goodsLinkWeAppInfoToJson(data as GoodsLinkWeAppInfo);
-			case SkillEntity:
-				return skillEntityToJson(data as SkillEntity);
+			case NoticeEntity:
+				return noticeEntityToJson(data as NoticeEntity);
+			case NoticeItemEntity:
+				return noticeItemEntityToJson(data as NoticeItemEntity);
+			case BankEntity:
+				return bankEntityToJson(data as BankEntity);
 			case GoodsDetailEntity:
 				return goodsDetailEntityToJson(data as GoodsDetailEntity);
 			}
@@ -244,35 +250,23 @@ class JsonConvert<T> {
 		if(type == (TalentSkill).toString()){
 			return TalentSkill().fromJson(json);
 		}
+		if(type == (BaseInfoEntity).toString()){
+			return BaseInfoEntity().fromJson(json);
+		}
 		if(type == (GlobalEntity).toString()){
 			return GlobalEntity().fromJson(json);
 		}
-		if(type == (BaseInfoEntity).toString()){
-			return BaseInfoEntity().fromJson(json);
+		if(type == (QRCodeEntity).toString()){
+			return QRCodeEntity().fromJson(json);
+		}
+		if(type == (ActivityLinkResultEntity).toString()){
+			return ActivityLinkResultEntity().fromJson(json);
 		}
 		if(type == (UserCenterEntity).toString()){
 			return UserCenterEntity().fromJson(json);
 		}
 		if(type == (UserCenterCardInfoList).toString()){
 			return UserCenterCardInfoList().fromJson(json);
-		}
-		if(type == (QRCodeEntity).toString()){
-			return QRCodeEntity().fromJson(json);
-		}
-		if(type == (MyFocusTalentEntity).toString()){
-			return MyFocusTalentEntity().fromJson(json);
-		}
-		if(type == (MyFocusTalentSkillTagList).toString()){
-			return MyFocusTalentSkillTagList().fromJson(json);
-		}
-		if(type == (MyFocusTalentCardList).toString()){
-			return MyFocusTalentCardList().fromJson(json);
-		}
-		if(type == (NewMessageEntity).toString()){
-			return NewMessageEntity().fromJson(json);
-		}
-		if(type == (ActivityLinkResultEntity).toString()){
-			return ActivityLinkResultEntity().fromJson(json);
 		}
 		if(type == (CardEntity).toString()){
 			return CardEntity().fromJson(json);
@@ -301,20 +295,26 @@ class JsonConvert<T> {
 		if(type == (AliOssEntity).toString()){
 			return AliOssEntity().fromJson(json);
 		}
-		if(type == (NoticeEntity).toString()){
-			return NoticeEntity().fromJson(json);
-		}
-		if(type == (NoticeItemEntity).toString()){
-			return NoticeItemEntity().fromJson(json);
+		if(type == (SkillEntity).toString()){
+			return SkillEntity().fromJson(json);
 		}
 		if(type == (GoodsEntity).toString()){
 			return GoodsEntity().fromJson(json);
 		}
+		if(type == (MyFocusTalentEntity).toString()){
+			return MyFocusTalentEntity().fromJson(json);
+		}
+		if(type == (MyFocusTalentSkillTagList).toString()){
+			return MyFocusTalentSkillTagList().fromJson(json);
+		}
+		if(type == (MyFocusTalentCardList).toString()){
+			return MyFocusTalentCardList().fromJson(json);
+		}
 		if(type == (NoticeNewestMsgEntity).toString()){
 			return NoticeNewestMsgEntity().fromJson(json);
 		}
-		if(type == (LoginEntity).toString()){
-			return LoginEntity().fromJson(json);
+		if(type == (NewMessageEntity).toString()){
+			return NewMessageEntity().fromJson(json);
 		}
 		if(type == (PrListSkillEntity).toString()){
 			return PrListSkillEntity().fromJson(json);
@@ -325,6 +325,9 @@ class JsonConvert<T> {
 		if(type == (AdTaskEntity).toString()){
 			return AdTaskEntity().fromJson(json);
 		}
+		if(type == (LoginEntity).toString()){
+			return LoginEntity().fromJson(json);
+		}
 		if(type == (GoodsLinkEntity).toString()){
 			return GoodsLinkEntity().fromJson(json);
 		}
@@ -334,8 +337,14 @@ class JsonConvert<T> {
 		if(type == (GoodsLinkWeAppInfo).toString()){
 			return GoodsLinkWeAppInfo().fromJson(json);
 		}
-		if(type == (SkillEntity).toString()){
-			return SkillEntity().fromJson(json);
+		if(type == (NoticeEntity).toString()){
+			return NoticeEntity().fromJson(json);
+		}
+		if(type == (NoticeItemEntity).toString()){
+			return NoticeItemEntity().fromJson(json);
+		}
+		if(type == (BankEntity).toString()){
+			return BankEntity().fromJson(json);
 		}
 		if(type == (GoodsDetailEntity).toString()){
 			return GoodsDetailEntity().fromJson(json);
@@ -364,35 +373,23 @@ class JsonConvert<T> {
 		if(<TalentSkill>[] is M){
 			return data.map<TalentSkill>((e) => TalentSkill().fromJson(e)).toList() as M;
 		}
+		if(<BaseInfoEntity>[] is M){
+			return data.map<BaseInfoEntity>((e) => BaseInfoEntity().fromJson(e)).toList() as M;
+		}
 		if(<GlobalEntity>[] is M){
 			return data.map<GlobalEntity>((e) => GlobalEntity().fromJson(e)).toList() as M;
 		}
-		if(<BaseInfoEntity>[] is M){
-			return data.map<BaseInfoEntity>((e) => BaseInfoEntity().fromJson(e)).toList() as M;
+		if(<QRCodeEntity>[] is M){
+			return data.map<QRCodeEntity>((e) => QRCodeEntity().fromJson(e)).toList() as M;
+		}
+		if(<ActivityLinkResultEntity>[] is M){
+			return data.map<ActivityLinkResultEntity>((e) => ActivityLinkResultEntity().fromJson(e)).toList() as M;
 		}
 		if(<UserCenterEntity>[] is M){
 			return data.map<UserCenterEntity>((e) => UserCenterEntity().fromJson(e)).toList() as M;
 		}
 		if(<UserCenterCardInfoList>[] is M){
 			return data.map<UserCenterCardInfoList>((e) => UserCenterCardInfoList().fromJson(e)).toList() as M;
-		}
-		if(<QRCodeEntity>[] is M){
-			return data.map<QRCodeEntity>((e) => QRCodeEntity().fromJson(e)).toList() as M;
-		}
-		if(<MyFocusTalentEntity>[] is M){
-			return data.map<MyFocusTalentEntity>((e) => MyFocusTalentEntity().fromJson(e)).toList() as M;
-		}
-		if(<MyFocusTalentSkillTagList>[] is M){
-			return data.map<MyFocusTalentSkillTagList>((e) => MyFocusTalentSkillTagList().fromJson(e)).toList() as M;
-		}
-		if(<MyFocusTalentCardList>[] is M){
-			return data.map<MyFocusTalentCardList>((e) => MyFocusTalentCardList().fromJson(e)).toList() as M;
-		}
-		if(<NewMessageEntity>[] is M){
-			return data.map<NewMessageEntity>((e) => NewMessageEntity().fromJson(e)).toList() as M;
-		}
-		if(<ActivityLinkResultEntity>[] is M){
-			return data.map<ActivityLinkResultEntity>((e) => ActivityLinkResultEntity().fromJson(e)).toList() as M;
 		}
 		if(<CardEntity>[] is M){
 			return data.map<CardEntity>((e) => CardEntity().fromJson(e)).toList() as M;
@@ -421,20 +418,26 @@ class JsonConvert<T> {
 		if(<AliOssEntity>[] is M){
 			return data.map<AliOssEntity>((e) => AliOssEntity().fromJson(e)).toList() as M;
 		}
-		if(<NoticeEntity>[] is M){
-			return data.map<NoticeEntity>((e) => NoticeEntity().fromJson(e)).toList() as M;
-		}
-		if(<NoticeItemEntity>[] is M){
-			return data.map<NoticeItemEntity>((e) => NoticeItemEntity().fromJson(e)).toList() as M;
+		if(<SkillEntity>[] is M){
+			return data.map<SkillEntity>((e) => SkillEntity().fromJson(e)).toList() as M;
 		}
 		if(<GoodsEntity>[] is M){
 			return data.map<GoodsEntity>((e) => GoodsEntity().fromJson(e)).toList() as M;
 		}
+		if(<MyFocusTalentEntity>[] is M){
+			return data.map<MyFocusTalentEntity>((e) => MyFocusTalentEntity().fromJson(e)).toList() as M;
+		}
+		if(<MyFocusTalentSkillTagList>[] is M){
+			return data.map<MyFocusTalentSkillTagList>((e) => MyFocusTalentSkillTagList().fromJson(e)).toList() as M;
+		}
+		if(<MyFocusTalentCardList>[] is M){
+			return data.map<MyFocusTalentCardList>((e) => MyFocusTalentCardList().fromJson(e)).toList() as M;
+		}
 		if(<NoticeNewestMsgEntity>[] is M){
 			return data.map<NoticeNewestMsgEntity>((e) => NoticeNewestMsgEntity().fromJson(e)).toList() as M;
 		}
-		if(<LoginEntity>[] is M){
-			return data.map<LoginEntity>((e) => LoginEntity().fromJson(e)).toList() as M;
+		if(<NewMessageEntity>[] is M){
+			return data.map<NewMessageEntity>((e) => NewMessageEntity().fromJson(e)).toList() as M;
 		}
 		if(<PrListSkillEntity>[] is M){
 			return data.map<PrListSkillEntity>((e) => PrListSkillEntity().fromJson(e)).toList() as M;
@@ -445,6 +448,9 @@ class JsonConvert<T> {
 		if(<AdTaskEntity>[] is M){
 			return data.map<AdTaskEntity>((e) => AdTaskEntity().fromJson(e)).toList() as M;
 		}
+		if(<LoginEntity>[] is M){
+			return data.map<LoginEntity>((e) => LoginEntity().fromJson(e)).toList() as M;
+		}
 		if(<GoodsLinkEntity>[] is M){
 			return data.map<GoodsLinkEntity>((e) => GoodsLinkEntity().fromJson(e)).toList() as M;
 		}
@@ -454,8 +460,14 @@ class JsonConvert<T> {
 		if(<GoodsLinkWeAppInfo>[] is M){
 			return data.map<GoodsLinkWeAppInfo>((e) => GoodsLinkWeAppInfo().fromJson(e)).toList() as M;
 		}
-		if(<SkillEntity>[] is M){
-			return data.map<SkillEntity>((e) => SkillEntity().fromJson(e)).toList() as M;
+		if(<NoticeEntity>[] is M){
+			return data.map<NoticeEntity>((e) => NoticeEntity().fromJson(e)).toList() as M;
+		}
+		if(<NoticeItemEntity>[] is M){
+			return data.map<NoticeItemEntity>((e) => NoticeItemEntity().fromJson(e)).toList() as M;
+		}
+		if(<BankEntity>[] is M){
+			return data.map<BankEntity>((e) => BankEntity().fromJson(e)).toList() as M;
 		}
 		if(<GoodsDetailEntity>[] is M){
 			return data.map<GoodsDetailEntity>((e) => GoodsDetailEntity().fromJson(e)).toList() as M;

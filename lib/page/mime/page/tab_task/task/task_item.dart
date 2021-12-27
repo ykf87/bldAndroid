@@ -52,7 +52,8 @@ class _State extends State<TaskItem> {
       decoration: BoxDecoration(
         image: DecorationImage(
           // image: AssetImage(getImg(widget.entity.resType)),
-          image: AssetImage("assets/images/integral_bg_waterfall_flow_1.png"),
+          image: AssetImage(widget.entity.resType>4?"assets/images/integral_bg_waterfall_flow_1.png":
+          "assets/images/integral_bg_waterfall_flow_${widget.entity.resType}.png"),
           fit:BoxFit.fill,
         )
       ),

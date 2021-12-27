@@ -71,9 +71,9 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
         appBar: AppBar(
           centerTitle: true,
           title: Text('设置',
-              style: TextStyle(color: Colours.bg_ffffff, fontSize: 20)),
+              style: TextStyle(color: Colours.text_121212, fontSize: 20)),
           leading: IconButton(
-            color: Colors.white,
+            color: Colors.black,
             tooltip: null,
             onPressed: () {
               Get.back();
@@ -95,77 +95,9 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                         Container(
                           child: Column(
                             children: [
-                              // DoubleClick(
-                              //   onTap: () {},
-                              //   child: Container(
-                              //     height: 60,
-                              //     color: Colours.dark_bg_color,
-                              //     padding: EdgeInsets.only(left: 12, right: 3),
-                              //     child: Row(
-                              //       crossAxisAlignment:
-                              //           CrossAxisAlignment.center,
-                              //       children: [
-                              //         Container(
-                              //           margin: EdgeInsets.only(right: 14),
-                              //           width: 20,
-                              //           height: 20,
-                              //           child: SvgPicture.asset(
-                              //             "assets/svg/ic_information.svg",
-                              //           ),
-                              //         ),
-                              //         Expanded(
-                              //           child: Text('消息通知',
-                              //               style: TextStyle(
-                              //                   color: Colours.bg_ffffff,
-                              //                   fontSize: 15)),
-                              //         ),
-                              //         Switch(
-                              //           value: this.isNotificationEnable,
-                              //           activeColor: Colours.color_main_red,
-                              //           activeTrackColor:
-                              //               Colours.color_switch_track,
-                              //           inactiveTrackColor:
-                              //               Colours.color_switch_track,
-                              //           inactiveThumbColor:
-                              //               Colours.color_switch_inactive,
-                              //           onChanged: (value) {
-                              //             JPushUtil.getInstance()
-                              //                 .openSettingNotification();
-                              //           },
-                              //         ),
-                              //       ],
-                              //     ),
-                              //   ),
-                              // ),
-                              LineTextWidget(
-                                  leftImg: 'ic_safety.svg',
-                                  leftText: '账号安全',
-                                  rightText: '',
-                                  bgColor: Colours.dark_bg_color,
-                                  onPressed: () {
-                                    if (!SPUtils.isLogined()) {
-                                      // ToastUtils.toast('您还未登录哦');
-                                      LoginUtil.toLogin(toMain: false);
-                                      return;
-                                    }
-                                    Get.to(AccountSafePage());
-                                  }),
-                              LineTextWidget(
-                                  leftImg: 'ic_feedback.svg',
-                                  bgColor: Colours.dark_bg_color,
-                                  leftText: '意见反馈',
-                                  rightText: '',
-                                  onPressed: () {
-                                    if (!SPUtils.isLogined()) {
-                                      // ToastUtils.toast('您还未登录哦');
-                                      LoginUtil.toLogin(toMain: false);
-                                      return;
-                                    }
-                                    Get.to(FeedBackPage());
-                                  }),
                               LineTextWidget(
                                   leftImg: 'ic_protocol.svg',
-                                  bgColor: Colours.dark_bg_color,
+                                  bgColor: Colours.bg_ffffff,
                                   leftText: '用户协议',
                                   rightText: '',
                                   onPressed: () {
@@ -179,7 +111,7 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                                   }),
                               LineTextWidget(
                                   leftImg: 'ic_protocol.svg',
-                                  bgColor: Colours.dark_bg_color,
+                                  bgColor: Colours.bg_ffffff,
                                   leftText: '隐私政策',
                                   rightText: '',
                                   onPressed: () {
@@ -191,7 +123,7 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                                   }),
                               LineTextWidget(
                                   leftImg: 'ic_clear.svg',
-                                  bgColor: Colours.dark_bg_color,
+                                  bgColor: Colours.bg_ffffff,
                                   leftText: '清除缓存',
                                   rightText: cacheSize,
                                   onPressed: () {
@@ -208,42 +140,13 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                                   }),
                               LineTextWidget(
                                   leftImg: 'ic_about_us.svg',
-                                  bgColor: Colours.dark_bg_color,
-                                  leftText: '关于WeFree',
+                                  bgColor: Colours.bg_ffffff,
+                                  leftText: '关于我们',
                                   rightText: '',
                                   onPressed: () {
                                     Get.to(AboutWeFreePage());
                                   }),
-                              Env.envType == EnvType.EnvType_Release
-                                  ? Container()
-                                  : LineTextWidget(
-                                      leftImg: 'ic_about_us.svg',
-                                      bgColor: Colours.dark_bg_color,
-                                      leftText: '当前包类型',
-                                      rightText: Env.getPackeType(),
-                                      onPressed: () {
-                                        Get.to(AboutWeFreePage());
-                                      }),
-                              Env.envType == EnvType.EnvType_Release
-                                  ? Container()
-                                  : LineTextWidget(
-                                      leftImg: 'ic_about_us.svg',
-                                      bgColor: Colours.dark_bg_color,
-                                      leftText: '当前版本号',
-                                      rightText: version,
-                                      onPressed: () {
-                                        Get.to(AboutWeFreePage());
-                                      }),
-                              Env.envType == EnvType.EnvType_Release
-                                  ? Container()
-                                  : LineTextWidget(
-                                      leftImg: 'ic_about_us.svg',
-                                      bgColor: Colours.dark_bg_color,
-                                      leftText: '当前build版本',
-                                      rightText: number,
-                                      onPressed: () {
-                                        Get.to(AboutWeFreePage());
-                                      }),
+
                             ],
                           ),
                         ),
@@ -253,7 +156,8 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                 ],
               ),
               SPUtils.isLogined()
-                  ? Positioned(
+                  ?
+              Positioned(
                       left: 0,
                       right: 0,
                       bottom: 16,
@@ -267,13 +171,14 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                                     context: context,
                                     builder: (_) => ExitDialog(
                                         onPressed: () {
-                                          logout();
+                                          // logout();
+                                          LoginUtil.logout();
                                         },
                                         content: '确认退出当前账号？'));
                               },
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: Colours.dark_bg_color2,
+                                  color: Colours.color_FF193C,
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 height: 45,
@@ -316,7 +221,7 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
 
   ///退出登录
   void logout() {
-    ApiClient.instance.delete(ApiUrl.logout, onSuccess: (data) {
+    ApiClient.instance.delete(ApiUrl.getBLDBaseUrl()+ApiUrl.logout, onSuccess: (data) {
       BaseEntity<EmptyEntity> entity = BaseEntity.fromJson(data!);
       if (entity.isSuccess) {
         LoginUtil.logout();

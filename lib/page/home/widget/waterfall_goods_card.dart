@@ -3,6 +3,7 @@
 import 'package:SDZ/constant/svg_path.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/entity/search/card_entity.dart';
+import 'package:SDZ/page/home/goods_detail/detail.dart';
 import 'package:SDZ/page/home/goods_detail/view.dart';
 import 'package:SDZ/page/web/web_view_page.dart';
 import 'package:SDZ/utils/navigator_util.dart';
@@ -31,8 +32,8 @@ class WaterfallGoodsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          Get.to(() => GoodsDetailPage(
-              goodsId: product.goodsId,
+          Get.to(() => DetailPage(
+              goodsId: product.goodsId??'',
               source: source));
         },
         child: Container(

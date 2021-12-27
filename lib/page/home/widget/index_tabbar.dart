@@ -64,7 +64,7 @@ class IndexTabbar extends SliverPersistentHeaderDelegate {
 
 
   int get index => tabController.index;
-  double get calcHei => 50;
+  double get calcHei => 51;
 
   @override
   double get maxExtent => calcHei;

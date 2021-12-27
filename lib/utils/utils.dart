@@ -1,6 +1,7 @@
 
 import 'dart:ui';
 
+import 'package:SDZ/core/utils/toast.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,9 @@ import 'package:SDZ/constant/svg_path.dart';
 import 'package:SDZ/entity/mime/my_browse_record_entity.dart';
 import 'package:SDZ/entity/search/platform_entity.dart';
 import 'package:SDZ/utils/sputils.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get_utils/src/platform/platform.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Utils {
   static String QRCodeUrl = '';
@@ -133,4 +137,47 @@ class Utils {
 
   /// 获取进入后台时当前时间
   static get getAppBackgroundTime => SPUtils.appBackgroundTime;
+
+
+  // 复制
+  static void copy(String? text, {String? message}) {
+    Clipboard.setData(ClipboardData(text: text));
+    ToastUtils.toast(message ??'复制成功');
+  }
+
+  // 打开淘宝
+  static Future<void> openTaobao(String url) async {
+    await urlToApp(url, 'taobao://');
+  }
+  static  String urlHandle(String url) {
+    var _url = url;
+    if (_url.indexOf('http://') == 0) {
+      _url = _url.replaceAll('http://', '');
+    } else if (_url.indexOf('https://') == 0) {
+      _url = _url.replaceAll('https://', '');
+    }
+    return _url;
+  }
+
+
+  /// url 跳转到 app  使用约束
+  static Future<void> urlToApp(String url, String urlYs) async {
+    /// 如果是windows平台,直接跳转到浏览器打开链接
+    if (GetPlatform.isWindows) {
+      await launch(url);
+      return;
+    }
+    var _url = url;
+    _url = '$urlYs${urlHandle(url)}';
+    if (await canLaunch(_url)) {
+      // 判断当前手机是否安装某app. 能否正常跳转
+      await launch(_url);
+    }
+  }
+
+  ///处理图片链接不带头部
+  static String magesProcessor(String url){
+    return url.contains('https:') || url.contains('http:')?url:'https:$url';
+  }
+
 }

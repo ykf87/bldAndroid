@@ -14,6 +14,7 @@ import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/utils.dart';
 import 'package:SDZ/utils/wf_log_util.dart';
 import 'package:SDZ/utils/provider.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:SDZ/utils/sputils.dart';
@@ -184,6 +185,15 @@ class _MainHomePageState extends State<MainHomePage>
                     onTap: ((index) {
                       setState(() {
                         _currentIndex = index;
+                        if(index == 2){
+                          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+                              statusBarColor: Colors.transparent,
+                              statusBarIconBrightness: Brightness.dark));
+                        }else{
+                          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+                              statusBarColor: Colors.white,
+                              statusBarIconBrightness: Brightness.dark));
+                        }
                       });
                     }),
                     items: [

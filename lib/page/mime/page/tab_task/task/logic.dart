@@ -9,25 +9,27 @@ import 'state.dart';
 class AdTaskLogic extends GetxController {
   final state = AdTaskState();
 
-
   void getData() {
     Map<String, dynamic> map = new Map();
     map['pageNum'] = state.pageNum;
-    ApiClient.instance.get(ApiUrl.getBLDBaseUrl()+ApiUrl.task, data: map, onSuccess: (data) {
-      BaseEntity<List<AdTaskEntity>> entity =
-      BaseEntity.fromJson(data!);
-      if(entity.isSuccess && entity.data != null){
+    ApiClient.instance.get(ApiUrl.getBLDBaseUrl() + ApiUrl.task, data: map,
+        onSuccess: (data) {
+      BaseEntity<List<AdTaskEntity>> entity = BaseEntity.fromJson(data!);
+      if (entity.isSuccess && entity.data != null) {
         List<AdTaskEntity>? list = entity.data;
         state.refreshController.finishLoad(noMore: list!.length < 30);
         state.refreshController.finishRefresh(success: true);
+        for (int i = 0; i < list.length; i++) {
+          list[i].resType = (i + 1) % 5;
+        }
         state.list.addAll(list);
-        state.isShowEmpty = state.list.length== 0;
-      }else{
-        state.isShowEmpty = state.list.length== 0;
+        state.isShowEmpty = state.list.length == 0;
+      } else {
+        state.isShowEmpty = state.list.length == 0;
       }
       update();
     }, onError: (msg) {
-      state.isShowEmpty = state.list.length== 0;
+      state.isShowEmpty = state.list.length == 0;
       state.refreshController.finishLoad(noMore: true);
       state.refreshController.finishRefresh(success: true);
       if (state.pageNum > 1) {

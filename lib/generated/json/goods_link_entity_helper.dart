@@ -48,6 +48,11 @@ goodsLinkEntityFromJson(GoodsLinkEntity data, Map<String, dynamic> json) {
 	if (json['expression'] != null) {
 		data.expression = json['expression'].toString();
 	}
+	if (json['shopType'] != null) {
+		data.shopType = json['shopType'] is String
+				? int.tryParse(json['shopType'])
+				: json['shopType'].toInt();
+	}
 	return data;
 }
 
@@ -68,6 +73,7 @@ Map<String, dynamic> goodsLinkEntityToJson(GoodsLinkEntity entity) {
 	data['goodsDetailPictures'] = entity.goodsDetailPictures;
 	data['shopName'] = entity.shopName;
 	data['expression'] = entity.expression;
+	data['shopType'] = entity.shopType;
 	return data;
 }
 
@@ -78,14 +84,10 @@ goodsLinkCouponInfoFromJson(GoodsLinkCouponInfo data, Map<String, dynamic> json)
 				: json['fav'].toInt();
 	}
 	if (json['useEndTime'] != null) {
-		data.useEndTime = json['useEndTime'] is String
-				? int.tryParse(json['useEndTime'])
-				: json['useEndTime'].toInt();
+		data.useEndTime = json['useEndTime'].toString();
 	}
 	if (json['useBeginTime'] != null) {
-		data.useBeginTime = json['useBeginTime'] is String
-				? int.tryParse(json['useBeginTime'])
-				: json['useBeginTime'].toInt();
+		data.useBeginTime = json['useBeginTime'].toString();
 	}
 	return data;
 }

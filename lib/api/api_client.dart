@@ -70,22 +70,24 @@ class ApiClient {
   /// url 请求地址
   /// data 请求参数(可选)
   /// loading 是否显示加载提示(可选)
-  Future post1(String url,
+  Future getReturn(String url,
       {Map<String, dynamic>? data, bool loading = false}) async {
-    // if(loading) {
-    //   LoadingUtil().show();
-    // }
-    // try{
-    //   Response response = await _dio!.post(url, data: data);
-    //   if(loading) {
-    //     LoadingUtil().dismiss();
-    //   }
-    //   return response.data;
-    // } on DioError catch(e){
-    //   if(loading) {
-    //     LoadingUtil().dismiss();
-    //   }
-    // }
+    if(loading) {
+      LoadingUtil().show();
+    }
+    try{
+      Response response = await _dio!.get(url,
+          queryParameters:
+          data != null ? data as Map<String, dynamic> : Map());
+      if(loading) {
+        LoadingUtil().dismiss();
+      }
+      return response.data;
+    } on DioError catch(e){
+      if(loading) {
+        LoadingUtil().dismiss();
+      }
+    }
   }
 
   post<T>(String url,

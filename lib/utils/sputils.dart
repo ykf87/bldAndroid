@@ -58,7 +58,7 @@ class SPUtils {
   static bool isLogined() {
     // String nickName = getNickName();
     // return nickName != null && nickName.isNotEmpty;
-    return getUserId().isNotEmpty;
+    return getUserToken().isNotEmpty;
   }
 
   /// 设置deviceid

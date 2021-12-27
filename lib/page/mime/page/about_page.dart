@@ -31,10 +31,10 @@ class _AboutWeFreePageState extends State<AboutWeFreePage> {
     return  Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('关于WeFree',
-              style: TextStyle(color: Colours.bg_ffffff, fontSize: 20)),
+          title: Text('关于省得赚',
+              style: TextStyle(color: Colours.text_121212, fontSize: 20)),
           leading: IconButton(
-            color: Colors.white,
+            color: Colors.black,
             tooltip: null,
             onPressed: () {
               Get.back();
@@ -55,7 +55,7 @@ class _AboutWeFreePageState extends State<AboutWeFreePage> {
                 Padding(
                     padding: const EdgeInsets.only(top: 12),
                     child: Center(
-                        child: Text("WeFree",
+                        child: Text("省得赚",
                             style: TextStyle(
                                 color: Colors.white, fontSize: 16)))),
                 Padding(

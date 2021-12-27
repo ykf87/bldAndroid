@@ -34,16 +34,16 @@ class AdTaskEntity with JsonConvert<AdTaskEntity> {
   }
 
   Color getTextColor() {
-    if (resType == 0) {
+    if (resType == 1) {
       return Colours.color_water_blue;
     }
-    if (resType == 1) {
+    if (resType == 2) {
       return  Colours.color_water_red;
     }
-    if (resType == 2) {
+    if (resType == 3) {
       return Colours.color_water_yellow;
     }
-    if (resType == 3) {
+    if (resType == 4) {
       return Colours.color_water_green;
     }
     return Colours.color_water_blue;

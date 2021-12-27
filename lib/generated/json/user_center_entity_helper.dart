@@ -1,4 +1,5 @@
 import 'package:SDZ/entity/mime/user_center_entity.dart';
+import 'package:SDZ/entity/mime/bank_entity.dart';
 
 userCenterEntityFromJson(UserCenterEntity data, Map<String, dynamic> json) {
 	if (json['nickname'] != null) {
@@ -25,6 +26,9 @@ userCenterEntityFromJson(UserCenterEntity data, Map<String, dynamic> json) {
 	if (json['cardInfoList'] != null) {
 		data.cardInfoList = (json['cardInfoList'] as List).map((v) => UserCenterCardInfoList().fromJson(v)).toList();
 	}
+	if (json['bank'] != null) {
+		data.bank = BankEntity().fromJson(json['bank']);
+	}
 	return data;
 }
 
@@ -36,6 +40,7 @@ Map<String, dynamic> userCenterEntityToJson(UserCenterEntity entity) {
 	data['viewCount'] = entity.viewCount;
 	data['collectionCount'] = entity.collectionCount;
 	data['cardInfoList'] =  entity.cardInfoList?.map((v) => v.toJson())?.toList();
+	data['bank'] = entity.bank?.toJson();
 	return data;
 }
 
