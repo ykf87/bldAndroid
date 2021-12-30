@@ -1,6 +1,6 @@
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/entity/search/card_entity.dart';
-import 'package:SDZ/page/home/goodsList/view.dart';
+import 'package:SDZ/page/home/goods_detail/detail.dart';
 import 'package:SDZ/page/home/repository/index_goods_repository.dart';
 import 'package:SDZ/page/home/widget/banner.dart';
 import 'package:SDZ/page/home/widget/gridmenu/view.dart';
@@ -55,13 +55,13 @@ class _TabHomePageState extends State<TabHomePage>
         backgroundColor: Colors.white,
         body: ExtendedNestedScrollView(
           controller: _scrollController,
-          body: renderViews(),
+          body: tabBarViews(),
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
               const IndexHomeAppbar(),
               SliverPadding(
                   padding: const EdgeInsets.only(top: 12),
-                  sliver: const SliverToBoxAdapter(child: IndexCarousel(),)),
+                  sliver: const SliverToBoxAdapter(child: IndexBanner(),)),
               const GridMenuComponent(),
               SliverPersistentHeader(
                 delegate: IndexTabbar(tabController),
@@ -74,9 +74,9 @@ class _TabHomePageState extends State<TabHomePage>
     );
   }
 
-  Widget renderViews() {
+  Widget tabBarViews() {
     return TabBarView(
-      children: [NewGoodsListPage('taobao'),  NewGoodsListPage('pdd'),  NewGoodsListPage('jd')],
+      children: [NewGoodsListPage('taobao'),  NewGoodsListPage('pdd'), NewGoodsListPage('jd')],
       controller: tabController,
     );
   }

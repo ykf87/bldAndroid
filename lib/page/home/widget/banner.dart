@@ -20,8 +20,8 @@ Future<List<String>> getCarousel() async {
   String image =  'https://img2.baidu.com/it/u=1729250424,3321747351&fm=26&fmt=auto';
   return  [image,image,image,image];
 }
-class IndexCarousel extends HookWidget {
-  const IndexCarousel({Key? key}) : super(key: key);
+class IndexBanner extends HookWidget {
+  const IndexBanner({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

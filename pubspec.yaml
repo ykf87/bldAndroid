@@ -113,6 +113,8 @@ dependencies:
   #极光推送
   jpush_flutter: 2.1.4
   share: ^2.0.4
+  #腾讯优量汇广告
+  flutter_qq_ads: ^2.4.1
   #闪验，一键登录
   shanyan:
     git:

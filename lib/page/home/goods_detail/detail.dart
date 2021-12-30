@@ -6,8 +6,10 @@ import 'package:SDZ/api/api_client.dart';
 import 'package:SDZ/api/api_status.dart';
 import 'package:SDZ/api/api_url.dart';
 import 'package:SDZ/api/jtk_api.dart';
+import 'package:SDZ/constant/wechat_constant.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/waimai/goods_link_entity.dart';
+import 'package:SDZ/utils/CallWechat.dart';
 import 'package:SDZ/utils/image_util.dart';
 import 'package:SDZ/utils/utils.dart';
 import 'package:SDZ/widget/detail_imgs_widget.dart';
@@ -36,6 +38,9 @@ import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
+
+///商品详情
 class DetailPage extends StatefulWidget {
   final String goodsId;
   String? source;
@@ -186,7 +191,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                   buildSliverToBoxAdapterTwo(),
                   buildSliverToBoxAdapterThree(),
                   buildSliverToBoxAdapterFour(),
-                  buildSliverToBoxAdapterFive(),
+                  buildSliverToBoxAdapterFive(widget.source??''),
                   buildSliverToBoxAdapterSix(),
                   buildSliverToBoxAdapterPlaceholder(),
                   // buildSliverToBoxAdapterShop(),
@@ -252,15 +257,24 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                         OutlinedButton(
                             onPressed: () async {
                               if (info != null) {
-                                Utils.copy(info?.url ?? '无优惠券',
-                                    message: '复制成功,打开${getTypeLabel()}APP领取优惠券');
+                                if (widget.source!.contains("taobao")) {
+                                  Utils.copy(info?.url ?? '无优惠券',
+                                      message: '复制成功,打开${getTypeLabel()}APP领取优惠券');
+                                }
+                              }else{
+                                launch(info?.url??'');
                               }
                             },
                             child: const Text('复制口令')),
                         ElevatedButton(
                             onPressed: () async {
-                              if (info != null) {
-                                 launch(info?.url??'');
+                              if(widget.source!.contains("taobao")){
+                                Utils.copy(info?.url ?? '无优惠券',
+                                    message: '复制成功,打开${getTypeLabel()}APP领取优惠券');
+                              }else{
+                                if (info != null) {
+                                  launch(info?.url??'');
+                                }
                               }
                             },
                             child: const Text('立即领券')),
@@ -365,10 +379,15 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
   }
 
   // 第五行,领券
-  Widget buildSliverToBoxAdapterFive({bool isSliver = true}) {
+  Widget buildSliverToBoxAdapterFive(String souce,{bool isSliver = true}) {
     var widget = containerWarp(
         InkWell(
           onTap: () async {
+            if(souce.contains("taobao")){
+              Utils.copy(info?.url ?? '无优惠券',
+                  message: '复制成功,打开${getTypeLabel()}APP领取优惠券');
+              return;
+            }
             if (info != null) {
               await launch(info?.url??'');
             }

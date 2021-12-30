@@ -247,10 +247,10 @@ class ApiClient {
         return;
       }
 
-      if (e.response!.statusCode == 401) {
-        LoginUtil.toLogin();
-        return;
-      }
+      // if (e.response!.statusCode == 401) {
+      //   LoginUtil.toLogin();
+      //   return;
+      // }
 
       if (onError != null) {
         onError.call(e.message);

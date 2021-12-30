@@ -9,6 +9,7 @@ import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/widget/custom_refresh_footer.dart';
 import 'package:SDZ/widget/custom_refresh_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
@@ -34,19 +35,22 @@ class _NewGoodsListPageState extends State<NewGoodsListPage>
   void initState() {
     // TODO: implement initState
     super.initState();
+    EasyLoading.show();
     getData();
   }
 
   @override
   Widget build(BuildContext context) {
     return EasyRefresh.custom(
+      header: WeFreeHeader(),
+      footer: WeFreeFooter(),
       onRefresh: () async {
-        await Future.delayed(Duration(milliseconds: 500), () {
+        await Future.delayed(Duration(seconds: 1), () {
           doRefresh();
         });
       },
       onLoad: () async {
-        await Future.delayed(Duration(milliseconds: 500), () {
+        await Future.delayed(Duration(seconds: 1), () {
           doLoadMore();
         });
       },
@@ -118,16 +122,18 @@ class _NewGoodsListPageState extends State<NewGoodsListPage>
 
     ApiClient.instance.get(ApiUrl.query_goods, data: map, isJTK: true,
         onSuccess: (data) {
+      EasyLoading.dismiss();
       BaseEntity<List<GoodsEntity>> entity = BaseEntity.fromJson(data!);
 
       if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
         list.addAll(entity.data ?? []);
-      }else{
+      } else {
         isShowEmpty = true;
       }
       setState(() {});
-
-        });
+    }, onError: (msg) {
+      EasyLoading.dismiss();
+    });
   }
 
   @override

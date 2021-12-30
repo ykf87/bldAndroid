@@ -7,7 +7,8 @@ import 'package:SDZ/widget/custom_refresh_header.dart';
 import 'package:SDZ/widget/double_click.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
-import 'package:flutter_pangle_ads/flutter_pangle_ads.dart';
+import 'package:flutter_pangle_ads/flutter_pangle_ads.dart' as CSJ;
+import 'package:flutter_qq_ads/flutter_qq_ads.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -30,7 +31,8 @@ class _AdTaskPageState extends State<AdTaskPage> {
     // TODO: implement initState
     super.initState();
     logic.getData();
-    setAdEvent();
+    setCSJAdEvent();
+    setYLHAdEvent();
   }
 
   @override
@@ -135,7 +137,16 @@ class _AdTaskPageState extends State<AdTaskPage> {
                         return DoubleClick(
                           onTap: () {
                             curEntity = state.list[i];
-                            CSJUtils.showRewardVideoAd();
+                            if (curEntity?.platform == 1) {
+                              CSJUtils.showRewardVideoAd();
+                            } else {
+                              FlutterQqAds.showRewardVideoAd(
+                                CSJUtils.YLHVideoId,
+                                playMuted: false,
+                                customData: 'customData',
+                                userId: 'userId',
+                              );
+                            }
                           },
                           child: Container(
                             child: TaskItem(
@@ -157,23 +168,43 @@ class _AdTaskPageState extends State<AdTaskPage> {
         });
   }
 
-  /// 设置广告监听
-  Future<void> setAdEvent() async {
+  /// 设置穿山甲广告监听
+  Future<void> setCSJAdEvent() async {
     String _adEvent = '';
-    FlutterPangleAds.onEventListener((event) {
+    CSJ.FlutterPangleAds.onEventListener((event) {
       _adEvent = 'adId:${event.adId} action:${event.action}';
-      if (event is AdErrorEvent) {
+      if (event is CSJ.AdErrorEvent) {
         // 错误事件
       }
 
       ///获取奖励
-      if (event.action == AdEventAction.onAdReward &&
+      if (event.action == CSJ.AdEventAction.onAdReward &&
           event.adId == CSJUtils.CSJVideoId) {
         if (curEntity != null) {
           logic.videoSuccess(curEntity!.id.toString());
           print('视频成功');
         }
       }
+    });
+  }
+
+  /// 设置优量汇广告监听
+  Future<void> setYLHAdEvent() async {
+    FlutterQqAds.onEventListener((event) {
+      // 普通广告事件
+      String _adEvent = 'adId:${event.adId} action:${event.action}';
+      if (event is AdErrorEvent) {
+        // 错误事件
+        _adEvent += ' errCode:${event.errCode} errMsg:${event.errMsg}';
+      } else if (event is AdRewardEvent &&
+          event.adId == CSJUtils.YLHVideoId) {
+        // 激励事件
+        if (curEntity != null) {
+          logic.videoSuccess(curEntity!.id.toString());
+          print('视频成功');
+        }
+      }
+      print('onEventListener:$_adEvent');
     });
   }
 }

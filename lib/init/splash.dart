@@ -7,7 +7,8 @@ import 'package:SDZ/utils/CSJUtils.dart';
 import 'package:SDZ/utils/route_ainimal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_pangle_ads/flutter_pangle_ads.dart';
+import 'package:flutter_pangle_ads/flutter_pangle_ads.dart' as CSJ;
+import 'package:flutter_qq_ads/flutter_qq_ads.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -117,7 +118,7 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
       return;
     }
     requestPermission();
-
+    FlutterQqAds.initAd('1200106023');
     CSJUtils.initCSJADSDK().then((value) =>  toMain());
 
   }
@@ -129,7 +130,7 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
     /// [buttonType] 开屏广告的点击区域，1：全都可以点击 2：仅有下载 Bar 区域可以点击
     String _result = '';
     try {
-      bool result = await FlutterPangleAds.showSplashAd(
+      bool result = await CSJ.FlutterPangleAds.showSplashAd(
         CSJUtils.CSJSplashId,
         timeout: 3.5,
       );
@@ -144,17 +145,17 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
   /// 设置广告监听
   Future<void> setAdEvent() async {
     String _adEvent = '';
-    FlutterPangleAds.onEventListener((event) {
+    CSJ.FlutterPangleAds.onEventListener((event) {
       _adEvent = 'adId:${event.adId} action:${event.action}';
-      if (event is AdErrorEvent) {
+      if (event is CSJ.AdErrorEvent) {
         // 错误事件
         toMain();
       }
       // 关闭错误倒计时结束
-      if ((event.action == AdEventAction.onAdClosed ||
-              event.action == AdEventAction.onAdSkip ||
-              event.action == AdEventAction.onAdComplete ||
-              event.action == AdEventAction.onAdError) &&
+      if ((event.action == CSJ.AdEventAction.onAdClosed ||
+              event.action == CSJ.AdEventAction.onAdSkip ||
+              event.action == CSJ.AdEventAction.onAdComplete ||
+              event.action == CSJ.AdEventAction.onAdError) &&
           event.adId == CSJUtils.CSJSplashId) {
         toMain();
       }

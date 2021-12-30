@@ -1,3 +1,4 @@
+import 'package:SDZ/constant/wechat_constant.dart';
 import 'package:flutter/services.dart';
 import 'package:fluwx/fluwx.dart';
 import 'package:SDZ/constant/plugin_constant.dart';
@@ -8,24 +9,20 @@ class CallWechatUtil {
       const MethodChannel(PluginChannel.CALL_WECHAT);
 
   ///唤起小程序
-  static void CallBackWechat({String? path}) {
-    launchWeChatMiniProgram(
+  static void CallBackWechat({String? path,String? appId}) {
+    //分享微信
+    registerWxApi(
+        appId: appId??'',
+        doOnAndroid: true,
+        doOnIOS: true,
+        universalLink: WechatConstant.UNIVERSAL_LINK).then((value) =>launchWeChatMiniProgram(
         username: "gh_dca728b1224c",
         path: path ?? '',
-        miniProgramType: getWechatMiniProgramType());
+        miniProgramType:WXMiniProgramType.RELEASE));
+
   }
 
   static WXMiniProgramType getWechatMiniProgramType() {
-    if (Env.envType == EnvType.EnvType_Dev) {
-      return WXMiniProgramType.PREVIEW;
-    } else if (Env.envType == EnvType.EnvType_Test) {
-      return WXMiniProgramType.PREVIEW;
-    } else if (Env.envType == EnvType.EnvType_Pre_Release) {
-      return WXMiniProgramType.RELEASE;
-    } else if (Env.envType == EnvType.EnvType_Release) {
-      return WXMiniProgramType.RELEASE;
-    }
-
-    return WXMiniProgramType.PREVIEW;
+    return WXMiniProgramType.RELEASE;
   }
 }

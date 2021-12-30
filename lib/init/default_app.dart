@@ -20,6 +20,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_qq_ads/flutter_qq_ads.dart';
 import 'package:get/get.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
@@ -56,6 +57,7 @@ class DefaultApp {
     await FkUserAgent.init();
     if(SPUtils.isAgreementRead){
       await CSJUtils.initCSJADSDK();
+      await FlutterQqAds.initAd('1200106023');
     }
     String deviceId = await DeviceUtil.deviceId ?? '';
     if (deviceId.isEmpty) {
@@ -73,12 +75,7 @@ class DefaultApp {
 
     WFLogUtil.init(isDebug: kDebugMode);
     XHttp.init();
-    //分享微信
-    registerWxApi(
-        appId: WechatConstant.WX_APPID,
-        doOnAndroid: true,
-        doOnIOS: true,
-        universalLink: WechatConstant.UNIVERSAL_LINK);
+
   }
 }
 

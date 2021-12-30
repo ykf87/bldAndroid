@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:SDZ/page/home/tab_home.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
+import 'package:SDZ/utils/login_util.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -33,15 +34,8 @@ class _MainHomePageState extends State<MainHomePage>
   final logic = Get.put(IndexLogic());
   final state = Get.find<IndexLogic>().state;
 
-  List<Widget> getTabWidget(BuildContext context) => [
-        TabHomePage(),
-        AdTaskPage(),
-        TabMyPage()
-      ];
-
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   StreamSubscription<LoginEvent>? _bus;
-
 
   var _currentIndex = 0; //当前选中页面索引
 
@@ -49,13 +43,13 @@ class _MainHomePageState extends State<MainHomePage>
   final List<Widget> _pages = [
     // const IndexHome(),
     // IndexHomeV2(),
-     TabHomePage(),
-     AdTaskPage(),
+    TabHomePage(),
+    AdTaskPage(),
     // JiujiuIndexHome(scrollController: jiujiuController),
     // const CategoryIndexPage(),
     // FavoriteIndexHome(),
     // const DynamicIndex(),
-     TabMyPage()
+    TabMyPage()
   ];
 
   @override
@@ -63,7 +57,7 @@ class _MainHomePageState extends State<MainHomePage>
     super.initState();
     WidgetsBinding.instance?.addObserver(this);
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-        // CSJUtils.showInterstitialAd();
+      // CSJUtils.showInterstitialAd();
     });
 
     this.initData();
@@ -183,16 +177,22 @@ class _MainHomePageState extends State<MainHomePage>
                     currentIndex: _currentIndex,
                     //按下后设置当前页面索引
                     onTap: ((index) {
+                      if (index == 1 && !LoginUtil.isLogin()) {
+                        LoginUtil.toLogin();
+                        return;
+                      }
                       setState(() {
                         _currentIndex = index;
-                        if(index == 2){
-                          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-                              statusBarColor: Colors.transparent,
-                              statusBarIconBrightness: Brightness.dark));
-                        }else{
-                          SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-                              statusBarColor: Colors.white,
-                              statusBarIconBrightness: Brightness.dark));
+                        if (index == 2) {
+                          SystemChrome.setSystemUIOverlayStyle(
+                              const SystemUiOverlayStyle(
+                                  statusBarColor: Colors.transparent,
+                                  statusBarIconBrightness: Brightness.dark));
+                        } else {
+                          SystemChrome.setSystemUIOverlayStyle(
+                              const SystemUiOverlayStyle(
+                                  statusBarColor: Colors.white,
+                                  statusBarIconBrightness: Brightness.dark));
                         }
                       });
                     }),
@@ -201,15 +201,15 @@ class _MainHomePageState extends State<MainHomePage>
                           label: '首页',
                           icon: _currentIndex == 0
                               ? Image.asset(
-                            'assets/nav/home.png',
-                            width: kNavIconSize,
-                            height: kNavIconSize,
-                          )
+                                  'assets/nav/home.png',
+                                  width: kNavIconSize,
+                                  height: kNavIconSize,
+                                )
                               : Image.asset(
-                            'assets/nav/home-n.png',
-                            height: kNavIconSize,
-                            width: kNavIconSize,
-                          )),
+                                  'assets/nav/home-n.png',
+                                  height: kNavIconSize,
+                                  width: kNavIconSize,
+                                )),
                       // BottomNavigationBarItem(
                       //     label: '9.9包邮',
                       //     icon: _currentIndex == 1
@@ -227,28 +227,28 @@ class _MainHomePageState extends State<MainHomePage>
                           label: '福利',
                           icon: _currentIndex == 1
                               ? Image.asset(
-                            'assets/nav/fenlei.png',
-                            width: kNavIconSize,
-                            height: kNavIconSize,
-                          )
+                                  'assets/nav/fenlei.png',
+                                  width: kNavIconSize,
+                                  height: kNavIconSize,
+                                )
                               : Image.asset(
-                            'assets/nav/fenlei-n.png',
-                            height: kNavIconSize,
-                            width: kNavIconSize,
-                          )),
+                                  'assets/nav/fenlei-n.png',
+                                  height: kNavIconSize,
+                                  width: kNavIconSize,
+                                )),
                       BottomNavigationBarItem(
                           label: '我的',
                           icon: _currentIndex == 2
                               ? Image.asset(
-                            'assets/nav/my.png',
-                            width: kNavIconSize,
-                            height: kNavIconSize,
-                          )
+                                  'assets/nav/my.png',
+                                  width: kNavIconSize,
+                                  height: kNavIconSize,
+                                )
                               : Image.asset(
-                            'assets/nav/my-n.png',
-                            height: kNavIconSize,
-                            width: kNavIconSize,
-                          )),
+                                  'assets/nav/my-n.png',
+                                  height: kNavIconSize,
+                                  width: kNavIconSize,
+                                )),
                     ]),
                 body: IndexedStack(
                   index: _currentIndex,
@@ -298,16 +298,14 @@ class _MainHomePageState extends State<MainHomePage>
     });
   }
 
-  void changeTab() {
-
-  }
+  void changeTab() {}
 
   Widget bottomTabWidget(int index, String title) {
     return Expanded(
         child: GestureDetector(
       onTap: () {
-          state.curTabIndex = index;
-          logic.tabChange(state.curTabIndex);
+        state.curTabIndex = index;
+        logic.tabChange(state.curTabIndex);
         setState(() {});
         WFLogUtil.d('切换tab==$state.curTabIndex');
       },
@@ -318,16 +316,16 @@ class _MainHomePageState extends State<MainHomePage>
           alignment: Alignment.center,
           children: [
             Padding(
-                    padding: const EdgeInsets.only(bottom: 4),
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                          color: index == state.curTabIndex
-                              ? Colours.color_main_red
-                              : Colours.text_main,
-                          fontSize: 18),
-                    ),
-                  ),
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Text(
+                title,
+                style: TextStyle(
+                    color: index == state.curTabIndex
+                        ? Colours.color_main_red
+                        : Colours.text_main,
+                    fontSize: 18),
+              ),
+            ),
             Positioned(
                 bottom: 0,
                 child: Visibility(

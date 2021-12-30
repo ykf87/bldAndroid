@@ -9,6 +9,8 @@ class CSJUtils{
   static const String CSJVideoId = '946427207';//穿山甲激励视频id
   static const String CSJInteractionId = '946427186';//穿山甲插屏id
 
+
+  static const String YLHVideoId = '4062932245462854';//优量汇激励视频id
   /// 初始化广告 SDK
   static Future<bool> initCSJADSDK() async {
     String _result = '';

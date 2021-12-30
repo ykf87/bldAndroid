@@ -4,7 +4,6 @@ import 'package:SDZ/constant/svg_path.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/entity/search/card_entity.dart';
 import 'package:SDZ/page/home/goods_detail/detail.dart';
-import 'package:SDZ/page/home/goods_detail/view.dart';
 import 'package:SDZ/page/web/web_view_page.dart';
 import 'package:SDZ/utils/navigator_util.dart';
 import 'package:SDZ/utils/utils.dart';
@@ -162,16 +161,6 @@ class WaterfallGoodsCard extends StatelessWidget {
         child: CachedNetworkImage(
             fit: BoxFit.fill,
             width: double.infinity,
-            placeholder: (context, url) => Container(
-              height: 100,
-              child: Center(
-                  child: Container(
-                    width: 52,
-                    height: 37,
-                    child: SvgPicture.asset(
-                        SvgPath.ic_logo_placeholder),
-                  )),
-            ),
             imageUrl: img));
   }
 }
