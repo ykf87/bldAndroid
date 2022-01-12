@@ -1,7 +1,14 @@
 // Flutter imports:
 // Package imports:
+import 'package:SDZ/api/api_client.dart';
+import 'package:SDZ/api/api_status.dart';
+import 'package:SDZ/api/api_url.dart';
+import 'package:SDZ/api/jtk_api.dart';
 import 'package:SDZ/core/utils/utils.dart';
+import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/waimai/activity_link_result_entity.dart';
+import 'package:SDZ/entity/waimai/goods_link_entity.dart';
+import 'package:SDZ/entity/waimai/waimai_entity.dart';
 import 'package:SDZ/widget/loading_mixin.dart';
 import 'package:SDZ/widget/simple_appbar.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
@@ -21,21 +28,28 @@ class WaimaiDetail extends StatefulWidget {
 }
 
 class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
-  ActivityLinkResultEntity? model;
+  WaimaiEntity? model;
+
+  void getData(){
+    Map<String, dynamic> map = Map();
+    map['apikey'] = JtkApi.apikey;
+    map['type'] = (widget.type == 1?4:5).toString();//红包类型 3-饿了么外卖微信活动（不支持推广链接，只支持小程序推广） 4-饿了么外卖活动 5-饿了么生鲜
+    map['sid'] = "bld";
+    ApiClient.instance.get(ApiUrl.elm,data: map,isJTK: true, onSuccess: (data) {
+      BaseEntity<WaimaiEntity> entity = BaseEntity.fromJson(data!);
+      if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
+        setState(() {
+          model = entity.data;
+        });
+      }
+    });
+
+  }
 
   @override
   void initState() {
     super.initState();
-    Future.microtask(() async {
-      setLoading(true);
-      final result = new ActivityLinkResultEntity();
-      if (mounted && result != null) {
-        setState(() {
-          model = result;
-        });
-      }
-      setLoading(false);
-    });
+    getData();
   }
 
   @override
@@ -101,7 +115,7 @@ class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
               child: Container(
                   alignment: Alignment.center,
                   child: Text(
-                    model?.long_tpwd??'',
+                    model?.longTpwd??'',
                     style: const TextStyle(color: Colors.black, fontSize: 12),
                     textAlign: TextAlign.center,
                   ))),
@@ -115,7 +129,7 @@ class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
             style: const TextStyle(color: Colors.pink),
             onPressed: () {
               if (model != null) {
-                Utils.copy(model?.long_tpwd??'', message: '复制口令成功,打开淘宝即可领取优惠券');
+                Utils.copy(model?.longTpwd??'', message: '复制口令成功,打开淘宝即可领取优惠券');
               }
             },
             clickEffect: true,
@@ -158,7 +172,7 @@ class _WaimaiDetailState extends State<WaimaiDetail> with LoadingMixin {
                 color: Colors.red,
                 onPressed: () {
                   if (model != null) {
-                    Utils.navToBrowser(model!.click_url??'');
+                    Utils.navToBrowser(model!.clickUrl??'');
                   }
                 },
                 highlightColor: Colors.pink,

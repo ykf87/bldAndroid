@@ -1,12 +1,14 @@
 // Flutter imports:
 // Package imports:
 import 'package:SDZ/page/menu/about.dart';
+import 'package:SDZ/page/search/search_page.dart';
 import 'package:SDZ/widget/appbar_search.dart';
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 
 // Project imports:
@@ -16,14 +18,13 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   const IndexHomeAppbar({Key? key}) : super(key: key);
 
   void navTo(BuildContext context) {
-    context.navigator.push(SwipeablePageRoute(
-        builder: (_) =>  AboutPage()));
+    Get.toNamed('/search/search_page');
   }
 
   @override
   Widget build(BuildContext context) {
     return SAppBarSearch(
-      hintText: '输入关键字,例如:"辣条"',
+      hintText: '输入关键字,例如:"男装"',
       onTap: () => navTo(context),
       readOnly: true,
       eve: 0,

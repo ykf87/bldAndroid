@@ -27,7 +27,7 @@ class ImageUtils {
   static ImageProvider getImageProvider(String imageUrl,
       {String holderImg = 'none'}) {
     if (TextUtil.isEmpty(imageUrl)) {
-      return AssetImage(getImgPath('iv_default_head'));
+      return AssetImage(getImgPath('default'));
     }
     return CachedNetworkImageProvider(imageUrl);
   }

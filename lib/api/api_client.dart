@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:SDZ/entity/base/empty_entity.dart';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:fk_user_agent/fk_user_agent.dart';
@@ -72,19 +73,18 @@ class ApiClient {
   /// loading 是否显示加载提示(可选)
   Future getReturn(String url,
       {Map<String, dynamic>? data, bool loading = false}) async {
-    if(loading) {
+    if (loading) {
       LoadingUtil().show();
     }
-    try{
+    try {
       Response response = await _dio!.get(url,
-          queryParameters:
-          data != null ? data as Map<String, dynamic> : Map());
-      if(loading) {
+          queryParameters: data != null ? data as Map<String, dynamic> : Map());
+      if (loading) {
         LoadingUtil().dismiss();
       }
       return response.data;
-    } on DioError catch(e){
-      if(loading) {
+    } on DioError catch (e) {
+      if (loading) {
         LoadingUtil().dismiss();
       }
     }
@@ -168,12 +168,12 @@ class ApiClient {
         //         ? 'Android'
         //         : 'ios') +
         //     '-${await DeviceUtil.platformVersion}',
-        'device': await Env.getDeivceName(),
+        'device': SPUtils.isAgreementRead ? await Env.getDeivceName() : '',
         // 'app_version': 'wefree-${await PackageUtil.version}',
         'timestamp': DateTime.now().millisecondsSinceEpoch,
         // 'app_store': Env.getChannelName(),
         // 'mac': '',
-        'device_id': SPUtils.getDeviceId(),
+        'device_id': SPUtils.isAgreementRead ? SPUtils.getDeviceId() : '',
         'Authorization': SPUtils.getUserToken(),
         // 'User-Agent': FkUserAgent.userAgent!
       };
@@ -211,7 +211,13 @@ class ApiClient {
       if (response?.statusCode == HttpStatus.ok) {
         if (response?.data['code'] ==
             (isJTK ? ApiStatus.JTKSUCCESS : ApiStatus.SUCCESS)) {
-          onSuccess?.call(response?.data);
+          if (response?.data['data'] is String) {
+            Map<String, String> map = Map();
+            T data = map as T;
+            onSuccess?.call(data);
+          } else {
+            onSuccess?.call(response?.data);
+          }
         } else if (response?.data['code'] == ApiStatus.LOGIN_OUT) {
           ToastUtils.toast(response?.data['msg'] ?? "");
           EventBusUtils.getInstance()

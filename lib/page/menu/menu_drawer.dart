@@ -4,7 +4,6 @@ import 'package:SDZ/core/utils/xuifont.dart';
 import 'package:SDZ/generated/i18n.dart';
 import 'package:SDZ/page/login/one_key_login.dart';
 import 'package:SDZ/page/menu/about.dart';
-import 'package:SDZ/page/menu/login.dart';
 import 'package:SDZ/page/menu/settings.dart';
 import 'package:SDZ/page/menu/sponsor.dart';
 import 'package:SDZ/utils/provider.dart';

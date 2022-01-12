@@ -38,9 +38,9 @@ class _FeedBackPageState extends State<FeedBackPage> {
           appBar: AppBar(
             centerTitle: true,
             title: Text('意见反馈',
-                style: TextStyle(color: Colours.bg_ffffff, fontSize: 20)),
+                style: TextStyle(color: Colours.color_333333, fontSize: 20)),
             leading: IconButton(
-              color: Colors.white,
+              color: Colors.black,
               tooltip: null,
               onPressed: () {
                 Get.back();
@@ -84,7 +84,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                                   height: 200,
                                   child: TextField(
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 15.0),
+                                        color: Colours.color_333333, fontSize: 15.0),
                                     enableInteractiveSelection: true,
                                     onChanged: (value) {
                                       logic.feedBackContent = value;
@@ -102,7 +102,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                                   ),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8),
-                                      color: Colours.dark_bg_color2)),
+                                      color: Colours.color_fbfcfd)),
                               SizedBox(
                                 height: 28,
                               ),
@@ -140,7 +140,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                                     maxLines: 1,
                                     maxLength: 20,
                                     style: TextStyle(
-                                        color: Colors.white, fontSize: 15.0),
+                                        color: Colours.color_333333, fontSize: 15.0),
                                     decoration: InputDecoration(
                                         counterText: "",
                                         border: InputBorder.none,
@@ -151,7 +151,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                                   ),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8),
-                                      color: Colours.dark_bg_color2)),
+                                      color: Colours.color_fbfcfd)),
                             ],
                           ),
                         )
@@ -191,7 +191,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
                           decoration: BoxDecoration(
                             color: logic.isEnable
                                 ? Colours.color_main_red
-                                : Colours.color_btn_nor,
+                                : Colours.color_fbfcfd,
                             borderRadius: BorderRadius.circular(8.0),
                           )),
                     ),

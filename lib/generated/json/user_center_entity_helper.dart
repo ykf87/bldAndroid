@@ -1,5 +1,5 @@
-import 'package:SDZ/entity/mime/user_center_entity.dart';
 import 'package:SDZ/entity/mime/bank_entity.dart';
+import 'package:SDZ/entity/mime/user_center_entity.dart';
 
 userCenterEntityFromJson(UserCenterEntity data, Map<String, dynamic> json) {
 	if (json['nickname'] != null) {
@@ -7,6 +7,9 @@ userCenterEntityFromJson(UserCenterEntity data, Map<String, dynamic> json) {
 	}
 	if (json['avatar'] != null) {
 		data.avatar = json['avatar'].toString();
+	}
+	if (json['phone'] != null) {
+		data.phone = json['phone'].toString();
 	}
 	if (json['followsCount'] != null) {
 		data.followsCount = json['followsCount'] is String
@@ -23,11 +26,19 @@ userCenterEntityFromJson(UserCenterEntity data, Map<String, dynamic> json) {
 				? int.tryParse(json['collectionCount'])
 				: json['collectionCount'].toInt();
 	}
+	if (json['jifen'] != null) {
+		data.jifen = json['jifen'] is String
+				? int.tryParse(json['jifen'])
+				: json['jifen'].toInt();
+	}
 	if (json['cardInfoList'] != null) {
 		data.cardInfoList = (json['cardInfoList'] as List).map((v) => UserCenterCardInfoList().fromJson(v)).toList();
 	}
 	if (json['bank'] != null) {
 		data.bank = BankEntity().fromJson(json['bank']);
+	}
+	if (json['content'] != null) {
+		data.content = json['content'].toString();
 	}
 	return data;
 }
@@ -36,11 +47,14 @@ Map<String, dynamic> userCenterEntityToJson(UserCenterEntity entity) {
 	final Map<String, dynamic> data = new Map<String, dynamic>();
 	data['nickname'] = entity.nickname;
 	data['avatar'] = entity.avatar;
+	data['phone'] = entity.phone;
 	data['followsCount'] = entity.followsCount;
 	data['viewCount'] = entity.viewCount;
 	data['collectionCount'] = entity.collectionCount;
+	data['jifen'] = entity.jifen;
 	data['cardInfoList'] =  entity.cardInfoList?.map((v) => v.toJson())?.toList();
 	data['bank'] = entity.bank?.toJson();
+	data['content'] = entity.content;
 	return data;
 }
 

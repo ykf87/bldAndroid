@@ -7,6 +7,7 @@ import 'package:SDZ/page/home/widget/gridmenu/view.dart';
 import 'package:SDZ/page/home/widget/index_tabbar.dart';
 import 'package:SDZ/page/home/widget/searchbar.dart';
 import 'package:SDZ/page/home/widget/waterfall_goods_card.dart';
+import 'package:SDZ/utils/CSJUtils.dart';
 import 'package:SDZ/widget/edit_page_handle.dart';
 import 'package:SDZ/widget/loading_more_list_indicator.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart'
@@ -14,6 +15,7 @@ import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart'
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pangle_ads/view/ad_banner_widget.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 
 import 'goodsList/NewGoodsListPage.dart';
@@ -59,6 +61,19 @@ class _TabHomePageState extends State<TabHomePage>
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
               const IndexHomeAppbar(),
+              // SliverToBoxAdapter(
+              //   child:SizedBox(
+              //     width: double.infinity,
+              //     height: 150,
+              //     child: AdBannerWidget(
+              //       posId: CSJUtils.CSJBannerId,
+              //       width: 300,
+              //       height: 150,
+              //       interval: 30,
+              //       show: true,
+              //     ),
+              //   ) ,
+              // ),
               SliverPadding(
                   padding: const EdgeInsets.only(top: 12),
                   sliver: const SliverToBoxAdapter(child: IndexBanner(),)),

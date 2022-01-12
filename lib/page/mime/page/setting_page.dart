@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:SDZ/page/mime/page/PrivacyPolicyPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -101,13 +102,7 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                                   leftText: '用户协议',
                                   rightText: '',
                                   onPressed: () {
-                                    Get.to(() => WebViewPage(
-                                        url: Platform.isAndroid
-                                            ? ApiUrl.getUserProtocal(
-                                                isIOS: false)
-                                            : ApiUrl.getUserProtocal(
-                                                isIOS: true),
-                                        title: '用户协议'));
+                                    Get.to(() => PrivacyPolicyPage(false));
                                   }),
                               LineTextWidget(
                                   leftImg: 'ic_protocol.svg',
@@ -115,11 +110,7 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                                   leftText: '隐私政策',
                                   rightText: '',
                                   onPressed: () {
-                                    Get.to(() => WebViewPage(
-                                        url: Platform.isAndroid
-                                            ? ApiUrl.getUserPolicy(isIOS: false)
-                                            : ApiUrl.getUserPolicy(isIOS: true),
-                                        title: '隐私政策'));
+                                    Get.to(() => PrivacyPolicyPage(true));
                                   }),
                               LineTextWidget(
                                   leftImg: 'ic_clear.svg',

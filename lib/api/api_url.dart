@@ -119,6 +119,11 @@ class ApiUrl {
   static const String query_goods = 'union/query_goods';
   ///商品推广转链
   static const String recommend = 'union/convert';
+  ///饿了么外卖接口，饿了么生鲜接口
+  static const String elm = 'http://api.jutuike.com/Ele/act';
+  static const String mobile = 'http://api.jutuike.com/recharge/mobile';
+  static const String electricity = 'http://api.jutuike.com/electricity/act';
+  static const String didi = 'http://api.jutuike.com/didi/act';///1-打车、2-加油 -3货运 4-花小猪
 
 
   /// bld 相关api

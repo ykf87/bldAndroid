@@ -1,4 +1,6 @@
 import 'package:SDZ/page/mime/page/about_page.dart';
+import 'package:SDZ/page/mime/page/feed_back/view.dart';
+import 'package:SDZ/page/mime/page/my_wallet/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -71,17 +73,20 @@ class _TabMyPageState extends State<TabMyPage> {
                 new ListView(
                   children: <Widget>[
                     getPersonInfoWidget(context),
-                    topMenuWidget(),
+                    // topMenuWidget(),
                     // orderWidget,
-                    LineTextWidget(
-                      leftText: '我的积分',
-                      bgColor: Colours.bg_ffffff,
-                      leftImg: "my_points.png",
-                    ),
+
                     LineTextWidget(
                       leftText: '我的钱包',
                       bgColor: Colours.bg_ffffff,
                       leftImg: "account_balance.png",
+                      onPressed: () {
+                        if (!LoginUtil.isLogin()) {
+                          LoginUtil.toLogin();
+                          return;
+                        }
+                        Get.to(MyWalletPage());
+                      },
                     ),
                     LineTextWidget(
                       leftText: '关于我们',
@@ -89,6 +94,14 @@ class _TabMyPageState extends State<TabMyPage> {
                       leftImg: "ic_about.svg",
                       onPressed: () {
                         Get.to(AboutWeFreePage());
+                      },
+                    ),
+                    LineTextWidget(
+                      leftText: '意见反馈',
+                      bgColor: Colours.bg_ffffff,
+                      leftImg: "my_points.png",
+                      onPressed: () {
+                        Get.to(FeedBackPage());
                       },
                     ),
                     LineTextWidget(
@@ -123,9 +136,9 @@ class _TabMyPageState extends State<TabMyPage> {
               new Padding(
                   padding: const EdgeInsets.only(
                       left: 20.0, top: 30.0, bottom: 30.0),
-                  child:  !SPUtils.isLogined()
+                  child: !SPUtils.isLogined()
                       ? new Image.asset(
-                          "assets/images/ic_logo.jpg",
+                          "assets/images/default.png",
                           width: 60.0,
                           height: 60.0,
                         )
@@ -135,37 +148,46 @@ class _TabMyPageState extends State<TabMyPage> {
                           backgroundImage: ImageUtils.getImageProvider(
                               state.userCenterEntity.avatar ?? ""),
                         )),
-              SPUtils.isLogined()?new Stack(children: <Widget>[
-                new Padding(
-                    padding: const EdgeInsets.only(left: 18.0),
-                    child: new Text(
-                     '欢迎您',
-                      style: new TextStyle(
-                          fontSize: 20.0, color: const Color(0xFFffffff)),
-                    )),
-                new Padding(
-                    padding: const EdgeInsets.only(left: 20.0, top: 29.0),
-                    child: new Text( '',
-                        style: new TextStyle(
-                            fontSize: 12.0, color: const Color(0xFFffffff)))),
-                new Padding(
-                    padding: const EdgeInsets.only(left: 20.0, top: 50.0),
-                    child: new Text(  SPUtils.isLogined()
-                        ? SPUtils.getUserAccount():'',
-                        style: new TextStyle(
-                            fontSize: 12.0, color: const Color(0xFFffffff)))),
-              ]):DoubleClick(
-                onTap: (){
-                  LoginUtil.toLogin();
-                },
-                child: Container(
-                  margin: EdgeInsets.only(left: 12),
-                  child: Text("点此登录",
-                    style: new TextStyle(
-                        fontSize: 20.0, color: const Color(0xFFffffff)),
-                  ),
-                ),
-              ),
+              SPUtils.isLogined()
+                  ? new Stack(children: <Widget>[
+                      new Padding(
+                          padding: const EdgeInsets.only(left: 18.0),
+                          child: new Text(
+                            '欢迎您',
+                            style: new TextStyle(
+                                fontSize: 20.0, color: const Color(0xFFffffff)),
+                          )),
+                      new Padding(
+                          padding: const EdgeInsets.only(left: 20.0, top: 29.0),
+                          child: new Text('',
+                              style: new TextStyle(
+                                  fontSize: 12.0,
+                                  color: const Color(0xFFffffff)))),
+                      new Padding(
+                          padding: const EdgeInsets.only(left: 20.0, top: 40.0),
+                          child: new Text(
+                              SPUtils.isLogined()
+                                  ? state.userCenterEntity.phone?.replaceFirst(
+                                          new RegExp(r'\d{4}'), '****', 3) ??
+                                      ''
+                                  : '',
+                              style: new TextStyle(
+                                  fontSize: 12.0,
+                                  color: const Color(0xFFffffff)))),
+                    ])
+                  : DoubleClick(
+                      onTap: () {
+                        LoginUtil.toLogin();
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(left: 12),
+                        child: Text(
+                          "点此登录",
+                          style: new TextStyle(
+                              fontSize: 20.0, color: const Color(0xFFffffff)),
+                        ),
+                      ),
+                    ),
             ],
           ),
         ));

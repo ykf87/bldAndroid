@@ -172,6 +172,7 @@ class _MainHomePageState extends State<MainHomePage>
               child: Scaffold(
                 key: _scaffoldKey,
                 bottomNavigationBar: BottomNavigationBar(
+                    selectedItemColor: Colours.color_main_red,
                     type: BottomNavigationBarType.fixed,
                     //当前页面索引
                     currentIndex: _currentIndex,

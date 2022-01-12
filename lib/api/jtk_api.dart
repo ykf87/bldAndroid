@@ -10,6 +10,7 @@ import 'api_url.dart';
 class JtkApi{
   ///聚推客id
   static String pub_id = "8155";
+  static String apikey = "7CAurztNXLduxin2Yxuj56mDPBHBn0X2";
   ///来源 jd-京东,vip-唯品会,pdd-拼多多,kaola-考拉,taobao-淘宝 默认vip
   static String source = "taobao-淘宝";
 

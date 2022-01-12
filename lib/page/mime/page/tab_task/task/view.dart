@@ -1,7 +1,13 @@
+import 'package:SDZ/api/api_client.dart';
+import 'package:SDZ/api/api_url.dart';
 import 'package:SDZ/entity/adIntegral/ad_task_entity.dart';
+import 'package:SDZ/entity/base/base_entity.dart';
+import 'package:SDZ/entity/mime/user_center_entity.dart';
+import 'package:SDZ/page/mime/page/my_wallet/view.dart';
 import 'package:SDZ/page/mime/page/tab_task/task/task_item.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
+import 'package:SDZ/utils/login_util.dart';
 import 'package:SDZ/widget/custom_refresh_footer.dart';
 import 'package:SDZ/widget/custom_refresh_header.dart';
 import 'package:SDZ/widget/double_click.dart';
@@ -25,6 +31,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
   final AdTaskLogic logic = Get.put(AdTaskLogic());
   final AdTaskState state = Get.find<AdTaskLogic>().state;
   AdTaskEntity? curEntity;
+  UserCenterEntity? userCenterEntity;
 
   @override
   void initState() {
@@ -33,6 +40,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
     logic.getData();
     setCSJAdEvent();
     setYLHAdEvent();
+    getUserInfo();
   }
 
   @override
@@ -59,23 +67,28 @@ class _AdTaskPageState extends State<AdTaskPage> {
                           width: 8,
                         ),
                         Text(
-                          '0',
+                          (userCenterEntity?.jifen??0).toString(),
                           style: TextStyle(color: Colours.text, fontSize: 16),
                         ),
                         SizedBox(
                           width: 8,
                         ),
-                        Container(
-                          width: 36,
-                          height: 16,
-                          decoration: BoxDecoration(
-                              color: Colours.color_main_red,
-                              borderRadius: BorderRadius.circular(14)),
-                          child: Center(
-                            child: Text(
-                              '提现',
-                              style: TextStyle(
-                                  color: Colours.bg_ffffff, fontSize: 10),
+                        DoubleClick(
+                          onTap: (){
+                            Get.to(MyWalletPage());
+                          },
+                          child: Container(
+                            width: 36,
+                            height: 16,
+                            decoration: BoxDecoration(
+                                color: Colours.color_main_red,
+                                borderRadius: BorderRadius.circular(14)),
+                            child: Center(
+                              child: Text(
+                                '提现',
+                                style: TextStyle(
+                                    color: Colours.bg_ffffff, fontSize: 10),
+                              ),
                             ),
                           ),
                         ),
@@ -94,6 +107,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
                 onRefresh: () async {
                   await Future.delayed(Duration(seconds: 1), () {
                     control.doRefresh();
+                    getUserInfo();
                   });
                 },
                 onLoad: () async {
@@ -207,4 +221,19 @@ class _AdTaskPageState extends State<AdTaskPage> {
       print('onEventListener:$_adEvent');
     });
   }
+  void getUserInfo() {
+    if(!LoginUtil.isLogin()){
+      return;
+    }
+    ApiClient.instance.get(ApiUrl.getBLDBaseUrl() + ApiUrl.center,
+        onSuccess: (data) {
+          BaseEntity<UserCenterEntity> entity = BaseEntity.fromJson(data!);
+          if (entity.isSuccess && entity.data != null) {
+            setState(() {
+              userCenterEntity = entity.data;
+            });
+          }
+        });
+  }
+
 }

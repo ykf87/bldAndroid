@@ -1,3 +1,4 @@
+import 'package:SDZ/page/search/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:SDZ/core/widget/web_view_page.dart';
 import 'package:SDZ/init/splash.dart';
@@ -38,6 +39,7 @@ class RouteMap {
     GetPage(name: '/menu/settings-page', page: () => SettingsPage()),
     GetPage(name: '/menu/about-page', page: () => AboutPage()),
     GetPage(name: '/shop/page/commit_order/commit_order_page', page: () => CommitOrderPage()),
+    GetPage(name: '/search/search_page', page: () => SearchPage()),
   ];
 
   /// 页面切换动画

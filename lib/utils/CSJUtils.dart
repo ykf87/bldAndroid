@@ -8,6 +8,7 @@ class CSJUtils{
   static const String CSJSplashId = '887521768';//穿山甲开屏id
   static const String CSJVideoId = '946427207';//穿山甲激励视频id
   static const String CSJInteractionId = '946427186';//穿山甲插屏id
+  static const String CSJBannerId = '946427157';//穿山甲bannerid
 
 
   static const String YLHVideoId = '4062932245462854';//优量汇激励视频id

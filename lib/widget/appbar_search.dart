@@ -123,10 +123,7 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
 
   // 取消输入框编辑
   void _onCancelInput() {
-    _controller.clear();
-    _focusNode.unfocus();
-    setState(() {});
-    widget.onCancel?.call();
+    widget.onSearch?.call(_controller.text);
   }
 
   Widget _suffix() {
@@ -152,7 +149,7 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
           constraints: const BoxConstraints(minWidth: 48),
           alignment: Alignment.center,
           child: const Text(
-            '取消',
+            '搜索',
             style: TextStyle(color: Color(0xFF666666), fontSize: 15),
           ),
         ),
@@ -170,7 +167,7 @@ class _SAppBarSearchState extends State<SAppBarSearch> {
     final canPop = parentRoute?.canPop ?? false;
     final hasDrawer = scaffold.hasDrawer;
     var left = 0.0;
-    var right = 15.0;
+    var right = 0.0;
     return widget.isSliveWidget ? SliverAppBar(
       pinned: true,
       backgroundColor: widget.bgColor ?? Colours.bg_ffffff,

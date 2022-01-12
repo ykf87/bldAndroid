@@ -1,6 +1,7 @@
 
 import 'dart:io';
 
+import 'package:SDZ/page/mime/page/PrivacyPolicyPage.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,6 +12,7 @@ import 'package:SDZ/page/web/web_view_page.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/router/custom_route.dart';
 import 'package:SDZ/widget/text_image_button.dart';
+import 'package:get/get.dart';
 
 /// @Author: ljx
 /// @CreateDate: 2021/8/18 10:06
@@ -67,7 +69,7 @@ class _AgreementDialogState extends BaseDialogState<AgreementDialog> {
                           text: '《用户协议》',
                           recognizer: TapGestureRecognizer()..onTap = () {
                             // Get.to(WebViewPage(url: ApiUrl.agreement_url));
-                            Navigator.of(context).push(CustomRoute(WebViewPage(url: Platform.isAndroid ? ApiUrl.getUserProtocal(isIOS: false) : ApiUrl.getUserProtocal(isIOS: true), title: '用户协议')));
+                            Get.to(() => PrivacyPolicyPage(false));
                           },
                         ),
                         TextSpan(
@@ -79,7 +81,7 @@ class _AgreementDialogState extends BaseDialogState<AgreementDialog> {
                           text: '《隐私政策》',
                           recognizer: TapGestureRecognizer()..onTap = () {
                             // Get.to(()=>WebViewPage(url: ApiUrl.policy_url));
-                            Navigator.of(context).push(CustomRoute(WebViewPage(url: Platform.isAndroid ? ApiUrl.getUserPolicy(isIOS: false) : ApiUrl.getUserPolicy(isIOS: true), title: '隐私政策')));
+                            Get.to(() => PrivacyPolicyPage(true));
                           },
                         ),
                         TextSpan(

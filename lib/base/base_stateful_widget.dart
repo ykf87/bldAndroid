@@ -46,6 +46,8 @@ abstract class BaseStatefulState<T extends BaseStatefulWidget> extends State<T> 
 
   bool isShowNavigator() => true;
 
+  List<Widget> customActions() => [];
+
   ///自定义导航栏
   PreferredSizeWidget? initCustomNavigator() => AppBar(
     elevation: 0,
@@ -102,13 +104,14 @@ abstract class BaseStatefulState<T extends BaseStatefulWidget> extends State<T> 
           highlightColor: Colors.transparent,
           splashColor: Colors.transparent,
         ),
+        actions: customActions(),
         centerTitle: true,
         title: Text(
             navigatorTitle(),
             textAlign: TextAlign.center,
             style: initNavigatorTextStyle(),
         ),
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
       ),
       body: DoubleClick(
         ///解决onTap不响应

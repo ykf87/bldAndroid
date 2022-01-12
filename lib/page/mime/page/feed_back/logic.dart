@@ -25,14 +25,9 @@ class Feed_backLogic extends GetxController {
   }
 
   void feedbak(String content,String phone) {
-    Map<String, dynamic> map = new Map();
-    map['content'] = content;
-    map['telephone'] = phone;
-    ApiClient.instance.post(ApiUrl.feedback, data: map, onSuccess: (data) {
-      ToastUtils.toast("感谢您的反馈");
-      feedBackContent ='';
-      Get.back();
-    });
+    ToastUtils.toast("感谢您的反馈");
+    feedBackContent ='';
+    Get.back();
   }
 
 }
