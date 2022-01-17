@@ -118,7 +118,7 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
       return;
     }
     requestPermission();
-    FlutterQqAds.initAd('1200106023');
+    // FlutterQqAds.initAd(CSJUtils.YLHAPPID);
     CSJUtils.initCSJADSDK().then((value) =>  toMain());
 
   }

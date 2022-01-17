@@ -4,6 +4,9 @@ telephoneBillEntityFromJson(TelephoneBillEntity data, Map<String, dynamic> json)
 	if (json['h5_url'] != null) {
 		data.h5_url = json['h5_url'].toString();
 	}
+	if (json['h5'] != null) {
+		data.h5 = json['h5'].toString();
+	}
 	if (json['jtk_url'] != null) {
 		data.jtk_url = json['jtk_url'].toString();
 	}
@@ -19,6 +22,7 @@ telephoneBillEntityFromJson(TelephoneBillEntity data, Map<String, dynamic> json)
 Map<String, dynamic> telephoneBillEntityToJson(TelephoneBillEntity entity) {
 	final Map<String, dynamic> data = new Map<String, dynamic>();
 	data['h5_url'] = entity.h5_url;
+	data['h5'] = entity.h5;
 	data['jtk_url'] = entity.jtk_url;
 	data['short_url'] = entity.short_url;
 	data['short_click_url'] = entity.short_click_url;

@@ -4,13 +4,14 @@ import 'package:flutter_pangle_ads/flutter_pangle_ads.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 
 class CSJUtils{
-  static const String CSJAPPID = '5198096';//穿山甲appid
-  static const String CSJSplashId = '887521768';//穿山甲开屏id
-  static const String CSJVideoId = '946427207';//穿山甲激励视频id
-  static const String CSJInteractionId = '946427186';//穿山甲插屏id
-  static const String CSJBannerId = '946427157';//穿山甲bannerid
+  static const String CSJAPPID = '5264512';//穿山甲appid
+  static const String CSJSplashId = '887675916';//穿山甲开屏id
+  static const String CSJVideoId = '947697728';//穿山甲激励视频id
+  static const String CSJInteractionId = '947697731';//穿山甲插屏id
+  static const String CSJBannerId = '947697730';//穿山甲bannerid
 
 
+  static const String YLHAPPID = '1200106023';//优量汇id
   static const String YLHVideoId = '4062932245462854';//优量汇激励视频id
   /// 初始化广告 SDK
   static Future<bool> initCSJADSDK() async {

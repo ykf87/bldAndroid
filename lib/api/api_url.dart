@@ -124,6 +124,7 @@ class ApiUrl {
   static const String mobile = 'http://api.jutuike.com/recharge/mobile';
   static const String electricity = 'http://api.jutuike.com/electricity/act';
   static const String didi = 'http://api.jutuike.com/didi/act';///1-打车、2-加油 -3货运 4-花小猪
+  static const String meituan = 'http://api.jutuike.com/Meituan/act';///活动类型 1-外卖 2-商超 3-优选 4-优选1.99促销页 5-优选秒杀栏目活动 6-酒店 7- 美团优选新人活动页 8-外卖品质商家活动 默认1
 
 
   /// bld 相关api

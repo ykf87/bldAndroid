@@ -57,7 +57,7 @@ class DefaultApp {
     await FkUserAgent.init();
     if(SPUtils.isAgreementRead){
       await CSJUtils.initCSJADSDK();
-      await FlutterQqAds.initAd('1200106023');
+      // await FlutterQqAds.initAd(CSJUtils.YLHAPPID);
     }
     String deviceId = await DeviceUtil.deviceId ?? '';
     if (deviceId.isEmpty) {

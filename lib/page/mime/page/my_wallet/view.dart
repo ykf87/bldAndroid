@@ -41,18 +41,18 @@ class MyWalletPageState extends BaseStatefulState {
   List<Widget> customActions() {
     // TODO: implement customActions
     return [
-      DoubleClick(
-        onTap: () {
-          // Get.to(WithdrawPage());
-        },
-        child: Center(
-            child: Container(
-                margin: EdgeInsets.only(right: 10),
-                child: Text(
-                  '收支记录',
-                  style: TextStyle(color: Color(0xFFe9546b), fontSize: 14),
-                ))),
-      ),
+      // DoubleClick(
+      //   onTap: () {
+      //     // Get.to(WithdrawPage());
+      //   },
+      //   child: Center(
+      //       child: Container(
+      //           margin: EdgeInsets.only(right: 10),
+      //           child: Text(
+      //             '收支记录',
+      //             style: TextStyle(color: Color(0xFFe9546b), fontSize: 14),
+      //           ))),
+      // ),
     ];
   }
 

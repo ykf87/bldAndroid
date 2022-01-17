@@ -19,6 +19,8 @@ import 'package:SDZ/entity/talent/q_r_code_entity.dart';
 import 'package:SDZ/generated/json/q_r_code_entity_helper.dart';
 import 'package:SDZ/entity/waimai/activity_link_result_entity.dart';
 import 'package:SDZ/generated/json/activity_link_result_entity_helper.dart';
+import 'package:SDZ/entity/mime/bank_entity.dart';
+import 'package:SDZ/generated/json/bank_entity_helper.dart';
 import 'package:SDZ/entity/search/card_entity.dart';
 import 'package:SDZ/generated/json/card_entity_helper.dart';
 import 'package:SDZ/entity/waimai/waimai_entity.dart';
@@ -27,16 +29,18 @@ import 'package:SDZ/entity/mime/my_collect_entity.dart';
 import 'package:SDZ/generated/json/my_collect_entity_helper.dart';
 import 'package:SDZ/entity/mime/my_browse_record_entity.dart';
 import 'package:SDZ/generated/json/my_browse_record_entity_helper.dart';
+import 'package:SDZ/entity/home/telephone_bill_entity.dart';
+import 'package:SDZ/generated/json/telephone_bill_entity_helper.dart';
 import 'package:SDZ/entity/mime/ali_oss_entity.dart';
 import 'package:SDZ/generated/json/ali_oss_entity_helper.dart';
+import 'package:SDZ/entity/notice/notice_entity.dart';
+import 'package:SDZ/generated/json/notice_entity_helper.dart';
 import 'package:SDZ/entity/skill_entity.dart';
 import 'package:SDZ/generated/json/skill_entity_helper.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/generated/json/goods_entity_helper.dart';
 import 'package:SDZ/entity/mime/user_center_entity.dart';
 import 'package:SDZ/generated/json/user_center_entity_helper.dart';
-import 'package:SDZ/entity/mime/bank_entity.dart';
-import 'package:SDZ/generated/json/bank_entity_helper.dart';
 import 'package:SDZ/entity/notice/notice_newest_msg_entity.dart';
 import 'package:SDZ/generated/json/notice_newest_msg_entity_helper.dart';
 import 'package:SDZ/entity/new_message_entity.dart';
@@ -49,12 +53,8 @@ import 'package:SDZ/entity/adIntegral/ad_task_entity.dart';
 import 'package:SDZ/generated/json/ad_task_entity_helper.dart';
 import 'package:SDZ/entity/login/login_entity.dart';
 import 'package:SDZ/generated/json/login_entity_helper.dart';
-import 'package:SDZ/entity/home/telephone_bill_entity.dart';
-import 'package:SDZ/generated/json/telephone_bill_entity_helper.dart';
 import 'package:SDZ/entity/waimai/goods_link_entity.dart';
 import 'package:SDZ/generated/json/goods_link_entity_helper.dart';
-import 'package:SDZ/entity/notice/notice_entity.dart';
-import 'package:SDZ/generated/json/notice_entity_helper.dart';
 import 'package:SDZ/entity/waimai/goods_detail_entity.dart';
 import 'package:SDZ/generated/json/goods_detail_entity_helper.dart';
 
@@ -95,6 +95,8 @@ class JsonConvert<T> {
 				return qRCodeEntityFromJson(data as QRCodeEntity, json) as T;
 			case ActivityLinkResultEntity:
 				return activityLinkResultEntityFromJson(data as ActivityLinkResultEntity, json) as T;
+			case BankEntity:
+				return bankEntityFromJson(data as BankEntity, json) as T;
 			case CardEntity:
 				return cardEntityFromJson(data as CardEntity, json) as T;
 			case CardItemEntity:
@@ -113,8 +115,14 @@ class JsonConvert<T> {
 				return myBrowseRecordEntityFromJson(data as MyBrowseRecordEntity, json) as T;
 			case MyBrowseRecordSkillTagList:
 				return myBrowseRecordSkillTagListFromJson(data as MyBrowseRecordSkillTagList, json) as T;
+			case TelephoneBillEntity:
+				return telephoneBillEntityFromJson(data as TelephoneBillEntity, json) as T;
 			case AliOssEntity:
 				return aliOssEntityFromJson(data as AliOssEntity, json) as T;
+			case NoticeEntity:
+				return noticeEntityFromJson(data as NoticeEntity, json) as T;
+			case NoticeItemEntity:
+				return noticeItemEntityFromJson(data as NoticeItemEntity, json) as T;
 			case SkillEntity:
 				return skillEntityFromJson(data as SkillEntity, json) as T;
 			case GoodsEntity:
@@ -123,8 +131,6 @@ class JsonConvert<T> {
 				return userCenterEntityFromJson(data as UserCenterEntity, json) as T;
 			case UserCenterCardInfoList:
 				return userCenterCardInfoListFromJson(data as UserCenterCardInfoList, json) as T;
-			case BankEntity:
-				return bankEntityFromJson(data as BankEntity, json) as T;
 			case NoticeNewestMsgEntity:
 				return noticeNewestMsgEntityFromJson(data as NoticeNewestMsgEntity, json) as T;
 			case NewMessageEntity:
@@ -137,18 +143,12 @@ class JsonConvert<T> {
 				return adTaskEntityFromJson(data as AdTaskEntity, json) as T;
 			case LoginEntity:
 				return loginEntityFromJson(data as LoginEntity, json) as T;
-			case TelephoneBillEntity:
-				return telephoneBillEntityFromJson(data as TelephoneBillEntity, json) as T;
 			case GoodsLinkEntity:
 				return goodsLinkEntityFromJson(data as GoodsLinkEntity, json) as T;
 			case GoodsLinkCouponInfo:
 				return goodsLinkCouponInfoFromJson(data as GoodsLinkCouponInfo, json) as T;
 			case GoodsLinkWeAppInfo:
 				return goodsLinkWeAppInfoFromJson(data as GoodsLinkWeAppInfo, json) as T;
-			case NoticeEntity:
-				return noticeEntityFromJson(data as NoticeEntity, json) as T;
-			case NoticeItemEntity:
-				return noticeItemEntityFromJson(data as NoticeItemEntity, json) as T;
 			case GoodsDetailEntity:
 				return goodsDetailEntityFromJson(data as GoodsDetailEntity, json) as T;    }
 		return data as T;
@@ -182,6 +182,8 @@ class JsonConvert<T> {
 				return qRCodeEntityToJson(data as QRCodeEntity);
 			case ActivityLinkResultEntity:
 				return activityLinkResultEntityToJson(data as ActivityLinkResultEntity);
+			case BankEntity:
+				return bankEntityToJson(data as BankEntity);
 			case CardEntity:
 				return cardEntityToJson(data as CardEntity);
 			case CardItemEntity:
@@ -200,8 +202,14 @@ class JsonConvert<T> {
 				return myBrowseRecordEntityToJson(data as MyBrowseRecordEntity);
 			case MyBrowseRecordSkillTagList:
 				return myBrowseRecordSkillTagListToJson(data as MyBrowseRecordSkillTagList);
+			case TelephoneBillEntity:
+				return telephoneBillEntityToJson(data as TelephoneBillEntity);
 			case AliOssEntity:
 				return aliOssEntityToJson(data as AliOssEntity);
+			case NoticeEntity:
+				return noticeEntityToJson(data as NoticeEntity);
+			case NoticeItemEntity:
+				return noticeItemEntityToJson(data as NoticeItemEntity);
 			case SkillEntity:
 				return skillEntityToJson(data as SkillEntity);
 			case GoodsEntity:
@@ -210,8 +218,6 @@ class JsonConvert<T> {
 				return userCenterEntityToJson(data as UserCenterEntity);
 			case UserCenterCardInfoList:
 				return userCenterCardInfoListToJson(data as UserCenterCardInfoList);
-			case BankEntity:
-				return bankEntityToJson(data as BankEntity);
 			case NoticeNewestMsgEntity:
 				return noticeNewestMsgEntityToJson(data as NoticeNewestMsgEntity);
 			case NewMessageEntity:
@@ -224,18 +230,12 @@ class JsonConvert<T> {
 				return adTaskEntityToJson(data as AdTaskEntity);
 			case LoginEntity:
 				return loginEntityToJson(data as LoginEntity);
-			case TelephoneBillEntity:
-				return telephoneBillEntityToJson(data as TelephoneBillEntity);
 			case GoodsLinkEntity:
 				return goodsLinkEntityToJson(data as GoodsLinkEntity);
 			case GoodsLinkCouponInfo:
 				return goodsLinkCouponInfoToJson(data as GoodsLinkCouponInfo);
 			case GoodsLinkWeAppInfo:
 				return goodsLinkWeAppInfoToJson(data as GoodsLinkWeAppInfo);
-			case NoticeEntity:
-				return noticeEntityToJson(data as NoticeEntity);
-			case NoticeItemEntity:
-				return noticeItemEntityToJson(data as NoticeItemEntity);
 			case GoodsDetailEntity:
 				return goodsDetailEntityToJson(data as GoodsDetailEntity);
 			}
@@ -283,6 +283,9 @@ class JsonConvert<T> {
 		if(type == (ActivityLinkResultEntity).toString()){
 			return ActivityLinkResultEntity().fromJson(json);
 		}
+		if(type == (BankEntity).toString()){
+			return BankEntity().fromJson(json);
+		}
 		if(type == (CardEntity).toString()){
 			return CardEntity().fromJson(json);
 		}
@@ -310,8 +313,17 @@ class JsonConvert<T> {
 		if(type == (MyBrowseRecordSkillTagList).toString()){
 			return MyBrowseRecordSkillTagList().fromJson(json);
 		}
+		if(type == (TelephoneBillEntity).toString()){
+			return TelephoneBillEntity().fromJson(json);
+		}
 		if(type == (AliOssEntity).toString()){
 			return AliOssEntity().fromJson(json);
+		}
+		if(type == (NoticeEntity).toString()){
+			return NoticeEntity().fromJson(json);
+		}
+		if(type == (NoticeItemEntity).toString()){
+			return NoticeItemEntity().fromJson(json);
 		}
 		if(type == (SkillEntity).toString()){
 			return SkillEntity().fromJson(json);
@@ -324,9 +336,6 @@ class JsonConvert<T> {
 		}
 		if(type == (UserCenterCardInfoList).toString()){
 			return UserCenterCardInfoList().fromJson(json);
-		}
-		if(type == (BankEntity).toString()){
-			return BankEntity().fromJson(json);
 		}
 		if(type == (NoticeNewestMsgEntity).toString()){
 			return NoticeNewestMsgEntity().fromJson(json);
@@ -346,9 +355,6 @@ class JsonConvert<T> {
 		if(type == (LoginEntity).toString()){
 			return LoginEntity().fromJson(json);
 		}
-		if(type == (TelephoneBillEntity).toString()){
-			return TelephoneBillEntity().fromJson(json);
-		}
 		if(type == (GoodsLinkEntity).toString()){
 			return GoodsLinkEntity().fromJson(json);
 		}
@@ -357,12 +363,6 @@ class JsonConvert<T> {
 		}
 		if(type == (GoodsLinkWeAppInfo).toString()){
 			return GoodsLinkWeAppInfo().fromJson(json);
-		}
-		if(type == (NoticeEntity).toString()){
-			return NoticeEntity().fromJson(json);
-		}
-		if(type == (NoticeItemEntity).toString()){
-			return NoticeItemEntity().fromJson(json);
 		}
 		if(type == (GoodsDetailEntity).toString()){
 			return GoodsDetailEntity().fromJson(json);
@@ -412,6 +412,9 @@ class JsonConvert<T> {
 		if(<ActivityLinkResultEntity>[] is M){
 			return data.map<ActivityLinkResultEntity>((e) => ActivityLinkResultEntity().fromJson(e)).toList() as M;
 		}
+		if(<BankEntity>[] is M){
+			return data.map<BankEntity>((e) => BankEntity().fromJson(e)).toList() as M;
+		}
 		if(<CardEntity>[] is M){
 			return data.map<CardEntity>((e) => CardEntity().fromJson(e)).toList() as M;
 		}
@@ -439,8 +442,17 @@ class JsonConvert<T> {
 		if(<MyBrowseRecordSkillTagList>[] is M){
 			return data.map<MyBrowseRecordSkillTagList>((e) => MyBrowseRecordSkillTagList().fromJson(e)).toList() as M;
 		}
+		if(<TelephoneBillEntity>[] is M){
+			return data.map<TelephoneBillEntity>((e) => TelephoneBillEntity().fromJson(e)).toList() as M;
+		}
 		if(<AliOssEntity>[] is M){
 			return data.map<AliOssEntity>((e) => AliOssEntity().fromJson(e)).toList() as M;
+		}
+		if(<NoticeEntity>[] is M){
+			return data.map<NoticeEntity>((e) => NoticeEntity().fromJson(e)).toList() as M;
+		}
+		if(<NoticeItemEntity>[] is M){
+			return data.map<NoticeItemEntity>((e) => NoticeItemEntity().fromJson(e)).toList() as M;
 		}
 		if(<SkillEntity>[] is M){
 			return data.map<SkillEntity>((e) => SkillEntity().fromJson(e)).toList() as M;
@@ -453,9 +465,6 @@ class JsonConvert<T> {
 		}
 		if(<UserCenterCardInfoList>[] is M){
 			return data.map<UserCenterCardInfoList>((e) => UserCenterCardInfoList().fromJson(e)).toList() as M;
-		}
-		if(<BankEntity>[] is M){
-			return data.map<BankEntity>((e) => BankEntity().fromJson(e)).toList() as M;
 		}
 		if(<NoticeNewestMsgEntity>[] is M){
 			return data.map<NoticeNewestMsgEntity>((e) => NoticeNewestMsgEntity().fromJson(e)).toList() as M;
@@ -475,9 +484,6 @@ class JsonConvert<T> {
 		if(<LoginEntity>[] is M){
 			return data.map<LoginEntity>((e) => LoginEntity().fromJson(e)).toList() as M;
 		}
-		if(<TelephoneBillEntity>[] is M){
-			return data.map<TelephoneBillEntity>((e) => TelephoneBillEntity().fromJson(e)).toList() as M;
-		}
 		if(<GoodsLinkEntity>[] is M){
 			return data.map<GoodsLinkEntity>((e) => GoodsLinkEntity().fromJson(e)).toList() as M;
 		}
@@ -486,12 +492,6 @@ class JsonConvert<T> {
 		}
 		if(<GoodsLinkWeAppInfo>[] is M){
 			return data.map<GoodsLinkWeAppInfo>((e) => GoodsLinkWeAppInfo().fromJson(e)).toList() as M;
-		}
-		if(<NoticeEntity>[] is M){
-			return data.map<NoticeEntity>((e) => NoticeEntity().fromJson(e)).toList() as M;
-		}
-		if(<NoticeItemEntity>[] is M){
-			return data.map<NoticeItemEntity>((e) => NoticeItemEntity().fromJson(e)).toList() as M;
 		}
 		if(<GoodsDetailEntity>[] is M){
 			return data.map<GoodsDetailEntity>((e) => GoodsDetailEntity().fromJson(e)).toList() as M;

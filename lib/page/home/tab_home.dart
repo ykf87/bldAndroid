@@ -61,22 +61,22 @@ class _TabHomePageState extends State<TabHomePage>
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
               const IndexHomeAppbar(),
-              // SliverToBoxAdapter(
-              //   child:SizedBox(
-              //     width: double.infinity,
-              //     height: 150,
-              //     child: AdBannerWidget(
-              //       posId: CSJUtils.CSJBannerId,
-              //       width: 300,
-              //       height: 150,
-              //       interval: 30,
-              //       show: true,
-              //     ),
-              //   ) ,
-              // ),
-              SliverPadding(
-                  padding: const EdgeInsets.only(top: 12),
-                  sliver: const SliverToBoxAdapter(child: IndexBanner(),)),
+              SliverToBoxAdapter(
+                child:SizedBox(
+                  width: double.infinity,
+                  height: 150,
+                  child: AdBannerWidget(
+                    posId: CSJUtils.CSJBannerId,
+                    width: 1300,
+                    height: 150,
+                    interval: 30,
+                    show: true,
+                  ),
+                ) ,
+              ),
+              // SliverPadding(
+              //     padding: const EdgeInsets.only(top: 12),
+              //     sliver: const SliverToBoxAdapter(child: IndexBanner(),)),
               const GridMenuComponent(),
               SliverPersistentHeader(
                 delegate: IndexTabbar(tabController),

@@ -52,12 +52,12 @@ final gridMenuModles = [
           title: '美团领券',
           image: mtwmImage,
           onTap: () async {
-            CSJUtils.showRewardVideoAd();
+            getMeiTuanData();
           },
           isAssets: true,
           onLongTap: () async {
-            Get.context!.navigator
-                .push(SwipeablePageRoute(builder: (_) => AboutPage()));
+            // Get.context!.navigator
+            //     .push(SwipeablePageRoute(builder: (_) => AboutPage()));
           })),
 
   GridMenuItem(
@@ -131,6 +131,26 @@ final gridMenuModles = [
   //         isAssets: true)),
 ];
 
+///美团
+void getMeiTuanData() {
+
+  Map<String, dynamic> map = Map();
+  map['apikey'] = JtkApi.apikey;
+  map['sid'] = "bld";
+  map['pub_id'] = JtkApi.pub_id;
+  map['type'] = 1;
+
+  ApiClient.instance.get(ApiUrl.meituan, data: map, isJTK: true,loading: true,
+      onSuccess: (data) {
+        BaseEntity<TelephoneBillEntity> entity = BaseEntity.fromJson(data!);
+        if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
+          launch(entity.data?.h5??'');
+        }else{
+        }
+
+      });
+}
+
 ///话费
 void getMobileData() {
 
@@ -139,7 +159,7 @@ void getMobileData() {
   map['sid'] = "bld";
   map['pub_id'] = JtkApi.pub_id;
 
-  ApiClient.instance.get(ApiUrl.mobile, data: map, isJTK: true,
+  ApiClient.instance.get(ApiUrl.mobile, data: map, isJTK: true,loading: true,
       onSuccess: (data) {
         BaseEntity<TelephoneBillEntity> entity = BaseEntity.fromJson(data!);
         if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
@@ -158,7 +178,7 @@ void getElectricityData() {
   map['sid'] = "bld";
   map['pub_id'] = JtkApi.pub_id;
 
-  ApiClient.instance.get(ApiUrl.electricity, data: map, isJTK: true,
+  ApiClient.instance.get(ApiUrl.electricity, data: map, isJTK: true,loading: true,
       onSuccess: (data) {
         BaseEntity<TelephoneBillEntity> entity = BaseEntity.fromJson(data!);
         if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
@@ -178,7 +198,7 @@ void getDiDiData() {
   map['pub_id'] = JtkApi.pub_id;
   map['type'] = 1;
 
-  ApiClient.instance.get(ApiUrl.didi, data: map, isJTK: true,
+  ApiClient.instance.get(ApiUrl.didi, data: map, isJTK: true,loading: true,
       onSuccess: (data) {
         BaseEntity<TelephoneBillEntity> entity = BaseEntity.fromJson(data!);
         if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {

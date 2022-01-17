@@ -51,7 +51,10 @@ class _AboutWeFreePageState extends State<AboutWeFreePage> {
               children: [
                 Padding(
                     padding: const EdgeInsets.only(top: 50),
-                    child: SvgPicture.asset('assets/svg/ic_logo_about.svg',width: 96,height: 96)),
+                    child: Image(
+                      image: AssetImage("assets/images/sdz_logo.png"),width: 96,height: 96,
+                    ),
+                ),
                 Padding(
                     padding: const EdgeInsets.only(top: 12),
                     child: Center(
@@ -66,7 +69,7 @@ class _AboutWeFreePageState extends State<AboutWeFreePage> {
                             style: TextStyle(
                                 color:  Colors.white, fontSize: 14)))),
                 Padding(padding: EdgeInsets.only(top: 22),
-                    child: Text('最受欢迎的一站式数字化社交营销网络平台。\n平台目前粉丝覆盖率高达到7亿+，总互动量达70亿。达人聚焦在护肤、美妆、生活方式、探店、时尚、穿搭、母婴、等众多领域，粉丝覆盖小红书、抖音、逛逛、大众点评、得物等主流平台。通过数据驱动与智能匹配，让您直接邀请达人、与达人直接沟通；实现精准投放与效果跟踪，是全网铺量的首选',
+                    child: Text('最受欢迎的领券及做任务赢现金平台。\n平台目前有饿了吗、美团、淘宝、pdd、京东的优惠券，还有充电费花费的优惠活动，还可以在福利中心做任务赢取现金',
                         style:TextStyle(color: Colours.text_main,fontSize: 14,height: 1.8)))
               ],
             ),
