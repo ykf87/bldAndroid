@@ -19,7 +19,7 @@ import 'package:SDZ/dialog/alter_dialog.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/color_util.dart';
 import 'package:SDZ/utils/jpush_util.dart';
-import 'package:SDZ/utils/one_key_login_util.dart';
+
 import 'package:SDZ/utils/sputils.dart';
 import 'package:SDZ/utils/umeng_util.dart';
 import 'package:SDZ/utils/wf_log_util.dart';

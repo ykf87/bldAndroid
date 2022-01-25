@@ -20,7 +20,7 @@ import 'package:SDZ/event/login_event.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
 import 'package:SDZ/utils/jpush_util.dart';
 import 'package:SDZ/utils/login_util.dart';
-import 'package:SDZ/utils/one_key_login_util.dart';
+
 import 'package:SDZ/utils/sputils.dart';
 import 'package:SDZ/utils/umeng_util.dart';
 import 'package:SDZ/utils/wf_log_util.dart';
@@ -131,45 +131,8 @@ class IndexLogic extends GetxController {
     }
     else {
       state.showTabLogin = true;
-
-      if (OneKeyLoginUtil.instance.getOneKeyLoginInitSuccess() &&
-          OneKeyLoginUtil.instance.getPhoneSuccess()) {
-        OneKeyLoginUtil.instance.setOneKeyLoginListener((res) {
-          state.showTabLogin = false;
-          if (1000 == res.code) {
-            oneKeyLogin(res.token);
-          }
-        }).openLoginAuth((res) {}, fail: () {
-          state.showTabLogin = false;
-          toLogin();
-        },
-            isBottom: Platform.isAndroid
-                ? true
-                : false).addClickWidgetEventListener((widgetId) async {
-          state.showTabLogin = false;
-
-          switch (widgetId) {
-            case 'icon':
-            case 'icon':
-              {
-                Get.back();
-                break;
-              }
-            case 'smsLogin':
-              {
-                OneKeyLoginUtil.instance.cancelAuth();
-                toLogin();
-                break;
-              }
-              break;
-          }
-        });
-      } else {
-
         state.showTabLogin = false;
-
         toLogin();
-      }
     }
   }
 

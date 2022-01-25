@@ -120,7 +120,7 @@ class WithdrawPageState extends BaseStatefulState<WithdrawPage> {
                   keyboardType: TextInputType.phone,
                   //只能输入数字
                   inputFormatters: <TextInputFormatter>[
-                    WhitelistingTextInputFormatter.digitsOnly,
+                    FilteringTextInputFormatter.digitsOnly
                   ],
                   decoration: new InputDecoration(
                     hintText: '请输入提现个数',

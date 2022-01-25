@@ -22,7 +22,7 @@ import 'package:SDZ/event/reload_one_key_event.dart';
 import 'package:SDZ/page/login/login.dart';
 import 'package:SDZ/page/login/perfect_user_info.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
-import 'package:SDZ/utils/one_key_login_util.dart';
+
 import 'package:SDZ/utils/sputils.dart';
 import 'package:SDZ/utils/umeng_util.dart';
 import 'package:SDZ/utils/wf_log_util.dart';
@@ -133,40 +133,7 @@ class _OneKeyLoginState extends BaseStatefulState<OneKeyLoginPage> {
 
   ///闪验初始化
   void initOneKeyLogin() {
-    if(OneKeyLoginUtil.instance.getOneKeyLoginInitSuccess()) {
-      OneKeyLoginUtil.instance
-          .setOneKeyLoginListener((res) {
-            if(1000 == res.code) {
-              oneKeyLogin(res.token);
-            }else{
-              // Get.offAll(() => MainHomePage());
-              Get.back();
-              if (Platform.isIOS) {
-                Get.back();
-              }
-            }
-      }).openLoginAuth((res) {
-
-      }, fail: () {
-        toLogin();
-      }).addClickWidgetEventListener((widgetId) {
-        switch(widgetId){
-          case 'icon':
-            {
-              Get.back();
-              break;
-            }
-          case 'smsLogin':
-            {
-              toLogin();
-              break;
-            }
-            break;
-        }
-      });
-    }else{
       toLogin();
-    }
   }
 
   toLogin() {

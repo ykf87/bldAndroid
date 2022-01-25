@@ -6,7 +6,7 @@ import 'package:SDZ/event/login_event.dart';
 import 'package:SDZ/page/index.dart';
 import 'package:SDZ/page/login/login.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
-import 'package:SDZ/utils/one_key_login_util.dart';
+
 import 'package:SDZ/utils/sputils.dart';
 import 'package:SDZ/utils/umeng_util.dart';
 
@@ -24,21 +24,13 @@ class LoginUtil {
 
   /// 跳转登录
   static void toLogin({bool toMain = false, bool isMessageTab = false}) {
-    if(OneKeyLoginUtil.instance.getPhoneSuccess()) {
-      Get.toNamed('/login', arguments: _getArguments(toMain: toMain, isMessageTab: isMessageTab));
-    }else{
       Get.to(LoginPage(isMessageTab: isMessageTab), arguments: _getArguments(toMain: toMain));
-    }
   }
 
   /// 跳转登录
   /// 删除之前所有页面
   static void offLogin({bool toMain = false}) {
-    if(OneKeyLoginUtil.instance.getPhoneSuccess()) {
-      Get.offAllNamed('/login', arguments: _getArguments(toMain: toMain));
-    }else{
       Get.offAll(() => LoginPage(), arguments: _getArguments(toMain: toMain));
-    }
   }
 
   ///退出登录

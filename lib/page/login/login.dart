@@ -27,7 +27,7 @@ import 'package:SDZ/page/web/web_view_page.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/custom_textinput_formatter.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
-import 'package:SDZ/utils/one_key_login_util.dart';
+
 import 'package:SDZ/utils/phone_formatter.dart';
 import 'package:SDZ/utils/sputils.dart';
 import 'package:SDZ/utils/utils.dart';
@@ -119,7 +119,7 @@ class _LoginPageState extends BaseStatefulState<LoginPage>
         keyboardType: TextInputType.phone,
         //只能输入数字
         inputFormatters: <TextInputFormatter>[
-          WhitelistingTextInputFormatter.digitsOnly,
+          FilteringTextInputFormatter.digitsOnly
         ],
         decoration: new InputDecoration(
           hintText: '请输入手机号码',

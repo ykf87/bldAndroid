@@ -19,10 +19,10 @@ import 'package:SDZ/widget/my_drawable_start_text.dart';
 import 'package:SDZ/widget/no_data.dart';
 import 'package:SDZ/widget/round_underline_tab_indicator.dart';
 import 'package:SDZ/widget/simple_price.dart';
-import 'package:common_utils/common_utils.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:fbutton_nullsafety/fbutton_nullsafety.dart';
 import 'package:fcontrol_nullsafety/fdefine.dart' as controller;
+import 'package:flustars/flustars.dart';
 
 // Flutter imports:
 import 'package:flutter/cupertino.dart';
