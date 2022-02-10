@@ -35,7 +35,6 @@ class LoginUtil {
 
   ///退出登录
   static void logout(){
-    UmengUtil.onProfileSignOff();
     SPUtils.setUserId('');
     // SPUtils.setUserAccount('');
     SPUtils.setUserToken('');

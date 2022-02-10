@@ -527,7 +527,7 @@ class _RegisterPageState extends BaseStatefulState<BldRegisterPage>
       // ToastUtils.toast('注册成功');
       SPUtils.setUserId(entity.data?.accountId ?? '');
       SPUtils.setUserToken(entity.data?.token ?? '');
-      SPUtils.setUserAccount(entity.data?.telephone ?? '');
+      SPUtils.setUserAccount(phone);
       SPUtils.setUserNickName(entity.data?.nickname ?? '');
       SPUtils.setAvatar(entity.data?.avatar ?? '');
       EventBusUtils.getInstance().fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGIN));

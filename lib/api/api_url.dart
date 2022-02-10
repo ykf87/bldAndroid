@@ -140,6 +140,7 @@ class ApiUrl {
   /// 详情
    static final String articleDetail = "info/";
    static final String register = "sigin";
+   static final String cancle = "logout";///注销
    static final String center = "center";
    static final String collect = "heart";
    static final String reset = "reset";

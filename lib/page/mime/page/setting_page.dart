@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:SDZ/page/login/cancle.dart';
 import 'package:SDZ/page/mime/page/PrivacyPolicyPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -137,6 +138,15 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                                   onPressed: () {
                                     Get.to(AboutWeFreePage());
                                   }),
+                              SPUtils.isLogined()
+                                  ? LineTextWidget(
+                                  leftImg: 'ic_about_us.svg',
+                                  bgColor: Colours.bg_ffffff,
+                                  leftText: '注销账号',
+                                  rightText: '',
+                                  onPressed: () {
+                                    Get.to(() => CanclePage());
+                                  }):Container(),
 
                             ],
                           ),

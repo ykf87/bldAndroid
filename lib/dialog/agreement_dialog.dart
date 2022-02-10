@@ -1,6 +1,7 @@
 
 import 'dart:io';
 
+import 'package:SDZ/core/utils/toast.dart';
 import 'package:SDZ/page/mime/page/PrivacyPolicyPage.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
