@@ -8,6 +8,7 @@ import 'package:SDZ/page/home/widget/index_tabbar.dart';
 import 'package:SDZ/page/home/widget/searchbar.dart';
 import 'package:SDZ/page/home/widget/waterfall_goods_card.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
+import 'package:SDZ/utils/sputils.dart';
 import 'package:SDZ/widget/edit_page_handle.dart';
 import 'package:SDZ/widget/loading_more_list_indicator.dart';
 import 'package:extended_nested_scroll_view/extended_nested_scroll_view.dart'
@@ -61,7 +62,7 @@ class _TabHomePageState extends State<TabHomePage>
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
               const IndexHomeAppbar(),
-              SliverToBoxAdapter(
+              SPUtils.getAdShow()?SliverToBoxAdapter(
                 child:SizedBox(
                   width: double.infinity,
                   height: 150,
@@ -73,7 +74,7 @@ class _TabHomePageState extends State<TabHomePage>
                     show: true,
                   ),
                 ) ,
-              ),
+              ):SliverToBoxAdapter(),
               // SliverPadding(
               //     padding: const EdgeInsets.only(top: 12),
               //     sliver: const SliverToBoxAdapter(child: IndexBanner(),)),

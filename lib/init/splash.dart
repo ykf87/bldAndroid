@@ -1,6 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:SDZ/api/api_client.dart';
+import 'package:SDZ/api/api_url.dart';
+import 'package:SDZ/entity/base/base_entity.dart';
+import 'package:SDZ/entity/global_entity.dart';
 import 'package:SDZ/page/index.dart';
 import 'package:SDZ/res/constant.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
@@ -45,9 +49,13 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       if (!SPUtils.isAgreementRead) {
         showAgreementDialog();
+      }else{
+        if(!SPUtils.getAdShow()){
+          toMain();
+        }
       }
     });
-    if(SPUtils.isAgreementRead){
+    if (SPUtils.isAgreementRead && SPUtils.getAdShow()) {
       showCSJSplashAd();
     }
     setAdEvent();
@@ -107,8 +115,7 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
 
   @override
   Widget initDefaultBuild(BuildContext context) {
-    return Container(
-    );
+    return Container();
   }
 
   ///页面跳转
@@ -119,8 +126,11 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
     }
     requestPermission();
     // FlutterQqAds.initAd(CSJUtils.YLHAPPID);
-    CSJUtils.initCSJADSDK().then((value) =>  toMain());
-
+    if (SPUtils.getAdShow()) {
+      CSJUtils.initCSJADSDK().then((value) => toMain());
+    } else {
+      toMain();
+    }
   }
 
   Future<void> showCSJSplashAd() async {
@@ -165,7 +175,6 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
   void toMain() {
     Get.offAllNamed('/home', arguments: getArguments());
     // Navigator.push(context, CustomerRoute(MainHomePage()));
-
   }
 
   dynamic getArguments() => {'tomain': false};
@@ -181,5 +190,4 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
         await [Permission.storage, Permission.phone].request();
     WFLogUtil.d(statuses);
   }
-
 }

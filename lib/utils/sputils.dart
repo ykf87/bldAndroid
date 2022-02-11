@@ -123,6 +123,15 @@ class SPUtils {
     return _spf!.getString('userAccount') ?? '';
   }
 
+  /// 设置是否显示广告
+  static Future<bool> setAdShow(bool isAdShow) {
+    return _spf!.setBool('isAdShow', isAdShow);
+  }
+
+  static bool getAdShow() {
+    return _spf!.getBool('isAdShow') ?? false;
+  }
+
   /// 设置协议是否已读
   /// agree 是否同意协议
   static Future<bool> setAgreementRead(bool agree) =>

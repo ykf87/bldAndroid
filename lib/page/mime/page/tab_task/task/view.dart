@@ -116,7 +116,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
                   });
                 },
                 slivers: [
-                  SliverToBoxAdapter(
+                  state.isShowEmpty?SliverToBoxAdapter(
                     child: state.isShowEmpty
                         ? Container(
                             margin: EdgeInsets.only(top: 100),
@@ -137,7 +137,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
                               ],
                             ))
                         : SizedBox.shrink(),
-                  ),
+                  ):
                   SliverToBoxAdapter(
                       child: Container(
                     padding: EdgeInsets.only(left: 16, right: 16),

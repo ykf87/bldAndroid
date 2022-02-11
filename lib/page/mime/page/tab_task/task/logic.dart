@@ -4,6 +4,7 @@ import 'package:SDZ/core/utils/toast.dart';
 import 'package:SDZ/entity/adIntegral/ad_task_entity.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/base/empty_entity.dart';
+import 'package:SDZ/utils/sputils.dart';
 import 'package:get/get.dart';
 
 import 'state.dart';
@@ -29,9 +30,15 @@ class AdTaskLogic extends GetxController {
       } else {
         state.isShowEmpty = state.list.length == 0;
       }
+      if(!SPUtils.getAdShow()){
+        state.isShowEmpty = true;
+      }
       update();
     }, onError: (msg) {
       state.isShowEmpty = state.list.length == 0;
+      if(!SPUtils.getAdShow()){
+        state.isShowEmpty = true;
+      }
       state.refreshController.finishLoad(noMore: true);
       state.refreshController.finishRefresh(success: true);
       if (state.pageNum > 1) {

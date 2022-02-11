@@ -224,7 +224,7 @@ class _MainHomePageState extends State<MainHomePage>
                       //       height: kNavIconSize,
                       //       width: kNavIconSize,
                       //     )),
-                      BottomNavigationBarItem(
+                     BottomNavigationBarItem(
                           label: '福利',
                           icon: _currentIndex == 1
                               ? Image.asset(

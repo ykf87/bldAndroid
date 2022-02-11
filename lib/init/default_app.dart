@@ -1,9 +1,13 @@
 import 'dart:math';
 
+import 'package:SDZ/api/api_client.dart';
+import 'package:SDZ/api/api_url.dart';
 import 'package:SDZ/constant/wechat_constant.dart';
 import 'package:SDZ/core/http/http.dart';
 import 'package:SDZ/core/utils/locale.dart';
 import 'package:SDZ/core/utils/toast.dart';
+import 'package:SDZ/entity/base/base_entity.dart';
+import 'package:SDZ/entity/global_entity.dart';
 import 'package:SDZ/generated/i18n.dart';
 import 'package:SDZ/router/route_map.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
@@ -56,7 +60,12 @@ class DefaultApp {
     await LocaleUtils.init();
     await FkUserAgent.init();
     if(SPUtils.isAgreementRead){
-      await CSJUtils.initCSJADSDK();
+      final result = await ApiClient.instance.getReturn(ApiUrl.getBLDBaseUrl()+ApiUrl.getGlobalConfig);
+      BaseEntity<GlobalEntity> entity = BaseEntity.fromJson(result!);
+      SPUtils.setAdShow(entity.data?.isadv?.contains("true")??false);
+      if(SPUtils.getAdShow()){
+        await CSJUtils.initCSJADSDK();
+      }
       // await FlutterQqAds.initAd(CSJUtils.YLHAPPID);
     }
     String deviceId = await DeviceUtil.deviceId ?? '';
