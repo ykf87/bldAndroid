@@ -49,8 +49,8 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       if (!SPUtils.isAgreementRead) {
         showAgreementDialog();
-      }else{
-        if(!SPUtils.getAdShow()){
+      } else {
+        if (!SPUtils.getAdShow()) {
           toMain();
         }
       }
@@ -125,8 +125,8 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
       return;
     }
     requestPermission();
-    // FlutterQqAds.initAd(CSJUtils.YLHAPPID);
     if (SPUtils.getAdShow()) {
+      FlutterQqAds.initAd(CSJUtils.YLHAPPID);
       CSJUtils.initCSJADSDK().then((value) => toMain());
     } else {
       toMain();

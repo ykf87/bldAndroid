@@ -49,7 +49,8 @@ class DefaultApp {
     // 保持竖屏，禁止横屏
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
         .then((_) {
-      initFirst().then((value) => runApp( ProviderScope(child: Store.init(ToastUtils.init(MyApp())))));
+      initFirst().then((value) =>
+          runApp(ProviderScope(child: Store.init(ToastUtils.init(MyApp())))));
       initApp();
     });
   }
@@ -59,14 +60,15 @@ class DefaultApp {
     await SPUtils.init();
     await LocaleUtils.init();
     await FkUserAgent.init();
-    if(SPUtils.isAgreementRead){
-      final result = await ApiClient.instance.getReturn(ApiUrl.getBLDBaseUrl()+ApiUrl.getGlobalConfig);
+    if (SPUtils.isAgreementRead) {
+      final result = await ApiClient.instance
+          .getReturn(ApiUrl.getBLDBaseUrl() + ApiUrl.getGlobalConfig);
       BaseEntity<GlobalEntity> entity = BaseEntity.fromJson(result!);
-      SPUtils.setAdShow(entity.data?.isadv?.contains("true")??false);
-      if(SPUtils.getAdShow()){
+      SPUtils.setAdShow(entity.data?.isadv?.contains("true") ?? false);
+      if (SPUtils.getAdShow()) {
         await CSJUtils.initCSJADSDK();
+        await FlutterQqAds.initAd(CSJUtils.YLHAPPID);
       }
-      // await FlutterQqAds.initAd(CSJUtils.YLHAPPID);
     }
     String deviceId = await DeviceUtil.deviceId ?? '';
     if (deviceId.isEmpty) {
@@ -81,15 +83,12 @@ class DefaultApp {
 
   /// 程序初始化操作
   static void initApp() {
-
     WFLogUtil.init(isDebug: kDebugMode);
     XHttp.init();
-
   }
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Consumer2<ThemeProvider, LocaleModel>(
