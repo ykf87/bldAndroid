@@ -4,6 +4,8 @@ import 'package:SDZ/core/utils/toast.dart';
 import 'package:SDZ/entity/adIntegral/ad_task_entity.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/base/empty_entity.dart';
+import 'package:SDZ/entity/mime/user_center_entity.dart';
+import 'package:SDZ/utils/login_util.dart';
 import 'package:SDZ/utils/sputils.dart';
 import 'package:get/get.dart';
 
@@ -57,7 +59,6 @@ class AdTaskLogic extends GetxController {
           if (entity.isSuccess) {
             doRefresh();
             ToastUtils.toast('奖励已到账');
-            print('视频成功请求');
           }
           update();
         }, onError: (msg) {
@@ -65,10 +66,26 @@ class AdTaskLogic extends GetxController {
         });
   }
 
+  void getUserInfo() {
+    if(!LoginUtil.isLogin()){
+      return;
+    }
+    ApiClient.instance.get(ApiUrl.getBLDBaseUrl() + ApiUrl.center,
+        onSuccess: (data) {
+          BaseEntity<UserCenterEntity> entity = BaseEntity.fromJson(data!);
+          if (entity.isSuccess && entity.data != null) {
+              state.userCenterEntity = entity.data;
+              update();
+          }
+        });
+  }
+
   void doRefresh() {
     state.list.clear();
     state.pageNum = 1;
     getData();
+    getUserInfo();
+
   }
 
   void doLoadMore() {

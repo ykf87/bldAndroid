@@ -11,8 +11,8 @@ class CSJUtils{
   static const String CSJBannerId = '947697730';//穿山甲bannerid
 
 
-  static const String YLHAPPID = '1200106023';//优量汇id
-  static const String YLHVideoId = '4062932245462854';//优量汇激励视频id
+  static const String YLHAPPID = '1200402924';//优量汇id
+  static const String YLHVideoId = '1042190702729526';//优量汇激励视频id
   /// 初始化广告 SDK
   static Future<bool> initCSJADSDK() async {
     String _result = '';

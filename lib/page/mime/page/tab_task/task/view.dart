@@ -31,7 +31,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
   final AdTaskLogic logic = Get.put(AdTaskLogic());
   final AdTaskState state = Get.find<AdTaskLogic>().state;
   AdTaskEntity? curEntity;
-  UserCenterEntity? userCenterEntity;
+
 
   @override
   void initState() {
@@ -40,7 +40,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
     logic.getData();
     setCSJAdEvent();
     setYLHAdEvent();
-    getUserInfo();
+    logic.getUserInfo();
   }
 
   @override
@@ -67,7 +67,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
                           width: 8,
                         ),
                         Text(
-                          (userCenterEntity?.jifen??0).toString(),
+                          (state.userCenterEntity?.jifen??0).toString(),
                           style: TextStyle(color: Colours.text, fontSize: 16),
                         ),
                         SizedBox(
@@ -107,7 +107,6 @@ class _AdTaskPageState extends State<AdTaskPage> {
                 onRefresh: () async {
                   await Future.delayed(Duration(seconds: 1), () {
                     control.doRefresh();
-                    getUserInfo();
                   });
                 },
                 onLoad: () async {
@@ -221,19 +220,6 @@ class _AdTaskPageState extends State<AdTaskPage> {
       print('onEventListener:$_adEvent');
     });
   }
-  void getUserInfo() {
-    if(!LoginUtil.isLogin()){
-      return;
-    }
-    ApiClient.instance.get(ApiUrl.getBLDBaseUrl() + ApiUrl.center,
-        onSuccess: (data) {
-          BaseEntity<UserCenterEntity> entity = BaseEntity.fromJson(data!);
-          if (entity.isSuccess && entity.data != null) {
-            setState(() {
-              userCenterEntity = entity.data;
-            });
-          }
-        });
-  }
+
 
 }

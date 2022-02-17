@@ -81,7 +81,14 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
       }
       if (type == 1) {
         SPUtils.setAgreementRead(true);
-        goHomePage();
+        ApiClient.instance.get(ApiUrl.getBLDBaseUrl() + ApiUrl.getGlobalConfig,
+            onSuccess: (data) {
+          BaseEntity<GlobalEntity> entity = BaseEntity.fromJson(data!);
+          SPUtils.setAdShow(entity.data?.isadv?.contains("true") ?? false);
+          goHomePage();
+        }, onError: (msg) {
+          goHomePage();
+        });
       }
     }), barrierDismissible: false);
   }
