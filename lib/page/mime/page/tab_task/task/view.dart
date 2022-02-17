@@ -12,6 +12,7 @@ import 'package:SDZ/widget/custom_refresh_footer.dart';
 import 'package:SDZ/widget/custom_refresh_header.dart';
 import 'package:SDZ/widget/double_click.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_pangle_ads/flutter_pangle_ads.dart' as CSJ;
 import 'package:flutter_qq_ads/flutter_qq_ads.dart';
@@ -32,7 +33,6 @@ class _AdTaskPageState extends State<AdTaskPage> {
   final AdTaskState state = Get.find<AdTaskLogic>().state;
   AdTaskEntity? curEntity;
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -41,6 +41,13 @@ class _AdTaskPageState extends State<AdTaskPage> {
     setCSJAdEvent();
     setYLHAdEvent();
     logic.getUserInfo();
+
+  }
+
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -67,14 +74,14 @@ class _AdTaskPageState extends State<AdTaskPage> {
                           width: 8,
                         ),
                         Text(
-                          (state.userCenterEntity?.jifen??0).toString(),
+                          (state.userCenterEntity?.jifen ?? 0).toString(),
                           style: TextStyle(color: Colours.text, fontSize: 16),
                         ),
                         SizedBox(
                           width: 8,
                         ),
                         DoubleClick(
-                          onTap: (){
+                          onTap: () {
                             Get.to(MyWalletPage());
                           },
                           child: Container(
@@ -86,6 +93,28 @@ class _AdTaskPageState extends State<AdTaskPage> {
                             child: Center(
                               child: Text(
                                 '提现',
+                                style: TextStyle(
+                                    color: Colours.bg_ffffff, fontSize: 10),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 16,
+                        ),
+                        DoubleClick(
+                          onTap: () {
+                            SystemNavigator.pop();
+                          },
+                          child: Container(
+                            width: 36,
+                            height: 16,
+                            decoration: BoxDecoration(
+                                color: Colours.color_main_red,
+                                borderRadius: BorderRadius.circular(14)),
+                            child: Center(
+                              child: Text(
+                                '退出',
                                 style: TextStyle(
                                     color: Colours.bg_ffffff, fontSize: 10),
                               ),
@@ -115,65 +144,68 @@ class _AdTaskPageState extends State<AdTaskPage> {
                   });
                 },
                 slivers: [
-                  state.isShowEmpty?SliverToBoxAdapter(
-                    child: state.isShowEmpty
-                        ? Container(
-                            margin: EdgeInsets.only(top: 100),
-                            child: Column(
-                              children: [
-                                SvgPicture.asset(
-                                  'assets/svg/img_collection_empty.svg',
-                                  height: 120,
-                                  width: 120,
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                Text('暂无任务~'),
-                                SizedBox(
-                                  height: 28,
-                                ),
-                              ],
-                            ))
-                        : SizedBox.shrink(),
-                  ):
-                  SliverToBoxAdapter(
-                      child: Container(
-                    padding: EdgeInsets.only(left: 16, right: 16),
-                    margin: EdgeInsets.only(top: 12),
-                    child: StaggeredGridView.countBuilder(
-                      primary: false,
-                      shrinkWrap: true,
-                      crossAxisCount: 4,
-                      itemCount: state.list.length,
-                      itemBuilder: (context, i) {
-                        return DoubleClick(
-                          onTap: () {
-                            curEntity = state.list[i];
-                            if (curEntity?.platform == 1) {
-                              CSJUtils.showRewardVideoAd();
-                            } else {
-                              FlutterQqAds.showRewardVideoAd(
-                                CSJUtils.YLHVideoId,
-                                playMuted: false,
-                                customData: 'customData',
-                                userId: 'userId',
-                              );
-                            }
-                          },
+                  state.isShowEmpty
+                      ? SliverToBoxAdapter(
+                          child: state.isShowEmpty
+                              ? Container(
+                                  margin: EdgeInsets.only(top: 100),
+                                  child: Column(
+                                    children: [
+                                      SvgPicture.asset(
+                                        'assets/svg/img_collection_empty.svg',
+                                        height: 120,
+                                        width: 120,
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      Text('暂无任务~'),
+                                      SizedBox(
+                                        height: 28,
+                                      ),
+                                    ],
+                                  ))
+                              : SizedBox.shrink(),
+                        )
+                      : SliverToBoxAdapter(
                           child: Container(
-                            child: TaskItem(
-                              state.list[i],
-                              isOptions: true,
-                            ),
+                          padding: EdgeInsets.only(left: 16, right: 16),
+                          margin: EdgeInsets.only(top: 12),
+                          child: StaggeredGridView.countBuilder(
+                            primary: false,
+                            shrinkWrap: true,
+                            crossAxisCount: 4,
+                            itemCount: state.list.length,
+                            itemBuilder: (context, i) {
+                              return DoubleClick(
+                                onTap: () {
+                                  curEntity = state.list[i];
+                                  if (curEntity?.platform == 1) {
+                                    CSJUtils.showRewardVideoAd();
+                                  } else {
+                                    FlutterQqAds.showRewardVideoAd(
+                                      CSJUtils.YLHVideoId,
+                                      playMuted: false,
+                                      customData: 'customData',
+                                      userId: 'userId',
+                                    );
+                                  }
+                                },
+                                child: Container(
+                                  child: TaskItem(
+                                    state.list[i],
+                                    isOptions: true,
+                                  ),
+                                ),
+                              );
+                            },
+                            staggeredTileBuilder: (index) =>
+                                new StaggeredTile.fit(2),
+                            mainAxisSpacing: 12,
+                            crossAxisSpacing: 12,
                           ),
-                        );
-                      },
-                      staggeredTileBuilder: (index) => new StaggeredTile.fit(2),
-                      mainAxisSpacing: 12,
-                      crossAxisSpacing: 12,
-                    ),
-                  )),
+                        )),
+
                 ],
               ),
             ),
@@ -209,8 +241,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
       if (event is AdErrorEvent) {
         // 错误事件
         _adEvent += ' errCode:${event.errCode} errMsg:${event.errMsg}';
-      } else if (event is AdRewardEvent &&
-          event.adId == CSJUtils.YLHVideoId) {
+      } else if (event is AdRewardEvent && event.adId == CSJUtils.YLHVideoId) {
         // 激励事件
         if (curEntity != null) {
           logic.videoSuccess(curEntity!.id.toString());
@@ -220,6 +251,4 @@ class _AdTaskPageState extends State<AdTaskPage> {
       print('onEventListener:$_adEvent');
     });
   }
-
-
 }

@@ -57,7 +57,7 @@ class _MainHomePageState extends State<MainHomePage>
     super.initState();
     WidgetsBinding.instance?.addObserver(this);
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      // CSJUtils.showInterstitialAd();
+      CSJUtils.showInterstitialAd();
     });
 
     this.initData();

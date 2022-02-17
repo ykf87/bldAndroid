@@ -1,9 +1,11 @@
 import 'package:SDZ/page/mime/page/about_page.dart';
 import 'package:SDZ/page/mime/page/feed_back/view.dart';
 import 'package:SDZ/page/mime/page/my_wallet/view.dart';
+import 'package:SDZ/utils/CSJUtils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_pangle_ads/view/ad_banner_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -112,6 +114,17 @@ class _TabMyPageState extends State<TabMyPage> {
                         Get.to(SettingPage());
                       },
                     ),
+                    SizedBox(
+                      width: double.infinity,
+                      height: 150,
+                      child: AdBannerWidget(
+                        posId: CSJUtils.CSJBannerId,
+                        width: 1300,
+                        height: 150,
+                        interval: 30,
+                        show: true,
+                      ),
+                    )
                     // LineTextWidget(leftText: '常用功能',bgColor: Colours.bg_ffffff,leftImg:"my_points.png",),
                   ],
                 )
