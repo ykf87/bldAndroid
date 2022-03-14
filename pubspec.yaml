@@ -165,6 +165,7 @@ dependencies:
   logger: ^1.1.0
   http: any
   shelf_proxy: any
+  flutter_screenutil: ^5.3.1
   responsive_builder: ^0.4.1
   bubble_tab_indicator: ^0.1.6
   carousel_pro_nullsafety: ^1.0.2

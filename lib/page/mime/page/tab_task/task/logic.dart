@@ -27,18 +27,22 @@ class AdTaskLogic extends GetxController {
         for (int i = 0; i < list.length; i++) {
           list[i].resType = (i + 1) % 5;
         }
-        state.list.addAll(list);
+        if (state.pageNum == 1) {
+          state.list = entity.data ?? [];
+        } else {
+          state.list.addAll(list);
+        }
         state.isShowEmpty = state.list.length == 0;
       } else {
         state.isShowEmpty = state.list.length == 0;
       }
-      if(!SPUtils.getAdShow()){
+      if (!SPUtils.getAdShow()) {
         state.isShowEmpty = true;
       }
       update();
     }, onError: (msg) {
       state.isShowEmpty = state.list.length == 0;
-      if(!SPUtils.getAdShow()){
+      if (!SPUtils.getAdShow()) {
         state.isShowEmpty = true;
       }
       state.refreshController.finishLoad(noMore: true);
@@ -53,39 +57,35 @@ class AdTaskLogic extends GetxController {
   void videoSuccess(String id) {
     Map<String, dynamic> map = new Map();
     map['tid'] = id;
-    ApiClient.instance.post(ApiUrl.getBLDBaseUrl() + ApiUrl.videoSuccess, data: map,
-        onSuccess: (data) {
-          BaseEntity<EmptyEntity> entity = BaseEntity.fromJson(data!);
-          if (entity.isSuccess) {
-            doRefresh();
-            ToastUtils.toast('奖励已到账');
-          }
-          update();
-        }, onError: (msg) {
-
-        });
+    ApiClient.instance.post(ApiUrl.getBLDBaseUrl() + ApiUrl.videoSuccess,
+        data: map, onSuccess: (data) {
+      BaseEntity<EmptyEntity> entity = BaseEntity.fromJson(data!);
+      if (entity.isSuccess) {
+        doRefresh();
+        ToastUtils.toast('奖励已到账');
+      }
+      update();
+    }, onError: (msg) {});
   }
 
   void getUserInfo() {
-    if(!LoginUtil.isLogin()){
+    if (!LoginUtil.isLogin()) {
       return;
     }
     ApiClient.instance.get(ApiUrl.getBLDBaseUrl() + ApiUrl.center,
         onSuccess: (data) {
-          BaseEntity<UserCenterEntity> entity = BaseEntity.fromJson(data!);
-          if (entity.isSuccess && entity.data != null) {
-              state.userCenterEntity = entity.data;
-              update();
-          }
-        });
+      BaseEntity<UserCenterEntity> entity = BaseEntity.fromJson(data!);
+      if (entity.isSuccess && entity.data != null) {
+        state.userCenterEntity = entity.data;
+        update();
+      }
+    });
   }
 
   void doRefresh() {
-    state.list.clear();
     state.pageNum = 1;
     getData();
     getUserInfo();
-
   }
 
   void doLoadMore() {

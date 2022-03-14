@@ -1,8 +1,10 @@
 // Flutter imports:
 // Package imports:
+import 'package:SDZ/page/home/sign/view.dart';
 import 'package:SDZ/page/menu/about.dart';
 import 'package:SDZ/page/search/search_page.dart';
 import 'package:SDZ/widget/appbar_search.dart';
+import 'package:SDZ/widget/double_click.dart';
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +31,17 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
       readOnly: true,
       eve: 0,
       leadingWidth: 58,
-      leading: Container(
-        alignment: Alignment.center,
-        child:Image(
-          image: AssetImage("assets/images/ic_logo.jpg"),
-          width: 40,
-          height: 40,
+      leading: DoubleClick(
+        onTap: (){
+          Get.to(SignPage());
+        },
+        child: Container(
+          alignment: Alignment.center,
+          child:Image(
+            image: AssetImage("assets/images/ic_logo.jpg"),
+            width: 40,
+            height: 40,
+          ),
         ),
       ),
       // bottom: PreferredSize(
