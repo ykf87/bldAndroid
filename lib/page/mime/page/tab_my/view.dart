@@ -2,6 +2,8 @@ import 'package:SDZ/page/mime/page/about_page.dart';
 import 'package:SDZ/page/mime/page/feed_back/view.dart';
 import 'package:SDZ/page/mime/page/my_wallet/view.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
+import 'package:SDZ/utils/adaptor.dart';
+import 'package:SDZ/widget/clipper_views.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
@@ -64,69 +66,88 @@ class _TabMyPageState extends State<TabMyPage> {
             body: new Stack(
               children: <Widget>[
                 Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                    image: AssetImage("assets/images/personinfo_head_bg.png"),
-                    fit: BoxFit.cover,
-                  )),
-                  width: double.infinity,
-                  height: 140,
-                ),
-                new ListView(
-                  children: <Widget>[
-                    getPersonInfoWidget(context),
-                    // topMenuWidget(),
-                    // orderWidget,
-
-                    LineTextWidget(
-                      leftText: '我的钱包',
-                      bgColor: Colours.bg_ffffff,
-                      leftImg: "account_balance.png",
-                      onPressed: () {
-                        if (!LoginUtil.isLogin()) {
-                          LoginUtil.toLogin();
-                          return;
-                        }
-                        Get.to(MyWalletPage());
-                      },
-                    ),
-                    LineTextWidget(
-                      leftText: '关于我们',
-                      bgColor: Colours.bg_ffffff,
-                      leftImg: "ic_about.svg",
-                      onPressed: () {
-                        Get.to(AboutWeFreePage());
-                      },
-                    ),
-                    LineTextWidget(
-                      leftText: '意见反馈',
-                      bgColor: Colours.bg_ffffff,
-                      leftImg: "my_points.png",
-                      onPressed: () {
-                        Get.to(FeedBackPage());
-                      },
-                    ),
-                    LineTextWidget(
-                      leftText: '设置',
-                      bgColor: Colours.bg_ffffff,
-                      leftImg: "ic_setting.svg",
-                      onPressed: () {
-                        Get.to(SettingPage());
-                      },
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 150,
-                      child: AdBannerWidget(
-                        posId: CSJUtils.CSJBannerId,
-                        width: 1300,
-                        height: 150,
-                        interval: 30,
-                        show: true,
+                    child: ClipPath(
+                      clipper: SignClipper(),
+                      child: Container(
+                        height: Adaptor.height(240),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(colors: [
+                            const Color(0xFFFE8C00),
+                            const Color(0xFFF83600),
+                          ]),
+                        ),
+                        child: null,
                       ),
-                    )
-                    // LineTextWidget(leftText: '常用功能',bgColor: Colours.bg_ffffff,leftImg:"my_points.png",),
-                  ],
+                    ),
+                ),
+                Container(
+                  child: new ListView(
+                    children: <Widget>[
+                      getPersonInfoWidget(context),
+                      // topMenuWidget(),
+                      // orderWidget,
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        margin: EdgeInsets.only(right: 16,left: 16),
+                        child: Column(
+                          children: [
+                            LineTextWidget(
+                              leftText: '我的钱包',
+                              isRadius: true,
+                              bgColor: Colours.bg_ffffff,
+                              leftImg: "account_balance.png",
+                              onPressed: () {
+                                if (!LoginUtil.isLogin()) {
+                                  LoginUtil.toLogin();
+                                  return;
+                                }
+                                Get.to(MyWalletPage());
+                              },
+                            ),
+                            LineTextWidget(
+                              leftText: '关于我们',
+                              bgColor: Colours.bg_ffffff,
+                              leftImg: "ic_about.svg",
+                              onPressed: () {
+                                Get.to(AboutWeFreePage());
+                              },
+                            ),
+                            LineTextWidget(
+                              leftText: '意见反馈',
+                              bgColor: Colours.bg_ffffff,
+                              leftImg: "my_points.png",
+                              onPressed: () {
+                                Get.to(FeedBackPage());
+                              },
+                            ),
+                            LineTextWidget(
+                              leftText: '设置',
+                              bgColor: Colours.bg_ffffff,
+                              leftImg: "ic_setting.svg",
+                              onPressed: () {
+                                Get.to(SettingPage());
+                              },
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              height: 150,
+                              child: AdBannerWidget(
+                                posId: CSJUtils.CSJBannerId,
+                                width: 1300,
+                                height: 150,
+                                interval: 30,
+                                show: true,
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                      // LineTextWidget(leftText: '常用功能',bgColor: Colours.bg_ffffff,leftImg:"my_points.png",),
+                    ],
+                  ),
                 )
               ],
             ),

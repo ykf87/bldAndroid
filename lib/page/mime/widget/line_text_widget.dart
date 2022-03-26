@@ -41,7 +41,7 @@ class _LineTextWidgetState extends State<LineTextWidget> {
         height: 60,
         decoration: BoxDecoration(
           color: widget.bgColor,
-          borderRadius: BorderRadius.circular(widget.isRadius ? 8.0 : 0),
+          borderRadius: BorderRadius.circular(widget.isRadius ? 16.0 : 0),
         ),
         padding: EdgeInsets.only(left: 12, right: 12),
         child: Row(

@@ -152,7 +152,7 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
         timeout: 3.5,
       );
       _result = "展示开屏广告${result ? '成功' : '失败'}";
-      print('加载失败');
+      print(_result);
     } on PlatformException catch (e) {
       toMain();
       print(e.message);

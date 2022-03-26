@@ -1,6 +1,16 @@
-import 'package:SDZ/generated/json/base/json_convert_content.dart';
+import 'package:SDZ/generated/json/base/json_field.dart';
+import 'package:SDZ/generated/json/pr_card_info_entity.g.dart';
+
 ///PR名片
-class PrCardInfoEntity with JsonConvert<PrCardInfoEntity> {
+@JsonSerializable()
+class PrCardInfoEntity {
+
+	PrCardInfoEntity();
+
+	factory PrCardInfoEntity.fromJson(Map<String, dynamic> json) => $PrCardInfoEntityFromJson(json);
+
+	Map<String, dynamic> toJson() => $PrCardInfoEntityToJson(this);
+
 	late int identityType;
 	late String companyName;
 	late String professionalTitle;
@@ -10,7 +20,15 @@ class PrCardInfoEntity with JsonConvert<PrCardInfoEntity> {
 	 String? remark;
 }
 
-class PrCardInfoSkills with JsonConvert<PrCardInfoSkills> {
+@JsonSerializable()
+class PrCardInfoSkills {
+
+	PrCardInfoSkills();
+
+	factory PrCardInfoSkills.fromJson(Map<String, dynamic> json) => $PrCardInfoSkillsFromJson(json);
+
+	Map<String, dynamic> toJson() => $PrCardInfoSkillsToJson(this);
+
 	 int skillId = 0;
 	late String skillLabel;
 }

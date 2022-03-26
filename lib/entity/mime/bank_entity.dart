@@ -1,6 +1,16 @@
-import 'package:SDZ/generated/json/base/json_convert_content.dart';
+import 'package:SDZ/generated/json/base/json_field.dart';
+import 'package:SDZ/generated/json/bank_entity.g.dart';
 
-class BankEntity with JsonConvert<BankEntity> {
+
+@JsonSerializable()
+class BankEntity {
+
+	BankEntity();
+
+	factory BankEntity.fromJson(Map<String, dynamic> json) => $BankEntityFromJson(json);
+
+	Map<String, dynamic> toJson() => $BankEntityToJson(this);
+
   String? id;
   String? email;
   String? phone;

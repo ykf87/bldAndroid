@@ -154,4 +154,8 @@ class ApiUrl {
    static final String bindBank = "card";
   /// 银行卡账号提现
    static final String alipayWithdraw = "tixian";
+  /// 赠品列表
+   static final String giftList = "signins/giveaways";
+  /// 选中签到赠品
+   static final String giveget = "signins/giveget";
 }

@@ -1,6 +1,16 @@
-import 'package:SDZ/generated/json/base/json_convert_content.dart';
+import 'package:SDZ/generated/json/base/json_field.dart';
+import 'package:SDZ/generated/json/talent_entity.g.dart';
 
-class TalentEntity with JsonConvert<TalentEntity> {
+
+@JsonSerializable()
+class TalentEntity {
+
+	TalentEntity();
+
+	factory TalentEntity.fromJson(Map<String, dynamic> json) => $TalentEntityFromJson(json);
+
+	Map<String, dynamic> toJson() => $TalentEntityToJson(this);
+
   String? nickname;
   String? avatar;
   String? introduce;
@@ -12,12 +22,28 @@ class TalentEntity with JsonConvert<TalentEntity> {
   int? accountId; //用户ID
 }
 
-class TalentCard with JsonConvert<TalentCard> {
+@JsonSerializable()
+class TalentCard {
+
+	TalentCard();
+
+	factory TalentCard.fromJson(Map<String, dynamic> json) => $TalentCardFromJson(json);
+
+	Map<String, dynamic> toJson() => $TalentCardToJson(this);
+
   int? cardType; //1-小红书，2-抖音，3-逛逛
   int? fansNum;
 }
 
-class TalentSkill with JsonConvert<TalentSkill> {
+@JsonSerializable()
+class TalentSkill {
+
+	TalentSkill();
+
+	factory TalentSkill.fromJson(Map<String, dynamic> json) => $TalentSkillFromJson(json);
+
+	Map<String, dynamic> toJson() => $TalentSkillToJson(this);
+
   int? skillId;
   String? skillLabel;
 }

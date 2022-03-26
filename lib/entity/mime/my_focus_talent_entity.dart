@@ -1,6 +1,16 @@
-import 'package:SDZ/generated/json/base/json_convert_content.dart';
+import 'package:SDZ/generated/json/base/json_field.dart';
+import 'package:SDZ/generated/json/my_focus_talent_entity.g.dart';
 
-class MyFocusTalentEntity with JsonConvert<MyFocusTalentEntity> {
+
+@JsonSerializable()
+class MyFocusTalentEntity {
+
+	MyFocusTalentEntity();
+
+	factory MyFocusTalentEntity.fromJson(Map<String, dynamic> json) => $MyFocusTalentEntityFromJson(json);
+
+	Map<String, dynamic> toJson() => $MyFocusTalentEntityToJson(this);
+
 	String? nickname;
 	String? avatar;
 	int? accountId;
@@ -8,12 +18,28 @@ class MyFocusTalentEntity with JsonConvert<MyFocusTalentEntity> {
 	List<MyFocusTalentCardList>? cardList;
 }
 
-class MyFocusTalentSkillTagList with JsonConvert<MyFocusTalentSkillTagList> {
+@JsonSerializable()
+class MyFocusTalentSkillTagList {
+
+	MyFocusTalentSkillTagList();
+
+	factory MyFocusTalentSkillTagList.fromJson(Map<String, dynamic> json) => $MyFocusTalentSkillTagListFromJson(json);
+
+	Map<String, dynamic> toJson() => $MyFocusTalentSkillTagListToJson(this);
+
 	int? skillId;
 	String? skillLabel;
 }
 
-class MyFocusTalentCardList with JsonConvert<MyFocusTalentCardList> {
+@JsonSerializable()
+class MyFocusTalentCardList {
+
+	MyFocusTalentCardList();
+
+	factory MyFocusTalentCardList.fromJson(Map<String, dynamic> json) => $MyFocusTalentCardListFromJson(json);
+
+	Map<String, dynamic> toJson() => $MyFocusTalentCardListToJson(this);
+
 	int? cardType;
 	String? fansNum;
 

@@ -1,6 +1,16 @@
-import 'package:SDZ/generated/json/base/json_convert_content.dart';
+import 'package:SDZ/generated/json/base/json_field.dart';
+import 'package:SDZ/generated/json/base_info_entity.g.dart';
 
-class BaseInfoEntity with JsonConvert<BaseInfoEntity> {
+
+@JsonSerializable()
+class BaseInfoEntity {
+
+	BaseInfoEntity();
+
+	factory BaseInfoEntity.fromJson(Map<String, dynamic> json) => $BaseInfoEntityFromJson(json);
+
+	Map<String, dynamic> toJson() => $BaseInfoEntityToJson(this);
+
   late String avatar;
   late String nickname;
   late String telephone;

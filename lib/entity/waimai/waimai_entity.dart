@@ -1,7 +1,16 @@
-import 'package:SDZ/generated/json/base/json_convert_content.dart';
+import 'package:SDZ/generated/json/waimai_entity.g.dart';
+
 import 'package:SDZ/generated/json/base/json_field.dart';
 
-class WaimaiEntity with JsonConvert<WaimaiEntity> {
+@JsonSerializable()
+class WaimaiEntity {
+
+	WaimaiEntity();
+
+	factory WaimaiEntity.fromJson(Map<String, dynamic> json) => $WaimaiEntityFromJson(json);
+
+	Map<String, dynamic> toJson() => $WaimaiEntityToJson(this);
+
 	@JSONField(name: "click_url")
 	String? clickUrl;
 	@JSONField(name: "short_click_url")

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:SDZ/page/home/sign/view.dart';
 import 'package:SDZ/page/home/tab_home.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
 import 'package:SDZ/utils/login_util.dart';
@@ -41,14 +42,10 @@ class _MainHomePageState extends State<MainHomePage>
 
   // 页面列表
   final List<Widget> _pages = [
-    // const IndexHome(),
-    // IndexHomeV2(),
+
     TabHomePage(),
-    AdTaskPage(),
-    // JiujiuIndexHome(scrollController: jiujiuController),
-    // const CategoryIndexPage(),
-    // FavoriteIndexHome(),
-    // const DynamicIndex(),
+    SignPage(),
+
     TabMyPage()
   ];
 
@@ -57,7 +54,7 @@ class _MainHomePageState extends State<MainHomePage>
     super.initState();
     WidgetsBinding.instance?.addObserver(this);
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-      CSJUtils.showInterstitialAd();
+      // CSJUtils.showInterstitialAd();
     });
 
     this.initData();
@@ -184,7 +181,7 @@ class _MainHomePageState extends State<MainHomePage>
                       }
                       setState(() {
                         _currentIndex = index;
-                        if (index == 2) {
+                        if (index == 2 || index == 1) {
                           SystemChrome.setSystemUIOverlayStyle(
                               const SystemUiOverlayStyle(
                                   statusBarColor: Colors.transparent,
@@ -225,7 +222,7 @@ class _MainHomePageState extends State<MainHomePage>
                       //       width: kNavIconSize,
                       //     )),
                      BottomNavigationBarItem(
-                          label: '福利',
+                          label: '签到',
                           icon: _currentIndex == 1
                               ? Image.asset(
                                   'assets/nav/fenlei.png',
@@ -301,59 +298,4 @@ class _MainHomePageState extends State<MainHomePage>
 
   void changeTab() {}
 
-  Widget bottomTabWidget(int index, String title) {
-    return Expanded(
-        child: GestureDetector(
-      onTap: () {
-        state.curTabIndex = index;
-        logic.tabChange(state.curTabIndex);
-        setState(() {});
-        WFLogUtil.d('切换tab==$state.curTabIndex');
-      },
-      child: Container(
-        color: Colours.bg_ffffff,
-        height: 44,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 4),
-              child: Text(
-                title,
-                style: TextStyle(
-                    color: index == state.curTabIndex
-                        ? Colours.color_main_red
-                        : Colours.text_main,
-                    fontSize: 18),
-              ),
-            ),
-            Positioned(
-                bottom: 0,
-                child: Visibility(
-                    visible: state.curTabIndex == index,
-                    child: Container(
-                      width: 20,
-                      height: 5,
-                      decoration: new BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(3.0),
-                          ),
-                          gradient: LinearGradient(
-                              //渐变位置
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
-                              stops: [
-                                0.0,
-                                1.0
-                              ],
-                              colors: [
-                                Colours.color_main_red,
-                                Colours.bg_pr_start,
-                              ])),
-                    )))
-          ],
-        ),
-      ),
-    ));
-  }
 }

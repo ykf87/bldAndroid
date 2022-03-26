@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:SDZ/utils/color_util.dart';
 
 class Colours {
-  static const Color app_main = Color(0xFFe9546b);
-  static const Color dark_app_main = Color(0xFFd0465b);
+  static const Color app_main = Color(0xFF99de9f);
+  static const Color dark_app_main = Color(0xFF99de9f);
 
   static const Color bg_color = Color(0xfff1f1f1);
   static const Color dark_bg_color = Color(0xff10121A);//wefree 背景主颜色
@@ -145,5 +145,9 @@ class Colours {
   static const Color color_fbfcfd = Color(0xfffbfcfd);
   static const Color color_grey_e5e5e5 = Color(0xffe5e5e5);
   static const Color color_grey_51223a50 = Color(0x51223a50);
+
+
+  ///签到色调
+  static const Color color_orange_ffFF7648 = Color(0xffFF7648);
 }
 

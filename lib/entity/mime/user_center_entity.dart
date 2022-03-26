@@ -1,8 +1,18 @@
-import 'package:SDZ/generated/json/base/json_convert_content.dart';
+import 'package:SDZ/generated/json/base/json_field.dart';
+import 'package:SDZ/generated/json/user_center_entity.g.dart';
+
 
 import 'bank_entity.dart';
 
-class UserCenterEntity with JsonConvert<UserCenterEntity> {
+@JsonSerializable()
+class UserCenterEntity {
+
+	UserCenterEntity();
+
+	factory UserCenterEntity.fromJson(Map<String, dynamic> json) => $UserCenterEntityFromJson(json);
+
+	Map<String, dynamic> toJson() => $UserCenterEntityToJson(this);
+
 	String? nickname;
 	String? avatar;
 	String? phone;
@@ -15,7 +25,15 @@ class UserCenterEntity with JsonConvert<UserCenterEntity> {
 	String? content;
 }
 
-class UserCenterCardInfoList with JsonConvert<UserCenterCardInfoList> {
+@JsonSerializable()
+class UserCenterCardInfoList {
+
+	UserCenterCardInfoList();
+
+	factory UserCenterCardInfoList.fromJson(Map<String, dynamic> json) => $UserCenterCardInfoListFromJson(json);
+
+	Map<String, dynamic> toJson() => $UserCenterCardInfoListToJson(this);
+
 	String? cardUserNickname;
 	String? professionalTitle;
 	String? cardName;
