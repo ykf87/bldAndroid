@@ -2,6 +2,7 @@ import 'package:SDZ/entity/mime/bank_entity.dart';
 import 'package:SDZ/generated/json/base/json_convert_content.dart';
 import 'package:SDZ/entity/mime/user_center_entity.dart';
 
+
 UserCenterEntity $UserCenterEntityFromJson(Map<String, dynamic> json) {
 	final UserCenterEntity userCenterEntity = UserCenterEntity();
 	final String? nickname = jsonConvert.convert<String>(json['nickname']);

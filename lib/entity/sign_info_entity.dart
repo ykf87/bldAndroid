@@ -7,7 +7,7 @@ class SignInfoEntity {
 
 	SignInfoUser? user;
 	SignInfoSigned? signed;
-	int? advs;
+	bool issigin = false;
   
   SignInfoEntity();
 
@@ -72,12 +72,15 @@ class SignInfoSigned {
 
 	SignInfoSignedProduct? product;
 	int? startat;
-	int? days;
+	int? days;//已签到天数
 	@JSONField(name: "break")
 	int? xBreak;
 	int? mustdays;
 	int? advs;
-  
+	bool mustadv = false;//是否需要不签
+  int need_day = 0;//需要签到的天数
+  int id = 0;////当前签到任务id
+
   SignInfoSigned();
 
   factory SignInfoSigned.fromJson(Map<String, dynamic> json) => $SignInfoSignedFromJson(json);

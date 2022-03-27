@@ -156,6 +156,12 @@ class ApiUrl {
    static final String alipayWithdraw = "tixian";
   /// 赠品列表
    static final String giftList = "signins/giveaways";
-  /// 选中签到赠品
+  /// 领取赠品
    static final String giveget = "signins/giveget";
+   ///选择签到奖品
+   static final String chooseGift = "signins/choose";
+  ///签到主页信息
+   static final String signedInfo = "signins/signed";
+   ///签到
+   static final String doSign = "signins/signe";
 }

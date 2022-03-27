@@ -16,57 +16,62 @@ Map<String, dynamic> $GiftListEntityToJson(GiftListEntity entity) {
 	return data;
 }
 
-GiftEntity $GiftListListFromJson(Map<String, dynamic> json) {
-	final GiftEntity giftListList = GiftEntity();
+GiftEntity $GiftEntityFromJson(Map<String, dynamic> json) {
+	final GiftEntity giftEntity = GiftEntity();
 	final int? id = jsonConvert.convert<int>(json['id']);
 	if (id != null) {
-		giftListList.id = id;
+		giftEntity.id = id;
 	}
 	final String? cover = jsonConvert.convert<String>(json['cover']);
 	if (cover != null) {
-		giftListList.cover = cover;
+		giftEntity.cover = cover;
 	}
 	final List<String>? images = jsonConvert.convertListNotNull<String>(json['images']);
 	if (images != null) {
-		giftListList.images = images;
+		giftEntity.images = images;
 	}
 	final String? name = jsonConvert.convert<String>(json['name']);
 	if (name != null) {
-		giftListList.name = name;
+		giftEntity.name = name;
+	}
+	final String? title = jsonConvert.convert<String>(json['title']);
+	if (title != null) {
+		giftEntity.title = title;
 	}
 	final double? sale = jsonConvert.convert<double>(json['sale']);
 	if (sale != null) {
-		giftListList.sale = sale;
+		giftEntity.sale = sale;
 	}
 	final int? days = jsonConvert.convert<int>(json['days']);
 	if (days != null) {
-		giftListList.days = days;
+		giftEntity.days = days;
 	}
 	final int? sendout = jsonConvert.convert<int>(json['sendout']);
 	if (sendout != null) {
-		giftListList.sendout = sendout;
+		giftEntity.sendout = sendout;
 	}
 	final int? own = jsonConvert.convert<int>(json['own']);
 	if (own != null) {
-		giftListList.own = own;
+		giftEntity.own = own;
 	}
 	final int? maxown = jsonConvert.convert<int>(json['maxown']);
 	if (maxown != null) {
-		giftListList.maxown = maxown;
+		giftEntity.maxown = maxown;
 	}
 	final int? collection = jsonConvert.convert<int>(json['collection']);
 	if (collection != null) {
-		giftListList.collection = collection;
+		giftEntity.collection = collection;
 	}
-	return giftListList;
+	return giftEntity;
 }
 
-Map<String, dynamic> $GiftListListToJson(GiftEntity entity) {
+Map<String, dynamic> $GiftEntityToJson(GiftEntity entity) {
 	final Map<String, dynamic> data = <String, dynamic>{};
 	data['id'] = entity.id;
 	data['cover'] = entity.cover;
 	data['images'] =  entity.images;
 	data['name'] = entity.name;
+	data['title'] = entity.title;
 	data['sale'] = entity.sale;
 	data['days'] = entity.days;
 	data['sendout'] = entity.sendout;

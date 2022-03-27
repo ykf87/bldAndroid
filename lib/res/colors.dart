@@ -145,6 +145,7 @@ class Colours {
   static const Color color_fbfcfd = Color(0xfffbfcfd);
   static const Color color_grey_e5e5e5 = Color(0xffe5e5e5);
   static const Color color_grey_51223a50 = Color(0x51223a50);
+  static const Color text_333333 = Color(0xff333333);
 
 
   ///签到色调

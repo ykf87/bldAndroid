@@ -1,5 +1,8 @@
 import 'package:SDZ/utils/adaptor.dart';
+import 'package:SDZ/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:svgaplayer_flutter/player.dart';
 
 class SignCard extends StatelessWidget {
   ///卡片标题
@@ -26,6 +29,7 @@ class SignCard extends StatelessWidget {
     return Container(
       width: Adaptor.width(38),
       height: Adaptor.height(48),
+      margin: EdgeInsets.only(right: 12),
       padding: EdgeInsets.fromLTRB(
         Adaptor.width(4),
         Adaptor.width(2),
@@ -54,16 +58,9 @@ class SignCard extends StatelessWidget {
 
   Widget _getMarkInfo() {
     if (hasSigned) {
-      return Icon(
-        IconData(0xe8bf, fontFamily: 'iconfont'),
-        color: index == throttle ? Color(0xFFFFC90E) : Colors.white,
-        size: Adaptor.sp(18),
-      );
+      return SvgPicture.asset(Utils.getSvgUrl('ic_check.svg'),width: 12,height: 12);
     }
-    return Icon(
-      IconData(0xe8bf, fontFamily: 'iconfont'),
-      color: index == throttle ? Color(0xffFD553A) : Colors.black12,
-      size: Adaptor.sp(18),
-    );
+    return SvgPicture.asset(Utils.getSvgUrl('ic_noSign.svg'),width: 16,height:16,color: Colors.black38,);
+
   }
 }

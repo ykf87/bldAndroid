@@ -11,9 +11,9 @@ SignInfoEntity $SignInfoEntityFromJson(Map<String, dynamic> json) {
 	if (signed != null) {
 		signInfoEntity.signed = signed;
 	}
-	final int? advs = jsonConvert.convert<int>(json['advs']);
-	if (advs != null) {
-		signInfoEntity.advs = advs;
+	final bool? issigin = jsonConvert.convert<bool>(json['issigin']);
+	if (issigin != null) {
+		signInfoEntity.issigin = issigin;
 	}
 	return signInfoEntity;
 }
@@ -22,7 +22,7 @@ Map<String, dynamic> $SignInfoEntityToJson(SignInfoEntity entity) {
 	final Map<String, dynamic> data = <String, dynamic>{};
 	data['user'] = entity.user?.toJson();
 	data['signed'] = entity.signed?.toJson();
-	data['advs'] = entity.advs;
+	data['issigin'] = entity.issigin;
 	return data;
 }
 
@@ -142,6 +142,18 @@ SignInfoSigned $SignInfoSignedFromJson(Map<String, dynamic> json) {
 	if (advs != null) {
 		signInfoSigned.advs = advs;
 	}
+	final bool? mustadv = jsonConvert.convert<bool>(json['mustadv']);
+	if (mustadv != null) {
+		signInfoSigned.mustadv = mustadv;
+	}
+	final int? need_day = jsonConvert.convert<int>(json['need_day']);
+	if (need_day != null) {
+		signInfoSigned.need_day = need_day;
+	}
+	final int? id = jsonConvert.convert<int>(json['id']);
+	if (id != null) {
+		signInfoSigned.id = id;
+	}
 	return signInfoSigned;
 }
 
@@ -153,6 +165,9 @@ Map<String, dynamic> $SignInfoSignedToJson(SignInfoSigned entity) {
 	data['break'] = entity.xBreak;
 	data['mustdays'] = entity.mustdays;
 	data['advs'] = entity.advs;
+	data['mustadv'] = entity.mustadv;
+	data['need_day'] = entity.need_day;
+	data['id'] = entity.id;
 	return data;
 }
 

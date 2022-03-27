@@ -1,7 +1,9 @@
 import 'package:SDZ/base/base_stateful_widget.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/page/home/goodsList/NewGoodsListPage.dart';
+import 'package:SDZ/page/home/signModule/address/view.dart';
 import 'package:SDZ/page/home/widget/waterfall_goods_card.dart';
+import 'package:SDZ/page/mime/page/feed_back/view.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/res/styles.dart';
 import 'package:SDZ/utils/adaptor.dart';
@@ -22,9 +24,8 @@ import 'logic.dart';
 import 'state.dart';
 
 class SignPage extends StatefulWidget {
-
   @override
-  State<StatefulWidget> createState()  => _SignPageState();
+  State<StatefulWidget> createState() => _SignPageState();
 }
 
 class _SignPageState extends State<SignPage> {
@@ -36,7 +37,9 @@ class _SignPageState extends State<SignPage> {
     // TODO: implement initState
     super.initState();
     logic.getGiftList();
-    logic.getData();
+    logic.getSignInfo();
+    logic.setCSJAdEvent();
+    logic.setYLHAdEvent();
   }
 
   @override
@@ -48,7 +51,7 @@ class _SignPageState extends State<SignPage> {
         init: SignLogic(),
         builder: (logic) {
           return Container(
-            child:  Scaffold(
+            child: Scaffold(
               backgroundColor: Colors.transparent,
               body: Stack(
                 children: [
@@ -68,7 +71,7 @@ class _SignPageState extends State<SignPage> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.only(top:30),
+                    padding: EdgeInsets.only(top: 30),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +84,7 @@ class _SignPageState extends State<SignPage> {
                             0,
                             0,
                           ),
-                          margin: EdgeInsets.only(bottom:6),
+                          margin: EdgeInsets.only(bottom: 6),
                           child: Column(
                             children: <Widget>[
                               Row(
@@ -89,7 +92,9 @@ class _SignPageState extends State<SignPage> {
                                 children: <Widget>[
                                   GestureDetector(
                                     onTap: () {
-
+                                      Get.to(AddressPage());
+                                      logic.getSignInfo();
+                                      logic.getGiftList();
                                     },
                                     child: Container(
                                       height: Adaptor.height(28),
@@ -103,9 +108,10 @@ class _SignPageState extends State<SignPage> {
                                       decoration: BoxDecoration(
                                         color: Color(0xffFF7648),
                                         borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(Adaptor.width(14)),
-                                          bottomLeft:
-                                          Radius.circular(Adaptor.width(14)),
+                                          topLeft: Radius.circular(
+                                              Adaptor.width(14)),
+                                          bottomLeft: Radius.circular(
+                                              Adaptor.width(14)),
                                         ),
                                       ),
                                       child: Text(
@@ -119,7 +125,7 @@ class _SignPageState extends State<SignPage> {
                                   )
                                 ],
                               ),
-                              Row(
+                              state.signInfoEntity?.signed == null?Container():Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
                                   Text(
@@ -131,7 +137,9 @@ class _SignPageState extends State<SignPage> {
                                     ),
                                   ),
                                   Text(
-                                    state.signInfoEntity?.signed?.days?.toString()??'0',
+                                    state.signInfoEntity?.signed?.need_day
+                                            ?.toString() ??
+                                        '0',
                                     style: TextStyle(
                                       color: Color(0xffF3F748),
                                       fontSize: Adaptor.sp(24),
@@ -164,7 +172,7 @@ class _SignPageState extends State<SignPage> {
                                           ),
                                         ),
                                         child: Text(
-                                          '赢奖品',
+                                          '赢${state.signInfoEntity?.signed?.product?.name??'奖品'}',
                                           style: TextStyle(
                                             color: Color(0xffFF421A),
                                             fontSize: Adaptor.sp(11),
@@ -183,14 +191,14 @@ class _SignPageState extends State<SignPage> {
                           alignment: Alignment.center,
                           child: _buildSignInfo(),
                         ),
-                        SizedBox(height: 16,),
+                        SizedBox(
+                          height: 16,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             GestureDetector(
-                              onTap: () {
-
-                              },
+                              onTap: () {},
                               child: Container(
                                 height: Adaptor.height(32),
                                 padding: EdgeInsets.fromLTRB(
@@ -203,9 +211,10 @@ class _SignPageState extends State<SignPage> {
                                 decoration: BoxDecoration(
                                   color: Color(0xffFF7648),
                                   borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(Adaptor.width(16)),
+                                    topRight:
+                                        Radius.circular(Adaptor.width(16)),
                                     bottomRight:
-                                    Radius.circular(Adaptor.width(16)),
+                                        Radius.circular(Adaptor.width(16)),
                                   ),
                                 ),
                                 child: Text(
@@ -224,16 +233,17 @@ class _SignPageState extends State<SignPage> {
                         //   padding: const EdgeInsets.only(left: 12.0),
                         //   child: Text('请选择一项奖品，签到即可获得奖励',style: TextStyle(fontSize: 16,color:Color(0xffFC6E18),),),
                         // ),
-                        SizedBox(height: 6,),
+                        SizedBox(
+                          height: 6,
+                        ),
                         Expanded(
                           child: ScrollConfiguration(
                             behavior: CustomScrollBehavior(),
                             child: Container(
-                              padding: EdgeInsets.only(left: 12,right: 12),
+                              padding: EdgeInsets.only(left: 12, right: 12),
                               child: SingleChildScrollView(
                                 child: Column(
                                   children: [
-
                                     StaggeredGridView.countBuilder(
                                       primary: false,
                                       shrinkWrap: true,
@@ -241,12 +251,14 @@ class _SignPageState extends State<SignPage> {
                                       itemCount: state.list.length,
                                       itemBuilder: (context, i) {
                                         return Container(
-                                          child: GiftItem(state.list[i],(){
-                                            logic.commitGift();
+                                          child: GiftItem(state.list[i], () {
+                                            logic.commitGift(
+                                                state.list[i], context);
                                           }),
                                         );
                                       },
-                                      staggeredTileBuilder: (index) => new StaggeredTile.fit(2),
+                                      staggeredTileBuilder: (index) =>
+                                          new StaggeredTile.fit(2),
                                       mainAxisSpacing: 12,
                                       crossAxisSpacing: 12,
                                     ),
@@ -265,8 +277,6 @@ class _SignPageState extends State<SignPage> {
           );
         });
   }
-
-
 
   Widget _buildSignInfo() {
     return Column(
@@ -321,7 +331,7 @@ class _SignPageState extends State<SignPage> {
                     ),
                   ),
                   Text(
-                     '',
+                    '',
                     style: TextStyle(
                       color: Colors.black54,
                       fontSize: Adaptor.width(11),
@@ -331,62 +341,82 @@ class _SignPageState extends State<SignPage> {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(Adaptor.width(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: _signCards(),
-              ),
+              height:80 ,
+                padding: EdgeInsets.all(Adaptor.width(10)),
+                child:ListView.builder(
+                    controller: state.listScroll,
+                    itemCount: state.signInfoEntity?.signed?.need_day,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (BuildContext context, int index) {
+                  return signCard(index+1);
+                })
             ),
+            // Container(
+            //   padding: EdgeInsets.all(Adaptor.width(10)),
+            //   child:GridView.count(
+            //     shrinkWrap: true,
+            //     //水平子Widget之间间距
+            //     crossAxisSpacing: 10.0,
+            //     //垂直子Widget之间间距
+            //     mainAxisSpacing: 30.0,
+            //     //GridView内边距
+            //     padding: EdgeInsets.all(10.0),
+            //     //一行的Widget数量
+            //     crossAxisCount:getSign(),
+            //     //子Widget宽高比例
+            //     childAspectRatio: 0.7,
+            //     //子Widget列表
+            //     children: _signCards(),
+            //   )
+            // ),
+            // Container(
+            //   padding: EdgeInsets.all(Adaptor.width(10)),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: _signCards(),
+            //   ),
+            // ),
             Container(
               alignment: Alignment.center,
               child: Text(
-                '恭喜您获得积分奖励',
+                state.tipsText,
                 style: TextStyle(
-                  color: 1 > 0
-                      ? Colors.black38
-                      : Color(0xffFF421A),
+                  color: 1 > 0 ? Colors.black38 : Color(0xffFF421A),
                   fontSize: Adaptor.sp(13),
                 ),
               ),
             ),
             GestureDetector(
               onTap: () {
-
+                logic.signClick();
               },
               child: Container(
                 margin: EdgeInsets.fromLTRB(0, Adaptor.width(10), 0, 0),
                 alignment: Alignment.center,
-                child:
-                Container(
+                child: Container(
                   height: Adaptor.height(38),
                   width: Adaptor.width(238),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(colors: [
-                      Color(0xffFC6E18),
-                      Color(0xffFF421A),
-                    ]),
+                    gradient: LinearGradient(
+                        colors: !state.isBtnEnable
+                            ? [Colours.bg_f7f8f8,Colours.bg_f7f8f8]
+                            : [
+                                Color(0xffFC6E18),
+                                Color(0xffFF421A),
+                              ]),
                     borderRadius: BorderRadius.circular(Adaptor.width(5)),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        '今日已签到',
+                        state.btnText,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: state.isBtnEnable?Colors.white:Colours.color_999999,
                           fontSize: Adaptor.sp(16),
                         ),
                       ),
-                      // if (model.signing)
-                      //   Padding(
-                      //     padding: EdgeInsets.only(left: Adaptor.width(6)),
-                      //     child: SpinKitRing(
-                      //       color: Colors.white,
-                      //       lineWidth: Adaptor.width(1.2),
-                      //       size: Adaptor.width(16),
-                      //     ),
-                      //   )
                     ],
                   ),
                 ),
@@ -397,31 +427,68 @@ class _SignPageState extends State<SignPage> {
       ),
     );
   }
+
   GlobalKey<FlipCardState> cardKey = GlobalKey<FlipCardState>();
+
+  int getSign(){
+    if(state.signInfoEntity == null || state.signInfoEntity?.signed == null){
+      return 7;
+    }else{
+      if(state.signInfoEntity!.signed!.need_day >9){
+        return 6;
+      }else{
+        return 7;
+      }
+    }
+  }
+  ///签到卡片
   List<Widget> _signCards() {
     List<Widget> cards = [];
-    for (int i = 1; i <= 7; i++) {
+    int needSignDay = 7;
+    int hasSignDay = 0;
+    if(state.signInfoEntity == null || state.signInfoEntity?.signed == null){
+      needSignDay = 7;
+      hasSignDay = 0;
+    }else{
+      needSignDay = state.signInfoEntity!.signed!.need_day;
+      hasSignDay = state.signInfoEntity!.signed!.days!;//已签到
+    }
+    for (int i = 1; i <= needSignDay; i++) {
       cards.add(
         FlipCard(
-          key: i ==  1 ? cardKey : null,
+          key: i == 1 ? cardKey : null,
           flipOnTouch: false,
           direction: FlipDirection.HORIZONTAL,
-          front: SignCard(
-              title: '$i天',
-              hasSigned: false,
-              index: i,
-              throttle: 11),
-          back: SignCard(
-              title: '$i天',
-              hasSigned: false,
-              index: i,
-              throttle: 1), onFlip: () {
-
-        }, onFlipDone: (bool isFront) {  },
+          front:
+              SignCard(title: '$i天', hasSigned: i<=hasSignDay, index: i, throttle: 11),
+          back: SignCard(title: '$i天', hasSigned:  i<=hasSignDay, index: i, throttle: 1),
+          onFlip: () {},
+          onFlipDone: (bool isFront) {},
         ),
       );
     }
     return cards;
   }
 
+  Widget signCard(int i) {
+    int needSignDay = 7;
+    int hasSignDay = 0;
+    if(state.signInfoEntity == null || state.signInfoEntity?.signed == null){
+      needSignDay = 7;
+      hasSignDay = 0;
+    }else{
+      needSignDay = state.signInfoEntity!.signed!.need_day;
+      hasSignDay = state.signInfoEntity!.signed!.days!;//已签到
+    }
+    return FlipCard(
+      key: i == 1 ? cardKey : null,
+      flipOnTouch: false,
+      direction: FlipDirection.HORIZONTAL,
+      front:
+      SignCard(title: '$i天', hasSigned: i<=hasSignDay, index: i, throttle: 11),
+      back: SignCard(title: '$i天', hasSigned:  i<=hasSignDay, index: i, throttle: 1),
+      onFlip: () {},
+      onFlipDone: (bool isFront) {},
+    );
+  }
 }

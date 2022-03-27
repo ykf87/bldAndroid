@@ -25,7 +25,7 @@ import 'package:get/get.dart';
 
 // 赠品列表
 class GiftItem extends StatelessWidget {
-  final GoodsEntity product;
+  final GiftEntity product;
   final String? source;
   final Function onSelGift;
 
@@ -88,7 +88,7 @@ class GiftItem extends StatelessWidget {
                 const SizedBox(height: 5),
 
                 // 标题
-                _title(product.goodsName ?? ''),
+                _title(product.title ?? ''),
 
 
                 const SizedBox(height: 5),
@@ -100,8 +100,8 @@ class GiftItem extends StatelessWidget {
                         child: const Text('连续签到', style: TextStyle(
                             color: Colors.black38, fontSize: 12)),
                       ),
-                      const Text(
-                        '7',
+                       Text(
+                        '${product.days??7}',
                         style: TextStyle(
                             fontSize: 15, color: Colours.color_orange_ffFF7648,fontWeight: FontWeight.bold),
                       ),
@@ -125,12 +125,12 @@ class GiftItem extends StatelessWidget {
                       //       color: Colors.black38, fontSize: 12)),
                       // ),
                       Text(
-                          '¥${product.marketPrice.toString()}',
+                          '¥${product.sale.toString()}',
                         style: const TextStyle(
                             color: Colours.color_orange_ffFF7648, fontSize: 15,fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: 4,),
-                      Text('已送出66份', style: TextStyle(
+                      Text('已送出${product.sendout}份', style: TextStyle(
                           color: Colors.black38, fontSize: 10))
 
                     ],
@@ -168,7 +168,7 @@ class GiftItem extends StatelessWidget {
 
   // 商品卡片主图
   Widget _image() {
-    var img = product.goodsThumbUrl!;
+    var img = product.images?[0]??'';
     return ClipRRect(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(12.0),

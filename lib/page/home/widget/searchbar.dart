@@ -1,6 +1,6 @@
 // Flutter imports:
 // Package imports:
-import 'package:SDZ/page/home/sign/view.dart';
+import 'package:SDZ/page/home/signModule/sign/view.dart';
 import 'package:SDZ/page/menu/about.dart';
 import 'package:SDZ/page/search/search_page.dart';
 import 'package:SDZ/widget/appbar_search.dart';

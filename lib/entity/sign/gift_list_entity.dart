@@ -26,6 +26,7 @@ class GiftEntity {
 	String? cover;
 	List<String>? images;
 	String? name;
+	String? title;
 	double? sale;
 	int? days;
 	int? sendout;
@@ -35,9 +36,9 @@ class GiftEntity {
   
   GiftEntity();
 
-  factory GiftEntity.fromJson(Map<String, dynamic> json) => $GiftListListFromJson(json);
+  factory GiftEntity.fromJson(Map<String, dynamic> json) => $GiftEntityFromJson(json);
 
-  Map<String, dynamic> toJson() => $GiftListListToJson(this);
+  Map<String, dynamic> toJson() => $GiftEntityToJson(this);
 
   @override
   String toString() {
