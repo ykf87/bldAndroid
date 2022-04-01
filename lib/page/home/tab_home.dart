@@ -61,7 +61,7 @@ class _TabHomePageState extends State<TabHomePage>
           body: tabBarViews(),
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
-              const IndexHomeAppbar(),
+              IndexHomeAppbar(),
               SPUtils.getAdShow()?SliverToBoxAdapter(
                 child:SizedBox(
                   width: double.infinity,

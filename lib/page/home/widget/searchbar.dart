@@ -3,6 +3,7 @@
 import 'package:SDZ/page/home/signModule/sign/view.dart';
 import 'package:SDZ/page/menu/about.dart';
 import 'package:SDZ/page/search/search_page.dart';
+import 'package:SDZ/utils/VideoUtils.dart';
 import 'package:SDZ/widget/appbar_search.dart';
 import 'package:SDZ/widget/double_click.dart';
 import 'package:black_hole_flutter/black_hole_flutter.dart';
@@ -12,12 +13,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-
+import 'package:voiceread/voiceread.dart';
 // Project imports:
 
 /// 首页导航栏
 class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const IndexHomeAppbar({Key? key}) : super(key: key);
+   IndexHomeAppbar({Key? key}) : super(key: key);
 
   void navTo(BuildContext context) {
     Get.toNamed('/search/search_page');
@@ -33,7 +34,8 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 58,
       leading: DoubleClick(
         onTap: (){
-          Get.to(SignPage());
+          // Get.to(SignPage());
+          VideoUtils.loadVoiceAd();
         },
         child: Container(
           alignment: Alignment.center,

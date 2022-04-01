@@ -196,7 +196,8 @@ dependency_overrides:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  voiceread:
+    path: voiceread
 # 字体、图标、图片等资源加载
 flutter:
   uses-material-design: true

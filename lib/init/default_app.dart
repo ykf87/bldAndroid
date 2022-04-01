@@ -30,6 +30,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:voiceread/voiceread.dart';
 import 'package:fluwx/fluwx.dart';
 
 //默认App的启动
@@ -63,12 +64,15 @@ class DefaultApp {
     if (SPUtils.isAgreementRead) {
       final result = await ApiClient.instance
           .getReturn(ApiUrl.getBLDBaseUrl() + ApiUrl.getGlobalConfig);
-      BaseEntity<GlobalEntity> entity = BaseEntity.fromJson(result!);
-      SPUtils.setAdShow(entity.data?.isadv?.contains("true") ?? false);
+      if (result != null) {
+        BaseEntity<GlobalEntity> entity = BaseEntity.fromJson(result!);
+        SPUtils.setAdShow(entity.data?.isadv?.contains("true") ?? false);
+      }
       if (SPUtils.getAdShow()) {
         await CSJUtils.initCSJADSDK();
         await FlutterQqAds.initAd(CSJUtils.YLHAPPID);
       }
+      Voiceread.init(appId: '43514108', appSecret: 'FYJo5V7G83U7C2POcBMlbyGkrW3s1hHu', debug: true);
     }
     String deviceId = await DeviceUtil.deviceId ?? '';
     if (deviceId.isEmpty) {
