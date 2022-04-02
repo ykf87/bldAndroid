@@ -7,7 +7,6 @@ import 'package:SDZ/page/login/one_key_login.dart';
 
 import 'package:SDZ/page/login/login.dart';
 import 'package:get/get.dart';
-import 'package:SDZ/page/mime/page/config/config_view.dart';
 import 'package:SDZ/page/shop/page/commit_order/commit_order_page.dart';
 import 'package:SDZ/page/shop/page/personal_home_page/view.dart';
 
@@ -28,7 +27,6 @@ class RouteMap {
 //    GetPage(name: '/', page: () => TalentReportPage()),
     // GetPage(name: '/', page: () => ConversationPage()),
     // GetPage(name: '/', page: () => MainHomePage()),//暂时先直接进入主页面
-    GetPage(name: '/configPage', page: () => ConfigPage()),//测试页面
     GetPage(name: '/login', page: () => OneKeyLoginPage()),
     GetPage(name: '/home', page: () => MainHomePage()),
     GetPage(name: '/web', page: () => WebViewPage()),

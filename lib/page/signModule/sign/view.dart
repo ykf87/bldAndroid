@@ -1,9 +1,9 @@
 import 'package:SDZ/base/base_stateful_widget.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/page/home/goodsList/NewGoodsListPage.dart';
-import 'package:SDZ/page/home/signModule/address/view.dart';
 import 'package:SDZ/page/home/widget/waterfall_goods_card.dart';
 import 'package:SDZ/page/mime/page/feed_back/view.dart';
+import 'package:SDZ/page/signModule/address/view.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/res/styles.dart';
 import 'package:SDZ/utils/adaptor.dart';

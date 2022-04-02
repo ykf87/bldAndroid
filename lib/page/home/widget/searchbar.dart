@@ -1,11 +1,8 @@
 // Flutter imports:
 // Package imports:
-import 'package:SDZ/page/home/signModule/sign/view.dart';
-import 'package:SDZ/page/search/search_page.dart';
 import 'package:SDZ/utils/VideoUtils.dart';
 import 'package:SDZ/widget/appbar_search.dart';
 import 'package:SDZ/widget/double_click.dart';
-import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

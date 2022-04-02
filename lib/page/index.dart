@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:SDZ/page/home/tab_home.dart';
+import 'package:SDZ/page/signModule/sign/view.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
 import 'package:SDZ/utils/login_util.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -19,7 +20,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:SDZ/utils/sputils.dart';
-import 'home/signModule/sign/view.dart';
 import 'mime/page/tab_my/view.dart';
 import 'mime/page/tab_task/task/view.dart';
 
