@@ -4,7 +4,7 @@ import 'package:SDZ/api/api_client.dart';
 import 'package:SDZ/api/api_status.dart';
 import 'package:SDZ/api/api_url.dart';
 import 'package:SDZ/api/jtk_api.dart';
-import 'package:SDZ/core/utils/utils.dart';
+import 'package:SDZ/utils/utils.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/waimai/activity_link_result_entity.dart';
 import 'package:SDZ/entity/waimai/goods_link_entity.dart';

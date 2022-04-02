@@ -4,7 +4,7 @@ import 'package:SDZ/api/api_client.dart';
 import 'package:SDZ/api/api_url.dart';
 import 'package:SDZ/base/base_stateful_widget.dart';
 import 'package:SDZ/core/utils/toast.dart';
-import 'package:SDZ/core/utils/utils.dart';
+import 'package:SDZ/utils/utils.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/base/empty_entity.dart';
 import 'package:SDZ/entity/mime/user_center_entity.dart';
