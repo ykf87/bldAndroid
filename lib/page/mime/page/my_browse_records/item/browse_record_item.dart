@@ -10,7 +10,7 @@ import 'package:SDZ/core/utils/toast.dart';
 import 'package:SDZ/entity/mime/my_browse_record_entity.dart';
 import 'package:SDZ/entity/mime/my_collect_entity.dart';
 import 'package:SDZ/entity/mime/my_focus_talent_entity.dart';
-import 'package:SDZ/page/mime/list/fans_item.dart';
+
 import 'package:SDZ/page/shop/page/goods_detail/goods_detail_page.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/router/route_map.dart';

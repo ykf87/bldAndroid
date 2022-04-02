@@ -5,7 +5,7 @@ import 'package:flutter_swipe_action_cell/core/cell.dart';
 import 'package:flutter_swipe_action_cell/core/controller.dart';
 import 'package:get/get.dart';
 import 'package:SDZ/event/change_home_tab_event.dart';
-import 'package:SDZ/page/mime/list/fans_item.dart';
+
 import 'package:SDZ/page/mime/page/my_collect/item/collect_item_widget.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
