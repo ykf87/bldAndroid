@@ -1,7 +1,7 @@
 // Flutter imports:
 // Package imports:
 import 'package:SDZ/page/index.dart';
-import 'package:SDZ/page/menu/about.dart';
+
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,12 +17,6 @@ class NavigatorUtil {
     context.navigator.pushReplacement(SwipeablePageRoute(builder: (_)=>MainHomePage()));
   }
 
-//   // 跳转商品详情页方法
-  static void gotoGoodsDetailPage(BuildContext context, String goodsId,{bool newViewPage=false}) {
-      context.navigator.push(
-          // SwipeablePageRoute(builder: (_) => HaoDanKuDetailItem(goodsId: goodsId,)));
-          SwipeablePageRoute(builder: (_) => AboutPage()));
-  }
 //
 // //  跳转到错误页面
 //   static void gotoErrorPage(BuildContext context) {

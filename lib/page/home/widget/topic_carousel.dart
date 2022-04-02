@@ -4,7 +4,6 @@
 import 'dart:ffi';
 
 import 'package:SDZ/entity/search/card_entity.dart';
-import 'package:SDZ/page/menu/about.dart';
 import 'package:SDZ/widget/SwiperPagination.dart';
 import 'package:black_hole_flutter/black_hole_flutter.dart';
 import 'package:carousel_pro_nullsafety/carousel_pro_nullsafety.dart'

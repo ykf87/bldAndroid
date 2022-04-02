@@ -4,13 +4,10 @@ import 'package:SDZ/core/widget/web_view_page.dart';
 import 'package:SDZ/init/splash.dart';
 import 'package:SDZ/page/index.dart';
 import 'package:SDZ/page/login/one_key_login.dart';
-import 'package:SDZ/page/menu/about.dart';
+
 import 'package:SDZ/page/login/login.dart';
-import 'package:SDZ/page/menu/settings.dart';
-import 'package:SDZ/page/menu/sponsor.dart';
 import 'package:get/get.dart';
 import 'package:SDZ/page/mime/page/config/config_view.dart';
-import 'package:SDZ/page/mime/page/pr_visiting_card/view.dart';
 import 'package:SDZ/page/shop/page/commit_order/commit_order_page.dart';
 import 'package:SDZ/page/shop/page/personal_home_page/view.dart';
 
@@ -35,9 +32,6 @@ class RouteMap {
     GetPage(name: '/login', page: () => OneKeyLoginPage()),
     GetPage(name: '/home', page: () => MainHomePage()),
     GetPage(name: '/web', page: () => WebViewPage()),
-    GetPage(name: '/menu/sponsor-page', page: () => SponsorPage()),
-    GetPage(name: '/menu/settings-page', page: () => SettingsPage()),
-    GetPage(name: '/menu/about-page', page: () => AboutPage()),
     GetPage(name: '/shop/page/commit_order/commit_order_page', page: () => CommitOrderPage()),
     GetPage(name: '/search/search_page', page: () => SearchPage()),
   ];

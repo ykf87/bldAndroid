@@ -4,7 +4,6 @@ import 'dart:io';
 import 'package:SDZ/entity/global_entity.dart';
 import 'package:SDZ/entity/login/login_entity.dart';
 import 'package:SDZ/page/login/register.dart';
-import 'package:SDZ/page/menu/register.dart';
 import 'package:SDZ/page/mime/page/PrivacyPolicyPage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';

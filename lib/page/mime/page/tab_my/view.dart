@@ -95,6 +95,19 @@ class _TabMyPageState extends State<TabMyPage> {
                         child: Column(
                           children: [
                             LineTextWidget(
+                              leftText: '我的订单',
+                              isRadius: true,
+                              bgColor: Colours.bg_ffffff,
+                              leftImg: "account_balance.png",
+                              onPressed: () {
+                                if (!LoginUtil.isLogin()) {
+                                  LoginUtil.toLogin();
+                                  return;
+                                }
+                                Get.to(MyWalletPage());
+                              },
+                            ),
+                            LineTextWidget(
                               leftText: '我的钱包',
                               isRadius: true,
                               bgColor: Colours.bg_ffffff,

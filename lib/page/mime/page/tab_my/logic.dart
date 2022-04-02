@@ -11,7 +11,6 @@ import 'package:SDZ/entity/mime/my_browse_record_entity.dart';
 import 'package:SDZ/entity/mime/user_center_entity.dart';
 import 'package:SDZ/event/login_event.dart';
 import 'package:SDZ/event/user_center_get_data.dart';
-import 'package:SDZ/page/mime/entity/GlobalEntity.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
 import 'package:SDZ/utils/login_util.dart';
 import 'package:SDZ/utils/sputils.dart';
