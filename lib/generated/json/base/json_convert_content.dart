@@ -61,6 +61,8 @@ import 'package:SDZ/entity/waimai/goods_link_entity.dart';
 import 'package:SDZ/generated/json/goods_link_entity.g.dart';
 import 'package:SDZ/entity/waimai/waimai_entity.dart';
 import 'package:SDZ/generated/json/waimai_entity.g.dart';
+import 'package:SDZ/page/mime/entity/order_entity.dart';
+import 'package:SDZ/generated/json/order_entity.g.dart';
 
 JsonConvert jsonConvert = JsonConvert();
 
@@ -275,6 +277,12 @@ class JsonConvert {
 		if(type == (WaimaiEntity).toString()){
 			return WaimaiEntity.fromJson(json) as M;
 		}
+		if(type == (OrderEntity).toString()){
+			return OrderEntity.fromJson(json) as M;
+		}
+		if(type == (OrderList).toString()){
+			return OrderList.fromJson(json) as M;
+		}
 
 		print("$type not found");
 	
@@ -426,6 +434,12 @@ class JsonConvert {
 		}
 		if(<WaimaiEntity>[] is M){
 			return data.map<WaimaiEntity>((Map<String, dynamic> e) => WaimaiEntity.fromJson(e)).toList() as M;
+		}
+		if(<OrderEntity>[] is M){
+			return data.map<OrderEntity>((Map<String, dynamic> e) => OrderEntity.fromJson(e)).toList() as M;
+		}
+		if(<OrderList>[] is M){
+			return data.map<OrderList>((Map<String, dynamic> e) => OrderList.fromJson(e)).toList() as M;
 		}
 
 		print("${M.toString()} not found");
