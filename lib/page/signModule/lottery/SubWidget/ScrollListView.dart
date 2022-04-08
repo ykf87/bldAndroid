@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -18,7 +19,7 @@ class ScrollListView extends StatefulWidget {
 class ScrollListViewState extends State<ScrollListView> {
 
   late List<ListModel> _itemLists;
-  late ScrollController _scrollController;
+  late PageController  _controller;
   int _currentIndex = -1;
 
   @override
@@ -47,25 +48,13 @@ class ScrollListViewState extends State<ScrollListView> {
         desc: '小叮当抽中了悠悠球5',
       ),
     ];
-    _scrollController = ScrollController(initialScrollOffset: 0);
+    _controller = PageController();
     Timer.periodic(const Duration(seconds:3), (Timer timer){
-      if (_currentIndex == -1) {
-        _currentIndex = 1;
-      } else {
-        _currentIndex ++;
-        if (_currentIndex >= _itemLists.length) {
-          _currentIndex = 0;
-        }
+      if (_controller.page!.round() >= _itemLists.length) {
+        _controller.jumpToPage(0);
       }
-      if (_currentIndex > 0) {
-        _scrollController.animateTo(
-            _currentIndex * _ITEM_HEIGHT,
-            duration: Duration(seconds: 1),
-            curve: Curves.ease
-        );
-      } else if (_currentIndex == 0) {
-        _scrollController.jumpTo(0);
-      }
+      _controller.nextPage(
+          duration: Duration(seconds: 1), curve: Curves.ease);
     });
   }
 
@@ -77,62 +66,65 @@ class ScrollListViewState extends State<ScrollListView> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return IgnorePointer(
       ignoring: true,
-      child: ListView(
-        primary: false,
+      child: PageView.builder(
         scrollDirection: Axis.vertical,
-        controller: _scrollController,
-        shrinkWrap: true,
-        children: _itemLists.map((ListModel item) {
-          return Container(
-            height: _ITEM_HEIGHT,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  width: 22,
-                  height: 22,
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage(
-                      item.userIcon,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 6.0,),
-                  child: Text(
-                    item.desc,
-                    style: TextStyle(
-                      color: Color(0xFFFFFFFF),
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            /**
-                child: ListTile(
-                leading: CircleAvatar(
-                backgroundImage: AssetImage(
-                item.userIcon,
-                ),
-                ),
-                title: Text(
-                item.desc,
-                style: TextStyle(
-                color: Color(0xFFFFFFFF),
-                fontSize: 13,
-                fontWeight: FontWeight.normal,
-                ),
-                ),
-                ),
-             */
-          );
-        }).toList(),
+        controller: _controller,
+        itemCount: _itemLists.length+1,
+       itemBuilder: (buildContext, index) {
+         return index < _itemLists.length?
+         itemBuild(index):itemBuild(0);
+       },
       ),
+    );
+  }
+
+  Widget itemBuild(int index){
+    return Container(
+      height: _ITEM_HEIGHT,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            width: 22,
+            height: 22,
+            child: CircleAvatar(
+              backgroundImage: AssetImage(
+                _itemLists[index].userIcon,
+              ),
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.only(left: 6.0,),
+            child: Text(
+              _itemLists[index].desc,
+              style: TextStyle(
+                color: Color(0xFFFFFFFF),
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+      /**
+          child: ListTile(
+          leading: CircleAvatar(
+          backgroundImage: AssetImage(
+          item.userIcon,
+          ),
+          ),
+          title: Text(
+          item.desc,
+          style: TextStyle(
+          color: Color(0xFFFFFFFF),
+          fontSize: 13,
+          fontWeight: FontWeight.normal,
+          ),
+          ),
+          ),
+       */
     );
   }
 }

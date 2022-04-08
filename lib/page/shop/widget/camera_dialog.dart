@@ -110,7 +110,7 @@ class _CameraDialog extends State<CameraDialog> {
       } else {
         WFLogUtil.d(file);
         if (widget.isCrop) {
-          File? cropFile = await ImageCropper().cropImage(
+          File? cropFile = await ImageCropper.cropImage(
               sourcePath: file.path,
               aspectRatioPresets: [
                 CropAspectRatioPreset.square,
