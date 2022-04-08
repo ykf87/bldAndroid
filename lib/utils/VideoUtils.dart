@@ -21,7 +21,7 @@ class VideoUtils{
     });
   }
 
- static showVoiceAd() {
+  static showVoiceAd() {
     Voiceread.showVoiceAd(rewardInfo: [
       {"rewardCount": _iCPMOne * 10, "rewardName": "金币"},
       {"rewardCount": _iCPMTwo * 10, "rewardName": "金币"}

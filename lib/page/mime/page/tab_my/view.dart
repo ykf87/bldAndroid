@@ -1,6 +1,8 @@
 import 'package:SDZ/page/mime/page/about_page.dart';
 import 'package:SDZ/page/mime/page/feed_back/view.dart';
+import 'package:SDZ/page/mime/page/my_order/view.dart';
 import 'package:SDZ/page/mime/page/my_wallet/view.dart';
+import 'package:SDZ/page/signModule/lottery/lottery/view.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
 import 'package:SDZ/utils/adaptor.dart';
 import 'package:SDZ/widget/clipper_views.dart';
@@ -98,13 +100,14 @@ class _TabMyPageState extends State<TabMyPage> {
                               leftText: '我的订单',
                               isRadius: true,
                               bgColor: Colours.bg_ffffff,
-                              leftImg: "account_balance.png",
+                              leftImg: "ic_order.png",
                               onPressed: () {
                                 if (!LoginUtil.isLogin()) {
                                   LoginUtil.toLogin();
                                   return;
                                 }
-                                Get.to(MyWalletPage());
+                                // Get.to(MyOrderPage());
+                                Get.to(LotteryView());
                               },
                             ),
                             LineTextWidget(
@@ -144,20 +147,23 @@ class _TabMyPageState extends State<TabMyPage> {
                                 Get.to(SettingPage());
                               },
                             ),
-                            SizedBox(
-                              width: double.infinity,
-                              height: 150,
-                              child: AdBannerWidget(
-                                posId: CSJUtils.CSJBannerId,
-                                width: 1300,
-                                height: 150,
-                                interval: 30,
-                                show: true,
-                              ),
-                            )
                           ],
                         ),
-                      )
+                      ),
+                      SPUtils.getAdShow()?Container(
+                        margin: EdgeInsets.only(top: 16),
+                        child:SizedBox(
+                          width: double.infinity,
+                          height: 150,
+                          child: AdBannerWidget(
+                            posId: CSJUtils.CSJBannerId,
+                            width: 1300,
+                            height: 150,
+                            interval: 30,
+                            show: true,
+                          ),
+                        ) ,
+                      ):Container(),
                       // LineTextWidget(leftText: '常用功能',bgColor: Colours.bg_ffffff,leftImg:"my_points.png",),
                     ],
                   ),

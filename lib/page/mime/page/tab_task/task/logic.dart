@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:SDZ/api/api_client.dart';
 import 'package:SDZ/api/api_url.dart';
 import 'package:SDZ/core/utils/toast.dart';
@@ -5,6 +7,9 @@ import 'package:SDZ/entity/adIntegral/ad_task_entity.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/base/empty_entity.dart';
 import 'package:SDZ/entity/mime/user_center_entity.dart';
+import 'package:SDZ/event/login_event.dart';
+import 'package:SDZ/event/refresh_signPage_event.dart';
+import 'package:SDZ/utils/event_bus_util.dart';
 import 'package:SDZ/utils/login_util.dart';
 import 'package:SDZ/utils/sputils.dart';
 import 'package:get/get.dart';
@@ -13,6 +18,17 @@ import 'state.dart';
 
 class AdTaskLogic extends GetxController {
   final state = AdTaskState();
+
+
+  StreamSubscription<RefreshSignPageEvent>? refreshEventBus;
+  StreamSubscription<LoginEvent>? loginEventBus;
+
+  void initEvent() {
+    loginEventBus =
+        EventBusUtils.getInstance().on<LoginEvent>().listen((event) {
+          getData();
+        });
+  }
 
   void getData() {
     Map<String, dynamic> map = new Map();

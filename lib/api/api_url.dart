@@ -164,4 +164,6 @@ class ApiUrl {
    static final String signedInfo = "signins/signed";
    ///签到
    static final String doSign = "signins/signe";
+  ///订单列表
+  static final String orderList = "user/orders";
 }

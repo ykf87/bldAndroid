@@ -26,10 +26,10 @@ class OrderList {
 	String? price;
 	int? num;
 	@JSONField(name: "pro_title")
-	dynamic proTitle;
-	dynamic cover;
+  String? proTitle;
+	String? cover;
 	@JSONField(name: "kuaidi_num")
-	dynamic kuaidiNum;
+  String? kuaidiNum;
 	String? status;
 	@JSONField(name: "created_at")
 	String? createdAt;

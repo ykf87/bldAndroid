@@ -107,6 +107,9 @@ class Utils {
 
   // 复制
   static void copy(String? text, {String? message}) {
+    if(text == null){
+      return;
+    }
     Clipboard.setData(ClipboardData(text: text));
     showMessage(message ?? '复制成功');
   }

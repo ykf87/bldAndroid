@@ -45,7 +45,7 @@ class _MainHomePageState extends State<MainHomePage>
 
     TabHomePage(),
     SignPage(),
-
+    AdTaskPage(),
     TabMyPage()
   ];
 
@@ -175,13 +175,13 @@ class _MainHomePageState extends State<MainHomePage>
                     currentIndex: _currentIndex,
                     //按下后设置当前页面索引
                     onTap: ((index) {
-                      if (index == 1 && !LoginUtil.isLogin()) {
+                      if ((index == 1 || index == 2) && !LoginUtil.isLogin()) {
                         LoginUtil.toLogin();
                         return;
                       }
                       setState(() {
                         _currentIndex = index;
-                        if (index == 2 || index == 1) {
+                        if (index == 2 || index == 1 || index == 3) {
                           SystemChrome.setSystemUIOverlayStyle(
                               const SystemUiOverlayStyle(
                                   statusBarColor: Colors.transparent,
@@ -225,18 +225,31 @@ class _MainHomePageState extends State<MainHomePage>
                           label: '签到',
                           icon: _currentIndex == 1
                               ? Image.asset(
-                                  'assets/nav/fenlei.png',
+                                  'assets/nav/sign-n.png',
                                   width: kNavIconSize,
                                   height: kNavIconSize,
                                 )
                               : Image.asset(
-                                  'assets/nav/fenlei-n.png',
+                                  'assets/nav/sign.png',
                                   height: kNavIconSize,
                                   width: kNavIconSize,
                                 )),
                       BottomNavigationBarItem(
-                          label: '我的',
+                          label: '福利',
                           icon: _currentIndex == 2
+                              ? Image.asset(
+                            'assets/nav/fenlei.png',
+                            width: kNavIconSize,
+                            height: kNavIconSize,
+                          )
+                              : Image.asset(
+                            'assets/nav/fenlei-n.png',
+                            height: kNavIconSize,
+                            width: kNavIconSize,
+                          )),
+                      BottomNavigationBarItem(
+                          label: '我的',
+                          icon: _currentIndex == 3
                               ? Image.asset(
                                   'assets/nav/my.png',
                                   width: kNavIconSize,

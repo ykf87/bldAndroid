@@ -41,13 +41,14 @@ class _AdTaskPageState extends State<AdTaskPage> {
     setCSJAdEvent();
     setYLHAdEvent();
     logic.getUserInfo();
-
+    logic.initEvent();
   }
 
 
   @override
   void dispose() {
     super.dispose();
+    logic.loginEventBus?.cancel();
   }
 
   @override
@@ -99,28 +100,28 @@ class _AdTaskPageState extends State<AdTaskPage> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          width: 16,
-                        ),
-                        DoubleClick(
-                          onTap: () {
-                            SystemNavigator.pop();
-                          },
-                          child: Container(
-                            width: 36,
-                            height: 16,
-                            decoration: BoxDecoration(
-                                color: Colours.color_main_red,
-                                borderRadius: BorderRadius.circular(14)),
-                            child: Center(
-                              child: Text(
-                                '退出',
-                                style: TextStyle(
-                                    color: Colours.bg_ffffff, fontSize: 10),
-                              ),
-                            ),
-                          ),
-                        ),
+                        // SizedBox(
+                        //   width: 16,
+                        // ),
+                        // DoubleClick(
+                        //   onTap: () {
+                        //     SystemNavigator.pop();
+                        //   },
+                        //   child: Container(
+                        //     width: 36,
+                        //     height: 16,
+                        //     decoration: BoxDecoration(
+                        //         color: Colours.color_main_red,
+                        //         borderRadius: BorderRadius.circular(14)),
+                        //     child: Center(
+                        //       child: Text(
+                        //         '退出',
+                        //         style: TextStyle(
+                        //             color: Colours.bg_ffffff, fontSize: 10),
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                         SizedBox(
                           width: 16,
                         )

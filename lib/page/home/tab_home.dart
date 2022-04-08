@@ -29,7 +29,7 @@ class TabHomePage extends StatefulWidget {
 }
 
 class _TabHomePageState extends State<TabHomePage>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin,WidgetsBindingObserver{
 
   late TabController tabController;
   IndexGoodsRepository indexGoodsRepository = IndexGoodsRepository();
@@ -40,6 +40,11 @@ class _TabHomePageState extends State<TabHomePage>
     super.initState();
     tabController = TabController(length: 3, vsync: this);
     _scrollController.addListener(_listenTabbar);
+    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      CSJUtils.showInterstitialAd();
+    });
+
   }
 
   void _listenTabbar(){
@@ -49,6 +54,7 @@ class _TabHomePageState extends State<TabHomePage>
   @override
   void dispose() {
     super.dispose();
+    WidgetsBinding.instance?.removeObserver(this);
   }
 
   @override

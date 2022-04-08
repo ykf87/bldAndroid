@@ -1,5 +1,14 @@
+import 'dart:async';
+
+import 'package:SDZ/api/api_client.dart';
+import 'package:SDZ/api/api_url.dart';
 import 'package:SDZ/core/utils/toast.dart';
+import 'package:SDZ/entity/base/base_entity.dart';
+import 'package:SDZ/entity/base/empty_entity.dart';
+import 'package:SDZ/entity/sign_info_entity.dart';
+import 'package:SDZ/event/refresh_signPage_event.dart';
 import 'package:SDZ/res/colors.dart';
+import 'package:SDZ/utils/event_bus_util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_pickers/pickers.dart';
 import 'package:flutter_pickers/style/picker_style.dart';
@@ -15,19 +24,39 @@ class AddressLogic extends GetxController {
   String phone = '';
   String area = '请选择所在区域';
   TextEditingController phoneController = new TextEditingController();
+  TextEditingController nameController = new TextEditingController();
+  TextEditingController addressController = new TextEditingController();
+  TextEditingController remarkController = new TextEditingController();
+
 
   void onTextChange() {
-    if (feedBackContent.length > 0 && phone.length > 0) {
+    if (phoneController.text.length > 0
+        && nameController.text.length > 0
+        && addressController.text.length > 0
+        && !area.contains("请选择所在区域")) {
       isEnable = true;
     } else {
       isEnable = false;
     }
     update();
   }
-  void submitGift(String content,String phone) {
-    ToastUtils.toast("提交成功");
-    feedBackContent ='';
-    Get.back();
+  void submitGift(int id) {
+    Map<String, dynamic> map = Map();
+    map['id'] =  id;
+    map['name'] =  nameController.text;
+    map['phone'] =  phoneController.text;
+    map['address'] = area+addressController.text;
+    map['remark'] =  remarkController.text;
+    ApiClient.instance.post(ApiUrl.getBLDBaseUrl() + ApiUrl.giveget,data: map, isJTK: false, onSuccess: (data) {
+      BaseEntity<EmptyEntity> entity = BaseEntity.fromJson(data!);
+
+        ToastUtils.toast("提交成功");
+        EventBusUtils.getInstance().fire(RefreshSignPageEvent());
+        Get.back();
+
+    }, onError: (msg) {
+      ToastUtils.toast(msg);
+    });
   }
 
   void selAddress(BuildContext context){
@@ -39,6 +68,7 @@ class AddressLogic extends GetxController {
         pickerStyle: customizeStyle('选择地址'),
         onConfirm: (province,city,town){
           area = province+city+town!;
+          onTextChange();
           update();
     });
   }
