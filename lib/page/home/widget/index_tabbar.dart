@@ -1,3 +1,4 @@
+import 'package:SDZ/res/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
@@ -38,7 +39,7 @@ class IndexTabbar extends SliverPersistentHeaderDelegate {
               controller: tabController,
               isScrollable: true,
               labelColor: Colors.black,
-              indicator: MaterialIndicator(color: Colors.green,height: 5,horizontalPadding: 16,bottomLeftRadius: 15,bottomRightRadius: 15,topLeftRadius: 15,topRightRadius: 15),
+              indicator: MaterialIndicator(color: Colours.color_orange_ffFF7648,height: 5,horizontalPadding: 16,bottomLeftRadius: 15,bottomRightRadius: 15,topLeftRadius: 15,topRightRadius: 15),
             ),
             // if(tabController.index==2)
             // categoryWidget()

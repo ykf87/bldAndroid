@@ -21,18 +21,20 @@ class CouponPriceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: <Widget>[
         Container(
           margin: const EdgeInsets.only(right: 3.0),
           child: const Text('券后', style: TextStyle(color: Colors.black38, fontSize: 12)),
         ),
         const Text(
-          '¥',
-          style: TextStyle(fontSize: 15, color: Colors.pinkAccent),
+          '¥ ',
+          style: TextStyle(fontSize: 13, color:Colours.color_orange_ffFF7648),
         ),
         Text(
           actualPrice.toString(),
-          style: const TextStyle(color: Colors.pinkAccent, fontSize: 15),
+          style: const TextStyle(color:Colours.color_orange_ffFF7648, fontSize: 18,fontWeight: FontWeight.bold),
         ),
         Container(
           margin: EdgeInsets.only(left: interval ?? 10.0),

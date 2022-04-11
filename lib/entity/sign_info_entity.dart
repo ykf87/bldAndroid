@@ -8,6 +8,7 @@ class SignInfoEntity {
 	SignInfoUser? user;
 	SignInfoSigned? signed;
 	bool issigin = false;
+	List<String> geted = [];
   
   SignInfoEntity();
 

@@ -149,14 +149,12 @@ class _AdTaskPageState extends State<AdTaskPage> {
                       ? SliverToBoxAdapter(
                           child: state.isShowEmpty
                               ? Container(
-                                  margin: EdgeInsets.only(top: 100),
+                                  margin: EdgeInsets.only(top: 150),
                                   child: Column(
                                     children: [
-                                      SvgPicture.asset(
-                                        'assets/svg/img_collection_empty.svg',
+                                      Image.asset('assets/images/bg_empty_fly.png',
                                         height: 120,
-                                        width: 120,
-                                      ),
+                                        width: 120,),
                                       SizedBox(
                                         height: 20,
                                       ),

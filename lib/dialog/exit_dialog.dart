@@ -8,10 +8,12 @@ import 'base_dialog.dart';
 class ExitDialog extends StatefulWidget {
   final Function() onPressed;
   String content;
+  String? conformText;
    ExitDialog({
     Key? key,
      required this.onPressed,
-     required this.content
+     required this.content,
+     this.conformText
   }) : super(key: key);
 
   @override
@@ -23,6 +25,7 @@ class _ExitDialog extends State<ExitDialog> {
   Widget build(BuildContext context) {
     return BaseDialog(
       hiddenTitle: true,
+      confirmTitle: widget.conformText,
       child:  Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Text(widget.content, style: TextStyle(color: Colours.text_121212,fontSize: 16)),

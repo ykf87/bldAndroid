@@ -15,6 +15,10 @@ SignInfoEntity $SignInfoEntityFromJson(Map<String, dynamic> json) {
 	if (issigin != null) {
 		signInfoEntity.issigin = issigin;
 	}
+	final List<String>? geted = jsonConvert.convertListNotNull<String>(json['geted']);
+	if (geted != null) {
+		signInfoEntity.geted = geted;
+	}
 	return signInfoEntity;
 }
 
@@ -23,6 +27,7 @@ Map<String, dynamic> $SignInfoEntityToJson(SignInfoEntity entity) {
 	data['user'] = entity.user?.toJson();
 	data['signed'] = entity.signed?.toJson();
 	data['issigin'] = entity.issigin;
+	data['geted'] =  entity.geted.map((v) => v).toList();
 	return data;
 }
 

@@ -31,6 +31,8 @@ class _AddressPageState extends State<AddressPage> {
     // TODO: implement initState
     super.initState();
     print("TTTTT===${widget.taskId}");
+    logic.taskId = widget.taskId;
+    logic.setCSJAdEvent();
   }
   @override
   Widget build(BuildContext context) {
@@ -275,7 +277,7 @@ class _AddressPageState extends State<AddressPage> {
                         ToastUtils.toast("请输入正确的手机号");
                         return;
                       }
-                      logic.submitGift(widget.taskId);
+                      logic.showAd(context);
                     },
                     onDoubleTap: (){
 

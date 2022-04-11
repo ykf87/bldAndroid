@@ -138,7 +138,7 @@ class LotteryFirstView extends StatelessWidget {
                     'assets/images/bg_user message@3x.png',
                     fit: BoxFit.fill,
                   ),
-                  ScrollListView(),
+                  ScrollListView(list: [],),
 //                  Row(
 //                    mainAxisAlignment: MainAxisAlignment.start,
 //                    children: <Widget>[

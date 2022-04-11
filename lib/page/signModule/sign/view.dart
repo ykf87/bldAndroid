@@ -1,4 +1,5 @@
 import 'package:SDZ/base/base_stateful_widget.dart';
+import 'package:SDZ/entity/Constants.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/page/home/goodsList/NewGoodsListPage.dart';
 import 'package:SDZ/page/home/widget/waterfall_goods_card.dart';
@@ -34,7 +35,7 @@ class _SignPageState extends State<SignPage> {
   final SignLogic logic = Get.put(SignLogic());
   final SignState state = Get.find<SignLogic>().state;
 
-  bool isShowEmpty = false;
+  bool isShowEmpty = Constants.opensign;
 
   @override
   void initState() {
@@ -122,7 +123,9 @@ class _SignPageState extends State<SignPage> {
                                     padding: EdgeInsets.only(top: 5),
                                     height: 28,
                                     width: 210,
-                                    child:ScrollListView(),
+                                    child:(state.signInfoEntity!= null && state.signInfoEntity?.geted.length != 0)?
+                                    ScrollListView(list: state.signInfoEntity?.geted??[],):
+                                    Container(),
                                   )),
                                   GestureDetector(
                                     onTap: () {
@@ -188,34 +191,34 @@ class _SignPageState extends State<SignPage> {
                                       fontWeight: FontWeight.w400,
                                     ),
                                   ),
-                                 Expanded(child:  Container(
-                                   child: ClipPath(
-                                     clipper: TopLeftClipper(),
-                                     child: Container(
-                                       padding: EdgeInsets.fromLTRB(
-                                         Adaptor.width(16),
-                                         Adaptor.width(2),
-                                         Adaptor.width(8),
-                                         Adaptor.width(4),
-                                       ),
-                                       decoration: BoxDecoration(
-                                         color: Color(0xffFEEBB1),
-                                         borderRadius: BorderRadius.circular(
-                                           Adaptor.width(2),
-                                         ),
-                                       ),
-                                       child: Text(
-                                         '赢${state.signInfoEntity?.signed?.product?.name??'奖品'}',
-                                         style: TextStyle(
-                                           color: Color(0xffFF421A),
-                                           fontSize: Adaptor.sp(11),
-                                         ),
-                                         maxLines: 1,
-                                         overflow: TextOverflow.ellipsis,
-                                       ),
-                                     ),
-                                   ),
-                                 ),),
+                                  Container(
+                                    child: ClipPath(
+                                      clipper: TopLeftClipper(),
+                                      child: Container(
+                                        padding: EdgeInsets.fromLTRB(
+                                          Adaptor.width(16),
+                                          Adaptor.width(2),
+                                          Adaptor.width(8),
+                                          Adaptor.width(4),
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: Color(0xffFEEBB1),
+                                          borderRadius: BorderRadius.circular(
+                                            Adaptor.width(2),
+                                          ),
+                                        ),
+                                        child: Text(
+                                          '赢${state.signInfoEntity?.signed?.product?.name??'奖品'}',
+                                          style: TextStyle(
+                                            color: Color(0xffFF421A),
+                                            fontSize: Adaptor.sp(11),
+                                          ),
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                                   SizedBox(width: 80,),
                                 ],
                               )

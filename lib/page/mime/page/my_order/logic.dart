@@ -1,4 +1,5 @@
 import 'package:SDZ/page/mime/entity/order_entity.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:SDZ/api/api_client.dart';
 import 'package:SDZ/api/api_url.dart';
@@ -10,6 +11,7 @@ class MyOrderLogic extends GetxController {
   final state = MyOrderState();
 
   void getData() {
+    EasyLoading.showToast('加载中...');
     Map<String, dynamic> map = new Map();
     map['page'] = state.pageNum;
     map['limit'] = 30;
@@ -26,6 +28,7 @@ class MyOrderLogic extends GetxController {
         state.isShowEmpty = state.list.length== 0;
       }
       update();
+      EasyLoading.dismiss();
     }, onError: (msg) {
       state.isShowEmpty = state.list.length== 0;
       state.refreshController.finishLoad(noMore: true);
@@ -34,6 +37,7 @@ class MyOrderLogic extends GetxController {
         state.pageNum--;
       }
       update();
+      EasyLoading.dismiss();
     });
   }
 

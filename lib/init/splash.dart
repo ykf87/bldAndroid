@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:SDZ/api/api_client.dart';
 import 'package:SDZ/api/api_url.dart';
+import 'package:SDZ/entity/Constants.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/global_entity.dart';
 import 'package:SDZ/page/index.dart';
@@ -85,6 +86,7 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
             onSuccess: (data) {
           BaseEntity<GlobalEntity> entity = BaseEntity.fromJson(data!);
           SPUtils.setAdShow(entity.data?.isadv?.contains("true") ?? false);
+          Constants.opensign = entity.data?.opensign == 1;
           goHomePage();
         }, onError: (msg) {
           goHomePage();

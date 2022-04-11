@@ -23,6 +23,10 @@ GlobalEntity $GlobalEntityFromJson(Map<String, dynamic> json) {
 	if (isadv != null) {
 		globalEntity.isadv = isadv;
 	}
+	final int? opensign = jsonConvert.convert<int>(json['opensign']);
+	if (isadv != null) {
+		globalEntity.opensign = opensign;
+	}
 	return globalEntity;
 }
 
@@ -33,5 +37,6 @@ Map<String, dynamic> $GlobalEntityToJson(GlobalEntity entity) {
 	data['versions'] = entity.versions;
 	data['service'] = entity.service;
 	data['isadv'] = entity.isadv;
+	data['opensign'] = entity.opensign;
 	return data;
 }

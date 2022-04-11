@@ -106,8 +106,8 @@ class _TabMyPageState extends State<TabMyPage> {
                                   LoginUtil.toLogin();
                                   return;
                                 }
-                                // Get.to(MyOrderPage());
-                                Get.to(LotteryView());
+                                Get.to(MyOrderPage());
+                                // Get.to(LotteryView());
                               },
                             ),
                             LineTextWidget(

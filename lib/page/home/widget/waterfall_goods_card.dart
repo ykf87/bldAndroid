@@ -5,6 +5,7 @@ import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/entity/search/card_entity.dart';
 import 'package:SDZ/page/home/goods_detail/detail.dart';
 import 'package:SDZ/page/web/web_view_page.dart';
+import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/navigator_util.dart';
 import 'package:SDZ/utils/utils.dart';
 import 'package:SDZ/widget/coupon_price.dart';
@@ -50,7 +51,7 @@ class WaterfallGoodsCard extends StatelessWidget {
                   margin: const EdgeInsets.symmetric(horizontal: 5),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [renderShopType(), renderCals()],
+                    children: [renderCals()],
                   ),
                 ),
                 const SizedBox(height: 5),
@@ -86,9 +87,9 @@ class WaterfallGoodsCard extends StatelessWidget {
                         '领 ${product.discount} 元券',
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 3),
-                    strokeColor: Colors.pink,
+                    strokeColor: Colours.color_orange_ffFF7648,
                     corner: FCorner.all(50),
-                    style: const TextStyle(color: Colors.pink),
+                    style: const TextStyle(color:Colours.color_orange_ffFF7648),
                   ),
                 ),
 

@@ -11,14 +11,16 @@ class ListModel {
 }
 
 class ScrollListView extends StatefulWidget {
-
+  List<String> list;
   @override
   ScrollListViewState createState() => new ScrollListViewState();
+
+  ScrollListView({required this.list});
 }
 
-class ScrollListViewState extends State<ScrollListView> {
+class ScrollListViewState extends State<ScrollListView> with WidgetsBindingObserver{
 
-  late List<ListModel> _itemLists;
+  // late List<ListModel> _itemLists;
   late PageController  _controller;
   int _currentIndex = -1;
 
@@ -26,42 +28,46 @@ class ScrollListViewState extends State<ScrollListView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    _itemLists = <ListModel>[
-      ListModel(
-        userIcon: 'assets/images/userHead@3x.png',
-        desc: '小叮当抽中了悠悠球1',
-      ),
-      ListModel(
-        userIcon: 'assets/images/userHead@3x.png',
-        desc: '小叮当抽中了悠悠球2',
-      ),
-      ListModel(
-        userIcon: 'assets/images/userHead@3x.png',
-        desc: '小叮当抽中了悠悠球3',
-      ),
-      ListModel(
-        userIcon: 'assets/images/userHead@3x.png',
-        desc: '小叮当抽中了悠悠球4',
-      ),
-      ListModel(
-        userIcon: 'assets/images/userHead@3x.png',
-        desc: '小叮当抽中了悠悠球5',
-      ),
-    ];
+    // _itemLists = <ListModel>[
+    //   ListModel(
+    //     userIcon: 'assets/images/userHead@3x.png',
+    //     desc: '小叮当抽中了悠悠球1',
+    //   ),
+    //   ListModel(
+    //     userIcon: 'assets/images/userHead@3x.png',
+    //     desc: '小叮当抽中了悠悠球2',
+    //   ),
+    //   ListModel(
+    //     userIcon: 'assets/images/userHead@3x.png',
+    //     desc: '小叮当抽中了悠悠球3',
+    //   ),
+    //   ListModel(
+    //     userIcon: 'assets/images/userHead@3x.png',
+    //     desc: '小叮当抽中了悠悠球4',
+    //   ),
+    //   ListModel(
+    //     userIcon: 'assets/images/userHead@3x.png',
+    //     desc: '小叮当抽中了悠悠球5',
+    //   ),
+    // ];
     _controller = PageController();
-    Timer.periodic(const Duration(seconds:3), (Timer timer){
-      if (_controller.page!.round() >= _itemLists.length) {
-        _controller.jumpToPage(0);
-      }
-      _controller.nextPage(
-          duration: Duration(seconds: 1), curve: Curves.ease);
+    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+        Timer.periodic(const Duration(seconds:3), (Timer timer){
+          if (_controller.page!.round() >= widget.list.length) {
+            _controller.jumpToPage(0);
+          }
+          _controller.nextPage(
+              duration: Duration(seconds: 1), curve: Curves.ease);
+        });
     });
+
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
+    WidgetsBinding.instance?.removeObserver(this);
   }
 
   @override
@@ -71,9 +77,9 @@ class ScrollListViewState extends State<ScrollListView> {
       child: PageView.builder(
         scrollDirection: Axis.vertical,
         controller: _controller,
-        itemCount: _itemLists.length+1,
+        itemCount: widget.list.length+1,
        itemBuilder: (buildContext, index) {
-         return index < _itemLists.length?
+         return index < widget.list.length?
          itemBuild(index):itemBuild(0);
        },
       ),
@@ -86,19 +92,19 @@ class ScrollListViewState extends State<ScrollListView> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          // Container(
+          //   width: 22,
+          //   height: 22,
+          //   child: CircleAvatar(
+          //     backgroundImage: AssetImage(
+          //       widget.list[index].userIcon,
+          //     ),
+          //   ),
+          // ),
           Container(
-            width: 22,
-            height: 22,
-            child: CircleAvatar(
-              backgroundImage: AssetImage(
-                _itemLists[index].userIcon,
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 6.0,),
+            margin: EdgeInsets.only(left: 0.0,),
             child: Text(
-              _itemLists[index].desc,
+              widget.list[index],
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontSize: 15,
