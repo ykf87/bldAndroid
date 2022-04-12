@@ -32,7 +32,13 @@ class _AddressPageState extends State<AddressPage> {
     super.initState();
     print("TTTTT===${widget.taskId}");
     logic.taskId = widget.taskId;
-    logic.setCSJAdEvent();
+    logic.initEvent();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    logic.adRewardEventBus?.cancel();
   }
   @override
   Widget build(BuildContext context) {

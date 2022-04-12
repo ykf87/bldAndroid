@@ -31,15 +31,13 @@ class AdTaskPage extends StatefulWidget {
 class _AdTaskPageState extends State<AdTaskPage> {
   final AdTaskLogic logic = Get.put(AdTaskLogic());
   final AdTaskState state = Get.find<AdTaskLogic>().state;
-  AdTaskEntity? curEntity;
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     logic.getData();
-    setCSJAdEvent();
-    setYLHAdEvent();
     logic.getUserInfo();
     logic.initEvent();
   }
@@ -49,6 +47,7 @@ class _AdTaskPageState extends State<AdTaskPage> {
   void dispose() {
     super.dispose();
     logic.loginEventBus?.cancel();
+    logic.adRewardEventBus?.cancel();
   }
 
   @override
@@ -178,8 +177,9 @@ class _AdTaskPageState extends State<AdTaskPage> {
                             itemBuilder: (context, i) {
                               return DoubleClick(
                                 onTap: () {
-                                  curEntity = state.list[i];
-                                  if (curEntity?.platform == 1) {
+                                  logic.isDoReward = true;
+                                  state.curEntity = state.list[i];
+                                  if ( state.curEntity?.platform == 1) {
                                     CSJUtils.showRewardVideoAd();
                                   } else {
                                     FlutterQqAds.showRewardVideoAd(
@@ -224,8 +224,8 @@ class _AdTaskPageState extends State<AdTaskPage> {
       ///获取奖励
       if (event.action == CSJ.AdEventAction.onAdReward &&
           event.adId == CSJUtils.CSJVideoId) {
-        if (curEntity != null) {
-          logic.videoSuccess(curEntity!.id.toString());
+        if ( state.curEntity != null) {
+          logic.videoSuccess( state.curEntity!.id.toString());
           print('视频成功');
         }
       }
@@ -242,8 +242,8 @@ class _AdTaskPageState extends State<AdTaskPage> {
         _adEvent += ' errCode:${event.errCode} errMsg:${event.errMsg}';
       } else if (event is AdRewardEvent && event.adId == CSJUtils.YLHVideoId) {
         // 激励事件
-        if (curEntity != null) {
-          logic.videoSuccess(curEntity!.id.toString());
+        if ( state.curEntity != null) {
+          logic.videoSuccess( state.curEntity!.id.toString());
           print('视频成功');
         }
       }

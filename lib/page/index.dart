@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:SDZ/page/home/tab_home.dart';
 import 'package:SDZ/page/signModule/sign/view.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
+import 'package:SDZ/utils/YLHUtils.dart';
 import 'package:SDZ/utils/login_util.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/cupertino.dart';
@@ -56,7 +57,8 @@ class _MainHomePageState extends State<MainHomePage>
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       // CSJUtils.showInterstitialAd();
     });
-
+    CSJUtils.setCSJAdEvent();
+    YLHUtils.setYLHAdEvent();
     this.initData();
   }
 

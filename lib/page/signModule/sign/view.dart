@@ -43,8 +43,6 @@ class _SignPageState extends State<SignPage> {
     super.initState();
     logic.getGiftList();
     logic.getSignInfo();
-    logic.setCSJAdEvent();
-    logic.setYLHAdEvent();
     logic.initEvent();
   }
   @override
@@ -53,6 +51,7 @@ class _SignPageState extends State<SignPage> {
     super.dispose();
     logic.loginEventBus?.cancel();
     logic.refreshEventBus?.cancel();
+    logic.adRewardEventBus?.cancel();
   }
 
   @override

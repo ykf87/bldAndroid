@@ -11,6 +11,7 @@ class AdTaskState {
   EasyRefreshController refreshController = EasyRefreshController();
   bool isShowEmpty = false;
   UserCenterEntity? userCenterEntity;
+  AdTaskEntity? curEntity;
   List<AdTaskEntity> list = [
   ];
 }

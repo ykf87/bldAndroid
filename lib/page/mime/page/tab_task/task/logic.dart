@@ -7,11 +7,13 @@ import 'package:SDZ/entity/adIntegral/ad_task_entity.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/base/empty_entity.dart';
 import 'package:SDZ/entity/mime/user_center_entity.dart';
+import 'package:SDZ/event/ad_reward_event.dart';
 import 'package:SDZ/event/login_event.dart';
 import 'package:SDZ/event/refresh_signPage_event.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
 import 'package:SDZ/utils/login_util.dart';
 import 'package:SDZ/utils/sputils.dart';
+import 'package:flutter_pangle_ads/event/ad_reward_event.dart';
 import 'package:get/get.dart';
 
 import 'state.dart';
@@ -19,15 +21,26 @@ import 'state.dart';
 class AdTaskLogic extends GetxController {
   final state = AdTaskState();
 
-
   StreamSubscription<RefreshSignPageEvent>? refreshEventBus;
   StreamSubscription<LoginEvent>? loginEventBus;
+  StreamSubscription<MyAdRewardEvent>? adRewardEventBus;
+  bool isDoReward = false;
 
   void initEvent() {
     loginEventBus =
         EventBusUtils.getInstance().on<LoginEvent>().listen((event) {
-          getData();
-        });
+      getData();
+    });
+    adRewardEventBus =
+        EventBusUtils.getInstance().on<MyAdRewardEvent>().listen((event) {
+      if (state.curEntity != null) {
+        if (isDoReward) {
+          videoSuccess(state.curEntity!.id.toString());
+          isDoReward = false;
+          print('任务中心视频成功');
+        }
+      }
+    });
   }
 
   void getData() {

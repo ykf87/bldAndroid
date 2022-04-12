@@ -10,6 +10,7 @@ import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/entity/sign/gift_list_entity.dart';
 import 'package:SDZ/entity/sign_info_entity.dart';
+import 'package:SDZ/event/ad_reward_event.dart';
 import 'package:SDZ/event/login_event.dart';
 import 'package:SDZ/event/refresh_signPage_event.dart';
 import 'package:SDZ/page/signModule/address/view.dart';
@@ -31,6 +32,8 @@ class SignLogic extends GetxController {
   final state = SignState();
   StreamSubscription<RefreshSignPageEvent>? refreshEventBus;
   StreamSubscription<LoginEvent>? loginEventBus;
+  StreamSubscription<MyAdRewardEvent>? adRewardEventBus;
+  bool isDoReward = false;
 
   void initEvent() {
     loginEventBus =
@@ -39,11 +42,18 @@ class SignLogic extends GetxController {
       getGiftList();
       update();
     });
-
     refreshEventBus =
         EventBusUtils.getInstance().on<RefreshSignPageEvent>().listen((event) {
       getSignInfo();
       getGiftList();
+    });
+    adRewardEventBus =
+        EventBusUtils.getInstance().on<MyAdRewardEvent>().listen((event) {
+          print("onEventListener:接收到成功");
+      if (isDoReward) {
+        sign();
+        isDoReward = false;
+      }
     });
   }
 
@@ -112,8 +122,9 @@ class SignLogic extends GetxController {
       sign();
     } else if (setSignBtnStatus() == 3) {
       //补签
-      // csjVedio();
-      ylhVedio();
+      isDoReward = true;
+      csjVedio();
+      // ylhVedio();
     } else if (setSignBtnStatus() == 4) {
       //领奖品
       print("id===${state.signInfoEntity?.signed?.id}");
@@ -205,23 +216,25 @@ class SignLogic extends GetxController {
                   Row(
                     children: [
                       Expanded(
-                        child: Center(
+                          child: Center(
                         child: Text(
                           '签到规则',
-                          style:
-                          TextStyle(fontSize: 16, color: Colours.color_333333),
+                          style: TextStyle(
+                              fontSize: 16, color: Colours.color_333333),
                         ),
                       )),
                       GestureDetector(
-                        onTap: (){
+                        onTap: () {
                           Navigator.pop(context);
                         },
                         child: SvgPicture.asset(Utils.getSvgUrl('ic_close.svg'),
-                          width: 14, height: 14,color:Colours.color_999999),
+                            width: 14, height: 14, color: Colours.color_999999),
                       ),
                     ],
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                   Expanded(
                       child: new ListView(
                     children: [
@@ -235,7 +248,9 @@ class SignLogic extends GetxController {
                           "\n6、省得赚有权根据实际活动对活动规则进行变动和调整，相关变动和调整将另行公布。"),
                     ],
                   )),
-                  SizedBox(height: 20,),
+                  SizedBox(
+                    height: 20,
+                  ),
                 ],
               ),
             ));
@@ -254,38 +269,5 @@ class SignLogic extends GetxController {
   ///穿山甲
   void csjVedio() {
     CSJUtils.showRewardVideoAd();
-  }
-
-  /// 设置穿山甲广告监听
-  Future<void> setCSJAdEvent() async {
-    String _adEvent = '';
-    CSJ.FlutterPangleAds.onEventListener((event) {
-      _adEvent = 'adId:${event.adId} action:${event.action}';
-      if (event is CSJ.AdErrorEvent) {
-        // 错误事件
-      }
-
-      ///获取奖励
-      if (event.action == CSJ.AdEventAction.onAdReward &&
-          event.adId == CSJUtils.CSJVideoId) {
-        sign();
-      }
-    });
-  }
-
-  /// 设置优量汇广告监听
-  Future<void> setYLHAdEvent() async {
-    FlutterQqAds.onEventListener((event) {
-      // 普通广告事件
-      String _adEvent = 'adId:${event.adId} action:${event.action}';
-      if (event is AdErrorEvent) {
-        // 错误事件
-        _adEvent += ' errCode:${event.errCode} errMsg:${event.errMsg}';
-      } else if (event is AdRewardEvent && event.adId == CSJUtils.YLHVideoId) {
-        // 激励事件
-        sign();
-      }
-      print('onEventListener:$_adEvent');
-    });
   }
 }

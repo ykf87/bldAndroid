@@ -7,6 +7,7 @@ import 'package:SDZ/dialog/exit_dialog.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/base/empty_entity.dart';
 import 'package:SDZ/entity/sign_info_entity.dart';
+import 'package:SDZ/event/ad_reward_event.dart';
 import 'package:SDZ/event/refresh_signPage_event.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
@@ -32,6 +33,19 @@ class AddressLogic extends GetxController {
   TextEditingController nameController = new TextEditingController();
   TextEditingController addressController = new TextEditingController();
   TextEditingController remarkController = new TextEditingController();
+  StreamSubscription<MyAdRewardEvent>? adRewardEventBus;
+  bool isDoReward = false;
+
+  void initEvent() {
+    adRewardEventBus =
+        EventBusUtils.getInstance().on<MyAdRewardEvent>().listen((event) {
+      print("onEventListener:接收到成功");
+      if (isDoReward) {
+        submitGift(taskId);
+        isDoReward = false;
+      }
+    });
+  }
 
   void onTextChange() {
     if (phoneController.text.length > 0 &&
@@ -69,29 +83,12 @@ class AddressLogic extends GetxController {
     showDialog<void>(
         context: context,
         builder: (_) => ExitDialog(
-          conformText: '去观看',
+            conformText: '去观看',
             onPressed: () {
+              isDoReward = true;
               CSJUtils.showRewardVideoAd();
             },
             content: '观看完视频即可领取奖品'));
-  }
-
-  /// 设置穿山甲广告监听
-  Future<void> setCSJAdEvent() async {
-    String _adEvent = '';
-    CSJ.FlutterPangleAds.onEventListener((event) {
-      _adEvent = 'adId:${event.adId} action:${event.action}';
-      if (event is CSJ.AdErrorEvent) {
-        // 错误事件
-        submitGift(taskId);
-      }
-      ///获取奖励
-      if (event.action == CSJ.AdEventAction.onAdReward &&
-          event.adId == CSJUtils.CSJVideoId) {}
-      if (event.action == CSJ.AdEventAction.onAdClosed &&  event.adId == CSJUtils.CSJVideoId) {
-        submitGift(taskId);
-      }
-    });
   }
 
   void selAddress(BuildContext context) {
