@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:SDZ/entity/Constants.dart';
 import 'package:SDZ/page/home/tab_home.dart';
 import 'package:SDZ/page/signModule/sign/view.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
@@ -43,7 +44,6 @@ class _MainHomePageState extends State<MainHomePage>
 
   // 页面列表
   final List<Widget> _pages = [
-
     TabHomePage(),
     SignPage(),
     AdTaskPage(),
@@ -57,6 +57,8 @@ class _MainHomePageState extends State<MainHomePage>
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       // CSJUtils.showInterstitialAd();
     });
+    _currentIndex = Constants.isFirstOpen ? 1 : 0;
+    Constants.isFirstOpen = false;
     CSJUtils.setCSJAdEvent();
     YLHUtils.setYLHAdEvent();
     this.initData();
@@ -177,10 +179,6 @@ class _MainHomePageState extends State<MainHomePage>
                     currentIndex: _currentIndex,
                     //按下后设置当前页面索引
                     onTap: ((index) {
-                      if ((index == 1 || index == 2) && !LoginUtil.isLogin()) {
-                        LoginUtil.toLogin();
-                        return;
-                      }
                       setState(() {
                         _currentIndex = index;
                         if (index == 2 || index == 1 || index == 3) {
@@ -223,8 +221,8 @@ class _MainHomePageState extends State<MainHomePage>
                       //       height: kNavIconSize,
                       //       width: kNavIconSize,
                       //     )),
-                     BottomNavigationBarItem(
-                          label: '签到',
+                      BottomNavigationBarItem(
+                          label: '免费领',
                           icon: _currentIndex == 1
                               ? Image.asset(
                                   'assets/nav/sign-n.png',
@@ -240,15 +238,15 @@ class _MainHomePageState extends State<MainHomePage>
                           label: '福利',
                           icon: _currentIndex == 2
                               ? Image.asset(
-                            'assets/nav/fenlei.png',
-                            width: kNavIconSize,
-                            height: kNavIconSize,
-                          )
+                                  'assets/nav/fenlei.png',
+                                  width: kNavIconSize,
+                                  height: kNavIconSize,
+                                )
                               : Image.asset(
-                            'assets/nav/fenlei-n.png',
-                            height: kNavIconSize,
-                            width: kNavIconSize,
-                          )),
+                                  'assets/nav/fenlei-n.png',
+                                  height: kNavIconSize,
+                                  width: kNavIconSize,
+                                )),
                       BottomNavigationBarItem(
                           label: '我的',
                           icon: _currentIndex == 3
@@ -312,5 +310,4 @@ class _MainHomePageState extends State<MainHomePage>
   }
 
   void changeTab() {}
-
 }

@@ -177,6 +177,10 @@ class _AdTaskPageState extends State<AdTaskPage> {
                             itemBuilder: (context, i) {
                               return DoubleClick(
                                 onTap: () {
+                                  if (!LoginUtil.isLogin()) {
+                                    LoginUtil.toLogin();
+                                    return;
+                                  }
                                   logic.isDoReward = true;
                                   state.curEntity = state.list[i];
                                   if ( state.curEntity?.platform == 1) {

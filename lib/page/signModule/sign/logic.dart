@@ -18,6 +18,7 @@ import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
 import 'package:SDZ/utils/VideoUtils.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
+import 'package:SDZ/utils/login_util.dart';
 import 'package:SDZ/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pangle_ads/flutter_pangle_ads.dart' as CSJ;
@@ -134,6 +135,10 @@ class SignLogic extends GetxController {
 
   ///签到
   void sign() {
+    if (!LoginUtil.isLogin()) {
+      LoginUtil.toLogin();
+      return;
+    }
     Map<String, dynamic> map = Map();
     map['id'] = state.signInfoEntity?.signed?.id;
     ApiClient.instance.post(ApiUrl.getBLDBaseUrl() + ApiUrl.doSign,
@@ -174,6 +179,10 @@ class SignLogic extends GetxController {
 
   ///选中签到奖品
   void commitGift(GiftEntity entity, BuildContext context) {
+    if (!LoginUtil.isLogin()) {
+      LoginUtil.toLogin();
+      return;
+    }
     showDialog<void>(
         context: context,
         builder: (_) => ExitDialog(

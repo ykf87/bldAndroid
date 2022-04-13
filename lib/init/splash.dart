@@ -73,9 +73,11 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
   /// 协议弹窗
   void showAgreementDialog() {
     if (SPUtils.isAgreementRead) {
+      Constants.isFirstOpen = false;
       goHomePage();
       return;
     }
+    Constants.isFirstOpen = true;
     Get.dialog(AgreementDialog(onTap: (type) {
       if (type == 0) {
         showAgreementConfirmDialog();
