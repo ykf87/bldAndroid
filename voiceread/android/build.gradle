@@ -1,0 +1,58 @@
+group 'com.xlx.speech.voiceread'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://repo1.maven.org/maven2/' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://repo1.maven.org/maven2/' }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 16
+    }
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+}
+
+
+dependencies {
+    implementation 'com.xinliangxiang:voice-read:4.5.0.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'com.liulishuo.filedownloader:library:1.7.7'
+    implementation "androidx.cardview:cardview:1.0.0"
+    implementation ('com.google.android.exoplayer:exoplayer-core:2.15.1') {
+        exclude group: "androidx.annotation", module: "annotation"
+    }
+    //如果您的项目中没有用到约束布局，需要添加该依赖
+    implementation 'com.android.support.constraint:constraint-layout:2.0.4'
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+}
