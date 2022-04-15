@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:SDZ/page/login/new_login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -138,8 +139,7 @@ class IndexLogic extends GetxController {
 
   toLogin() {
     Get.to(
-        () => LoginPage(
-              isMessageTab: true,
+        () => NewLoginPage(
             ),
         arguments: {'tomain': false});
   }

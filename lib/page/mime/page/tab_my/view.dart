@@ -1,3 +1,4 @@
+import 'package:SDZ/page/login/new_login_page.dart';
 import 'package:SDZ/page/mime/page/about_page.dart';
 import 'package:SDZ/page/mime/page/feed_back/view.dart';
 import 'package:SDZ/page/mime/page/my_order/view.dart';
@@ -102,12 +103,12 @@ class _TabMyPageState extends State<TabMyPage> {
                               bgColor: Colours.bg_ffffff,
                               leftImg: "ic_order.png",
                               onPressed: () {
-                                if (!LoginUtil.isLogin()) {
-                                  LoginUtil.toLogin();
-                                  return;
-                                }
-                                Get.to(MyOrderPage());
-                                // Get.to(LotteryView());
+                                // if (!LoginUtil.isLogin()) {
+                                //   LoginUtil.toLogin();
+                                //   return;
+                                // }
+                                // Get.to(MyOrderPage());
+                                Get.to(NewLoginPage());
                               },
                             ),
                             LineTextWidget(

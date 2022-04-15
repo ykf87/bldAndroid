@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:SDZ/page/login/new_login_page.dart';
 import 'package:get/get.dart';
 import 'package:SDZ/core/utils/event.dart';
 import 'package:SDZ/event/login_event.dart';
@@ -24,13 +25,13 @@ class LoginUtil {
 
   /// 跳转登录
   static void toLogin({bool toMain = false, bool isMessageTab = false}) {
-      Get.to(LoginPage(isMessageTab: isMessageTab), arguments: _getArguments(toMain: toMain));
+      Get.to(NewLoginPage(), arguments: _getArguments(toMain: toMain));
   }
 
   /// 跳转登录
   /// 删除之前所有页面
   static void offLogin({bool toMain = false}) {
-      Get.offAll(() => LoginPage(), arguments: _getArguments(toMain: toMain));
+      Get.offAll(() => NewLoginPage(), arguments: _getArguments(toMain: toMain));
   }
 
   ///退出登录
