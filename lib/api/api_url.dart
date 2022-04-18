@@ -11,7 +11,7 @@ class ApiUrl {
   }
 
   static String getBLDBaseUrl() {
-    return 'http://45.77.216.241/api/';
+    return 'http://47.111.106.204/api/';
   }
 
   /// 用户协议

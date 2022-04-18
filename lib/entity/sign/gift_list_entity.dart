@@ -33,8 +33,10 @@ class GiftEntity {
 	int? own;
 	int? maxown;
 	int? collection;
-  
+	bool isAd = false;
+
   GiftEntity();
+
 
   factory GiftEntity.fromJson(Map<String, dynamic> json) => $GiftEntityFromJson(json);
 

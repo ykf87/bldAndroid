@@ -11,6 +11,8 @@ import 'package:SDZ/entity/global_entity.dart';
 import 'package:SDZ/generated/i18n.dart';
 import 'package:SDZ/router/route_map.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
+import 'package:SDZ/utils/VideoUtils.dart';
+import 'package:SDZ/utils/YLHUtils.dart';
 import 'package:SDZ/utils/device_util.dart';
 import 'package:SDZ/utils/device_utils.dart';
 import 'package:SDZ/utils/provider.dart';
@@ -70,9 +72,9 @@ class DefaultApp {
       }
       if (SPUtils.getAdShow()) {
         await CSJUtils.initCSJADSDK();
-        await FlutterQqAds.initAd(CSJUtils.YLHAPPID);
+        await FlutterQqAds.initAd(YLHUtils.YLHAPPID);
       }
-      Voiceread.init(appId: '43514108', appSecret: 'FYJo5V7G83U7C2POcBMlbyGkrW3s1hHu', debug: true);
+      VideoUtils.init();
     }
     String deviceId = await DeviceUtil.deviceId ?? '';
     if (deviceId.isEmpty) {

@@ -17,6 +17,7 @@ import 'package:SDZ/page/signModule/address/view.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
 import 'package:SDZ/utils/VideoUtils.dart';
+import 'package:SDZ/utils/YLHUtils.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
 import 'package:SDZ/utils/login_util.dart';
 import 'package:SDZ/utils/utils.dart';
@@ -50,7 +51,7 @@ class SignLogic extends GetxController {
     });
     adRewardEventBus =
         EventBusUtils.getInstance().on<MyAdRewardEvent>().listen((event) {
-          print("onEventListener:接收到成功");
+      print("onEventListener:接收到成功");
       if (isDoReward) {
         sign();
         isDoReward = false;
@@ -159,20 +160,49 @@ class SignLogic extends GetxController {
     });
   }
 
+  doRefresh() {
+    page = 1;
+    state.list.clear();
+    getGiftList();
+  }
+
+  doLoadMore() {
+    page++;
+    getGiftList();
+  }
+
   ///签到奖品列表
+  int page = 1;
+
   void getGiftList() {
     Map<String, dynamic> map = Map();
-    map['page'] = 1;
+    map['page'] = page;
     map['limit'] = 30;
-    EasyLoading.showToast('加载中...');
     ApiClient.instance.get(ApiUrl.getBLDBaseUrl() + ApiUrl.giftList,
         data: map, isJTK: false, onSuccess: (data) {
       EasyLoading.dismiss();
       BaseEntity<GiftListEntity> entity = BaseEntity.fromJson(data!);
-      state.list.clear();
-      state.list.addAll(entity.data?.list ?? []);
+      if (entity.isSuccess && entity.data != null && entity.data!.list != null) {
+        state.refreshController
+            .finishLoad(noMore: entity.data!.list!.length < 30);
+        state.refreshController.finishRefresh(success: true);
+        for (int i = 0; i < 5; i++) {
+          GiftEntity giftEntity = new GiftEntity();
+          giftEntity.isAd = true;
+          if (entity.data!.list!.length > (i + 1) * 4) {
+            entity.data!.list!.insert((i + 1) * 4, giftEntity);
+          }
+        }
+        state.list.addAll(entity.data?.list ?? []);
+      }
       update();
     }, onError: (msg) {
+      state.refreshController.finishLoad(noMore: true,success: true);
+      state.refreshController.finishRefresh(success: true);
+      if (page > 1) {
+        page--;
+      }
+      update();
       EasyLoading.dismiss();
     });
   }
@@ -268,7 +298,7 @@ class SignLogic extends GetxController {
   ///优量汇
   void ylhVedio() {
     FlutterQqAds.showRewardVideoAd(
-      CSJUtils.YLHVideoId,
+      YLHUtils.YLHVideoId,
       playMuted: false,
       customData: 'customData',
       userId: 'userId',

@@ -7,6 +7,8 @@ import 'package:SDZ/page/mime/page/my_wallet/view.dart';
 import 'package:SDZ/page/mime/page/tab_task/task/task_item.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
+import 'package:SDZ/utils/VideoUtils.dart';
+import 'package:SDZ/utils/YLHUtils.dart';
 import 'package:SDZ/utils/login_util.dart';
 import 'package:SDZ/widget/custom_refresh_footer.dart';
 import 'package:SDZ/widget/custom_refresh_header.dart';
@@ -32,7 +34,6 @@ class _AdTaskPageState extends State<AdTaskPage> {
   final AdTaskLogic logic = Get.put(AdTaskLogic());
   final AdTaskState state = Get.find<AdTaskLogic>().state;
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -41,7 +42,6 @@ class _AdTaskPageState extends State<AdTaskPage> {
     logic.getUserInfo();
     logic.initEvent();
   }
-
 
   @override
   void dispose() {
@@ -151,9 +151,11 @@ class _AdTaskPageState extends State<AdTaskPage> {
                                   margin: EdgeInsets.only(top: 150),
                                   child: Column(
                                     children: [
-                                      Image.asset('assets/images/bg_empty_fly.png',
+                                      Image.asset(
+                                        'assets/images/bg_empty_fly.png',
                                         height: 120,
-                                        width: 120,),
+                                        width: 120,
+                                      ),
                                       SizedBox(
                                         height: 20,
                                       ),
@@ -183,15 +185,19 @@ class _AdTaskPageState extends State<AdTaskPage> {
                                   }
                                   logic.isDoReward = true;
                                   state.curEntity = state.list[i];
-                                  if ( state.curEntity?.platform == 1) {
+                                  if (state.curEntity?.platform == 1) {
                                     CSJUtils.showRewardVideoAd();
-                                  } else {
+                                  } else if (state.curEntity?.platform == 2) {
                                     FlutterQqAds.showRewardVideoAd(
-                                      CSJUtils.YLHVideoId,
+                                      YLHUtils.YLHVideoId,
                                       playMuted: false,
                                       customData: 'customData',
                                       userId: 'userId',
                                     );
+                                  } else if (state.curEntity?.platform == 3) {
+                                    VideoUtils.loadVoiceAd((){
+                                      logic.videoSuccess(state.curEntity!.id.toString());
+                                    });
                                   }
                                 },
                                 child: Container(
@@ -208,7 +214,6 @@ class _AdTaskPageState extends State<AdTaskPage> {
                             crossAxisSpacing: 12,
                           ),
                         )),
-
                 ],
               ),
             ),
@@ -228,8 +233,8 @@ class _AdTaskPageState extends State<AdTaskPage> {
       ///获取奖励
       if (event.action == CSJ.AdEventAction.onAdReward &&
           event.adId == CSJUtils.CSJVideoId) {
-        if ( state.curEntity != null) {
-          logic.videoSuccess( state.curEntity!.id.toString());
+        if (state.curEntity != null) {
+          logic.videoSuccess(state.curEntity!.id.toString());
           print('视频成功');
         }
       }
@@ -244,10 +249,10 @@ class _AdTaskPageState extends State<AdTaskPage> {
       if (event is AdErrorEvent) {
         // 错误事件
         _adEvent += ' errCode:${event.errCode} errMsg:${event.errMsg}';
-      } else if (event is AdRewardEvent && event.adId == CSJUtils.YLHVideoId) {
+      } else if (event is AdRewardEvent && event.adId == YLHUtils.YLHVideoId) {
         // 激励事件
-        if ( state.curEntity != null) {
-          logic.videoSuccess( state.curEntity!.id.toString());
+        if (state.curEntity != null) {
+          logic.videoSuccess(state.curEntity!.id.toString());
           print('视频成功');
         }
       }

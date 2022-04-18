@@ -9,6 +9,7 @@ import 'package:SDZ/entity/global_entity.dart';
 import 'package:SDZ/page/index.dart';
 import 'package:SDZ/res/constant.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
+import 'package:SDZ/utils/YLHUtils.dart';
 import 'package:SDZ/utils/route_ainimal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -137,7 +138,7 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
     }
     requestPermission();
     if (SPUtils.getAdShow()) {
-      FlutterQqAds.initAd(CSJUtils.YLHAPPID);
+      FlutterQqAds.initAd(YLHUtils.YLHAPPID);
       CSJUtils.initCSJADSDK().then((value) => toMain());
     } else {
       toMain();

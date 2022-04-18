@@ -61,6 +61,7 @@ class _MainHomePageState extends State<MainHomePage>
     Constants.isFirstOpen = false;
     CSJUtils.setCSJAdEvent();
     YLHUtils.setYLHAdEvent();
+    CSJUtils.showWaterFall();
     this.initData();
   }
 

@@ -9,6 +9,24 @@ import 'event_bus_util.dart';
 class YLHUtils{
   static const String YLHAPPID = '1200402924';//优量汇id
   static const String YLHVideoId = '1042190702729526';//优量汇激励视频id
+  static const String YLHWaterFallId = '1063029854352687';//优量汇信息流id
+
+
+  /// 信息流广告
+  static Future<List<int>> showWaterFall() async {
+    /// [posId] 广告位 id
+    /// [width] 宽度
+    /// [height] 高度
+    /// [count] 获取广告数量，建议 1~3 个
+    List<int> feedAdList = await FlutterQqAds.loadFeedAd(
+      YLHWaterFallId,
+      width: 375,
+      height: 0,
+      count: 3,
+    );
+    print('TTTT优量汇==${feedAdList}');
+    return feedAdList;
+  }
 
   /// 设置优量汇广告监听
   static Future<void> setYLHAdEvent() async {

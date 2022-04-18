@@ -5,6 +5,7 @@ import 'package:SDZ/api/jtk_api.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/page/home/widget/waterfall_goods_card.dart';
+import 'package:SDZ/page/signModule/sign/FeedAdItem.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/widget/custom_refresh_footer.dart';
 import 'package:SDZ/widget/custom_refresh_header.dart';
@@ -88,7 +89,15 @@ class _NewGoodsListPageState extends State<NewGoodsListPage>
             itemCount: list.length,
             itemBuilder: (context, i) {
               return Container(
-                child: WaterfallGoodsCard(list[i],source: widget.source,),
+                child: list[i].isAd
+                    ? FeedAdItem(
+                        MediaQuery.of(context).size.width,
+                        adType: 2,
+                      )
+                    : WaterfallGoodsCard(
+                        list[i],
+                        source: widget.source,
+                      ),
               );
             },
             staggeredTileBuilder: (index) => new StaggeredTile.fit(2),
@@ -126,6 +135,13 @@ class _NewGoodsListPageState extends State<NewGoodsListPage>
       BaseEntity<List<GoodsEntity>> entity = BaseEntity.fromJson(data!);
 
       if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
+        for (int i = 0; i < 5; i++) {
+          GoodsEntity giftEntity = new GoodsEntity();
+          giftEntity.isAd = true;
+          if (entity.data!.length > (i + 1) * 5) {
+            entity.data!.insert((i + 1) * 5, giftEntity);
+          }
+        }
         list.addAll(entity.data ?? []);
       } else {
         isShowEmpty = true;

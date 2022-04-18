@@ -69,19 +69,19 @@ class _TabMyPageState extends State<TabMyPage> {
             body: new Stack(
               children: <Widget>[
                 Container(
-                    child: ClipPath(
-                      clipper: SignClipper(),
-                      child: Container(
-                        height: Adaptor.height(240),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: [
-                            const Color(0xFFFE8C00),
-                            const Color(0xFFF83600),
-                          ]),
-                        ),
-                        child: null,
+                  child: ClipPath(
+                    clipper: SignClipper(),
+                    child: Container(
+                      height: Adaptor.height(240),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(colors: [
+                          const Color(0xFFFE8C00),
+                          const Color(0xFFF83600),
+                        ]),
                       ),
+                      child: null,
                     ),
+                  ),
                 ),
                 Container(
                   child: new ListView(
@@ -94,7 +94,7 @@ class _TabMyPageState extends State<TabMyPage> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(16),
                         ),
-                        margin: EdgeInsets.only(right: 16,left: 16),
+                        margin: EdgeInsets.only(right: 16, left: 16),
                         child: Column(
                           children: [
                             LineTextWidget(
@@ -103,12 +103,12 @@ class _TabMyPageState extends State<TabMyPage> {
                               bgColor: Colours.bg_ffffff,
                               leftImg: "ic_order.png",
                               onPressed: () {
-                                // if (!LoginUtil.isLogin()) {
-                                //   LoginUtil.toLogin();
-                                //   return;
-                                // }
-                                // Get.to(MyOrderPage());
-                                Get.to(NewLoginPage());
+                                if (!LoginUtil.isLogin()) {
+                                  LoginUtil.toLogin();
+                                  return;
+                                }
+                                Get.to(MyOrderPage());
+                                // Get.to(NewLoginPage());
                               },
                             ),
                             LineTextWidget(
@@ -151,20 +151,22 @@ class _TabMyPageState extends State<TabMyPage> {
                           ],
                         ),
                       ),
-                      SPUtils.getAdShow()?Container(
-                        margin: EdgeInsets.only(top: 16),
-                        child:SizedBox(
-                          width: double.infinity,
-                          height: 150,
-                          child: AdBannerWidget(
-                            posId: CSJUtils.CSJBannerId,
-                            width: 1300,
-                            height: 150,
-                            interval: 30,
-                            show: true,
-                          ),
-                        ) ,
-                      ):Container(),
+                      SPUtils.getAdShow()
+                          ? Container(
+                              margin: EdgeInsets.only(top: 16),
+                              child: SizedBox(
+                                width: double.infinity,
+                                height: 150,
+                                child: AdBannerWidget(
+                                  posId: CSJUtils.CSJBannerId,
+                                  width: 1300,
+                                  height: 150,
+                                  interval: 30,
+                                  show: true,
+                                ),
+                              ),
+                            )
+                          : Container(),
                       // LineTextWidget(leftText: '常用功能',bgColor: Colours.bg_ffffff,leftImg:"my_points.png",),
                     ],
                   ),

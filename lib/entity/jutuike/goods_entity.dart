@@ -29,5 +29,6 @@ class GoodsEntity {
   String? goodsId;
   String? commissionRate;
   double? commission;
+  bool isAd = false;
 
 }

@@ -1,5 +1,6 @@
 import 'package:SDZ/event/ad_reward_event.dart';
 import 'package:SDZ/res/constant.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_pangle_ads/flutter_pangle_ads.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
@@ -13,9 +14,8 @@ class CSJUtils {
   static const String CSJVideoId = '947697728'; //穿山甲激励视频id
   static const String CSJInteractionId = '947697731'; //穿山甲插屏id
   static const String CSJBannerId = '947697730'; //穿山甲bannerid
+  static const String CSJWaterFall = '948469623'; //穿山甲信息流
 
-  static const String YLHAPPID = '1200402924'; //优量汇id
-  static const String YLHVideoId = '1042190702729526'; //优量汇激励视频id
   /// 初始化广告 SDK
   static Future<bool> initCSJADSDK() async {
     String _result = '';
@@ -65,6 +65,22 @@ class CSJUtils {
       _result =
           "展示激励视频广告失败 code:${e.code} msg:${e.message} details:${e.details}";
     }
+  }
+
+  /// 信息流广告
+  static List<int> feedAdList = [];
+  static Future<void> showWaterFall() async {
+    /// [posId] 广告位 id
+    /// [width] 宽度
+    /// [height] 高度
+    /// [count] 获取广告数量，建议 1~3 个
+    feedAdList = await FlutterPangleAds.loadFeedAd(
+      CSJWaterFall,
+      width: 375,
+      height: 0,
+      count: 3,
+    );
+    print('TTTT==${feedAdList}');
   }
 
   /// 设置穿山甲广告监听
