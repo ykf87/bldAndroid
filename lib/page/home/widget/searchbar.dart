@@ -31,9 +31,9 @@ class IndexHomeAppbar extends StatelessWidget implements PreferredSizeWidget {
       leading: DoubleClick(
         onTap: (){
           // Get.to(SignPage());
-          VideoUtils.loadVoiceAd((){
-            print("TTTTTTTTT===回调");
-          });
+          // VideoUtils.loadVoiceAd((){
+          //   print("TTTTTTTTT===回调");
+          // });
         },
         child: Container(
           alignment: Alignment.center,

@@ -156,7 +156,7 @@ class IndexLogic extends GetxController {
         SPUtils.setUserAccount(entity.data?.telephone ?? '');
 
         ToastUtils.toast('登录成功');
-        SPUtils.setUserId(entity.data?.accountId ?? '');
+        SPUtils.setUserId(entity.data?.id ?? '');
         SPUtils.setUserToken(entity.data?.token ?? '');
         SPUtils.setUserNickName(entity.data?.nickname ?? '');
         SPUtils.setAvatar(entity.data?.avatar ?? '');

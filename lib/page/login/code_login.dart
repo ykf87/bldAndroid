@@ -107,7 +107,7 @@ class CodeLoginPageState extends BaseStatefulState<CodeLoginPage> {
       if(entity.isSuccess){
 
         ToastUtils.toast('登录成功');
-        SPUtils.setUserId(entity.data?.accountId ?? '');
+        SPUtils.setUserId(entity.data?.id ?? '');
         SPUtils.setUserToken(entity.data?.token ?? '');
         SPUtils.setUserAccount(entity.data?.telephone ?? '');
         SPUtils.setUserNickName(entity.data?.nickname ?? '');

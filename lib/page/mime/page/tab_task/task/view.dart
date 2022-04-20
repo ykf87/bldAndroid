@@ -195,9 +195,10 @@ class _AdTaskPageState extends State<AdTaskPage> {
                                       userId: 'userId',
                                     );
                                   } else if (state.curEntity?.platform == 3) {
-                                    VideoUtils.loadVoiceAd((){
-                                      logic.videoSuccess(state.curEntity!.id.toString());
-                                    });
+                                    VideoUtils.loadVoiceAd((logId){
+                                      print("TTTTTTTTT===$logId");
+                                      logic.videoSuccess(state.curEntity!.id.toString(),logId: logId);
+                                    },type: 'sign');
                                   }
                                 },
                                 child: Container(

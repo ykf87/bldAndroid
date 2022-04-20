@@ -135,7 +135,7 @@ class WithdrawPageState extends BaseStatefulState<WithdrawPage> {
               Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  '可取出枸币：${userCenterEntity?.jifen ?? 0}个',
+                  '可取出省币：${userCenterEntity?.jifen ?? 0}个',
                   style: TextStyle(fontSize: 14, color: Colours.color_333333),
                 ),
               ),
@@ -181,7 +181,7 @@ class WithdrawPageState extends BaseStatefulState<WithdrawPage> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              '1、务必核实银行卡账号与该账号所属人真实姓名信息;\n2、10枸币可兑换1元，即换算比例为10:1',
+              '1、务必核实银行卡账号与该账号所属人真实姓名信息;\n2、10省币可兑换1元，即换算比例为10:1',
               style: TextStyle(fontSize: 12, color: Colours.text_999999),
             ),
           ),
@@ -243,11 +243,11 @@ class WithdrawPageState extends BaseStatefulState<WithdrawPage> {
       return;
     }
     if (_controllerPhone.text.length == 0) {
-      ToastUtils.toast("请输入取出枸币个数");
+      ToastUtils.toast("请输入取出省币个数");
       return;
     }
     if (int.parse(_controllerPhone.text) > userCenterEntity!.jifen) {
-      ToastUtils.toast("取出枸币个数不能大于 ${userCenterEntity!.jifen} 个");
+      ToastUtils.toast("取出省币个数不能大于 ${userCenterEntity!.jifen} 个");
       return;
     }
     Map<String, String> map = Map();

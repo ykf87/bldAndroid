@@ -300,7 +300,7 @@ class _SignUpState extends State<SignUp> {
             return;
           }
           // ToastUtils.toast('注册成功');
-          SPUtils.setUserId(entity.data?.accountId ?? '');
+          SPUtils.setUserId(entity.data?.id ?? '');
           SPUtils.setUserToken(entity.data?.token ?? '');
           SPUtils.setUserAccount(phone);
           SPUtils.setUserNickName(entity.data?.nickname ?? '');

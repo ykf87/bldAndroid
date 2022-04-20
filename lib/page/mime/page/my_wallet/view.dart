@@ -74,7 +74,7 @@ class MyWalletPageState extends BaseStatefulState {
             height: 20,
           ),
           Text(
-            '当前可用枸币数量（个）',
+            '当前可用省币数量（个）',
             style: TextStyle(color: Colours.color_333333, fontSize: 14),
           ),
           SizedBox(

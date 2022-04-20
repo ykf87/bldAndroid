@@ -1,3 +1,4 @@
+import 'package:SDZ/utils/sputils.dart';
 import 'package:voiceread/voiceread.dart';
 
 ///语音SDK
@@ -13,9 +14,11 @@ class VideoUtils {
         debug: false);
   }
 
-  static loadVoiceAd(Function callBack) {
+  static loadVoiceAd(Function callBack,{String? type = 'sign'}) {
     Voiceread.loadVoiceAd(
         resourceId: '1913514132',
+        userId: SPUtils.getUserId(),
+        mediaExtra: '{"type":"$type"}',
         listener: (eventType, params) {
           print("loadVoiceAd, eventType = " +
               eventType +
@@ -36,6 +39,7 @@ class VideoUtils {
 
   static showVoiceAd(Function callBack) {
     bool isReward = false;
+    String logId = '';
     Voiceread.showVoiceAd(
         rewardInfo: [
           {"rewardCount": _iCPMOne * 10, "rewardName": "金币"},
@@ -50,16 +54,16 @@ class VideoUtils {
           } else if (eventType == "onAdError") {
             int errorCode = params!["errorCode"];
             print("TTTTTTTTT===onAdShow");
+          } else if (eventType == "onAdClose") {
             if (isReward) {
-              callBack.call();
+              callBack.call(logId);
               isReward = false;
             }
-          } else if (eventType == "onAdClose") {
             print("TTTTTTTTT===onAdClose");
           } else if (eventType == "onRewardVerify") {
             isReward = true;
             print("TTTTTTTTT===onRewardVerify");
-            String logId = params!["logId"];
+            logId = params!["logId"];
             double iCPM = params["iCPM"];
             int stepNum = params["stepNum"];
           }

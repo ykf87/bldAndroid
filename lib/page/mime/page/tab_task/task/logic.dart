@@ -83,9 +83,12 @@ class AdTaskLogic extends GetxController {
     });
   }
 
-  void videoSuccess(String id) {
+  void videoSuccess(String id, {String? logId}) {
     Map<String, dynamic> map = new Map();
     map['tid'] = id;
+    if (logId != null) {
+      map['logId'] = logId;
+    }
     ApiClient.instance.post(ApiUrl.getBLDBaseUrl() + ApiUrl.videoSuccess,
         data: map, onSuccess: (data) {
       BaseEntity<EmptyEntity> entity = BaseEntity.fromJson(data!);

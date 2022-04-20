@@ -599,7 +599,7 @@ class _LoginPageState extends BaseStatefulState<LoginPage>
         return;
       }
       // ToastUtils.toast('登录成功');
-      SPUtils.setUserId(entity.data?.accountId ?? '');
+      SPUtils.setUserId(entity.data?.id ?? '');
       SPUtils.setUserToken(entity.data?.token ?? '');
       SPUtils.setUserAccount(phone);
       SPUtils.setUserNickName(entity.data?.nickname ?? '');

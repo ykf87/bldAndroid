@@ -17,7 +17,7 @@ class AdTaskEntity {
   String? title;
   int max = 0; //一天最多可以看几次
   int min = 0; // 为1时表示每一次都有奖励，min为max时表示要全部完成一次性奖励
-  int prize = 0; //枸币奖励
+  int prize = 0; //省币奖励
   int times = 0; //表示当前做了多少次任务
   String? videoId;
   int resType = 0;
