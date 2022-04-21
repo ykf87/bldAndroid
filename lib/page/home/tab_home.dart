@@ -72,12 +72,15 @@ class _TabHomePageState extends State<TabHomePage>
                 child:SizedBox(
                   width: double.infinity,
                   height: 150,
-                  child: AdBannerWidget(
-                    posId: CSJUtils.CSJBannerId,
-                    width: 1300,
-                    height: 150,
-                    interval: 30,
-                    show: true,
+                  child: Container(
+                    margin: EdgeInsets.only(left: 16,right: 16),
+                    child: AdBannerWidget(
+                      posId: CSJUtils.CSJBannerId,
+                      width: 1300,
+                      height: 150,
+                      interval: 30,
+                      show: true,
+                    ),
                   ),
                 ) ,
               ):SliverToBoxAdapter(),

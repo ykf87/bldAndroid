@@ -197,7 +197,7 @@ class _SignPageState extends State<SignPage> {
                                               ),
                                               Text(
                                                 state.signInfoEntity?.signed
-                                                        ?.need_day
+                                                        ?.needDay
                                                         ?.toString() ??
                                                     '0',
                                                 style: TextStyle(
@@ -462,7 +462,7 @@ class _SignPageState extends State<SignPage> {
                 padding: EdgeInsets.all(Adaptor.width(10)),
                 child: ListView.builder(
                     controller: state.listScroll,
-                    itemCount: state.signInfoEntity?.signed?.need_day,
+                    itemCount: state.signInfoEntity?.signed?.needDay,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (BuildContext context, int index) {
                       return signCard(index + 1);
@@ -552,7 +552,7 @@ class _SignPageState extends State<SignPage> {
     if (state.signInfoEntity == null || state.signInfoEntity?.signed == null) {
       return 7;
     } else {
-      if (state.signInfoEntity!.signed!.need_day > 9) {
+      if (state.signInfoEntity!.signed!.needDay > 9) {
         return 6;
       } else {
         return 7;
@@ -569,7 +569,7 @@ class _SignPageState extends State<SignPage> {
       needSignDay = 7;
       hasSignDay = 0;
     } else {
-      needSignDay = state.signInfoEntity!.signed!.need_day;
+      needSignDay = state.signInfoEntity!.signed!.needDay;
       hasSignDay = state.signInfoEntity!.signed!.days!; //已签到
     }
     for (int i = 1; i <= needSignDay; i++) {
@@ -597,7 +597,7 @@ class _SignPageState extends State<SignPage> {
       needSignDay = 7;
       hasSignDay = 0;
     } else {
-      needSignDay = state.signInfoEntity!.signed!.need_day;
+      needSignDay = state.signInfoEntity!.signed!.needDay;
       hasSignDay = state.signInfoEntity!.signed!.days!; //已签到
     }
     return FlipCard(

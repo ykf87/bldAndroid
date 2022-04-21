@@ -1,6 +1,7 @@
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
+import 'package:SDZ/entity/sign/gift_entity.dart';
 import 'package:SDZ/entity/sign/gift_list_entity.dart';
-import 'package:SDZ/entity/sign_info_entity.dart';
+import 'package:SDZ/entity/sign/sign_info_entity.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 

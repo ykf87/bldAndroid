@@ -1,18 +1,8 @@
-import 'package:SDZ/generated/json/base/json_field.dart';
-import 'package:SDZ/generated/json/goods_entity.g.dart';
-
 import 'dart:ffi';
 
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 
-@JsonSerializable()
-class GoodsEntity {
-
-	GoodsEntity();
-
-	factory GoodsEntity.fromJson(Map<String, dynamic> json) => $GoodsEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $GoodsEntityToJson(this);
-
+class GoodsEntity with JsonConvert<GoodsEntity> {
   // goodsName: "夏季薄款抽绳松紧腰高腰弹力舒适垮裤小脚九分裤显瘦女装牛仔裤女",
   // goodsThumbUrl: https: //a.vpimg3.com/upload/merchandise/pdcvis/104218/2021/0319/151/526379cf-152e-4a9a-9b92-1f95a7f4542d_750x750_50.jpg,
   // marketPrice: "299.00",市场价

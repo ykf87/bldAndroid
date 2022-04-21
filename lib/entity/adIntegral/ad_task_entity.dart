@@ -1,18 +1,8 @@
-import 'package:SDZ/generated/json/base/json_field.dart';
-import 'package:SDZ/generated/json/ad_task_entity.g.dart';
-
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:flutter/cupertino.dart';
 
-@JsonSerializable()
-class AdTaskEntity {
-
-	AdTaskEntity();
-
-	factory AdTaskEntity.fromJson(Map<String, dynamic> json) => $AdTaskEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $AdTaskEntityToJson(this);
-
+class AdTaskEntity with JsonConvert<AdTaskEntity> {
   int id = 0;
   String? title;
   int max = 0; //一天最多可以看几次

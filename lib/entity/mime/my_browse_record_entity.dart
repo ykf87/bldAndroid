@@ -1,17 +1,8 @@
-import 'package:SDZ/generated/json/my_browse_record_entity.g.dart';
-
 import 'package:SDZ/entity/mime/my_collect_entity.dart';
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 import 'package:SDZ/generated/json/base/json_field.dart';
 
-@JsonSerializable()
-class MyBrowseRecordEntity {
-
-	MyBrowseRecordEntity();
-
-	factory MyBrowseRecordEntity.fromJson(Map<String, dynamic> json) => $MyBrowseRecordEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $MyBrowseRecordEntityToJson(this);
-
+class MyBrowseRecordEntity with JsonConvert<MyBrowseRecordEntity> {
   String? nickname;
   String? avatar;
   int? accountId;
@@ -31,16 +22,9 @@ class MyBrowseRecordEntity {
 	bool get isFollow => follow == 1;
 }
 
-@JsonSerializable()
-class MyBrowseRecordSkillTagList {
-
-	MyBrowseRecordSkillTagList();
-
-	factory MyBrowseRecordSkillTagList.fromJson(Map<String, dynamic> json) => $MyBrowseRecordSkillTagListFromJson(json);
-
-	Map<String, dynamic> toJson() => $MyBrowseRecordSkillTagListToJson(this);
-
+class MyBrowseRecordSkillTagList with JsonConvert<MyBrowseRecordSkillTagList> {
 	int? skillId;
 	String? skillLabel;
+  MyBrowseRecordSkillTagList({this.skillLabel, this.skillId});
 }
 

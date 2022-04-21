@@ -44,9 +44,9 @@ class _MainHomePageState extends State<MainHomePage>
 
   // 页面列表
   final List<Widget> _pages = [
-    TabHomePage(),
     SignPage(),
     AdTaskPage(),
+    TabHomePage(),
     TabMyPage()
   ];
 
@@ -57,7 +57,7 @@ class _MainHomePageState extends State<MainHomePage>
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       // CSJUtils.showInterstitialAd();
     });
-    _currentIndex = Constants.isFirstOpen ? 1 : 0;
+    // _currentIndex = Constants.isFirstOpen ? 1 : 0;
     Constants.isFirstOpen = false;
     CSJUtils.setCSJAdEvent();
     YLHUtils.setYLHAdEvent();
@@ -182,7 +182,7 @@ class _MainHomePageState extends State<MainHomePage>
                     onTap: ((index) {
                       setState(() {
                         _currentIndex = index;
-                        if (index == 2 || index == 1 || index == 3) {
+                        if (index == 0 || index == 1 || index == 3) {
                           SystemChrome.setSystemUIOverlayStyle(
                               const SystemUiOverlayStyle(
                                   statusBarColor: Colors.transparent,
@@ -196,19 +196,6 @@ class _MainHomePageState extends State<MainHomePage>
                       });
                     }),
                     items: [
-                      BottomNavigationBarItem(
-                          label: '首页',
-                          icon: _currentIndex == 0
-                              ? Image.asset(
-                                  'assets/nav/home.png',
-                                  width: kNavIconSize,
-                                  height: kNavIconSize,
-                                )
-                              : Image.asset(
-                                  'assets/nav/home-n.png',
-                                  height: kNavIconSize,
-                                  width: kNavIconSize,
-                                )),
                       // BottomNavigationBarItem(
                       //     label: '9.9包邮',
                       //     icon: _currentIndex == 1
@@ -224,7 +211,7 @@ class _MainHomePageState extends State<MainHomePage>
                       //     )),
                       BottomNavigationBarItem(
                           label: '免费领',
-                          icon: _currentIndex == 1
+                          icon: _currentIndex == 0
                               ? Image.asset(
                                   'assets/nav/sign-n.png',
                                   width: kNavIconSize,
@@ -236,8 +223,8 @@ class _MainHomePageState extends State<MainHomePage>
                                   width: kNavIconSize,
                                 )),
                       BottomNavigationBarItem(
-                          label: '福利',
-                          icon: _currentIndex == 2
+                          label: '赚钱',
+                          icon: _currentIndex == 1
                               ? Image.asset(
                                   'assets/nav/fenlei.png',
                                   width: kNavIconSize,
@@ -248,6 +235,19 @@ class _MainHomePageState extends State<MainHomePage>
                                   height: kNavIconSize,
                                   width: kNavIconSize,
                                 )),
+                      BottomNavigationBarItem(
+                          label: '省钱',
+                          icon: _currentIndex == 2
+                              ? Image.asset(
+                            'assets/nav/home.png',
+                            width: kNavIconSize,
+                            height: kNavIconSize,
+                          )
+                              : Image.asset(
+                            'assets/nav/home-n.png',
+                            height: kNavIconSize,
+                            width: kNavIconSize,
+                          )),
                       BottomNavigationBarItem(
                           label: '我的',
                           icon: _currentIndex == 3

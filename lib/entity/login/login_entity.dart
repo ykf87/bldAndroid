@@ -1,17 +1,7 @@
-import 'package:SDZ/generated/json/base/json_field.dart';
-import 'package:SDZ/generated/json/login_entity.g.dart';
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 
 
-
-@JsonSerializable()
-class LoginEntity {
-
-	LoginEntity();
-
-	factory LoginEntity.fromJson(Map<String, dynamic> json) => $LoginEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $LoginEntityToJson(this);
-
+class LoginEntity with JsonConvert<LoginEntity> {
 	String? accountId;
 	String? token;
 	String? telephone;

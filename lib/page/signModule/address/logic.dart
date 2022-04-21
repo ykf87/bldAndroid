@@ -6,7 +6,6 @@ import 'package:SDZ/core/utils/toast.dart';
 import 'package:SDZ/dialog/exit_dialog.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/base/empty_entity.dart';
-import 'package:SDZ/entity/sign_info_entity.dart';
 import 'package:SDZ/event/ad_reward_event.dart';
 import 'package:SDZ/event/refresh_signPage_event.dart';
 import 'package:SDZ/res/colors.dart';

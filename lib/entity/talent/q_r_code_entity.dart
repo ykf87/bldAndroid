@@ -1,15 +1,5 @@
-import 'package:SDZ/generated/json/base/json_field.dart';
-import 'package:SDZ/generated/json/q_r_code_entity.g.dart';
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 
-
-@JsonSerializable()
-class QRCodeEntity {
-
-	QRCodeEntity();
-
-	factory QRCodeEntity.fromJson(Map<String, dynamic> json) => $QRCodeEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $QRCodeEntityToJson(this);
-
+class QRCodeEntity with JsonConvert<QRCodeEntity> {
 	String? url;
 }

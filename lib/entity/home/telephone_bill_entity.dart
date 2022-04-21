@@ -1,16 +1,6 @@
-import 'package:SDZ/generated/json/base/json_field.dart';
-import 'package:SDZ/generated/json/telephone_bill_entity.g.dart';
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 
-
-@JsonSerializable()
-class TelephoneBillEntity {
-
-	TelephoneBillEntity();
-
-	factory TelephoneBillEntity.fromJson(Map<String, dynamic> json) => $TelephoneBillEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $TelephoneBillEntityToJson(this);
-
+class TelephoneBillEntity with JsonConvert<TelephoneBillEntity> {
   String? h5_url;
   String? h5;
   String? jtk_url;

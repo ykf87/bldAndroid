@@ -1,29 +1,11 @@
-import 'package:SDZ/generated/json/base/json_field.dart';
-import 'package:SDZ/generated/json/card_entity.g.dart';
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 
-
-@JsonSerializable()
-class CardEntity {
-
-	CardEntity();
-
-	factory CardEntity.fromJson(Map<String, dynamic> json) => $CardEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $CardEntityToJson(this);
-
+class CardEntity with JsonConvert<CardEntity> {
 	int? total;
 	List<CardItemEntity>? cardList;
 }
 
-@JsonSerializable()
-class CardItemEntity {
-
-	CardItemEntity();
-
-	factory CardItemEntity.fromJson(Map<String, dynamic> json) => $CardItemEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $CardItemEntityToJson(this);
-
+class CardItemEntity with JsonConvert<CardItemEntity> {
 	int? cardType;
 	String? cardName;
 	int? cardId;
@@ -36,15 +18,7 @@ class CardItemEntity {
 	int? gender;
 }
 
-@JsonSerializable()
-class SkillTagItemEntity {
-
-	SkillTagItemEntity();
-
-	factory SkillTagItemEntity.fromJson(Map<String, dynamic> json) => $SkillTagItemEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $SkillTagItemEntityToJson(this);
-
+class SkillTagItemEntity with JsonConvert<SkillTagItemEntity> {
 	double? skillId;
 	String? skillLabel;
 }

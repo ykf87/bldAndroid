@@ -1,30 +1,12 @@
-import 'package:SDZ/generated/json/base/json_field.dart';
-import 'package:SDZ/generated/json/notice_entity.g.dart';
-
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 
 /// 1-名片小助手;2-真香小管家;3-通告小助手 三个页面公用
-@JsonSerializable()
-class NoticeEntity {
-
-	NoticeEntity();
-
-	factory NoticeEntity.fromJson(Map<String, dynamic> json) => $NoticeEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $NoticeEntityToJson(this);
-
+class NoticeEntity with JsonConvert<NoticeEntity> {
   int? total;
   List<NoticeItemEntity>? noticeList;
 }
 
-@JsonSerializable()
-class NoticeItemEntity {
-
-	NoticeItemEntity();
-
-	factory NoticeItemEntity.fromJson(Map<String, dynamic> json) => $NoticeItemEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $NoticeItemEntityToJson(this);
-
+class NoticeItemEntity with JsonConvert<NoticeItemEntity> {
   String? title; //消息标题
   int? noticeId; //消息ID
   int? relationId; //关联业务id

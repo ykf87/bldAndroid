@@ -1,17 +1,7 @@
-import 'package:SDZ/generated/json/base/json_field.dart';
-import 'package:SDZ/generated/json/my_collect_entity.g.dart';
-
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 import 'package:SDZ/utils/utils.dart';
 
-@JsonSerializable()
-class MyCollectEntity {
-
-	MyCollectEntity();
-
-	factory MyCollectEntity.fromJson(Map<String, dynamic> json) => $MyCollectEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $MyCollectEntityToJson(this);
-
+class MyCollectEntity with JsonConvert<MyCollectEntity> {
   int? cardType;
   String? cardName;
   String? cardAvatar;
@@ -76,28 +66,12 @@ class MyCollectEntity {
   }
 }
 
-@JsonSerializable()
-class MyCollectSkillTagList {
-
-	MyCollectSkillTagList();
-
-	factory MyCollectSkillTagList.fromJson(Map<String, dynamic> json) => $MyCollectSkillTagListFromJson(json);
-
-	Map<String, dynamic> toJson() => $MyCollectSkillTagListToJson(this);
-
+class MyCollectSkillTagList with JsonConvert<MyCollectSkillTagList> {
   late double skillId;
   late String skillLabel;
 }
 
-@JsonSerializable()
-class CardWoksList {
-
-	CardWoksList();
-
-	factory CardWoksList.fromJson(Map<String, dynamic> json) => $CardWoksListFromJson(json);
-
-	Map<String, dynamic> toJson() => $CardWoksListToJson(this);
-
+class CardWoksList with JsonConvert<CardWoksList> {
   late String title;
   late String indexImgUrl;
   late int likeNum;

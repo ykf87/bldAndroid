@@ -1,16 +1,7 @@
-import 'package:SDZ/generated/json/goods_link_entity.g.dart';
-
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 import 'package:SDZ/generated/json/base/json_field.dart';
 
-@JsonSerializable()
-class GoodsLinkEntity {
-
-	GoodsLinkEntity();
-
-	factory GoodsLinkEntity.fromJson(Map<String, dynamic> json) => $GoodsLinkEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $GoodsLinkEntityToJson(this);
-
+class GoodsLinkEntity with JsonConvert<GoodsLinkEntity> {
 	String? goodsId;
 	String? goodsName;
 	String? price;//折扣/券后价
@@ -32,29 +23,13 @@ class GoodsLinkEntity {
 	int shopType = 1;///1:淘宝 2：pdd 3:jd
 }
 
-@JsonSerializable()
-class GoodsLinkCouponInfo {
-
-	GoodsLinkCouponInfo();
-
-	factory GoodsLinkCouponInfo.fromJson(Map<String, dynamic> json) => $GoodsLinkCouponInfoFromJson(json);
-
-	Map<String, dynamic> toJson() => $GoodsLinkCouponInfoToJson(this);
-
+class GoodsLinkCouponInfo with JsonConvert<GoodsLinkCouponInfo> {
 	int? fav;
 	String? useEndTime;
 	String? useBeginTime;
 }
 
-@JsonSerializable()
-class GoodsLinkWeAppInfo {
-
-	GoodsLinkWeAppInfo();
-
-	factory GoodsLinkWeAppInfo.fromJson(Map<String, dynamic> json) => $GoodsLinkWeAppInfoFromJson(json);
-
-	Map<String, dynamic> toJson() => $GoodsLinkWeAppInfoToJson(this);
-
+class GoodsLinkWeAppInfo with JsonConvert<GoodsLinkWeAppInfo> {
 	@JSONField(name: "app_id")
 	String? appId;
 	@JSONField(name: "page_path")

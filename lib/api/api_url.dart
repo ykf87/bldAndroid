@@ -11,7 +11,7 @@ class ApiUrl {
   }
 
   static String getBLDBaseUrl() {
-    return 'http://47.111.106.204/api/';
+    return 'http://45.77.216.241/api/';
   }
 
   /// 用户协议
@@ -156,14 +156,15 @@ class ApiUrl {
    static final String alipayWithdraw = "tixian";
   /// 赠品列表
    static final String giftList = "signins/giveaways";
-  /// 领取赠品
+  /// 选中签到赠品
    static final String giveget = "signins/giveget";
-   ///选择签到奖品
-   static final String chooseGift = "signins/choose";
-  ///签到主页信息
-   static final String signedInfo = "signins/signed";
-   ///签到
-   static final String doSign = "signins/signe";
   ///订单列表
   static final String orderList = "user/orders";
+  /// 选中签到赠品
+  ///选择签到奖品
+  static final String chooseGift = "signins/choose";
+  ///签到主页信息
+  static final String signedInfo = "signins/signed";
+  ///签到
+  static final String doSign = "signins/signe";
 }

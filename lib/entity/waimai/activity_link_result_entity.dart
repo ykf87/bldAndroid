@@ -1,16 +1,6 @@
-import 'package:SDZ/generated/json/base/json_field.dart';
-import 'package:SDZ/generated/json/activity_link_result_entity.g.dart';
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 
-
-@JsonSerializable()
-class ActivityLinkResultEntity {
-
-	ActivityLinkResultEntity();
-
-	factory ActivityLinkResultEntity.fromJson(Map<String, dynamic> json) => $ActivityLinkResultEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $ActivityLinkResultEntityToJson(this);
-
+class ActivityLinkResultEntity with JsonConvert<ActivityLinkResultEntity> {
   String? terminalType;
   String? pageStartTime;
   String? pageName;

@@ -1,16 +1,7 @@
-import 'package:SDZ/generated/json/goods_detail_entity.g.dart';
-
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 import 'package:SDZ/generated/json/base/json_field.dart';
 
-@JsonSerializable()
-class GoodsDetailEntity {
-
-	GoodsDetailEntity();
-
-	factory GoodsDetailEntity.fromJson(Map<String, dynamic> json) => $GoodsDetailEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $GoodsDetailEntityToJson(this);
-
+class GoodsDetailEntity with JsonConvert<GoodsDetailEntity> {
 	String? goodsName;
 	String? goodsThumbUrl;
 	String? marketPrice;

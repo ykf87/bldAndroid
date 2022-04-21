@@ -3,7 +3,7 @@
 import 'package:SDZ/constant/svg_path.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
 import 'package:SDZ/entity/search/card_entity.dart';
-import 'package:SDZ/entity/sign/gift_list_entity.dart';
+import 'package:SDZ/entity/sign/gift_entity.dart';
 import 'package:SDZ/page/home/goods_detail/detail.dart';
 import 'package:SDZ/page/web/web_view_page.dart';
 import 'package:SDZ/res/colors.dart';

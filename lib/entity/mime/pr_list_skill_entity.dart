@@ -1,16 +1,6 @@
-import 'package:SDZ/generated/json/base/json_field.dart';
-import 'package:SDZ/generated/json/pr_list_skill_entity.g.dart';
+import 'package:SDZ/generated/json/base/json_convert_content.dart';
 
-
-@JsonSerializable()
-class PrListSkillEntity {
-
-	PrListSkillEntity();
-
-	factory PrListSkillEntity.fromJson(Map<String, dynamic> json) => $PrListSkillEntityFromJson(json);
-
-	Map<String, dynamic> toJson() => $PrListSkillEntityToJson(this);
-
+class PrListSkillEntity with JsonConvert<PrListSkillEntity> {
 	late int skillId;
 	late String skillLabel;
 	late bool isSelect = false;

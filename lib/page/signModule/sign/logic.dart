@@ -8,8 +8,9 @@ import 'package:SDZ/core/utils/toast.dart';
 import 'package:SDZ/dialog/exit_dialog.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/jutuike/goods_entity.dart';
+import 'package:SDZ/entity/sign/gift_entity.dart';
 import 'package:SDZ/entity/sign/gift_list_entity.dart';
-import 'package:SDZ/entity/sign_info_entity.dart';
+import 'package:SDZ/entity/sign/sign_info_entity.dart';
 import 'package:SDZ/event/ad_reward_event.dart';
 import 'package:SDZ/event/login_event.dart';
 import 'package:SDZ/event/refresh_signPage_event.dart';
@@ -67,7 +68,7 @@ class SignLogic extends GetxController {
       state.signInfoEntity = entity.data ?? new SignInfoEntity();
       if (state.signInfoEntity != null &&
           state.signInfoEntity?.signed != null &&
-          state.signInfoEntity!.signed!.need_day > 6 &&
+          state.signInfoEntity!.signed!.needDay > 6 &&
           state.signInfoEntity!.signed!.days! > 6) {
         state.listScroll.jumpTo(38.0 * state.signInfoEntity!.signed!.days!);
       }
@@ -88,21 +89,21 @@ class SignLogic extends GetxController {
       return 0;
     } else {
       if (state.signInfoEntity!.signed!.days ==
-          state.signInfoEntity!.signed!.need_day) {
+          state.signInfoEntity!.signed!.needDay) {
         ///签到完成，领奖品
         state.tipsText = '签到任务已完成，恭喜您获得奖品';
         state.btnText = '领取奖品';
         state.isBtnEnable = true;
         return 4;
       }
-      if (state.signInfoEntity!.signed!.mustadv) {
+      if (state.signInfoEntity!.signed!.mustadv??false) {
         ///补签
         state.tipsText = '昨日还未签到，观看广告可进行补签';
         state.btnText = '去补签';
         state.isBtnEnable = true;
         return 3;
       }
-      if (state.signInfoEntity!.issigin) {
+      if (state.signInfoEntity!.issigin??false) {
         state.tipsText = '';
         state.btnText = '今日已签到';
         state.isBtnEnable = false;
@@ -182,18 +183,18 @@ class SignLogic extends GetxController {
         data: map, isJTK: false, onSuccess: (data) {
       EasyLoading.dismiss();
       BaseEntity<GiftListEntity> entity = BaseEntity.fromJson(data!);
-      if (entity.isSuccess && entity.data != null && entity.data!.list != null) {
+      if (entity.isSuccess && entity.data != null && entity.data!.xList != null) {
         state.refreshController
-            .finishLoad(noMore: entity.data!.list!.length < 30);
+            .finishLoad(noMore: entity.data!.xList!.length < 30);
         state.refreshController.finishRefresh(success: true);
         for (int i = 0; i < 5; i++) {
           GiftEntity giftEntity = new GiftEntity();
           giftEntity.isAd = true;
-          if (entity.data!.list!.length > (i + 1) * 4) {
-            entity.data!.list!.insert((i + 1) * 4, giftEntity);
+          if (entity.data!.xList!.length > (i + 1) * 4) {
+            entity.data!.xList!.insert((i + 1) * 4, giftEntity);
           }
         }
-        state.list.addAll(entity.data?.list ?? []);
+        state.list.addAll(entity.data?.xList ?? []);
       }
       update();
     }, onError: (msg) {
