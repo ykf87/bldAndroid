@@ -25,13 +25,13 @@ class LoginUtil {
 
   /// 跳转登录
   static void toLogin({bool toMain = false, bool isMessageTab = false}) {
-      Get.to(NewLoginPage(), arguments: _getArguments(toMain: toMain));
+      Get.to(LoginPage(), arguments: _getArguments(toMain: toMain));
   }
 
   /// 跳转登录
   /// 删除之前所有页面
   static void offLogin({bool toMain = false}) {
-      Get.offAll(() => NewLoginPage(), arguments: _getArguments(toMain: toMain));
+      Get.offAll(() => LoginPage(), arguments: _getArguments(toMain: toMain));
   }
 
   ///退出登录

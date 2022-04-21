@@ -75,8 +75,8 @@ class _TabMyPageState extends State<TabMyPage> {
                       height: Adaptor.height(240),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(colors: [
-                          const Color(0xFFFE8C00),
-                          const Color(0xFFF83600),
+                          Colours.color_login_77A7EF,
+                          Colours.color_login_77A7EF,
                         ]),
                       ),
                       child: null,

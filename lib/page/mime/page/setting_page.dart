@@ -181,8 +181,8 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8.0),
                                   gradient: LinearGradient(colors: [
-                                    const Color(0xFFFE8C00),
-                                    const Color(0xFFF83600),
+                                    Colours.color_login_77A7EF,
+                                    Colours.color_login_77A7EF,
                                   ]),
                                 ),
                                 height: 45,

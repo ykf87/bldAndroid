@@ -142,6 +142,7 @@ class Colours {
   static const Color color_333333 = Color(0xff333333);
   static const Color color_666666 = Color(0xff666666);
   static const Color color_999999 = Color(0xff999999);
+  static const Color color_D8DADC = Color(0xffD8DADC);
   static const Color color_fbfcfd = Color(0xfffbfcfd);
   static const Color color_grey_e5e5e5 = Color(0xffe5e5e5);
   static const Color color_grey_51223a50 = Color(0x51223a50);
@@ -150,5 +151,7 @@ class Colours {
 
   ///签到色调
   static const Color color_orange_ffFF7648 = Color(0xffFF7648);
+  static const Color color_yellow_sign = Color(0xfffbecc6);
+  static const Color color_login_77A7EF = Color(0xff77A7EF);
 }
 

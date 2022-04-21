@@ -139,7 +139,7 @@ class IndexLogic extends GetxController {
 
   toLogin() {
     Get.to(
-        () => NewLoginPage(),
+        () => LoginPage(),
         arguments: {'tomain': false});
   }
 
