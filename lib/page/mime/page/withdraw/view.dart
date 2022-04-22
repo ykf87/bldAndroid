@@ -181,7 +181,7 @@ class WithdrawPageState extends BaseStatefulState<WithdrawPage> {
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Text(
-              '1、务必核实银行卡账号与该账号所属人真实姓名信息;\n2、10省币可兑换1元，即换算比例为10:1',
+              '1、务必核实银行卡账号与该账号所属人真实姓名信息;\n2、100省币可兑换1元，即换算比例为100:1',
               style: TextStyle(fontSize: 12, color: Colours.text_999999),
             ),
           ),

@@ -28,8 +28,6 @@ class VideoUtils {
           if (eventType == "onAdLoadSuccess") {
             _iCPMOne = params!['iCPMOne'];
             _iCPMTwo = params['iCPMTwo'];
-            print("TTTTTTTTT==_iCPMOne=${_iCPMOne}");
-            print("TTTTTTTTT==_iCPMTwo=${_iCPMTwo}");
             int maxReadNum = params['maxReadNum'];
             int surplusReadNum = params['surplusReadNum'];
             showVoiceAd(callBack);
@@ -45,8 +43,8 @@ class VideoUtils {
     String logId = '';
     Voiceread.showVoiceAd(
         rewardInfo: [
-          {"rewardCount": _iCPMOne * 0.4, "rewardName": "省币"},
-          {"rewardCount": _iCPMTwo * 0.4, "rewardName": "省币"}
+          {"rewardCount":((_iCPMOne/1000) * 0.4).ceilToDouble().toInt(), "rewardName": "省币"},
+          {"rewardCount": ((_iCPMTwo/1000) * 0.4).ceilToDouble(), "rewardName": "省币"}
         ],
         listener: (eventType, params) {
           print("showVoiceAd, eventType = " +
