@@ -10,6 +10,7 @@ import 'package:SDZ/entity/mime/user_center_entity.dart';
 import 'package:SDZ/event/ad_reward_event.dart';
 import 'package:SDZ/event/login_event.dart';
 import 'package:SDZ/event/refresh_signPage_event.dart';
+import 'package:SDZ/page/mime/entity/reward_entity.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
 import 'package:SDZ/utils/login_util.dart';
 import 'package:SDZ/utils/sputils.dart';
@@ -86,18 +87,21 @@ class AdTaskLogic extends GetxController {
   void videoSuccess(String id, {String? logId}) {
     Map<String, dynamic> map = new Map();
     map['tid'] = id;
+    map['userId'] = SPUtils.getUserId();
     if (logId != null) {
-      map['logId'] = logId;
+      map['tagid'] = logId;
     }
     ApiClient.instance.post(ApiUrl.getBLDBaseUrl() + ApiUrl.videoSuccess,
         data: map, onSuccess: (data) {
-      BaseEntity<EmptyEntity> entity = BaseEntity.fromJson(data!);
+      BaseEntity<RewardEntity> entity = BaseEntity.fromJson(data!);
       if (entity.isSuccess) {
         doRefresh();
-        ToastUtils.toast('奖励已到账');
+        ToastUtils.toast('恭喜您获得${entity.data?.task?.prize ?? 1}个省币');
       }
       update();
-    }, onError: (msg) {});
+    }, onError: (msg) {
+      ToastUtils.toast(msg);
+    });
   }
 
   void getUserInfo() {

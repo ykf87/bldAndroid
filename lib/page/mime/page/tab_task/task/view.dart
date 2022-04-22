@@ -152,14 +152,41 @@ class _AdTaskPageState extends State<AdTaskPage> {
                                   child: Column(
                                     children: [
                                       Image.asset(
-                                        'assets/images/bg_empty_fly.png',
+                                        'assets/images/not_login_bg.png',
                                         height: 120,
                                         width: 120,
                                       ),
                                       SizedBox(
                                         height: 20,
                                       ),
-                                      Text('暂无任务~'),
+                                      LoginUtil.isLogin()?Text('暂无任务~'):
+                                      DoubleClick(
+                                        onTap: (){
+                                          LoginUtil.toLogin(toMain: false);
+                                        },
+                                        child: Column(
+                                          children: [
+                                            Text('登录后做任务'),
+                                            Container(
+                                              width: 120,
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(30.0),
+                                                color: Colours.text_FF1F35_start,
+                                              ),
+                                              height: 36,
+                                              margin: EdgeInsets.only(
+                                                  left: 12, right: 12, top: 20, bottom: 40),
+                                              child: Center(
+                                                child: Text(
+                                                  '去登录',
+                                                  style: TextStyle(
+                                                      color: Colours.bg_ffffff, fontSize: 16),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
                                       SizedBox(
                                         height: 28,
                                       ),
@@ -196,9 +223,9 @@ class _AdTaskPageState extends State<AdTaskPage> {
                                     );
                                   } else if (state.curEntity?.platform == 3) {
                                     VideoUtils.loadVoiceAd((logId){
-                                      print("TTTTTTTTT===$logId");
+                                      print("TTTTTTTTT==logid=$logId");
                                       logic.videoSuccess(state.curEntity!.id.toString(),logId: logId);
-                                    },type: 'sign');
+                                    },type: 'default',tid: state.curEntity?.id.toString());
                                   }
                                 },
                                 child: Container(
@@ -220,44 +247,5 @@ class _AdTaskPageState extends State<AdTaskPage> {
             ),
           );
         });
-  }
-
-  /// 设置穿山甲广告监听
-  Future<void> setCSJAdEvent() async {
-    String _adEvent = '';
-    CSJ.FlutterPangleAds.onEventListener((event) {
-      _adEvent = 'adId:${event.adId} action:${event.action}';
-      if (event is CSJ.AdErrorEvent) {
-        // 错误事件
-      }
-
-      ///获取奖励
-      if (event.action == CSJ.AdEventAction.onAdReward &&
-          event.adId == CSJUtils.CSJVideoId) {
-        if (state.curEntity != null) {
-          logic.videoSuccess(state.curEntity!.id.toString());
-          print('视频成功');
-        }
-      }
-    });
-  }
-
-  /// 设置优量汇广告监听
-  Future<void> setYLHAdEvent() async {
-    FlutterQqAds.onEventListener((event) {
-      // 普通广告事件
-      String _adEvent = 'adId:${event.adId} action:${event.action}';
-      if (event is AdErrorEvent) {
-        // 错误事件
-        _adEvent += ' errCode:${event.errCode} errMsg:${event.errMsg}';
-      } else if (event is AdRewardEvent && event.adId == YLHUtils.YLHVideoId) {
-        // 激励事件
-        if (state.curEntity != null) {
-          logic.videoSuccess(state.curEntity!.id.toString());
-          print('视频成功');
-        }
-      }
-      print('onEventListener:$_adEvent');
-    });
   }
 }

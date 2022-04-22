@@ -67,8 +67,6 @@ public class VoicereadPlugin implements FlutterPlugin, MethodCallHandler, Activi
     public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
         if ("init".equals(call.method)) {
             onInitCall(call, result);
-        } else if ("checkAdStatus".equals(call.method)) {
-            onCheckAdStatusCall(call, result);
         } else if ("loadVoiceAd".equals(call.method)) {
             onLoadVoiceAdCall(call, result);
         } else if ("showVoiceAd".equals(call.method)) {
@@ -86,30 +84,6 @@ public class VoicereadPlugin implements FlutterPlugin, MethodCallHandler, Activi
                 .debug(call.hasArgument("debug") ? call.argument("debug") : false)
                 .build());
         result.success(null);
-    }
-
-    private void onCheckAdStatusCall(@NonNull MethodCall call, @NonNull Result result) {
-        SpeechVoiceSdk.getAdManger().checkAdStatus(activity, new AdSlot
-                .Builder()
-                .resourceId(call.hasArgument("resourceId") ? call.argument("resourceId") : "")
-                .build(), new CheckAdStatusListener() {
-            @Override
-            public void onVerifySuccess() {
-                Map<String, Object> callback = new HashMap<>();
-                callback.put("eventType", "onVerifySuccess");
-                result.success(callback);
-            }
-
-            @Override
-            public void onError(int i) {
-                Map<String, Object> callback = new HashMap<>();
-                callback.put("eventType", "onError");
-                Map<String, Object> data = new HashMap();
-                data.put("errorCode", i);
-                callback.put("params", data);
-                result.success(callback);
-            }
-        });
     }
 
     private List<Float> iCPMList = new ArrayList<>();

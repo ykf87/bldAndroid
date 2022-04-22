@@ -14,11 +14,12 @@ class VideoUtils {
         debug: false);
   }
 
-  static loadVoiceAd(Function callBack,{String? type = 'sign'}) {
+  static loadVoiceAd(Function callBack,{String? type = 'default',String? tid}) {
+    print("TTTTTTTTT===uerid${SPUtils.getUserId()}");
     Voiceread.loadVoiceAd(
         resourceId: '1913514132',
         userId: SPUtils.getUserId(),
-        mediaExtra: '{"type":"$type"}',
+        mediaExtra: '{"type":"$type","tid":$tid}',
         listener: (eventType, params) {
           print("loadVoiceAd, eventType = " +
               eventType +
@@ -27,6 +28,8 @@ class VideoUtils {
           if (eventType == "onAdLoadSuccess") {
             _iCPMOne = params!['iCPMOne'];
             _iCPMTwo = params['iCPMTwo'];
+            print("TTTTTTTTT==_iCPMOne=${_iCPMOne}");
+            print("TTTTTTTTT==_iCPMTwo=${_iCPMTwo}");
             int maxReadNum = params['maxReadNum'];
             int surplusReadNum = params['surplusReadNum'];
             showVoiceAd(callBack);
@@ -42,8 +45,8 @@ class VideoUtils {
     String logId = '';
     Voiceread.showVoiceAd(
         rewardInfo: [
-          {"rewardCount": _iCPMOne * 10, "rewardName": "金币"},
-          {"rewardCount": _iCPMTwo * 10, "rewardName": "金币"}
+          {"rewardCount": _iCPMOne * 0.4, "rewardName": "省币"},
+          {"rewardCount": _iCPMTwo * 0.4, "rewardName": "省币"}
         ],
         listener: (eventType, params) {
           print("showVoiceAd, eventType = " +
@@ -53,16 +56,13 @@ class VideoUtils {
           if (eventType == "onAdShow") {
           } else if (eventType == "onAdError") {
             int errorCode = params!["errorCode"];
-            print("TTTTTTTTT===onAdShow");
           } else if (eventType == "onAdClose") {
             if (isReward) {
               callBack.call(logId);
               isReward = false;
             }
-            print("TTTTTTTTT===onAdClose");
           } else if (eventType == "onRewardVerify") {
             isReward = true;
-            print("TTTTTTTTT===onRewardVerify");
             logId = params!["logId"];
             double iCPM = params["iCPM"];
             int stepNum = params["stepNum"];

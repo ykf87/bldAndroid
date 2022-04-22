@@ -115,7 +115,7 @@ class _State extends State<TaskItem> {
                         "拆语音红包最高领${widget.entity.prize}省币",
                         style: TextStyle(
                           color: widget.entity.getTextColor(),
-                          fontSize: 14,
+                          fontSize: 12,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
@@ -124,7 +124,7 @@ class _State extends State<TaskItem> {
                         "看视频领${widget.entity.prize}省币",
                         style: TextStyle(
                           color: widget.entity.getTextColor(),
-                          fontSize: 14,
+                          fontSize: 12,
                         ),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
