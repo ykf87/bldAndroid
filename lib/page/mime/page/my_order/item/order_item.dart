@@ -75,7 +75,7 @@ class _State extends State<OrderItem> {
                   Row(
                     children: [
                       Expanded(
-                        child: Text(widget.entity.proTitle ?? '',
+                        child: Text(widget.entity.pro_title ?? '',
                             style: TextStyle(
                                 fontSize: 16,
                                 color: Colours.color_333333,
@@ -98,19 +98,19 @@ class _State extends State<OrderItem> {
                   SizedBox(
                     height: 10,
                   ),
-                  widget.entity.kuaidiNum != null? Expanded(child: Row(
+                  widget.entity.kuaidi_num != null? Expanded(child: Row(
                     children: [
                       Text('快递单号：',
                           style: TextStyle(
                               fontSize: 12, color: Colours.color_999999),
                           maxLines: 1),
-                    Expanded(child:   Text(widget.entity.kuaidiNum ?? '',
+                    Expanded(child:   Text(widget.entity.kuaidi_num ?? '',
                         style: TextStyle(
                             fontSize: 12, color: Colours.color_999999),
                         maxLines: 1)),
                       GestureDetector(
                           onTap: (){
-                            Utils.copy(widget.entity.kuaidiNum ?? '');
+                            Utils.copy(widget.entity.kuaidi_num ?? '');
                           },
                           child: SvgPicture.asset(Utils.getSvgUrl('ic_copy_order.svg'),width: 20,height: 20,))
                     ],

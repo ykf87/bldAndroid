@@ -34,20 +34,18 @@ class _FeedAdItemState extends State<FeedAdItem> {
   @override
   Widget build(BuildContext context) {
     return feedAdList.length != 0
-        ? Container(
-            width: MediaQuery.of(context).size.width,
-            alignment: Alignment.center,
+        ? Center(
             child: widget.adType == 1
                 ? CSJ.AdFeedWidget(
                     posId: '${feedAdList[0]}',
                     width: double.infinity,
-                    height: 100,
+                    height: 80,
                     show: true,
                   )
                 : AdFeedWidget(
                     posId: '${feedAdList[0]}',
                     width: double.infinity,
-                    height: 128,
+                    height: 80,
                     show: true,
                   ),
           )

@@ -42,7 +42,7 @@ class GiftItem extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 12),
             decoration: const BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(5)),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
             ),
             child: Column(
               children: <Widget>[

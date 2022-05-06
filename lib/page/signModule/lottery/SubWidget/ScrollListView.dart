@@ -1,4 +1,5 @@
 
+import 'package:SDZ/res/colors.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -106,9 +107,8 @@ class ScrollListViewState extends State<ScrollListView> with WidgetsBindingObser
             child: Text(
               widget.list[index],
               style: TextStyle(
-                color: Color(0xFFFFFFFF),
+                color: Colours.color_text_7A5F2B,
                 fontSize: 15,
-                fontWeight: FontWeight.bold,
               ),
             ),
           ),

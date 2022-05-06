@@ -159,5 +159,8 @@ class Colours {
   static const Color color_orange_F1A14B = Color(0xffF1A14B);
   static const Color color_orange_EB4736 = Color(0xffEB4736);
   static const Color color_yellow_FFDE9F = Color(0xffFFDE9F);
+  static const Color color_yellow_FBF4E4 = Color(0xffFBF4E4);
+  static const Color color_text_7A5F2B= Color(0xff7A5F2B);
+  static const Color color_yellow_FAF8F2= Color(0xffFAF8F2);
 }
 

@@ -8,10 +8,10 @@ class OrderList {
 	int? id;
 	String? price;
 	int? num;
-  String? proTitle;
+  String? pro_title;
 	String? cover;
-  String? kuaidiNum;
+  String? kuaidi_num;
 	String? status;
-	String? createdAt;
+	String? created_at;
 
 }
