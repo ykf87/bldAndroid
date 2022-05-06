@@ -1,4 +1,4 @@
-import 'package:SDZ/page/mime/entity/order_entity.dart';
+import 'package:SDZ/page/mime/entity/my_order_entity.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:SDZ/api/api_client.dart';
@@ -16,10 +16,10 @@ class MyOrderLogic extends GetxController {
     map['page'] = state.pageNum;
     map['limit'] = 30;
     ApiClient.instance.get(ApiUrl.getBLDBaseUrl()+ApiUrl.orderList, data: map,isJTK: false, onSuccess: (data) {
-      BaseEntity<OrderEntity> entity =
+      BaseEntity<MyOrderEntity> entity =
       BaseEntity.fromJson(data!);
       if(entity.isSuccess && entity.data != null){
-        List<OrderList>? list = entity.data?.list;
+        List<MyOrderList>? list = entity.data?.xList;
         state.refreshController.finishLoad(noMore: list!.length < 30);
         state.refreshController.finishRefresh(success: true);
         state.list.addAll(list);

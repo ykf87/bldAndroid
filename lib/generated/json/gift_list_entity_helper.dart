@@ -3,7 +3,7 @@ import 'package:SDZ/entity/sign/gift_list_entity.dart';
 
 giftListEntityFromJson(GiftListEntity data, Map<String, dynamic> json) {
 	if (json['list'] != null) {
-		data.xList = (json['list'] as List).map((v) => GiftEntity().fromJson(v)).cast<GiftEntity>().toList();
+		data.xList = (json['list'] as List).map((v) => GiftEntity().fromJson(v)).toList();
 	}
 	return data;
 }

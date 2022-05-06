@@ -1,5 +1,5 @@
 import 'package:SDZ/entity/mime/my_browse_record_entity.dart';
-import 'package:SDZ/page/mime/entity/order_entity.dart';
+import 'package:SDZ/page/mime/entity/my_order_entity.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 class MyOrderState {
@@ -10,7 +10,7 @@ class MyOrderState {
   EasyRefreshController refreshController = EasyRefreshController();
   bool isShowEmpty = false;
 
-  final List<OrderList> list = [
+  final  List<MyOrderList> list = [
   ];
 
 }

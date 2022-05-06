@@ -59,9 +59,9 @@ class AdTaskLogic extends GetxController {
         }
         if (state.pageNum == 1) {
           state.list = entity.data ?? [];
-          AdTaskEntity adTaskEntity = new AdTaskEntity();
-          adTaskEntity.platform = 0;
-          state.list.insert(0,adTaskEntity);
+          // AdTaskEntity adTaskEntity = new AdTaskEntity();
+          // adTaskEntity.platform = 0;
+          // state.list.insert(0, adTaskEntity);
         } else {
           state.list.addAll(list);
         }
@@ -99,7 +99,14 @@ class AdTaskLogic extends GetxController {
       BaseEntity<RewardEntity> entity = BaseEntity.fromJson(data!);
       if (entity.isSuccess) {
         doRefresh();
-        ToastUtils.toast('恭喜您获得${entity.data?.task?.prize ?? 1}个省币');
+        if ((entity.data?.task?.min ?? 0) - (entity.data?.task?.times ?? 0) >
+            0) {
+          ToastUtils.toast(
+              '再完成${(entity.data?.task?.min ?? 0) - (entity.data?.task?.times ?? 0)}次即可获得${entity.data?.task?.prize ?? 1}个省币');
+        } else {
+          ToastUtils.toast(
+              '恭喜您获得${entity.data?.task?.prize ?? 1}个省币');
+        }
       }
       update();
     }, onError: (msg) {

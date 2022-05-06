@@ -1,4 +1,4 @@
-import 'package:SDZ/page/mime/entity/order_entity.dart';
+import 'package:SDZ/page/mime/entity/my_order_entity.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:date_format/date_format.dart';
 import 'package:extended_image/extended_image.dart';
@@ -24,7 +24,7 @@ import 'package:SDZ/widget/common_widgets.dart';
 
 ///订单item
 class OrderItem extends StatefulWidget {
-  final OrderList entity;
+  final MyOrderList entity;
   final bool isOptions;
 
   OrderItem(this.entity, {this.isOptions = false});
@@ -75,7 +75,7 @@ class _State extends State<OrderItem> {
                   Row(
                     children: [
                       Expanded(
-                        child: Text(widget.entity.pro_title ?? '',
+                        child: Text(widget.entity.proTitle ?? '',
                             style: TextStyle(
                                 fontSize: 16,
                                 color: Colours.color_333333,
@@ -98,19 +98,19 @@ class _State extends State<OrderItem> {
                   SizedBox(
                     height: 10,
                   ),
-                  widget.entity.kuaidi_num != null? Expanded(child: Row(
+                  widget.entity.kuaidiNum != null? Expanded(child: Row(
                     children: [
                       Text('快递单号：',
                           style: TextStyle(
                               fontSize: 12, color: Colours.color_999999),
                           maxLines: 1),
-                    Expanded(child:   Text(widget.entity.kuaidi_num ?? '',
+                    Expanded(child:   Text(widget.entity.kuaidiNum ?? '',
                         style: TextStyle(
                             fontSize: 12, color: Colours.color_999999),
                         maxLines: 1)),
                       GestureDetector(
                           onTap: (){
-                            Utils.copy(widget.entity.kuaidi_num ?? '');
+                            Utils.copy(widget.entity.kuaidiNum ?? '');
                           },
                           child: SvgPicture.asset(Utils.getSvgUrl('ic_copy_order.svg'),width: 20,height: 20,))
                     ],
