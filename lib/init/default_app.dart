@@ -91,6 +91,11 @@ class DefaultApp {
   static void initApp() {
     WFLogUtil.init(isDebug: kDebugMode);
     XHttp.init();
+    registerWxApi(
+        appId: WechatConstant.WX_APPID,
+        doOnAndroid: true,
+        doOnIOS: true,
+        universalLink: WechatConstant.UNIVERSAL_LINK);
   }
 }
 

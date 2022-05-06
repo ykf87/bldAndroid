@@ -1,6 +1,6 @@
 class WechatConstant{
   /// 微信appid
-  static final String WX_APPID = 'wxb4b3fae3e93ede6e';
+  static final String WX_APPID = 'wx2d3c293bd4021b6c';
   /// 微信universallink
   static final String UNIVERSAL_LINK = 'https://applinks:wefree.jkzp/';
   /// 微信小程序username

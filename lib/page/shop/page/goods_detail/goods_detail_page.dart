@@ -11,7 +11,7 @@ import 'package:SDZ/page/shop/widget/select_goods_type_sheet_widget.dart';
 import 'package:SDZ/page/shop/widget/seller_detail_sheet_widget.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/image_utils.dart';
-import 'package:SDZ/utils/umeng_shared_utils.dart';
+import 'package:SDZ/utils/shared_utils.dart';
 import 'package:SDZ/utils/sputils.dart';
 import 'package:SDZ/widget/double_click.dart';
 

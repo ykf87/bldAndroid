@@ -95,8 +95,8 @@ class MyWalletPageState extends BaseStatefulState {
                     borderRadius:
                         new BorderRadius.all(new Radius.circular(50.0)),
                     gradient: new LinearGradient(colors: [
-                      Colours.color_login_77A7EF,
-                      Colours.color_login_77A7EF,
+                      Colours.color_orange_F1A14B,
+                      Colours.color_orange_EB4736,
                     ])),
                 child: new Center(
                     child: new Text(

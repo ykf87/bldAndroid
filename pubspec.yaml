@@ -71,7 +71,6 @@ dependencies:
   get: ^4.3.8
   path_provider: ^2.0.2
   provider: ^6.0.0
-
   #=========== 工具类
   # 通知
   event_bus: ^2.0.0
@@ -108,7 +107,7 @@ dependencies:
   lottie: ^1.1.0
   #============= 第三方
   # 微信分享 打开小程序
-  fluwx: ^3.6.1+2
+  fluwx: ^3.8.5
   #友盟
   umeng_common_sdk: ^1.2.3
   #极光推送

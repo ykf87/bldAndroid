@@ -42,10 +42,10 @@ class VideoUtils {
     bool isReward = false;
     String logId = '';
     Voiceread.showVoiceAd(
-        rewardInfo: [
-          {"rewardCount":((_iCPMOne/1000) * 0.4).ceilToDouble().toInt(), "rewardName": "省币"},
-          {"rewardCount": ((_iCPMTwo/1000) * 0.4).ceilToDouble(), "rewardName": "省币"}
-        ],
+        // rewardInfo: [
+        //   {"rewardCount":((_iCPMOne/1000) * 0.4).ceilToDouble().toInt(), "rewardName": "省币"},
+        //   {"rewardCount": ((_iCPMTwo/1000) * 0.4).ceilToDouble(), "rewardName": "省币"}
+        // ],
         listener: (eventType, params) {
           print("showVoiceAd, eventType = " +
               eventType +

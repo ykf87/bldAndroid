@@ -15,25 +15,15 @@ import 'package:SDZ/event/show_shared_poster_dialog.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
 import 'package:SDZ/utils/fluex_share.dart';
-import 'package:SDZ/utils/umeng_shared_utils.dart';
+import 'package:SDZ/utils/shared_utils.dart';
 import 'package:SDZ/utils/umengshare.dart';
 import 'package:fluwx/fluwx.dart' as fluwx;
 
 import 'double_click.dart';
 
 class sharedDialog extends StatefulWidget {
-  // final Function(int value) onSelect;
-  // late int sharedType;//1:达人主页分享（普通分享） 2：海报分享
 
-  // sharedDialog({Key? key, this.sharedType = 1})
-  //     : super(key: key);
-  int? accountId;
-  int sharedType = 1;//1:达人主页 2：名片
-  MyBrowseRecordEntity? talentHomeEntity;
-  MyCollectEntity? cardEntity;
-
-  sharedDialog(this.accountId, this.sharedType,
-      {this.talentHomeEntity, this.cardEntity});
+  sharedDialog();
 
   @override
   _sharedDialogState createState() => _sharedDialogState();
@@ -49,28 +39,20 @@ class _sharedDialogState extends State<sharedDialog> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    title = widget.sharedType == UmengSharedUtils.SHARED_TYPE_TALENT_HOME
-        ? '我在#真香通告#上发现一个不错的达人，快来看看吧。'
-        : '@${widget.cardEntity?.cardName ?? ''}，在#${widget.cardEntity?.getCardTypeName()}#上有${widget.cardEntity?.fansNum}粉丝，赞藏${widget.cardEntity!.likesNum}，快来看看吧。';
-    des = widget.sharedType == UmengSharedUtils.SHARED_TYPE_TALENT_HOME
-        ? '我在#真香通告#上发现一个不错的达人，快来看看吧。'
-        : '@${widget.cardEntity?.cardName ?? ''}，在#${widget.cardEntity?.getCardTypeName()}#上有${widget.cardEntity?.fansNum}粉丝，赞藏${widget.cardEntity!.likesNum}，快来看看吧。';
-    thumb = widget.sharedType == UmengSharedUtils.SHARED_TYPE_TALENT_HOME
-        ? widget.talentHomeEntity?.avatar ?? ''
-        : widget.cardEntity?.cardAvatar ?? '';
-    path = widget.sharedType == UmengSharedUtils.SHARED_TYPE_TALENT_HOME
-        ? '/packageA/pages/kol-main-page/kol-main-page?id=${widget.accountId}'
-        : '/packageA/pages/kol-card-attion-detail-preview/kol-card-attion-detail-preview?id=${widget.cardEntity?.cardId}';
+    title = 'https://zhuanlan.zhihu.com/p/454111586';
+    des = 'https://zhuanlan.zhihu.com/p/454111586';
+    thumb = 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg.jj20.com%2Fup%2Fallimg%2F1113%2F052420110515%2F200524110515-2-1200.jpg&refer=http%3A%2F%2Fimg.jj20.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1653727250&t=9fedeb28dd84b94c81b3e8913cdb6338';
+    path = 'https://zhuanlan.zhihu.com/p/454111586';
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colours.dark_bg_color2,
+        color: Colours.bg_ffffff,
         borderRadius: BorderRadius.all(Radius.circular(12.0)),
       ),
-      margin: EdgeInsets.only(left: 12, right: 12, bottom: 30),
+      margin: EdgeInsets.only(left: 12, right: 12, bottom: 10),
       padding: EdgeInsets.only(left: 16, right: 16),
       child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
         ConstrainedBox(
@@ -87,10 +69,6 @@ class _sharedDialogState extends State<sharedDialog> {
                       Expanded(
                         child: DoubleClick(
                           onTap: () async{
-                            if (widget.accountId == 0) {
-                              ToastUtils.toast('数据获取失败，请重试');
-                              return;
-                            }
                               // 检测是否安装微信
                               var isWeChatInstalled =
                                   await fluwx.isWeChatInstalled;
@@ -99,13 +77,11 @@ class _sharedDialogState extends State<sharedDialog> {
                                 ToastUtils.toast('请先安装微信');
                                 return;
                               }
-
-                              FluWxShare.shareMiniApp(
-                                  WechatConstant.WX_USERNAME,
+                              FluWxShare.sharedWeb(
+                                  WeChatScene.FAVORITE,
                                   title,
                                   des,
                                   thumb,
-                                  WechatConstant.WX_MINI_PROGRAME_URL,
                                   path);
                               Navigator.pop(context);
                           },
@@ -115,7 +91,7 @@ class _sharedDialogState extends State<sharedDialog> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SvgPicture.asset(list[0].url, width: 60, height: 60),
+                                Image.asset(list[0].url, width: 60, height: 60),
                                 SizedBox(height: 12),
                                 Text(list[0].name)
                               ],
@@ -126,17 +102,6 @@ class _sharedDialogState extends State<sharedDialog> {
                       Expanded(
                         child: DoubleClick(
                           onTap: () async{
-                            if (widget.accountId == 0) {
-                              ToastUtils.toast('数据获取失败，请重试');
-                              return;
-                            }
-
-                            Navigator.pop(context);
-                            EventBusUtils.getInstance().fire(
-                                ShowSharedDialogEvent(
-                                    widget.talentHomeEntity == null
-                                        ? ShowSharedDialogEvent.TALENT_CARD
-                                        : ShowSharedDialogEvent.TALENT_HOME));
 
                           },
                           child:Container(
@@ -145,7 +110,7 @@ class _sharedDialogState extends State<sharedDialog> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                SvgPicture.asset(list[1].url, width: 60, height: 60),
+                                Image.asset(list[1].url, width: 60, height: 60),
                                 SizedBox(height: 12),
                                 Text(list[1].name)
                               ],
@@ -153,94 +118,15 @@ class _sharedDialogState extends State<sharedDialog> {
                           ),
                         ),
                       ),
-
                     ],
                   ),
-
-
-                  // GridView(
-                  //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  //     crossAxisCount: 3,
-                  //     mainAxisSpacing: 10,
-                  //     crossAxisSpacing: 5,
-                  //     childAspectRatio: 0.68,
-                  //   ),
-                  //   children: list.map((item) {
-                  //     return DoubleClick(
-                  //       onTap: () async {
-                  //         if (widget.accountId == 0) {
-                  //           ToastUtils.toast('数据获取失败，请重试');
-                  //           return;
-                  //         }
-                  //         if (item.name.contains('微信')) {
-                  //           // 检测是否安装微信
-                  //           var isWeChatInstalled =
-                  //               await fluwx.isWeChatInstalled;
-                  //           print('微信是否安装：${isWeChatInstalled}');
-                  //           if (!isWeChatInstalled) {
-                  //             ToastUtils.toast('请先安装微信');
-                  //             return;
-                  //           }
-                  //
-                  //           FluWxShare.shareMiniApp(
-                  //               WechatConstant.WX_USERNAME,
-                  //               title,
-                  //               des,
-                  //               thumb,
-                  //               WechatConstant.WX_MINI_PROGRAME_URL,
-                  //               path);
-                  //           Navigator.pop(context);
-                  //         } else if (item.name.contains('朋友圈')) {
-                  //           // 检测是否安装微信
-                  //           var isWeChatInstalled =
-                  //               await fluwx.isWeChatInstalled;
-                  //           print('微信是否安装：${isWeChatInstalled}');
-                  //           if (!isWeChatInstalled) {
-                  //             ToastUtils.toast('请先安装微信');
-                  //             return;
-                  //           }
-                  //
-                  //           FluWxShare.sharedWeb(
-                  //               WeChatScene.TIMELINE,
-                  //               title,
-                  //               des,
-                  //               thumb,
-                  //               WechatConstant.WX_MINI_PROGRAME_URL);
-                  //           Navigator.pop(context);
-                  //         } else if (item.name.contains('海报')) {
-                  //           ToastUtils.toast('海报生成中...',
-                  //               duration: Duration(milliseconds: 2000));
-                  //           Navigator.pop(context);
-                  //           new Timer(Duration(seconds: 2), () {
-                  //             EventBusUtils.getInstance().fire(
-                  //                 ShowSharedDialogEvent(
-                  //                     widget.talentHomeEntity == null
-                  //                         ? ShowSharedDialogEvent.TALENT_CARD
-                  //                         : ShowSharedDialogEvent.TALENT_HOME));
-                  //           });
-                  //         }
-                  //       },
-                  //       child: Container(
-                  //         child: Column(
-                  //           mainAxisAlignment: MainAxisAlignment.start,
-                  //           crossAxisAlignment: CrossAxisAlignment.center,
-                  //           children: [
-                  //             SvgPicture.asset(item.url, width: 60, height: 60),
-                  //             SizedBox(height: 12),
-                  //             Text(item.name)
-                  //           ],
-                  //         ),
-                  //       ),
-                  //     );
-                  //   }).toList(),
-                  // ),
                 ),
                 SizedBox(height: 20),
-                SizedBox(
-                  height: 2,
-                  width: double.infinity,
-                  child: Divider(color: Colours.color_dialog_line),
-                ),
+                // SizedBox(
+                //   height: 2,
+                //   width: double.infinity,
+                //   child: Divider(color: Colours.color_dialog_line),
+                // ),
                 DoubleClick(
                   onTap: () {
                     Get.back();
@@ -249,9 +135,9 @@ class _sharedDialogState extends State<sharedDialog> {
                       height: 60,
                       width: double.infinity,
                       alignment: Alignment.center,
-                      color: Colours.dark_bg_color2,
+                      color: Colours.bg_ffffff,
                       child: Text('取消',
-                          style: TextStyle(color: Colors.white, fontSize: 16))),
+                          style: TextStyle(color: Colours.color_333333, fontSize: 16))),
                 )
               ],
             ),
@@ -261,16 +147,9 @@ class _sharedDialogState extends State<sharedDialog> {
     );
   }
 
-  _createGridViewItem(Color color) {
-    return Container(
-      height: 80,
-      color: color,
-    );
-  }
-
   final List<Item> list = [
-    Item('assets/svg/ic_wechat.svg', '微信好友'),
-    Item('assets/svg/ic_moments.svg', '分享海报'),
+    Item('assets/images/ic_wechat.png', '微信好友'),
+    Item('assets/images/ic_wechat_moment.png', '分享海报'),
     // Item('assets/svg/ic_poster.svg', '分享海报'),
   ];
 }

@@ -1,6 +1,5 @@
 import 'package:SDZ/page/search/search_page.dart';
 import 'package:flutter/material.dart';
-import 'package:SDZ/core/widget/web_view_page.dart';
 import 'package:SDZ/init/splash.dart';
 import 'package:SDZ/page/index.dart';
 import 'package:SDZ/page/login/one_key_login.dart';
@@ -29,7 +28,6 @@ class RouteMap {
     // GetPage(name: '/', page: () => MainHomePage()),//暂时先直接进入主页面
     GetPage(name: '/login', page: () => OneKeyLoginPage()),
     GetPage(name: '/home', page: () => MainHomePage()),
-    GetPage(name: '/web', page: () => WebViewPage()),
     GetPage(name: '/shop/page/commit_order/commit_order_page', page: () => CommitOrderPage()),
     GetPage(name: '/search/search_page', page: () => SearchPage()),
   ];

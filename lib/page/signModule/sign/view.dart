@@ -61,9 +61,9 @@ class _SignPageState extends State<SignPage> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.dark));
+    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    //     statusBarColor: Colors.transparent,
+    //     statusBarIconBrightness: Brightness.dark));
     return GetBuilder<SignLogic>(
         init: SignLogic(),
         builder: (logic) {

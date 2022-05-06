@@ -128,6 +128,15 @@ class _MainHomePageState extends State<MainHomePage>
       case AppLifecycleState.resumed:
         {
           WFLogUtil.d('后台切前台');
+          if(_currentIndex == 0 || _currentIndex == 3){
+            SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+                statusBarColor: Colors.transparent,
+                statusBarIconBrightness: Brightness.dark));
+          }else{
+            SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+                statusBarColor: Colors.transparent,
+                statusBarIconBrightness: Brightness.dark));
+          }
         }
         break;
 

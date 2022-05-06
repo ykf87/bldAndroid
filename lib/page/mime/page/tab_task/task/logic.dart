@@ -59,6 +59,9 @@ class AdTaskLogic extends GetxController {
         }
         if (state.pageNum == 1) {
           state.list = entity.data ?? [];
+          AdTaskEntity adTaskEntity = new AdTaskEntity();
+          adTaskEntity.platform = 0;
+          state.list.insert(0,adTaskEntity);
         } else {
           state.list.addAll(list);
         }

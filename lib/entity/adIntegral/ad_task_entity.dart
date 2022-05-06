@@ -11,7 +11,7 @@ class AdTaskEntity with JsonConvert<AdTaskEntity> {
   int times = 0; //表示当前做了多少次任务
   String? videoId;
   int resType = 0;
-  int platform = 1; //1:穿山甲 2：优量汇
+  int platform = 1; //1:穿山甲 2：优量汇 3:语音
 
   int leftCout() {
     return max - times;

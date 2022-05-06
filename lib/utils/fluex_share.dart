@@ -41,8 +41,8 @@ class FluWxShare {
     WFLogUtil.d('desc${desc}');
     WFLogUtil.d('thumb${thumb}');
     WFLogUtil.d('link${link}');
-    title =  title.replaceAll('真香通告', 'Wefree');
-    desc =  desc.replaceAll('真香通告', 'Wefree');
+    title =  title.replaceAll('省得赚', '省得赚');
+    desc =  desc.replaceAll('省得赚', '省得赚');
     var model = WeChatShareWebPageModel(
       link,
       title: title,
