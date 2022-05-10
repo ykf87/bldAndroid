@@ -31,6 +31,12 @@ globalEntityFromJson(GlobalEntity data, Map<String, dynamic> json) {
 				? int.tryParse(json['jiliadv'])
 				: json['jiliadv'].toInt();
 	}
+	if (json['loginimg'] != null) {
+		data.loginimg = json['loginimg'].toString();
+	}
+	if (json['activities'] != null) {
+		data.activities = (json['activities'] as List).map((v) => ActivityList().fromJson(v)).toList();
+	}
 	return data;
 }
 
@@ -44,5 +50,24 @@ Map<String, dynamic> globalEntityToJson(GlobalEntity entity) {
 	data['opensign'] = entity.opensign;
 	data['globaladv'] = entity.globaladv;
 	data['jiliadv'] = entity.jiliadv;
+	data['loginimg'] = entity.loginimg;
+	data['activities'] =  entity.activities?.map((v) => v.toJson())?.toList();
+	return data;
+}
+
+activityListFromJson(ActivityList data, Map<String, dynamic> json) {
+	if (json['title'] != null) {
+		data.title = json['title'].toString();
+	}
+	if (json['innerimg'] != null) {
+		data.innerimg = json['innerimg'].toString();
+	}
+	return data;
+}
+
+Map<String, dynamic> activityListToJson(ActivityList entity) {
+	final Map<String, dynamic> data = new Map<String, dynamic>();
+	data['title'] = entity.title;
+	data['innerimg'] = entity.innerimg;
 	return data;
 }

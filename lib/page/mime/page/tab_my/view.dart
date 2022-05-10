@@ -64,25 +64,30 @@ class _TabMyPageState extends State<TabMyPage> {
       init: Tab_myLogic(),
       builder: (logic) {
         return Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/bg_my.png"),
+                fit: BoxFit.cover,
+              )),
           child: Scaffold(
             backgroundColor: Colors.transparent,
             body: new Stack(
               children: <Widget>[
-                Container(
-                  child: ClipPath(
-                    clipper: SignClipper(),
-                    child: Container(
-                      height: Adaptor.height(240),
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: [
-                          Colours.color_login_77A7EF,
-                          Colours.color_login_77A7EF,
-                        ]),
-                      ),
-                      child: null,
-                    ),
-                  ),
-                ),
+                // Container(
+                //   child: ClipPath(
+                //     clipper: SignClipper(),
+                //     child: Container(
+                //       height: Adaptor.height(240),
+                //       decoration: BoxDecoration(
+                //         gradient: LinearGradient(colors: [
+                //           Colours.color_login_77A7EF,
+                //           Colours.color_login_77A7EF,
+                //         ]),
+                //       ),
+                //       child: null,
+                //     ),
+                //   ),
+                // ),
                 Container(
                   child: new ListView(
                     children: <Widget>[
@@ -100,7 +105,7 @@ class _TabMyPageState extends State<TabMyPage> {
                             LineTextWidget(
                               leftText: '我的订单',
                               isRadius: true,
-                              bgColor: Colours.bg_ffffff,
+                              bgColor: Colors.transparent,
                               leftImg: "ic_order.png",
                               onPressed: () {
                                 if (!LoginUtil.isLogin()) {
@@ -114,7 +119,7 @@ class _TabMyPageState extends State<TabMyPage> {
                             LineTextWidget(
                               leftText: '我的钱包',
                               isRadius: true,
-                              bgColor: Colours.bg_ffffff,
+                              bgColor: Colors.transparent,
                               leftImg: "account_balance.png",
                               onPressed: () {
                                 if (!LoginUtil.isLogin()) {
@@ -126,7 +131,7 @@ class _TabMyPageState extends State<TabMyPage> {
                             ),
                             LineTextWidget(
                               leftText: '关于我们',
-                              bgColor: Colours.bg_ffffff,
+                              bgColor: Colors.transparent,
                               leftImg: "ic_about.svg",
                               onPressed: () {
                                 Get.to(AboutWeFreePage());
@@ -134,7 +139,7 @@ class _TabMyPageState extends State<TabMyPage> {
                             ),
                             LineTextWidget(
                               leftText: '意见反馈',
-                              bgColor: Colours.bg_ffffff,
+                              bgColor: Colors.transparent,
                               leftImg: "my_points.png",
                               onPressed: () {
                                 Get.to(FeedBackPage());
@@ -142,7 +147,7 @@ class _TabMyPageState extends State<TabMyPage> {
                             ),
                             LineTextWidget(
                               leftText: '设置',
-                              bgColor: Colours.bg_ffffff,
+                              bgColor: Colors.transparent,
                               leftImg: "ic_setting.svg",
                               onPressed: () {
                                 Get.to(SettingPage());
@@ -211,14 +216,14 @@ class _TabMyPageState extends State<TabMyPage> {
                           child: new Text(
                             '欢迎您',
                             style: new TextStyle(
-                                fontSize: 20.0, color: const Color(0xFFffffff)),
+                                fontSize: 20.0, color: Colours.color_666666),
                           )),
                       new Padding(
                           padding: const EdgeInsets.only(left: 20.0, top: 29.0),
                           child: new Text('',
                               style: new TextStyle(
                                   fontSize: 12.0,
-                                  color: const Color(0xFFffffff)))),
+                                  color:  Colours.color_666666))),
                       new Padding(
                           padding: const EdgeInsets.only(left: 20.0, top: 40.0),
                           child: new Text(
@@ -229,7 +234,7 @@ class _TabMyPageState extends State<TabMyPage> {
                                   : '',
                               style: new TextStyle(
                                   fontSize: 12.0,
-                                  color: const Color(0xFFffffff)))),
+                                  color:  Colours.color_666666))),
                     ])
                   : DoubleClick(
                       onTap: () {
@@ -240,7 +245,7 @@ class _TabMyPageState extends State<TabMyPage> {
                         child: Text(
                           "点此登录",
                           style: new TextStyle(
-                              fontSize: 20.0, color: const Color(0xFFffffff)),
+                              fontSize: 20.0, color: Colours.color_999999),
                         ),
                       ),
                     ),

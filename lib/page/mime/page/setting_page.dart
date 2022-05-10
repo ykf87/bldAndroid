@@ -181,13 +181,13 @@ class _SettingPageState extends State<SettingPage> with WidgetsBindingObserver {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8.0),
                                   gradient: LinearGradient(colors: [
-                                    Colours.color_login_77A7EF,
-                                    Colours.color_login_77A7EF,
+                                    Colours.color_orange_F1A14B,
+                                    Colours.color_orange_EB4736,
                                   ]),
                                 ),
                                 height: 45,
                                 margin: EdgeInsets.only(
-                                    left: 12, right: 12, top: 20, bottom: 40),
+                                    left: 30, right: 30, top: 20, bottom: 40),
                                 child: Center(
                                   child: Text(
                                     '退出登录',

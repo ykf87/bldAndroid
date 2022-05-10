@@ -71,7 +71,7 @@ class _AdTaskPageState extends State<AdTaskPage> with WidgetsBindingObserver{
                 toolbarHeight: 50,
                 title: Center(
                     child: Text(
-                  '金币中心',
+                  '省币中心',
                   style: TextStyle(color: Colours.color_333333, fontSize: 20),
                 )),
                 actions: [
@@ -366,7 +366,7 @@ class _AdTaskPageState extends State<AdTaskPage> with WidgetsBindingObserver{
             height: 16,
           ),
           Text(
-            '我的金币',
+            '我的省币',
             style: TextStyle(color: Colors.white, fontSize: 12),
           ),
           SizedBox(

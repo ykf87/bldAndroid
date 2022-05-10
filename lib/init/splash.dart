@@ -90,6 +90,8 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
           BaseEntity<GlobalEntity> entity = BaseEntity.fromJson(data!);
           SPUtils.setAdShow(entity.data?.isadv?.contains("true") ?? false);
           Constants.opensign = entity.data?.opensign == 1;
+          Constants.loginimg = entity.data?.loginimg??'';
+          Constants.activitiesImg = entity.data?.activities?[0].innerimg??'';
           goHomePage();
         }, onError: (msg) {
           goHomePage();

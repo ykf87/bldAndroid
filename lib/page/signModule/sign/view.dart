@@ -7,10 +7,12 @@ import 'package:SDZ/page/mime/page/feed_back/view.dart';
 import 'package:SDZ/page/mime/page/my_order/view.dart';
 import 'package:SDZ/page/signModule/address/view.dart';
 import 'package:SDZ/page/signModule/lottery/SubWidget/ScrollListView.dart';
+import 'package:SDZ/page/web/web_view_page.dart';
 import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/res/styles.dart';
 import 'package:SDZ/utils/adaptor.dart';
 import 'package:SDZ/utils/custom_scroll_behavior.dart';
+import 'package:SDZ/utils/image_utils.dart';
 import 'package:SDZ/utils/utils.dart';
 import 'package:SDZ/widget/animate_number.dart';
 import 'package:SDZ/widget/clipper_views.dart';
@@ -166,6 +168,38 @@ class _SignPageState extends State<SignPage> {
                               child: _buildSignInfo(),
                             ),
                           ),
+
+                          ///抽奖
+                          SliverToBoxAdapter(
+                            child: GestureDetector(
+                              onTap: () {
+                                Get.to(WebViewPage(
+                                    url: 'https://app.blandal.com/sweepstake',
+                                    title: '幸运大转盘'));
+                              },
+                              child: Container(
+                                  margin: EdgeInsets.only(
+                                      top: 16, left: 12, right: 12),
+                                  child: Constants.activitiesImg.isNotEmpty
+                                      ? Container(
+                                          width: double.infinity,
+                                          height: 80,
+                                          decoration: BoxDecoration(
+                                            // borderRadius: BorderRadius.all(
+                                            //     Radius.circular(12)),
+                                            image: DecorationImage(
+                                              image: NetworkImage(
+                                                  Constants.activitiesImg),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ))
+                                      : Image.asset(
+                                          'assets/images/bg_luckydraw.png',
+                                          width: double.infinity,
+                                          height: 80,
+                                        )),
+                            ),
+                          ),
                           SliverToBoxAdapter(
                             child: Container(
                               decoration: const BoxDecoration(
@@ -214,41 +248,35 @@ class _SignPageState extends State<SignPage> {
         });
   }
 
-  Widget textBanner(){
-    return  (state.signInfoEntity != null &&
-        state.signInfoEntity?.geted
-            .length !=
-            0)
+  Widget textBanner() {
+    return (state.signInfoEntity != null &&
+            state.signInfoEntity?.geted.length != 0)
         ? Container(
-      decoration: const BoxDecoration(
-        color: Colours.color_yellow_FAF8F2,
-        borderRadius:
-        BorderRadius.all(Radius.circular(20)),
-      ),
-      padding: EdgeInsets.only(top: 5, left: 12),
-      margin: EdgeInsets.only(top: 12),
-      height: 38,
-      width: double.infinity,
-      child: Row(
-        children: [
-          SvgPicture.asset(
-            Utils.getSvgUrl(
-                'ic_notification.svg'),
-            width: 20,
-            height: 20,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Expanded(
-              child: ScrollListView(
-                list: state.signInfoEntity
-                    ?.geted ??
-                    [],
-              )),
-        ],
-      )
-    )  : Container();
+            decoration: const BoxDecoration(
+              color: Colours.color_yellow_FAF8F2,
+              borderRadius: BorderRadius.all(Radius.circular(20)),
+            ),
+            padding: EdgeInsets.only(top: 5, left: 12),
+            margin: EdgeInsets.only(top: 12),
+            height: 38,
+            width: double.infinity,
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  Utils.getSvgUrl('ic_notification.svg'),
+                  width: 20,
+                  height: 20,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                    child: ScrollListView(
+                  list: state.signInfoEntity?.geted ?? [],
+                )),
+              ],
+            ))
+        : Container();
   }
 
   ///签到模块

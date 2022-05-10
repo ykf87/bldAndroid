@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:SDZ/entity/Constants.dart';
 import 'package:SDZ/entity/global_entity.dart';
 import 'package:SDZ/entity/login/login_entity.dart';
 import 'package:SDZ/page/login/register.dart';
 import 'package:SDZ/page/mime/page/PrivacyPolicyPage.dart';
+import 'package:SDZ/utils/image_utils.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
@@ -316,7 +318,8 @@ class _LoginPageState extends BaseStatefulState<LoginPage>
                 topLeft: Radius.circular(12.0),
                 topRight: Radius.circular(12.0)),
             image: new DecorationImage(
-              image: new ExactAssetImage('assets/images/bg_login.jpeg'),
+              image:Constants.loginimg.isNotEmpty? ImageUtils.getImageProvider(Constants.loginimg):
+              new ExactAssetImage('assets/images/bg_login.jpeg'),
               fit: BoxFit.cover,
             ),
           ),

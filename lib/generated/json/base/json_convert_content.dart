@@ -85,6 +85,8 @@ class JsonConvert<T> {
 				return emptyEntityFromJson(data as EmptyEntity, json) as T;
 			case GlobalEntity:
 				return globalEntityFromJson(data as GlobalEntity, json) as T;
+			case ActivityList:
+				return activityListFromJson(data as ActivityList, json) as T;
 			case TelephoneBillEntity:
 				return telephoneBillEntityFromJson(data as TelephoneBillEntity, json) as T;
 			case GoodsEntity:
@@ -192,6 +194,8 @@ class JsonConvert<T> {
 				return emptyEntityToJson(data as EmptyEntity);
 			case GlobalEntity:
 				return globalEntityToJson(data as GlobalEntity);
+			case ActivityList:
+				return activityListToJson(data as ActivityList);
 			case TelephoneBillEntity:
 				return telephoneBillEntityToJson(data as TelephoneBillEntity);
 			case GoodsEntity:
@@ -302,6 +306,9 @@ class JsonConvert<T> {
 		}
 		if(type == (GlobalEntity).toString()){
 			return GlobalEntity().fromJson(json);
+		}
+		if(type == (ActivityList).toString()){
+			return ActivityList().fromJson(json);
 		}
 		if(type == (TelephoneBillEntity).toString()){
 			return TelephoneBillEntity().fromJson(json);
@@ -461,6 +468,9 @@ class JsonConvert<T> {
 		}
 		if(<GlobalEntity>[] is M){
 			return data.map<GlobalEntity>((e) => GlobalEntity().fromJson(e)).toList() as M;
+		}
+		if(<ActivityList>[] is M){
+			return data.map<ActivityList>((e) => ActivityList().fromJson(e)).toList() as M;
 		}
 		if(<TelephoneBillEntity>[] is M){
 			return data.map<TelephoneBillEntity>((e) => TelephoneBillEntity().fromJson(e)).toList() as M;

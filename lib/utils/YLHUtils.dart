@@ -11,6 +11,14 @@ class YLHUtils{
   static const String YLHVideoId = '1042190702729526';//优量汇激励视频id
   static const String YLHWaterFallId = '1063029854352687';//优量汇信息流id
 
+  static void showReword(){
+    FlutterQqAds.showRewardVideoAd(
+      YLHUtils.YLHVideoId,
+      playMuted: false,
+      customData: 'customData',
+      userId: 'userId',
+    );
+  }
 
   /// 信息流广告
   static Future<List<int>> showWaterFall() async {
