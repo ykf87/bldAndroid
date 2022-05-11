@@ -21,7 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fsuper_nullsafety/fsuper_nullsafety.dart';
 import 'package:get/get.dart';
-
+import 'package:image_fade/image_fade.dart';
 
 // 赠品列表
 class GiftItem extends StatelessWidget {
@@ -29,16 +29,14 @@ class GiftItem extends StatelessWidget {
   final String? source;
   final Function onSelGift;
 
-  const GiftItem(this.product,this.onSelGift , {this.source = ""});
+  const GiftItem(this.product, this.onSelGift, {this.source = ""});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        onTap: () {
-
-        },
+        onTap: () {},
         child: Container(
-          //width: Sc.ScreenUtil().setWidth(640), // (1440-150) / 2
+            //width: Sc.ScreenUtil().setWidth(640), // (1440-150) / 2
             padding: const EdgeInsets.only(bottom: 12),
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -52,23 +50,22 @@ class GiftItem extends StatelessWidget {
                     Positioned(
                       top: 10,
                       left: 10,
-                      child:   GestureDetector(
-                        onTap: (){
+                      child: GestureDetector(
+                        onTap: () {
                           onSelGift.call();
                         },
-                        onDoubleTap: (){
-
-                        },
+                        onDoubleTap: () {},
                         child: Container(
-                          padding: EdgeInsets.only(top: 4,bottom: 4,left: 8,right: 8),
+                          padding: EdgeInsets.only(
+                              top: 4, bottom: 4, left: 8, right: 8),
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(colors: [
                               Color(0xffFC6E18),
                               Color(0xffFF421A),
                             ]),
-                            borderRadius: BorderRadius.circular(
-                                Adaptor.width(20)),
+                            borderRadius:
+                                BorderRadius.circular(Adaptor.width(20)),
                           ),
                           child: Center(
                             child: Text(
@@ -90,20 +87,22 @@ class GiftItem extends StatelessWidget {
                 // 标题
                 _title(product.title ?? ''),
 
-
                 const SizedBox(height: 5),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                   child: Row(
                     children: [
                       Container(
-                        child: const Text('连续签到', style: TextStyle(
-                            color: Colors.black38, fontSize: 12)),
+                        child: const Text('连续签到',
+                            style:
+                                TextStyle(color: Colors.black38, fontSize: 12)),
                       ),
-                       Text(
-                        '${product.days??7}',
+                      Text(
+                        '${product.days ?? 7}',
                         style: TextStyle(
-                            fontSize: 15, color: Colours.color_orange_ffFF7648,fontWeight: FontWeight.bold),
+                            fontSize: 15,
+                            color: Colours.color_orange_ffFF7648,
+                            fontWeight: FontWeight.bold),
                       ),
                       Text(
                         '天即可获得',
@@ -125,21 +124,23 @@ class GiftItem extends StatelessWidget {
                       //       color: Colors.black38, fontSize: 12)),
                       // ),
                       Text(
-                          '¥${product.sale.toString()}',
+                        '¥${product.sale.toString()}',
                         style: const TextStyle(
-                            color: Colours.color_orange_ffFF7648, fontSize: 15,fontWeight: FontWeight.bold),
+                            color: Colours.color_orange_ffFF7648,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(width: 4,),
-                      Text('已送出${product.sendout}份', style: TextStyle(
-                          color: Colors.black38, fontSize: 10))
-
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Text('已送出${product.sendout}份',
+                          style: TextStyle(color: Colors.black38, fontSize: 10))
                     ],
                   ),
                 ),
               ],
             )));
   }
-
 
   // 标题
   Widget _title(String dtitle) {
@@ -168,15 +169,22 @@ class GiftItem extends StatelessWidget {
 
   // 商品卡片主图
   Widget _image() {
-    var img = product.images?[0]??'';
+    var img = product.images?[0] ?? '';
     return ClipRRect(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(12.0),
-            topRight: Radius.circular(12.0)),
-        child: CachedNetworkImage(
-            fit: BoxFit.fill,
-            width: double.infinity,
-            imageUrl: img));
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+      child: ImageFade(
+        image: NetworkImage(img),
+        placeholder: Container(
+          height: 140,
+          width: double.infinity,
+          color: Color(0xFFCFCDCA),
+        ),
+      ),
+      // child: CachedNetworkImage(
+      //     fit: BoxFit.fill,
+      //     width: double.infinity,
+      //     imageUrl: img)
+    );
   }
-
 }
