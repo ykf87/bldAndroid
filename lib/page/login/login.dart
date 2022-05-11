@@ -48,7 +48,7 @@ class LoginPage extends BaseStatefulWidget {
 
 class _LoginPageState extends BaseStatefulState<LoginPage>
     with SingleTickerProviderStateMixin {
-  var toMain = false;
+  var toMain = true;
   late TextEditingController _controller;
   bool _isChecked = false;
   bool _nextBtnEnable = false;
@@ -60,12 +60,12 @@ class _LoginPageState extends BaseStatefulState<LoginPage>
   @override
   void initData() {
     super.initData();
-    _bus = EventBusUtils.getInstance().on<LoginEvent>().listen((event) {
-      if (event.mLogin == LoginEvent.LOGIN_TYPE_LOGIN &&
-          Navigator.canPop(context)) {
-        Get.back();
-      }
-    });
+    // _bus = EventBusUtils.getInstance().on<LoginEvent>().listen((event) {
+    //   if (event.mLogin == LoginEvent.LOGIN_TYPE_LOGIN &&
+    //       Navigator.canPop(context)) {
+    //     Get.back();
+    //   }
+    // });
     _controller = new TextEditingController(
         text: Utils.splitPhoneNumber(SPUtils.getUserAccount()));
     _nextBtnEnable = SPUtils.getUserAccount().isNotEmpty;
@@ -128,10 +128,8 @@ class _LoginPageState extends BaseStatefulState<LoginPage>
               reigistFindpass(),
               Expanded(
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  agreementWidget()
-                ],
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [agreementWidget()],
               ))
             ],
           ),
@@ -215,12 +213,12 @@ class _LoginPageState extends BaseStatefulState<LoginPage>
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           new Container(
-            width:20,
+            width: 20,
             height: 20,
             //padding: new EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
             child: new Checkbox(
               value: _checkSelected,
-              shape:RoundedRectangleBorder(
+              shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20.0)),
               ),
               checkColor: Colours.bg_ffffff,
@@ -312,27 +310,27 @@ class _LoginPageState extends BaseStatefulState<LoginPage>
         opacity: 0.98,
         child: new Container(
           width: double.infinity,
-          height: MediaQuery.of(context).size.height*0.4,
+          height: MediaQuery.of(context).size.height * 0.4,
           decoration: new BoxDecoration(
             borderRadius: new BorderRadius.only(
                 topLeft: Radius.circular(12.0),
                 topRight: Radius.circular(12.0)),
             image: new DecorationImage(
-              image:Constants.loginimg.isNotEmpty? ImageUtils.getImageProvider(Constants.loginimg):
-              new ExactAssetImage('assets/images/bg_login.jpeg'),
+              image: Constants.loginimg.isNotEmpty
+                  ? ImageUtils.getImageProvider(Constants.loginimg)
+                  : new ExactAssetImage('assets/images/bg_login.jpeg'),
               fit: BoxFit.cover,
             ),
           ),
         ));
   }
 
-
   Widget reigistFindpass() {
     return DefaultTextStyle.merge(
         child: new Container(
             padding: new EdgeInsets.all(0.0),
             child:
-            new Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                new Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               new Column(children: [
                 new Container(
                   padding: new EdgeInsets.all(5.0),
@@ -361,7 +359,6 @@ class _LoginPageState extends BaseStatefulState<LoginPage>
       ));
     });
   }
-
 
   void toLogin() {
     if (!_checkSelected) {
@@ -395,7 +392,11 @@ class _LoginPageState extends BaseStatefulState<LoginPage>
       SPUtils.setUserNickName(entity.data?.nickname ?? '');
       SPUtils.setAvatar(entity.data?.avatar ?? '');
       EventBusUtils.getInstance().fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGIN));
-      Get.offAll(() => MainHomePage());
+      if (toMain) {
+        Get.offAll(() => MainHomePage());
+      } else {
+        Get.back();
+      }
     }, onError: (msg) {
       ToastUtils.toast(msg);
     });

@@ -55,6 +55,9 @@ class ScrollListViewState extends State<ScrollListView> with WidgetsBindingObser
     WidgetsBinding.instance?.addObserver(this);
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
         Timer.periodic(const Duration(seconds:3), (Timer timer){
+          if(widget.list.length == 0){
+            return;
+          }
           if (_controller.page!.round() >= widget.list.length) {
             _controller.jumpToPage(0);
           }

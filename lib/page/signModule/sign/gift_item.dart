@@ -180,6 +180,15 @@ class GiftItem extends StatelessWidget {
           width: double.infinity,
           color: Color(0xFFCFCDCA),
         ),
+        // errorBuilder:
+        //     (BuildContext context, Widget? child, dynamic exception) {
+        //   return Container(
+        //     color: Color(0xFF6F6D6A),
+        //     child: Center(
+        //         child:
+        //         Icon(Icons.warning, color: Colors.black26, size: 128.0)),
+        //   );
+        // },
       ),
       // child: CachedNetworkImage(
       //     fit: BoxFit.fill,

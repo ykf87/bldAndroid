@@ -4,10 +4,14 @@ import 'dart:io';
 // ignore: implementation_imports
 import 'package:SDZ/core/utils/toast.dart';
 import 'package:SDZ/event/ad_reward_event.dart';
+import 'package:SDZ/event/login_event.dart';
 import 'package:SDZ/utils/CSJUtils.dart';
 import 'package:SDZ/utils/VideoUtils.dart';
 import 'package:SDZ/utils/YLHUtils.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
+import 'package:SDZ/utils/login_util.dart';
+import 'package:SDZ/utils/sputils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:SDZ/base/base_stateful_widget.dart';
@@ -28,6 +32,7 @@ class WebViewPage extends BaseStatefulWidget {
 class _WebViewState extends BaseStatefulState<WebViewPage> {
   WebViewController? controller;
   StreamSubscription<MyAdRewardEvent>? adRewardEventBus;
+  StreamSubscription<LoginEvent>? loginEventBus;
 
   @override
   void initState() {
@@ -37,6 +42,10 @@ class _WebViewState extends BaseStatefulState<WebViewPage> {
         EventBusUtils.getInstance().on<MyAdRewardEvent>().listen((event) {
       sendMessage();
     });
+    loginEventBus =
+        EventBusUtils.getInstance().on<LoginEvent>().listen((event) {
+          controller?.loadUrl(widget.url+'?token=${SPUtils.getUserToken()}');
+        });
   }
 
   @override
@@ -44,6 +53,7 @@ class _WebViewState extends BaseStatefulState<WebViewPage> {
     // TODO: implement dispose
     super.dispose();
     adRewardEventBus?.cancel();
+    loginEventBus?.cancel();
   }
 
   @override
@@ -65,12 +75,17 @@ class _WebViewState extends BaseStatefulState<WebViewPage> {
       onMessageReceived: (JavascriptMessage message) {
         if (message.message.contains("1")) {
           CSJUtils.showRewardVideoAd();
-        } else if (message.message.contains("2")) {
+        }
+        if (message.message.contains("2")) {
           YLHUtils.showReword();
-        } else if (message.message.contains("3")) {
+        }
+        if (message.message.contains("3")) {
           VideoUtils.loadVoiceAd((logId) {
             sendMessage();
           }, type: 'default', tid: '');
+        }
+        if(message.message.contains("toLogin")){
+          LoginUtil.toLogin(toMain: false);
         }
       });
 
@@ -87,7 +102,7 @@ class _WebViewState extends BaseStatefulState<WebViewPage> {
         controller = webViewController;
         // _controller.complete(webViewController);
       },
-      initialUrl: widget.url,
+      initialUrl: SPUtils.getUserToken().isNotEmpty?widget.url+'?token=${SPUtils.getUserToken()}':widget.url,
       javascriptMode: JavascriptMode.unrestricted,
       onPageStarted: (url) {},
       onPageFinished: (url) {},
