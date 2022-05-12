@@ -218,11 +218,9 @@ class ApiClient {
           } else {
             onSuccess?.call(response?.data);
           }
-        } else if (response?.data['code'] == ApiStatus.LOGIN_OUT) {
-          ToastUtils.toast(response?.data['msg'] ?? "");
-          EventBusUtils.getInstance()
-              .fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
-          LoginUtil.tokenLoginOut();
+        } else if (response?.data['code'] == ApiStatus.LOGIN_OUT || response?.data['code'] == ApiStatus.BLD_LOGIN_OUT) {
+          // ToastUtils.toast(response?.data['msg'] ?? "");
+          // LoginUtil.tokenLoginOut();
         } else {
           if (onError != null) {
             onError.call(response?.data['msg']);

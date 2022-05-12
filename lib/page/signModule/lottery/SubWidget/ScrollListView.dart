@@ -24,11 +24,14 @@ class ScrollListViewState extends State<ScrollListView> with WidgetsBindingObser
   // late List<ListModel> _itemLists;
   late PageController  _controller;
   int _currentIndex = -1;
-
+ late Timer _timer;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    if(widget.list.length == 0){
+     widget.list = ["恭喜 叶** 获得 马卡龙成人小头软毛牙刷","恭喜 l** 获得 挂钩5个装","恭喜 图** 获得 MAC 焦点小眼影","恭喜 2** 获得 马卡龙成人小头软毛牙刷","恭喜 啦** 获得 切菜神器","恭喜 史** 获得 迷你风扇卡通棒棒糖"];
+    }
     // _itemLists = <ListModel>[
     //   ListModel(
     //     userIcon: 'assets/images/userHead@3x.png',
@@ -54,8 +57,9 @@ class ScrollListViewState extends State<ScrollListView> with WidgetsBindingObser
     _controller = PageController();
     WidgetsBinding.instance?.addObserver(this);
     WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
-        Timer.periodic(const Duration(seconds:3), (Timer timer){
-          if(widget.list.length == 0){
+      _timer  =  Timer.periodic(const Duration(seconds:3), (Timer timer){
+          if(widget.list.length == 0 || _controller.page == null){
+            _timer.cancel();
             return;
           }
           if (_controller.page!.round() >= widget.list.length) {
@@ -72,6 +76,8 @@ class ScrollListViewState extends State<ScrollListView> with WidgetsBindingObser
   void dispose() {
     super.dispose();
     WidgetsBinding.instance?.removeObserver(this);
+    _controller.dispose();
+    _timer.cancel();
   }
 
   @override

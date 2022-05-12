@@ -182,7 +182,7 @@ class _AdTaskPageState extends State<AdTaskPage> with WidgetsBindingObserver {
                                               },
                                               child: Column(
                                                 children: [
-                                                  Text('登录后做任务'),
+                                                  Text('登录后即可做任务赚钱'),
                                                   Container(
                                                     width: 120,
                                                     decoration: BoxDecoration(
@@ -278,7 +278,10 @@ class _AdTaskPageState extends State<AdTaskPage> with WidgetsBindingObserver {
                                   } else if (state.curEntity?.platform == 3) {
                                     VideoUtils.loadVoiceAd((logId) {
                                       print("TTTTTTTTT==logid=$logId");
-                                      control.doRefresh();
+                                      logic.videoSuccess(
+                                          state.curEntity!.id.toString(),
+                                          logId: logId);
+                                      // control.doRefresh();
                                     },
                                         type: 'default',
                                         tid: state.curEntity?.id.toString(),

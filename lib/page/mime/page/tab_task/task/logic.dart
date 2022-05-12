@@ -30,7 +30,7 @@ class AdTaskLogic extends GetxController {
   void initEvent() {
     loginEventBus =
         EventBusUtils.getInstance().on<LoginEvent>().listen((event) {
-      getData();
+      doRefresh();
     });
     adRewardEventBus =
         EventBusUtils.getInstance().on<MyAdRewardEvent>().listen((event) {
@@ -45,6 +45,9 @@ class AdTaskLogic extends GetxController {
   }
 
   void getData() {
+    if(!LoginUtil.isLogin()){
+      return;
+    }
     Map<String, dynamic> map = new Map();
     map['pageNum'] = state.pageNum;
     ApiClient.instance.get(ApiUrl.getBLDBaseUrl() + ApiUrl.task, data: map,

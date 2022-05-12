@@ -271,8 +271,8 @@ class _SignPageState extends State<SignPage> {
                   width: 10,
                 ),
                 Expanded(
-                    child: ScrollListView(
-                  list: state.signInfoEntity?.geted ?? [],
+                    child:ScrollListView(
+                  list: state.signInfoEntity?.geted ?? ["恭喜 叶** 获得 马卡龙成人小头软毛牙刷","恭喜 l** 获得 挂钩5个装","恭喜 图** 获得 MAC 焦点小眼影","恭喜 2** 获得 马卡龙成人小头软毛牙刷","恭喜 啦** 获得 切菜神器","恭喜 史** 获得 迷你风扇卡通棒棒糖"],
                 )),
               ],
             ))

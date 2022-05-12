@@ -95,7 +95,7 @@ class _State extends State<NewTaskItem> {
                         TextSpan(
                           style: TextStyle(
                               fontSize: 12.0, color: Colours.color_343434),
-                          text: '可获得',
+                          text:widget.entity.platform == 3?"最高可获得": '可获得',
                         ),
                         TextSpan(
                           style: TextStyle(

@@ -69,7 +69,7 @@ class VideoUtils {
             logId = params!["logId"];
             double iCPM = params["iCPM"];
             int stepNum = params["stepNum"];
-            videoSuccess(taskId??'',logId: logId);
+            // videoSuccess(taskId??'',logId: logId);
           }
         });
   }

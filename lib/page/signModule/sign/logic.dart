@@ -21,6 +21,7 @@ import 'package:SDZ/utils/VideoUtils.dart';
 import 'package:SDZ/utils/YLHUtils.dart';
 import 'package:SDZ/utils/event_bus_util.dart';
 import 'package:SDZ/utils/login_util.dart';
+import 'package:SDZ/utils/sputils.dart';
 import 'package:SDZ/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pangle_ads/flutter_pangle_ads.dart' as CSJ;
@@ -62,6 +63,9 @@ class SignLogic extends GetxController {
 
   ///签到信息
   void getSignInfo() {
+    if(!LoginUtil.isLogin()){
+      return;
+    }
     ApiClient.instance.post(ApiUrl.getBLDBaseUrl() + ApiUrl.signedInfo,
         isJTK: false, onSuccess: (data) {
       BaseEntity<SignInfoEntity> entity = BaseEntity.fromJson(data!);

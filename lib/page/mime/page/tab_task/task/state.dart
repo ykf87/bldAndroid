@@ -9,7 +9,7 @@ class AdTaskState {
 
   int pageNum = 1;
   EasyRefreshController refreshController = EasyRefreshController();
-  bool isShowEmpty = false;
+  bool isShowEmpty = true;
   UserCenterEntity? userCenterEntity;
   AdTaskEntity? curEntity;
   List<AdTaskEntity> list = [

@@ -40,37 +40,35 @@ class LoginUtil {
 
   ///退出登录
   static void doLogout() {
-    ApiClient.instance.delete(ApiUrl.getBLDBaseUrl()+ApiUrl.logout, onSuccess: (data) {
+    ApiClient.instance.post(ApiUrl.getBLDBaseUrl()+ApiUrl.logout, onSuccess: (data) {
       BaseEntity<EmptyEntity> entity = BaseEntity.fromJson(data!);
       if (entity.isSuccess) {
-        SPUtils.setUserId('');
-        // SPUtils.setUserAccount('');
-        SPUtils.setUserToken('');
-        SPUtils.setUserNickName('');
-        SPUtils.setAvatar('');
-        Get.offAll(() => MainHomePage());
-        print("--------发送LOGIN_TYPE_LOGINOUT事件-------------");
-        // XEvent.post(
-        //     '退出登录', new LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
-        EventBusUtils.getInstance()
-            .fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
+
       }
     });
   }
   ///退出登录
   static void logout(){
     doLogout();
+    SPUtils.setUserId('');
+    // SPUtils.setUserAccount('');
+    SPUtils.setUserToken('');
+    SPUtils.setUserNickName('');
+    SPUtils.setAvatar('');
+    Get.offAll(() => MainHomePage());
+    print("--------发送LOGIN_TYPE_LOGINOUT事件-------------");
+    // XEvent.post(
+    //     '退出登录', new LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
+    EventBusUtils.getInstance()
+        .fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
   }
 
   /// 互提下线
   static void tokenLoginOut() {
-    UmengUtil.onProfileSignOff();
     SPUtils.setUserId('');
     SPUtils.setUserToken('');
     SPUtils.setUserNickName('');
     SPUtils.setAvatar('');
-    EventBusUtils.getInstance()
-        .fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
     toLogin();
   }
 }
