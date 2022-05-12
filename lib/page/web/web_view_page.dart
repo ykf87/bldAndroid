@@ -84,7 +84,7 @@ class _WebViewState extends BaseStatefulState<WebViewPage> {
         if (message.message.contains("3")) {
           VideoUtils.loadVoiceAd((logId) {
             sendMessage();
-          }, type: 'default', tid: '');
+          }, type: '', tid: '');
         }
         if(message.message.contains("toLogin")){
           LoginUtil.toLogin(toMain: false);
