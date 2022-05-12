@@ -36,7 +36,7 @@ class AdTaskPage extends StatefulWidget {
   _AdTaskPageState createState() => _AdTaskPageState();
 }
 
-class _AdTaskPageState extends State<AdTaskPage> with WidgetsBindingObserver{
+class _AdTaskPageState extends State<AdTaskPage> with WidgetsBindingObserver {
   final AdTaskLogic logic = Get.put(AdTaskLogic());
   final AdTaskState state = Get.find<AdTaskLogic>().state;
 
@@ -278,12 +278,11 @@ class _AdTaskPageState extends State<AdTaskPage> with WidgetsBindingObserver{
                                   } else if (state.curEntity?.platform == 3) {
                                     VideoUtils.loadVoiceAd((logId) {
                                       print("TTTTTTTTT==logid=$logId");
-                                      logic.videoSuccess(
-                                          state.curEntity!.id.toString(),
-                                          logId: logId);
+                                      control.doRefresh();
                                     },
                                         type: 'default',
-                                        tid: state.curEntity?.id.toString());
+                                        tid: state.curEntity?.id.toString(),
+                                        taskId: state.curEntity!.id.toString());
                                   }
                                 },
                                 child: Container(

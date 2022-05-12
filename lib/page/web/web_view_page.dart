@@ -62,6 +62,7 @@ class _WebViewState extends BaseStatefulState<WebViewPage> {
     if (Platform.isAndroid) {
       WebView.platform = SurfaceAndroidWebView();
     }
+    print('TTTTTT====${SPUtils.getUserToken()}');
   }
 
   //发送给web
@@ -73,6 +74,7 @@ class _WebViewState extends BaseStatefulState<WebViewPage> {
   JavascriptChannel _jsChannel(BuildContext context) => JavascriptChannel(
       name: 'appobject',
       onMessageReceived: (JavascriptMessage message) {
+        print("TTTTTTT==message=${message.message}");
         if (message.message.contains("1")) {
           CSJUtils.showRewardVideoAd();
         }

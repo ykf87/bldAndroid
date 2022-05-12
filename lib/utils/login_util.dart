@@ -1,5 +1,9 @@
 import 'dart:ffi';
 
+import 'package:SDZ/api/api_client.dart';
+import 'package:SDZ/api/api_url.dart';
+import 'package:SDZ/entity/base/base_entity.dart';
+import 'package:SDZ/entity/base/empty_entity.dart';
 import 'package:SDZ/page/login/new_login_page.dart';
 import 'package:get/get.dart';
 import 'package:SDZ/core/utils/event.dart';
@@ -35,18 +39,27 @@ class LoginUtil {
   }
 
   ///退出登录
+  static void doLogout() {
+    ApiClient.instance.delete(ApiUrl.getBLDBaseUrl()+ApiUrl.logout, onSuccess: (data) {
+      BaseEntity<EmptyEntity> entity = BaseEntity.fromJson(data!);
+      if (entity.isSuccess) {
+        SPUtils.setUserId('');
+        // SPUtils.setUserAccount('');
+        SPUtils.setUserToken('');
+        SPUtils.setUserNickName('');
+        SPUtils.setAvatar('');
+        Get.offAll(() => MainHomePage());
+        print("--------发送LOGIN_TYPE_LOGINOUT事件-------------");
+        // XEvent.post(
+        //     '退出登录', new LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
+        EventBusUtils.getInstance()
+            .fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
+      }
+    });
+  }
+  ///退出登录
   static void logout(){
-    SPUtils.setUserId('');
-    // SPUtils.setUserAccount('');
-    SPUtils.setUserToken('');
-    SPUtils.setUserNickName('');
-    SPUtils.setAvatar('');
-    Get.offAll(() => MainHomePage());
-    print("--------发送LOGIN_TYPE_LOGINOUT事件-------------");
-    // XEvent.post(
-    //     '退出登录', new LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
-    EventBusUtils.getInstance()
-        .fire(LoginEvent(LoginEvent.LOGIN_TYPE_LOGINOUT));
+    doLogout();
   }
 
   /// 互提下线

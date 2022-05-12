@@ -1,3 +1,8 @@
+import 'package:SDZ/api/api_client.dart';
+import 'package:SDZ/api/api_url.dart';
+import 'package:SDZ/core/utils/toast.dart';
+import 'package:SDZ/entity/base/base_entity.dart';
+import 'package:SDZ/page/mime/entity/reward_entity.dart';
 import 'package:SDZ/utils/sputils.dart';
 import 'package:voiceread/voiceread.dart';
 
@@ -14,7 +19,7 @@ class VideoUtils {
         debug: false);
   }
 
-  static loadVoiceAd(Function callBack,{String? type = 'default',String? tid}) {
+  static loadVoiceAd(Function callBack,{String? type = 'default',String? tid,String? taskId}) {
     print("TTTTTTTTT===uerid${SPUtils.getUserId()}");
     Voiceread.loadVoiceAd(
         resourceId: '1913514132',
@@ -30,7 +35,7 @@ class VideoUtils {
             _iCPMTwo = params['iCPMTwo'];
             int maxReadNum = params['maxReadNum'];
             int surplusReadNum = params['surplusReadNum'];
-            showVoiceAd(callBack);
+            showVoiceAd(callBack,taskId);
           } else if (eventType == "onAdLoadError") {
             int errorCode = params!["errorCode"];
             String errorMsg = params['errorMsg'];
@@ -38,7 +43,7 @@ class VideoUtils {
         });
   }
 
-  static showVoiceAd(Function callBack) {
+  static showVoiceAd(Function callBack,String? taskId) {
     bool isReward = false;
     String logId = '';
     Voiceread.showVoiceAd(
@@ -64,7 +69,25 @@ class VideoUtils {
             logId = params!["logId"];
             double iCPM = params["iCPM"];
             int stepNum = params["stepNum"];
+            videoSuccess(taskId??'',logId: logId);
           }
+        });
+  }
+
+  static  void videoSuccess(String id, {String? logId}) {
+    Map<String, dynamic> map = new Map();
+    map['tid'] = id;
+    map['userId'] = SPUtils.getUserId();
+    if (logId != null) {
+      map['tagid'] = logId;
+    }
+    ApiClient.instance.post(ApiUrl.getBLDBaseUrl() + ApiUrl.videoSuccess,
+        data: map, onSuccess: (data) {
+          BaseEntity<RewardEntity> entity = BaseEntity.fromJson(data!);
+          if (entity.isSuccess) {
+          }
+        }, onError: (msg) {
+          ToastUtils.toast(msg);
         });
   }
 }

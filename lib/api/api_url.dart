@@ -27,7 +27,7 @@ class ApiUrl {
   }
 
   /// 退出登录
-  static const String logout = 'logout';
+  static const String logout = 'siginout';
 
   /// OSS 文件上传之前进行获取配置信息
   static const String getOssConfig = 'config/oss';
