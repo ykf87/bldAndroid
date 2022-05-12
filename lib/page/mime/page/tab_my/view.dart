@@ -17,6 +17,7 @@ import 'package:get/get.dart';
 import 'package:SDZ/utils/sputils.dart';
 import 'package:SDZ/widget/double_click.dart';
 
+import '../customer_page.dart';
 import '../setting_page.dart';
 import 'logic.dart';
 import 'state.dart';
@@ -116,7 +117,7 @@ class _TabMyPageState extends State<TabMyPage> {
                                 // Get.to(NewLoginPage());
                               },
                             ),
-                            LineTextWidget(
+                          SPUtils.getAdShow() ?LineTextWidget(
                               leftText: '我的钱包',
                               isRadius: true,
                               bgColor: Colors.transparent,
@@ -128,7 +129,7 @@ class _TabMyPageState extends State<TabMyPage> {
                                 }
                                 Get.to(MyWalletPage());
                               },
-                            ),
+                            ):SizedBox.shrink(),
                             LineTextWidget(
                               leftText: '关于我们',
                               bgColor: Colors.transparent,
@@ -146,6 +147,14 @@ class _TabMyPageState extends State<TabMyPage> {
                               },
                             ),
                             LineTextWidget(
+                              leftText: '联系客服',
+                              bgColor: Colors.transparent,
+                              leftImg: "ic_customer.svg",
+                              onPressed: () {
+                                Get.to(CustomerPage());
+                              },
+                            ),
+                            LineTextWidget(
                               leftText: '设置',
                               bgColor: Colors.transparent,
                               leftImg: "ic_setting.svg",
@@ -153,6 +162,7 @@ class _TabMyPageState extends State<TabMyPage> {
                                 Get.to(SettingPage());
                               },
                             ),
+
                           ],
                         ),
                       ),

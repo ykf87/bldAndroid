@@ -24,7 +24,7 @@ class _CancellationTipsDialog extends State<CancellationTipsDialog> {
     return BaseDialog(
       title: widget.title ?? title(),
       showOneBtn: true,
-      confirmTitle: '我知道了',
+      confirmTitle: '同意',
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
         child: Text(widget.content,

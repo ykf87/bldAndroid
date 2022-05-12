@@ -91,6 +91,7 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
           SPUtils.setAdShow(entity.data?.isadv?.contains("true") ?? false);
           Constants.opensign = entity.data?.opensign == 1;
           Constants.loginimg = entity.data?.loginimg??'';
+          Constants.service = entity.data?.service??'';
           Constants.activitiesImg = entity.data?.activities?[0].innerimg??'';
           goHomePage();
         }, onError: (msg) {

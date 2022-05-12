@@ -13,6 +13,7 @@ import 'package:SDZ/res/styles.dart';
 import 'package:SDZ/utils/adaptor.dart';
 import 'package:SDZ/utils/custom_scroll_behavior.dart';
 import 'package:SDZ/utils/image_utils.dart';
+import 'package:SDZ/utils/sputils.dart';
 import 'package:SDZ/utils/utils.dart';
 import 'package:SDZ/widget/animate_number.dart';
 import 'package:SDZ/widget/clipper_views.dart';
@@ -170,7 +171,7 @@ class _SignPageState extends State<SignPage> {
                           ),
 
                           ///抽奖
-                          SliverToBoxAdapter(
+                        SPUtils.getAdShow()?  SliverToBoxAdapter(
                             child: GestureDetector(
                               onTap: () {
                                 Get.to(WebViewPage(
@@ -199,7 +200,7 @@ class _SignPageState extends State<SignPage> {
                                           height: 80,
                                         )),
                             ),
-                          ),
+                          ):SliverToBoxAdapter(),
                           SliverToBoxAdapter(
                             child: Container(
                               decoration: const BoxDecoration(

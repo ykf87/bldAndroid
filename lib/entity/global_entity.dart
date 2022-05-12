@@ -12,6 +12,7 @@ class GlobalEntity with JsonConvert<GlobalEntity> {
   String? loginimg;
   List<ActivityList>? activities;
 }
+
 class ActivityList with JsonConvert<ActivityList> {
   String? title;
   String? innerimg;

@@ -5,4 +5,5 @@ class Constants{
  static bool isFirstOpen = false;
  static String activitiesImg = '';
  static String loginimg = '';
+ static String service = '';
 }

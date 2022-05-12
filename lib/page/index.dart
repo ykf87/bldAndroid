@@ -43,9 +43,13 @@ class _MainHomePageState extends State<MainHomePage>
   var _currentIndex = 0; //当前选中页面索引
 
   // 页面列表
-  final List<Widget> _pages = [
+  final List<Widget> _pages =SPUtils.getAdShow() ? [
     SignPage(),
     AdTaskPage(),
+    TabHomePage(),
+    TabMyPage()
+  ]:[
+    SignPage(),
     TabHomePage(),
     TabMyPage()
   ];
@@ -204,20 +208,7 @@ class _MainHomePageState extends State<MainHomePage>
                         }
                       });
                     }),
-                    items: [
-                      // BottomNavigationBarItem(
-                      //     label: '9.9包邮',
-                      //     icon: _currentIndex == 1
-                      //         ? Image.asset(
-                      //       'assets/nav/jiujiu.png',
-                      //       width: kNavIconSize,
-                      //       height: kNavIconSize,
-                      //     )
-                      //         : Image.asset(
-                      //       'assets/nav/jiujiu-n.png',
-                      //       height: kNavIconSize,
-                      //       width: kNavIconSize,
-                      //     )),
+                    items:SPUtils.getAdShow() ?  [
                       BottomNavigationBarItem(
                           label: '免费领',
                           icon: _currentIndex == 0
@@ -270,7 +261,48 @@ class _MainHomePageState extends State<MainHomePage>
                                   height: kNavIconSize,
                                   width: kNavIconSize,
                                 )),
-                    ]),
+                    ]: [
+                      BottomNavigationBarItem(
+                          label: '免费领',
+                          icon: _currentIndex == 0
+                              ? Image.asset(
+                            'assets/nav/sign-n.png',
+                            width: kNavIconSize,
+                            height: kNavIconSize,
+                          )
+                              : Image.asset(
+                            'assets/nav/sign.png',
+                            height: kNavIconSize,
+                            width: kNavIconSize,
+                          )),
+                      BottomNavigationBarItem(
+                          label: '省钱',
+                          icon: _currentIndex == 2
+                              ? Image.asset(
+                            'assets/nav/home.png',
+                            width: kNavIconSize,
+                            height: kNavIconSize,
+                          )
+                              : Image.asset(
+                            'assets/nav/home-n.png',
+                            height: kNavIconSize,
+                            width: kNavIconSize,
+                          )),
+                      BottomNavigationBarItem(
+                          label: '我的',
+                          icon: _currentIndex == 3
+                              ? Image.asset(
+                            'assets/nav/my.png',
+                            width: kNavIconSize,
+                            height: kNavIconSize,
+                          )
+                              : Image.asset(
+                            'assets/nav/my-n.png',
+                            height: kNavIconSize,
+                            width: kNavIconSize,
+                          )),
+                    ]
+                ),
                 body: IndexedStack(
                   index: _currentIndex,
                   children: _pages,
