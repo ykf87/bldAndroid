@@ -47,7 +47,7 @@ class _CustomerPageState extends  BaseStatefulState<CustomerPage> with WidgetsBi
     // TODO: implement initState
     super.initState();
     WidgetsBinding.instance!.addObserver(this);
-
+    print("TTTTTT====${ SPUtils.getServiceImg()}");
   }
 
 
@@ -72,8 +72,8 @@ class _CustomerPageState extends  BaseStatefulState<CustomerPage> with WidgetsBi
         decoration: new BoxDecoration(
           borderRadius: new BorderRadius.all(Radius.circular(12.0)),
           image: new DecorationImage(
-            image: Constants.service.isNotEmpty
-                ? ImageUtils.getImageProvider(Constants.service)
+            image: SPUtils.getServiceImg().isNotEmpty
+                ? ImageUtils.getImageProvider(SPUtils.getServiceImg())
                 : new ExactAssetImage('assets/images/bg_login.jpeg'),
             fit: BoxFit.cover,
           ),

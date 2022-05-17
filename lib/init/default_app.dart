@@ -6,6 +6,7 @@ import 'package:SDZ/constant/wechat_constant.dart';
 import 'package:SDZ/core/http/http.dart';
 import 'package:SDZ/core/utils/locale.dart';
 import 'package:SDZ/core/utils/toast.dart';
+import 'package:SDZ/entity/Constants.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/global_entity.dart';
 import 'package:SDZ/generated/i18n.dart';
@@ -69,6 +70,11 @@ class DefaultApp {
       if (result != null) {
         BaseEntity<GlobalEntity> entity = BaseEntity.fromJson(result!);
         SPUtils.setAdShow(entity.data?.isadv?.contains("true") ?? false);
+        print("TTTTTT==${entity.data}");
+        SPUtils.setServiceImg(entity.data?.service??'');
+        Constants.opensign = entity.data?.opensign == 1;
+        Constants.loginimg = entity.data?.loginimg??'';
+        Constants.activitiesImg = entity.data?.activities?[0].innerimg??'';
       }
       if (SPUtils.getAdShow()) {
         await CSJUtils.initCSJADSDK();

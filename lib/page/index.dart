@@ -9,6 +9,7 @@ import 'package:SDZ/utils/CSJUtils.dart';
 import 'package:SDZ/utils/YLHUtils.dart';
 import 'package:SDZ/utils/login_util.dart';
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flustars/flustars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:SDZ/core/utils/click.dart';
@@ -43,16 +44,9 @@ class _MainHomePageState extends State<MainHomePage>
   var _currentIndex = 0; //当前选中页面索引
 
   // 页面列表
-  final List<Widget> _pages =SPUtils.getAdShow() ? [
-    SignPage(),
-    AdTaskPage(),
-    TabHomePage(),
-    TabMyPage()
-  ]:[
-    SignPage(),
-    TabHomePage(),
-    TabMyPage()
-  ];
+  final List<Widget> _pages = SPUtils.getAdShow()
+      ? [SignPage(), AdTaskPage(), TabHomePage(), TabMyPage()]
+      : [SignPage(), TabHomePage(), TabMyPage()];
 
   @override
   void initState() {
@@ -132,11 +126,11 @@ class _MainHomePageState extends State<MainHomePage>
       case AppLifecycleState.resumed:
         {
           WFLogUtil.d('后台切前台');
-          if(_currentIndex == 0 || _currentIndex == 3){
+          if (_currentIndex == 0 || _currentIndex == 3) {
             SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
                 statusBarColor: Colors.transparent,
                 statusBarIconBrightness: Brightness.dark));
-          }else{
+          } else {
             SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
                 statusBarColor: Colors.transparent,
                 statusBarIconBrightness: Brightness.dark));
@@ -201,108 +195,116 @@ class _MainHomePageState extends State<MainHomePage>
                                   statusBarColor: Colors.transparent,
                                   statusBarIconBrightness: Brightness.dark));
                         } else {
-                          SystemChrome.setSystemUIOverlayStyle(
-                              const SystemUiOverlayStyle(
-                                  statusBarColor: Colors.white,
-                                  statusBarIconBrightness: Brightness.dark));
+                          if (!SPUtils.getAdShow()) {
+                            SystemChrome.setSystemUIOverlayStyle(
+                                const SystemUiOverlayStyle(
+                                    statusBarColor: Colors.transparent,
+                                    statusBarIconBrightness: Brightness.dark));
+                          } else {
+                            SystemChrome.setSystemUIOverlayStyle(
+                                const SystemUiOverlayStyle(
+                                    statusBarColor: Colors.white,
+                                    statusBarIconBrightness: Brightness.dark));
+                          }
                         }
                       });
                     }),
-                    items:SPUtils.getAdShow() ?  [
-                      BottomNavigationBarItem(
-                          label: '免费领',
-                          icon: _currentIndex == 0
-                              ? Image.asset(
-                                  'assets/nav/sign-n.png',
-                                  width: kNavIconSize,
-                                  height: kNavIconSize,
-                                )
-                              : Image.asset(
-                                  'assets/nav/sign.png',
-                                  height: kNavIconSize,
-                                  width: kNavIconSize,
-                                )),
-                      BottomNavigationBarItem(
-                          label: '赚钱',
-                          icon: _currentIndex == 1
-                              ? Image.asset(
-                                  'assets/nav/fenlei.png',
-                                  width: kNavIconSize,
-                                  height: kNavIconSize,
-                                )
-                              : Image.asset(
-                                  'assets/nav/fenlei-n.png',
-                                  height: kNavIconSize,
-                                  width: kNavIconSize,
-                                )),
-                      BottomNavigationBarItem(
-                          label: '省钱',
-                          icon: _currentIndex == 2
-                              ? Image.asset(
-                            'assets/nav/home.png',
-                            width: kNavIconSize,
-                            height: kNavIconSize,
-                          )
-                              : Image.asset(
-                            'assets/nav/home-n.png',
-                            height: kNavIconSize,
-                            width: kNavIconSize,
-                          )),
-                      BottomNavigationBarItem(
-                          label: '我的',
-                          icon: _currentIndex == 3
-                              ? Image.asset(
-                                  'assets/nav/my.png',
-                                  width: kNavIconSize,
-                                  height: kNavIconSize,
-                                )
-                              : Image.asset(
-                                  'assets/nav/my-n.png',
-                                  height: kNavIconSize,
-                                  width: kNavIconSize,
-                                )),
-                    ]: [
-                      BottomNavigationBarItem(
-                          label: '免费领',
-                          icon: _currentIndex == 0
-                              ? Image.asset(
-                            'assets/nav/sign-n.png',
-                            width: kNavIconSize,
-                            height: kNavIconSize,
-                          )
-                              : Image.asset(
-                            'assets/nav/sign.png',
-                            height: kNavIconSize,
-                            width: kNavIconSize,
-                          )),
-                      BottomNavigationBarItem(
-                          label: '省钱',
-                          icon: _currentIndex == 2
-                              ? Image.asset(
-                            'assets/nav/home.png',
-                            width: kNavIconSize,
-                            height: kNavIconSize,
-                          )
-                              : Image.asset(
-                            'assets/nav/home-n.png',
-                            height: kNavIconSize,
-                            width: kNavIconSize,
-                          )),
-                      BottomNavigationBarItem(
-                          label: '我的',
-                          icon: _currentIndex == 3
-                              ? Image.asset(
-                            'assets/nav/my.png',
-                            width: kNavIconSize,
-                            height: kNavIconSize,
-                          )
-                              : Image.asset(
-                            'assets/nav/my-n.png',
-                            height: kNavIconSize,
-                            width: kNavIconSize,
-                          )),
-                    ]
-                ),
+                    items: SPUtils.getAdShow()
+                        ? [
+                            BottomNavigationBarItem(
+                                label: '免费领',
+                                icon: _currentIndex == 0
+                                    ? Image.asset(
+                                        'assets/nav/sign-n.png',
+                                        width: kNavIconSize,
+                                        height: kNavIconSize,
+                                      )
+                                    : Image.asset(
+                                        'assets/nav/sign.png',
+                                        height: kNavIconSize,
+                                        width: kNavIconSize,
+                                      )),
+                            BottomNavigationBarItem(
+                                label: '赚钱',
+                                icon: _currentIndex == 1
+                                    ? Image.asset(
+                                        'assets/nav/fenlei.png',
+                                        width: kNavIconSize,
+                                        height: kNavIconSize,
+                                      )
+                                    : Image.asset(
+                                        'assets/nav/fenlei-n.png',
+                                        height: kNavIconSize,
+                                        width: kNavIconSize,
+                                      )),
+                            BottomNavigationBarItem(
+                                label: '省钱',
+                                icon: _currentIndex == 2
+                                    ? Image.asset(
+                                        'assets/nav/home.png',
+                                        width: kNavIconSize,
+                                        height: kNavIconSize,
+                                      )
+                                    : Image.asset(
+                                        'assets/nav/home-n.png',
+                                        height: kNavIconSize,
+                                        width: kNavIconSize,
+                                      )),
+                            BottomNavigationBarItem(
+                                label: '我的',
+                                icon: _currentIndex == 3
+                                    ? Image.asset(
+                                        'assets/nav/my.png',
+                                        width: kNavIconSize,
+                                        height: kNavIconSize,
+                                      )
+                                    : Image.asset(
+                                        'assets/nav/my-n.png',
+                                        height: kNavIconSize,
+                                        width: kNavIconSize,
+                                      )),
+                          ]
+                        : [
+                            BottomNavigationBarItem(
+                                label: '免费领',
+                                icon: _currentIndex == 0
+                                    ? Image.asset(
+                                        'assets/nav/sign-n.png',
+                                        width: kNavIconSize,
+                                        height: kNavIconSize,
+                                      )
+                                    : Image.asset(
+                                        'assets/nav/sign.png',
+                                        height: kNavIconSize,
+                                        width: kNavIconSize,
+                                      )),
+                            BottomNavigationBarItem(
+                                label: '省钱',
+                                icon: _currentIndex ==1
+                                    ? Image.asset(
+                                        'assets/nav/home.png',
+                                        width: kNavIconSize,
+                                        height: kNavIconSize,
+                                      )
+                                    : Image.asset(
+                                        'assets/nav/home-n.png',
+                                        height: kNavIconSize,
+                                        width: kNavIconSize,
+                                      )),
+                            BottomNavigationBarItem(
+                                label: '我的',
+                                icon: _currentIndex ==2
+                                    ? Image.asset(
+                                        'assets/nav/my.png',
+                                        width: kNavIconSize,
+                                        height: kNavIconSize,
+                                      )
+                                    : Image.asset(
+                                        'assets/nav/my-n.png',
+                                        height: kNavIconSize,
+                                        width: kNavIconSize,
+                                      )),
+                          ]),
                 body: IndexedStack(
                   index: _currentIndex,
                   children: _pages,

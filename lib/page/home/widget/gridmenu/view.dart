@@ -4,6 +4,9 @@ import 'package:SDZ/api/api_client.dart';
 import 'package:SDZ/api/api_status.dart';
 import 'package:SDZ/api/api_url.dart';
 import 'package:SDZ/api/jtk_api.dart';
+import 'package:SDZ/dialog/base_dialog.dart';
+import 'package:SDZ/dialog/exit_dialog.dart';
+import 'package:SDZ/res/colors.dart';
 import 'package:SDZ/utils/utils.dart';
 import 'package:SDZ/entity/base/base_entity.dart';
 import 'package:SDZ/entity/home/telephone_bill_entity.dart';
@@ -143,11 +146,27 @@ void getMeiTuanData() {
       onSuccess: (data) {
         BaseEntity<TelephoneBillEntity> entity = BaseEntity.fromJson(data!);
         if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
-          launch(entity.data?.h5??'');
+          jumpToThird(entity.data?.h5??'');
         }else{
         }
 
       });
+}
+void jumpToThird(String url){
+  showDialog<void>(
+      context: Get.context!,
+      builder: (_) => BaseDialog(
+        title: Text('温馨提示',style: TextStyle(color: Colours.color_666666,fontSize: 16)),
+        confirmTitle: '继续跳转',
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Text('即将跳转到第三方应用',
+              style: TextStyle(color: Colours.color_666666, fontSize: 14, height: 1.5)),
+        ),
+        onPressed: () {
+          launch(url);
+        },
+      ));
 }
 
 ///话费
@@ -162,7 +181,7 @@ void getMobileData() {
       onSuccess: (data) {
         BaseEntity<TelephoneBillEntity> entity = BaseEntity.fromJson(data!);
         if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
-          launch(entity.data?.jtk_url??'');
+          jumpToThird(entity.data?.jtk_url??'');
         }else{
         }
 
@@ -181,7 +200,7 @@ void getElectricityData() {
       onSuccess: (data) {
         BaseEntity<TelephoneBillEntity> entity = BaseEntity.fromJson(data!);
         if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
-          launch(entity.data?.h5_url??'');
+          jumpToThird(entity.data?.h5_url??'');
         }else{
         }
 
@@ -201,7 +220,7 @@ void getDiDiData() {
       onSuccess: (data) {
         BaseEntity<TelephoneBillEntity> entity = BaseEntity.fromJson(data!);
         if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
-          launch(entity.data?.short_click_url??'');
+          jumpToThird(entity.data?.short_click_url??'');
         }else{
         }
 

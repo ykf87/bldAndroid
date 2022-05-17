@@ -132,6 +132,18 @@ class SPUtils {
     return _spf!.getBool('isAdShow') ?? false;
   }
 
+
+  ///
+  static Future<bool> setServiceImg(String img) {
+    return _spf!.setString('setServiceImg', img);
+  }
+
+  static String getServiceImg() {
+    return _spf!.getString('setServiceImg') ?? '';
+  }
+
+
+
   /// 设置协议是否已读
   /// agree 是否同意协议
   static Future<bool> setAgreementRead(bool agree) =>
