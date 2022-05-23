@@ -108,8 +108,8 @@ class _SplashPageState extends BaseStatefulState<SplashPage> {
         AlterDialog(
           title: '温馨提示',
           content: '您需要同意《用户协议》及《隐私政策》才能继续使用应用，否则非常遗憾我们将无法为您提供服务。',
-          cancelText: '退出APP',
-          confirmText: '继续使用',
+          cancelText: '不同意并退出APP',
+          confirmText: '同意并继续使用',
           onTap: (type) {
             if (type == 0) {
               // SystemNavigator.pop();

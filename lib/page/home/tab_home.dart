@@ -87,7 +87,7 @@ class _TabHomePageState extends State<TabHomePage>
               // SliverPadding(
               //     padding: const EdgeInsets.only(top: 12),
               //     sliver: const SliverToBoxAdapter(child: IndexBanner(),)),
-              const GridMenuComponent(),
+              SPUtils.getAdShow()?const GridMenuComponent():SliverToBoxAdapter(),
               SliverPersistentHeader(
                 delegate: IndexTabbar(tabController),
                 pinned: true,
