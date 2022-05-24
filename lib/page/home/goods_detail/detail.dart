@@ -38,8 +38,6 @@ import 'package:get/get.dart';
 import 'package:loading_more_list/loading_more_list.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 ///商品详情
 class DetailPage extends StatefulWidget {
   final String goodsId;
@@ -191,7 +189,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                   buildSliverToBoxAdapterTwo(),
                   buildSliverToBoxAdapterThree(),
                   buildSliverToBoxAdapterFour(),
-                  buildSliverToBoxAdapterFive(widget.source??''),
+                  buildSliverToBoxAdapterFive(widget.source ?? ''),
                   buildSliverToBoxAdapterSix(),
                   buildSliverToBoxAdapterPlaceholder(),
                   // buildSliverToBoxAdapterShop(),
@@ -259,21 +257,23 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                               if (info != null) {
                                 if (widget.source!.contains("taobao")) {
                                   Utils.copy(info?.url ?? '无优惠券',
-                                      message: '复制成功,打开${getTypeLabel()}APP领取优惠券');
+                                      message:
+                                          '复制成功,打开${getTypeLabel()}APP领取优惠券');
                                 }
-                              }else{
-                                launch(info?.url??'');
+                              } else {
+                                launch(info?.url ?? '');
                               }
                             },
                             child: const Text('复制口令')),
                         ElevatedButton(
                             onPressed: () async {
-                              if(widget.source!.contains("taobao")){
+                              if (widget.source!.contains("taobao")) {
                                 Utils.copy(info?.url ?? '无优惠券',
-                                    message: '复制成功,打开${getTypeLabel()}APP领取优惠券');
-                              }else{
+                                    message:
+                                        '复制成功,打开${getTypeLabel()}APP领取优惠券');
+                              } else {
                                 if (info != null) {
-                                  launch(info?.url??'');
+                                  launch(info?.url ?? '');
                                 }
                               }
                             },
@@ -379,20 +379,20 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
   }
 
   // 第五行,领券
-  Widget buildSliverToBoxAdapterFive(String souce,{bool isSliver = true}) {
+  Widget buildSliverToBoxAdapterFive(String souce, {bool isSliver = true}) {
     var widget = containerWarp(
         InkWell(
           onTap: () async {
-            if(souce.contains("taobao")){
+            if (souce.contains("taobao")) {
               Utils.copy(info?.url ?? '无优惠券',
                   message: '复制成功,打开${getTypeLabel()}APP领取优惠券');
               return;
             }
             if (info != null) {
-              await launch(info?.url??'');
+              await launch(info?.url ?? '');
             }
           },
-          child: Container(
+          child:info?.couponInfo?.fav==0?Container(): Container(
             height: 100,
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
             decoration: const BoxDecoration(
@@ -424,12 +424,14 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
                             const SizedBox(
                               height: 12,
                             ),
-                            Text(
-                              '使用日期:${info?.couponInfo?.useBeginTime?.substring(0,10)} - ${info?.couponInfo?.useEndTime?.substring(0,10)}',
-                              style: const TextStyle(
-                                  color: Color.fromRGBO(145, 77, 9, 1.0),
-                                  fontWeight: FontWeight.w400),
-                            )
+                            info!.couponInfo!.useBeginTime!.length > 10
+                                ? Text(
+                                    '使用日期:${info?.couponInfo?.useBeginTime?.substring(0, 10)} - ${info?.couponInfo?.useEndTime?.substring(0, 10)}',
+                                    style: const TextStyle(
+                                        color: Color.fromRGBO(145, 77, 9, 1.0),
+                                        fontWeight: FontWeight.w400),
+                                  )
+                                : Container()
                           ],
                         ),
                       ),
@@ -744,7 +746,7 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
   SingleChildScrollView buildImagesWidget() {
     return SingleChildScrollView(
       key: _detailImagesGlogbalKey,
-      child:  Column(
+      child: Column(
         children: renderImages(double.infinity),
       ),
     );
@@ -806,7 +808,8 @@ class _DetailPageState extends State<DetailPage> with TickerProviderStateMixin {
     map['source'] = widget.source;
     map['goodsId'] = widget.goodsId;
     map['sid'] = "bld";
-    final result = await ApiClient.instance.getReturn(ApiUrl.recommend, data: map);
+    final result =
+        await ApiClient.instance.getReturn(ApiUrl.recommend, data: map);
     BaseEntity<GoodsLinkEntity> entity = BaseEntity.fromJson(result!);
     if (entity.code == ApiStatus.JTKSUCCESS && entity.data != null) {
       setState(() {
