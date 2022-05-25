@@ -209,6 +209,7 @@ class _LoginPageState extends BaseStatefulState<LoginPage>
   Widget agreementWidget() {
     return Container(
       padding: new EdgeInsets.all(10.0),
+      margin: EdgeInsets.only(bottom: 20),
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
